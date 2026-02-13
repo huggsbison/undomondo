@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2019 — Undomondo Tumblr Archive</title>
+    <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    html, body {
+        font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        background: #f8f6f1;
+        color: #222;
+        line-height: 1.6;
+    }
+    
+    @import url('https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Space+Mono:wght@400;700&family=DM+Sans:wght@400;500;700&family=Space+Grotesk:wght@400;600;700&display=swap');
+    
+    nav {
+        background: white;
+        padding: 1.5rem 2rem;
+        border-bottom: 3px solid #D62828;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-family: 'Space Grotesk', sans-serif;
+    }
+    
+    .nav-brand {
+        font-size: 1.2rem;
+        font-weight: 700;
+        color: #111;
+        text-decoration: none;
+        letter-spacing: 0.05em;
+    }
+    
+    .nav-links {
+        display: flex;
+        gap: 2rem;
+        list-style: none;
+    }
+    
+    .nav-links a {
+        text-decoration: none;
+        color: #111;
+        font-weight: 600;
+        font-size: 0.95rem;
+        transition: color 0.2s;
+    }
+    
+    .nav-links a:hover,
+    .nav-links a.active {
+        color: #D62828;
+    }
+    
+    .hero {
+        background-color: #111111;
+        background-image: radial-gradient(circle, #005F99 8px, transparent 8px);
+        background-size: 24px 24px;
+        padding: 4rem 2rem;
+        text-align: center;
+        color: white;
+    }
+    
+    .year-big {
+        font-family: 'Dela Gothic One', sans-serif;
+        font-size: clamp(4rem, 10vw, 8rem);
+        margin: 0;
+        text-transform: uppercase;
+        opacity: 0.3;
+        line-height: 1;
+    }
+    
+    .year-info {
+        font-size: 1.2rem;
+        margin: 1.5rem 0;
+        opacity: 0.9;
+    }
+    
+    .year-nav {
+        text-align: center;
+        padding: 2rem;
+        font-family: 'Space Grotesk', sans-serif;
+    }
+    
+    .year-nav a, .year-nav span {
+        margin: 0 0.5rem;
+        text-decoration: none;
+        color: #005F99;
+        font-weight: 600;
+    }
+    
+    .year-nav .current {
+        color: #D62828;
+        text-decoration: underline;
+    }
+    
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; }
+    
+    .filter-bar {
+        margin: 2rem 0;
+        padding: 1.5rem;
+        background: white;
+        border-radius: 4px;
+    }
+    
+    .filter-label {
+        font-weight: 600;
+        margin-bottom: 1rem;
+        display: block;
+    }
+    
+    .pills {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin-bottom: 1rem;
+    }
+    
+    .pill {
+        display: inline-block;
+        padding: 0.35rem 0.75rem;
+        background: #f0f0f0;
+        border: 1px solid #ddd;
+        border-radius: 20px;
+        font-size: 0.8rem;
+        text-decoration: none;
+        color: #111;
+        transition: all 0.2s;
+        cursor: pointer;
+    }
+    
+    .pill:hover {
+        background: #D62828;
+        color: white;
+        border-color: #D62828;
+    }
+    
+    .pill.active {
+        background: #D62828;
+        color: white;
+        border-color: #D62828;
+    }
+    
+    .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+        gap: 2rem;
+        margin: 2rem 0;
+    }
+    
+    .card {
+        background: white;
+        border-radius: 4px;
+        overflow: hidden;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        transition: transform 0.2s, box-shadow 0.2s;
+        display: flex;
+        flex-direction: column;
+        cursor: pointer;
+    }
+    
+    .card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+    }
+    
+    .card-header {
+        background: #111;
+        color: white;
+        padding: 1.5rem;
+        border-left: 4px solid #D62828;
+    }
+    
+    .card-title {
+        font-size: 1.1rem;
+        font-weight: 700;
+        margin: 0.5rem 0;
+    }
+    
+    .card-date {
+        font-family: 'Space Mono', monospace;
+        font-size: 0.75rem;
+        opacity: 0.8;
+    }
+    
+    .card-body {
+        padding: 1.5rem;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .card-excerpt {
+        color: #666;
+        font-size: 0.9rem;
+        margin-bottom: 1rem;
+        flex: 1;
+    }
+    
+    .card-tags {
+        margin-top: auto;
+    }
+    
+    .tag {
+        display: inline-block;
+        padding: 0.25rem 0.6rem;
+        background: #f0f0f0;
+        border-radius: 3px;
+        font-size: 0.75rem;
+        margin-right: 0.5rem;
+        margin-bottom: 0.3rem;
+        color: #666;
+    }
+    
+    .load-more {
+        text-align: center;
+        padding: 2rem;
+    }
+    
+    .load-more-btn {
+        padding: 0.75rem 2rem;
+        background: #D62828;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        font-weight: 600;
+        cursor: pointer;
+        font-size: 1rem;
+        transition: opacity 0.2s;
+    }
+    
+    .load-more-btn:hover {
+        opacity: 0.85;
+    }
+    
+    footer {
+    background: #D62828;
+    color: #F2EFE5;
+    padding: 48px 40px;
+}
+footer a { color: #F2EFE5; text-decoration: none; }
+footer a:hover { opacity: 0.8; background: #F2EFE5; color: #D62828; }
+    footer a:hover { opacity: 0.8; }
+    
+    @media (max-width: 768px) {
+        nav { flex-direction: column; gap: 1rem; }
+        .nav-links { gap: 1rem; }
+        .year-big { font-size: clamp(2rem, 6vw, 4rem); }
+    }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="/" class="nav-brand">UNDOMONDO</a>
+        <ul class="nav-links">
+            <li><a href="/">Home</a></li>
+            <li><a href="/archive/" class="active">Archive</a></li>
+            <li><a href="https://undomondo.substack.com">Newsletter</a></li>
+            <li><a href="/#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <div class="hero">
+        <h1 class="year-big">2019</h1>
+        <p class="year-info">46 posts</p>
+    </div>
+
+    <div class="container">
+        <div class="year-nav">
+            <a href="/tumblr/">← Tumblr Hub</a>
+            <a href="/tumblr/2018.html">← 2018</a> · <span class="current">2019</span> · <a href="/tumblr/2020.html">2020 →</a>
+        </div>
+
+        <div class="filter-bar">
+            <label class="filter-label">Filter by genre:</label>
+            <div class="pills">
+                <span class="pill" onclick="filterByTag('2019')">2019</span>
+<span class="pill" onclick="filterByTag('Jazz')">Jazz</span>
+<span class="pill" onclick="filterByTag('japan')">japan</span>
+<span class="pill" onclick="filterByTag('punk')">punk</span>
+<span class="pill" onclick="filterByTag('vintage')">vintage</span>
+<span class="pill" onclick="filterByTag('dekmantel')">dekmantel</span>
+<span class="pill" onclick="filterByTag('Latin')">Latin</span>
+<span class="pill" onclick="filterByTag('Oldies')">Oldies</span>
+<span class="pill" onclick="filterByTag('Ambient')">Ambient</span>
+<span class="pill" onclick="filterByTag('Synth')">Synth</span>
+            </div>
+        </div>
+
+        <div class="grid" id="grid">
+            <div class="card" onclick="location.href='/tumblr/post.html?id=189755819794'">
+                <div class="card-header">
+                    <div class="card-date">2019-12-19</div>
+                    <h3 class="card-title">Lido Pimienta - No Pude</h3>
+                </div>
+                <div class="card-body">
+                    <p class="card-excerpt"> Lido Pimienta - No Pude   </p>
+                    <div class="card-tags"><span class="tag">latin</span><span class="tag">pop</span></div>
+                </div>
+            </div>
+<div class="card" onclick="location.href='/tumblr/post.html?id=189623337949'">
+                <div class="card-header">
+                    <div class="card-date">2019-12-12</div>
+                    <h3 class="card-title">Purple Mountains - Maybe I’m the only one for meOn holidays, in lonely hauntsAt closing time, in res</h3>
+                </div>
+                <div class="card-body">
+                    <p class="card-excerpt"> Purple Mountains - Maybe I’m the only one for me  On holidays, in lonely haunts At closing time, in restaurants I can’t keep on pretending not to see Yeah, I’m starting to suspect Though I hope I’m i...</p>
+                    <div class="card-tags"><span class="tag">2019</span></div>
+                </div>
+            </div>
+<div class="card" onclick="location.href='/tumblr/post.html?id=189608729079'">
+                <div class="card-header">
+                    <div class="card-date">2019-12-11</div>
+                    <h3 class="card-title">KEN ISHII - Bells of New LifeBells of New Life from the album “Möbius Strip”</h3>
+                </div>
+                <div class="card-body">
+                    <p class="card-excerpt"> KEN ISHII - Bells of New Life   Bells of New Life from the album “Möbius Strip”   </p>
+                    <div class="card-tags"><span class="tag">electronic</span><span class="tag">japan</span></div>
+                </div>
+            </div>
+<div class="card" onclick="location.href='/tumblr/post.html?id=189608892384'">
+                <div class="card-header">
+                    <div class="card-date">2019-12-11</div>
+                    <h3 class="card-title">Kutiman feat. Melike Şahin - Sakla Beni</h3>
+                </div>
+                <div class="card-body">
+                    <p class="card-excerpt"> Kutiman feat. Melike Şahin - Sakla Beni   </p>
+                    <div class="card-tags"><span class="tag">psychedelic</span><span class="tag">turk</span></div>
+                </div>
+            </div>
+<div class="card" onclick="location.href='/tumblr/post.html?id=189056099499'">
+                <div class="card-header">
+                    <div class="card-date">2019-11-14</div>
+                    <h3 class="card-title">The Kids - Fascist Cops</h3>
+                </div>
+                <div class="card-body">
+                    <p class="card-excerpt"> The Kids - Fascist Cops   </p>
+                    <div class="card-tags"><span class="tag">punk</span></div>
+                </div>
+            </div>
+<div class="card" onclick="location.href='/tumblr/post.html?id=189056117704'">
+                <div class="card-header">
+                    <div class="card-date">2019-11-14</div>
+                    <h3 class="card-title">HOBOCOP “Good News”</h3>
+                </div>
+                <div class="card-body">
+                    <p class="card-excerpt"> HOBOCOP “Good News”  </p>
+                    <div class="card-tags"><span class="tag">punk</span></div>
+                </div>
+            </div>
+<div class="card" onclick="location.href='/tumblr/post.html?id=188648781349'">
+                <div class="card-header">
+                    <div class="card-date">2019-10-28</div>
+                    <h3 class="card-title">Bohren &amp; der Club of Gore - Sollen es doch Alle wissenBest news of the year 2019!Bohren will have a </h3>
+                </div>
+                <div class="card-body">
+                    <p class="card-excerpt"> Bohren &amp;amp; der Club of Gore - Sollen es doch Alle wissen  Best news of the year 2019!  Bohren will have a new album on 2020 and this shitty decade will come to an end!  </p>
+                    <div class="card-tags"><span class="tag">2020</span></div>
+                </div>
+            </div>
+<div class="card" onclick="location.href='/tumblr/post.html?id=188654648794'">
+                <div class="card-header">
+                    <div class="card-date">2019-10-28</div>
+                    <h3 class="card-title">Adriano Celentano - Il Re Degli Ignoranti (Good Block Edit) by Good Blockhttps://ift.tt/34dgVED</h3>
+                </div>
+                <div class="card-body">
+                    <p class="card-excerpt"> Adriano Celentano - Il Re Degli Ignoranti (Good Block Edit) by Good Block &lt;a href=&quot;https://ift.tt/34dgVED&quot;&gt;https://ift.tt/34dgVED&lt;/a&gt;  </p>
+                    <div class="card-tags"><span class="tag">balearic</span><span class="tag">New Wave</span><span class="tag">Edit</span><span class="tag">Synthpop</span><span class="tag">italy</span><span class="tag">Dub</span></div>
+                </div>
+            </div>
+<div class="card" onclick="location.href='/tumblr/post.html?id=188582453704'">
+                <div class="card-header">
+                    <div class="card-date">2019-10-25</div>
+                    <h3 class="card-title">ghaas:The Real King of Rock n Roll</h3>
+                </div>
+                <div class="card-body">
+                    <p class="card-excerpt"> &lt;a class=&quot;tumblr_blog&quot; href=&quot;https://ghaas.tumblr.com/post/188568710479/the-real-king-of-rock-n-roll&quot;&gt;ghaas&lt;/a&gt;: 
+&lt;blockquote&gt; The Real King of Rock n Roll &lt;/...</p>
+                    <div class="card-tags"></div>
+                </div>
+            </div>
+<div class="card" onclick="location.href='/tumblr/post.html?id=188473471134'">
+                <div class="card-header">
+                    <div class="card-date">2019-10-20</div>
+                    <h3 class="card-title">Leny Andrade ‎– Ingratidão</h3>
+                </div>
+                <div class="card-body">
+                    <p class="card-excerpt"> Leny Andrade ‎– Ingratidão   </p>
+                    <div class="card-tags"><span class="tag">vintage</span><span class="tag">brasil</span></div>
+                </div>
+            </div>
+<div class="card" onclick="location.href='/tumblr/post.html?id=188473501849'">
+                <div class="card-header">
+                    <div class="card-date">2019-10-20</div>
+                    <h3 class="card-title">Nahawa Doumbia — Tou DibileFrom the forthcoming reissue Nahwa Doumbia “La Grande Cantatrice Malienne</h3>
+                </div>
+                <div class="card-body">
+                    <p class="card-excerpt"> Nahawa Doumbia — Tou Dibile   From the forthcoming reissue Nahwa Doumbia “La Grande Cantatrice Malienne Vol 1”. Malian singer’s debut album from nearly 40 years ago, simply acoustic guitar and voice....</p>
+                    <div class="card-tags"><span class="tag">reissue</span><span class="tag">vintage</span><span class="tag">africa</span></div>
+                </div>
+            </div>
+<div class="card" onclick="location.href='/tumblr/post.html?id=188473658504'">
+                <div class="card-header">
+                    <div class="card-date">2019-10-20</div>
+                    <h3 class="card-title">Undomondo Postcards 04: From Ayvalık with LoveSoundtrack to an imaginary romcom, conceived in Ayvalı</h3>
+                </div>
+                <div class="card-body">
+                    <p class="card-excerpt"> Undomondo Postcards 04: From Ayvalık with Love  Soundtrack to an imaginary romcom, conceived in Ayvalık, in May 2019.  Tangos, boleros &amp;amp; sambas love songs from Sergio Mendes, Roberto Menescal...</p>
+                    <div class="card-tags"><span class="tag">2019</span><span class="tag">mixes</span></div>
+                </div>
+            </div>
+<div class="card" onclick="location.href='/tumblr/post.html?id=188431924284'">
+                <div class="card-header">
+                    <div class="card-date">2019-10-18</div>
+                    <h3 class="card-title">Dekmantel Podcast 227 - Nu Guinea by dekmantelhttps://ift.tt/2N83iSS</h3>
+                </div>
+                <div class="card-body">
+                    <p class="card-excerpt"> Dekmantel Podcast 227 - Nu Guinea by dekmantel &lt;a href=&quot;https://ift.tt/2N83iSS&quot;&gt;https://ift.tt/2N83iSS&lt;/a&gt;  </p>
+                    <div class="card-tags"><span class="tag">Nu Guinea</span><span class="tag">dekmantel</span><span class="tag">podcast</span></div>
+                </div>
+            </div>
+<div class="card" onclick="location.href='/tumblr/post.html?id=188403181649'">
+                <div class="card-header">
+                    <div class="card-date">2019-10-17</div>
+                    <h3 class="card-title">I had been collecting pieces into this playlist that I had initially labelled “noit vibes”, mixing n</h3>
+                </div>
+                <div class="card-body">
+                    <p class="card-excerpt"> I had been collecting pieces into this playlist that I had initially labelled “noit vibes”, mixing night/noir and vibraphones together; pieces that have the b^w cinematic jazz feel of the 60s. After ...</p>
+                    <div class="card-tags"><span class="tag">Jazz</span><span class="tag">b&amp;w</span><span class="tag">Latin</span><span class="tag">Oldies</span><span class="tag">Soul</span><span class="tag">Ambient</span><span class="tag">noir</span></div>
+                </div>
+            </div>
+<div class="card" onclick="location.href='/tumblr/post.html?id=187563553979'">
+                <div class="card-header">
+                    <div class="card-date">2019-09-08</div>
+                    <h3 class="card-title">B2 - Royalty Booty Funk - Philou Louzolo(CLIP) by Banoffee Pies Recordshttps://ift.tt/316lBeC</h3>
+                </div>
+                <div class="card-body">
+                    <p class="card-excerpt"> B2 - Royalty Booty Funk - Philou Louzolo(CLIP) by Banoffee Pies Records &lt;a href=&quot;https://ift.tt/316lBeC&quot;&gt;https://ift.tt/316lBeC&lt;/a&gt;  </p>
+                    <div class="card-tags"><span class="tag">BPR</span></div>
+                </div>
+            </div>
+<div class="card" onclick="location.href='/tumblr/post.html?id=187462663169'">
+                <div class="card-header">
+                    <div class="card-date">2019-09-03</div>
+                    <h3 class="card-title">GHMIX002 - Ece özel by Greenhousehttps://ift.tt/2Uvs5B9</h3>
+                </div>
+                <div class="card-body">
+                    <p class="card-excerpt"> GHMIX002 - Ece özel by Greenhouse &lt;a href=&quot;https://ift.tt/2Uvs5B9&quot;&gt;https://ift.tt/2Uvs5B9&lt;/a&gt;  </p>
+                    <div class="card-tags"><span class="tag">Ece</span><span class="tag">Oddities</span><span class="tag">Istanbul</span></div>
+                </div>
+            </div>
+<div class="card" onclick="location.href='/tumblr/post.html?id=187441851104'">
+                <div class="card-header">
+                    <div class="card-date">2019-09-02</div>
+                    <h3 class="card-title">Dekmantel Podcast 242 - CEM by dekmantelhttps://ift.tt/2Zxe2ko</h3>
+                </div>
+                <div class="card-body">
+                    <p class="card-excerpt"> Dekmantel Podcast 242 - CEM by dekmantel &lt;a href=&quot;https://ift.tt/2Zxe2ko&quot;&gt;https://ift.tt/2Zxe2ko&lt;/a&gt;  </p>
+                    <div class="card-tags"><span class="tag">dekmantel</span><span class="tag">Podcast</span><span class="tag">CEM</span></div>
+                </div>
+            </div>
+<div class="card" onclick="location.href='/tumblr/post.html?id=187381743874'">
+                <div class="card-header">
+                    <div class="card-date">2019-08-31</div>
+                    <h3 class="card-title">RADARE – LOUP DE MER (Official Video)From “Der Endless Dream” released March 29, 2019 on Golden Ante</h3>
+                </div>
+                <div class="card-body">
+                    <p class="card-excerpt"> RADARE – LOUP DE MER (Official Video)   From “Der Endless Dream” released March 29, 2019 on Golden Antenna.   </p>
+                    <div class="card-tags"><span class="tag">2019</span></div>
+                </div>
+            </div>
+<div class="card" onclick="location.href='/tumblr/post.html?id=187378758879'">
+                <div class="card-header">
+                    <div class="card-date">2019-08-30</div>
+                    <h3 class="card-title">Bossa x Umfang 001 by Bossa Nova Civic Clubhttps://ift.tt/2U9x1vt</h3>
+                </div>
+                <div class="card-body">
+                    <p class="card-excerpt"> Bossa x Umfang 001 by Bossa Nova Civic Club &lt;a href=&quot;https://ift.tt/2U9x1vt&quot;&gt;https://ift.tt/2U9x1vt&lt;/a&gt;  </p>
+                    <div class="card-tags"><span class="tag">Brooklyn</span><span class="tag">New</span><span class="tag">Nova</span><span class="tag">Civic</span><span class="tag">Club</span><span class="tag">UMFANG</span><span class="tag">techno</span></div>
+                </div>
+            </div>
+<div class="card" onclick="location.href='/tumblr/post.html?id=187378759249'">
+                <div class="card-header">
+                    <div class="card-date">2019-08-30</div>
+                    <h3 class="card-title">The Slow Music Movement Radio Show #42 by The Slow Music Movementhttps://ift.tt/2UmDeV0</h3>
+                </div>
+                <div class="card-body">
+                    <p class="card-excerpt"> The Slow Music Movement Radio Show #42 by The Slow Music Movement &lt;a href=&quot;https://ift.tt/2UmDeV0&quot;&gt;https://ift.tt/2UmDeV0&lt;/a&gt;  </p>
+                    <div class="card-tags"><span class="tag">Slow Music</span><span class="tag">Ambient</span><span class="tag">chill</span><span class="tag">Electronic</span><span class="tag">Jazz</span><span class="tag">Downtempo</span><span class="tag">dub</span><span class="tag">leftfield</span><span class="tag">Balearic</span><span class="tag">African</span><span class="tag">&quot;chill</span></div>
+                </div>
+            </div>
+<div class="card" onclick="location.href='/tumblr/post.html?id=187379701454'">
+                <div class="card-header">
+                    <div class="card-date">2019-08-30</div>
+                    <h3 class="card-title">Miles Davis - Birth Of The Cool (Theatrical Trailer)</h3>
+                </div>
+                <div class="card-body">
+                    <p class="card-excerpt"> Miles Davis - Birth Of The Cool (Theatrical Trailer)   </p>
+                    <div class="card-tags"><span class="tag">2019</span><span class="tag">docu</span></div>
+                </div>
+            </div>
+<div class="card" onclick="location.href='/tumblr/post.html?id=187278712719'">
+                <div class="card-header">
+                    <div class="card-date">2019-08-26</div>
+                    <h3 class="card-title">Soundtrack to an imaginary romcom, conceived in Ayvalık, in May 2019.Tangos, boleros &amp; sambas love s</h3>
+                </div>
+                <div class="card-body">
+                    <p class="card-excerpt"> Soundtrack to an imaginary romcom, conceived in Ayvalık, in May 2019. 
+ Tangos, boleros &amp;amp; sambas love songs from Sergio Mendes, Roberto Menescal, Alcides Gerardi, Jacob do Bandolim, Osmar Mil...</p>
+                    <div class="card-tags"><span class="tag">Easy Listening</span><span class="tag">Oldies</span><span class="tag">Jazz</span><span class="tag">Latin</span><span class="tag">Samba</span></div>
+                </div>
+            </div>
+<div class="card" onclick="location.href='/tumblr/post.html?id=187256862719'">
+                <div class="card-header">
+                    <div class="card-date">2019-08-25</div>
+                    <h3 class="card-title">Koma Tema by We Jazzhttps://ift.tt/33WGV8a</h3>
+                </div>
+                <div class="card-body">
+                    <p class="card-excerpt"> Koma Tema by We Jazz &lt;a href=&quot;https://ift.tt/33WGV8a&quot;&gt;https://ift.tt/33WGV8a&lt;/a&gt;  </p>
+                    <div class="card-tags"><span class="tag">fire music</span><span class="tag">Jazz</span><span class="tag">freejazz</span></div>
+                </div>
+            </div>
+<div class="card" onclick="location.href='/tumblr/post.html?id=187235807909'">
+                <div class="card-header">
+                    <div class="card-date">2019-08-24</div>
+                    <h3 class="card-title">Left Alone. 33 → Ca͏n͏d͏o͏m͏b͏lé (Aki Aki, Rasputin &amp; Dj Ungel) by Left Alone.https://ift.tt/2XD5SpL</h3>
+                </div>
+                <div class="card-body">
+                    <p class="card-excerpt"> Left Alone. 33 → Ca͏n͏d͏o͏m͏b͏lé (Aki Aki, Rasputin &amp;amp; Dj Ungel) by Left Alone. &lt;a href=&quot;https://ift.tt/2XD5SpL&quot;&gt;https://ift.tt/2XD5SpL&lt;/a&gt;  </p>
+                    <div class="card-tags"></div>
+                </div>
+            </div>
+<div class="card" onclick="location.href='/tumblr/post.html?id=187235808329'">
+                <div class="card-header">
+                    <div class="card-date">2019-08-24</div>
+                    <h3 class="card-title">A personal history of Hardcore – Mixed by Basic Rhythm by Crack Magazinehttps://ift.tt/2G7afOY</h3>
+                </div>
+                <div class="card-body">
+                    <p class="card-excerpt"> A personal history of Hardcore – Mixed by Basic Rhythm by Crack Magazine &lt;a href=&quot;https://ift.tt/2G7afOY&quot;&gt;https://ift.tt/2G7afOY&lt;/a&gt;  </p>
+                    <div class="card-tags"><span class="tag">Jungle</span><span class="tag">Footwork</span><span class="tag">hardcore</span><span class="tag">house</span></div>
+                </div>
+            </div>
+<div class="card" onclick="location.href='/tumblr/post.html?id=187235808669'">
+                <div class="card-header">
+                    <div class="card-date">2019-08-24</div>
+                    <h3 class="card-title">Killer Whale (demo) by L1f3stylehttps://ift.tt/2ZnzB62</h3>
+                </div>
+                <div class="card-body">
+                    <p class="card-excerpt"> Killer Whale (demo) by L1f3style &lt;a href=&quot;https://ift.tt/2ZnzB62&quot;&gt;https://ift.tt/2ZnzB62&lt;/a&gt;  </p>
+                    <div class="card-tags"></div>
+                </div>
+            </div>
+<div class="card" onclick="location.href='/tumblr/post.html?id=187235808959'">
+                <div class="card-header">
+                    <div class="card-date">2019-08-24</div>
+                    <h3 class="card-title">GHMIX003 - Ilias Pitsios by Greenhousehttps://ift.tt/30wBZon</h3>
+                </div>
+                <div class="card-body">
+                    <p class="card-excerpt"> GHMIX003 - Ilias Pitsios by Greenhouse &lt;a href=&quot;https://ift.tt/30wBZon&quot;&gt;https://ift.tt/30wBZon&lt;/a&gt;  </p>
+                    <div class="card-tags"><span class="tag">Ilias Pitsios</span><span class="tag">Greece</span><span class="tag">80s</span><span class="tag">Tropica</span><span class="tag">Synth</span><span class="tag">wave</span></div>
+                </div>
+            </div>
+<div class="card" onclick="location.href='/tumblr/post.html?id=187036813914'">
+                <div class="card-header">
+                    <div class="card-date">2019-08-16</div>
+                    <h3 class="card-title">Huntleys + Palmers Istanbul Special_Rinse FM 07.08.19 by Ece Özelhttps://ift.tt/2OSvQ4A</h3>
+                </div>
+                <div class="card-body">
+                    <p class="card-excerpt"> Huntleys + Palmers Istanbul Special_Rinse FM 07.08.19 by Ece Özel &lt;a href=&quot;https://ift.tt/2OSvQ4A&quot;&gt;https://ift.tt/2OSvQ4A&lt;/a&gt;  </p>
+                    <div class="card-tags"></div>
+                </div>
+            </div>
+<div class="card" onclick="location.href='/tumblr/post.html?id=187036814209'">
+                <div class="card-header">
+                    <div class="card-date">2019-08-16</div>
+                    <h3 class="card-title">Joutro Mundo Live 31/12 @ MAREH NYE 2018 by Mareh Musichttps://ift.tt/2nw8RMs</h3>
+                </div>
+                <div class="card-body">
+                    <p class="card-excerpt"> Joutro Mundo Live 31/12 @ MAREH NYE 2018 by Mareh Music &lt;a href=&quot;https://ift.tt/2nw8RMs&quot;&gt;https://ift.tt/2nw8RMs&lt;/a&gt;  </p>
+                    <div class="card-tags"></div>
+                </div>
+            </div>
+<div class="card" onclick="location.href='/tumblr/post.html?id=187036814524'">
+                <div class="card-header">
+                    <div class="card-date">2019-08-16</div>
+                    <h3 class="card-title">Chris Kontos - SANPO 152 by Sanpo Discohttps://ift.tt/2KMECvv</h3>
+                </div>
+                <div class="card-body">
+                    <p class="card-excerpt"> Chris Kontos - SANPO 152 by Sanpo Disco &lt;a href=&quot;https://ift.tt/2KMECvv&quot;&gt;https://ift.tt/2KMECvv&lt;/a&gt;  </p>
+                    <div class="card-tags"></div>
+                </div>
+            </div>
+<div class="card" onclick="location.href='/tumblr/post.html?id=187036815659'">
+                <div class="card-header">
+                    <div class="card-date">2019-08-16</div>
+                    <h3 class="card-title">If-Only Podcast #52: Aleksa Alaska by If-Onlyhttps://ift.tt/2KUy7Hk</h3>
+                </div>
+                <div class="card-body">
+                    <p class="card-excerpt"> If-Only Podcast #52: Aleksa Alaska by If-Only &lt;a href=&quot;https://ift.tt/2KUy7Hk&quot;&gt;https://ift.tt/2KUy7Hk&lt;/a&gt;  </p>
+                    <div class="card-tags"><span class="tag">Mix</span><span class="tag">Electro</span><span class="tag">Techno</span><span class="tag">Acid</span></div>
+                </div>
+            </div>
+<div class="card" onclick="location.href='/tumblr/post.html?id=186752969449'">
+                <div class="card-header">
+                    <div class="card-date">2019-08-04</div>
+                    <h3 class="card-title">YNV | Gray Area Festival(July 26, 2019) by Fault Radiohttps://ift.tt/2Zvi7BB</h3>
+                </div>
+                <div class="card-body">
+                    <p class="card-excerpt"> YNV | Gray Area Festival(July 26, 2019) by Fault Radio &lt;a href=&quot;https://ift.tt/2Zvi7BB&quot;&gt;https://ift.tt/2Zvi7BB&lt;/a&gt;  </p>
+                    <div class="card-tags"><span class="tag">Down Tempo</span><span class="tag">Idm</span><span class="tag">Leftfield</span></div>
+                </div>
+            </div>
+<div class="card" onclick="location.href='/tumblr/post.html?id=186748705384'">
+                <div class="card-header">
+                    <div class="card-date">2019-08-03</div>
+                    <h3 class="card-title">Sharon &amp; Vida by Unknown Mobilehttps://ift.tt/2T3mqSj</h3>
+                </div>
+                <div class="card-body">
+                    <p class="card-excerpt"> Sharon &amp;amp; Vida by Unknown Mobile &lt;a href=&quot;https://ift.tt/2T3mqSj&quot;&gt;https://ift.tt/2T3mqSj&lt;/a&gt;  </p>
+                    <div class="card-tags"><span class="tag">feel free</span><span class="tag">a1</span><span class="tag">Soca</span><span class="tag">cancon</span><span class="tag">mwah</span><span class="tag">maybegoodforthedancefloor</span></div>
+                </div>
+            </div>
+<div class="card" onclick="location.href='/tumblr/post.html?id=186301072649'">
+                <div class="card-header">
+                    <div class="card-date">2019-07-15</div>
+                    <h3 class="card-title">Minyo Crusaders - Aizu BandaisanThe mission of the Minyo Crusaders, a 10-piece big band, is to rescu</h3>
+                </div>
+                <div class="card-body">
+                    <p class="card-excerpt"> Minyo Crusaders - Aizu Bandaisan  The mission of the Minyo Crusaders, a 10-piece big band, is to rescue min’yo from its highbrow status and return it to everyday life by setting its songs to assorted...</p>
+                    <div class="card-tags"><span class="tag">japan</span><span class="tag">world</span><span class="tag">2019</span><span class="tag">bestof</span></div>
+                </div>
+            </div>
+<div class="card" onclick="location.href='/tumblr/post.html?id=186261548594'">
+                <div class="card-header">
+                    <div class="card-date">2019-07-13</div>
+                    <h3 class="card-title">Itsuroh Shimoda - Everybody Anyone (1974)</h3>
+                </div>
+                <div class="card-body">
+                    <p class="card-excerpt"> Itsuroh Shimoda - Everybody Anyone (1974)   </p>
+                    <div class="card-tags"><span class="tag">70s</span><span class="tag">obscure</span></div>
+                </div>
+            </div>
+<div class="card" onclick="location.href='/tumblr/post.html?id=186262325699'">
+                <div class="card-header">
+                    <div class="card-date">2019-07-13</div>
+                    <h3 class="card-title">CASSIUS - Don’t Let Me Be feat. Owlle (Official Video)</h3>
+                </div>
+                <div class="card-body">
+                    <p class="card-excerpt"> CASSIUS - Don’t Let Me Be feat. Owlle (Official Video)   </p>
+                    <div class="card-tags"><span class="tag">2019</span><span class="tag">obit</span></div>
+                </div>
+            </div>
+<div class="card" onclick="location.href='/tumblr/post.html?id=184010640819'">
+                <div class="card-header">
+                    <div class="card-date">2019-04-07</div>
+                    <h3 class="card-title">James Blake - Barefoot In The Park (feat. Rosalía)</h3>
+                </div>
+                <div class="card-body">
+                    <p class="card-excerpt"> James Blake - Barefoot In The Park (feat. Rosalía)   </p>
+                    <div class="card-tags"><span class="tag">2019</span></div>
+                </div>
+            </div>
+<div class="card" onclick="location.href='/tumblr/post.html?id=183049047604'">
+                <div class="card-header">
+                    <div class="card-date">2019-02-25</div>
+                    <h3 class="card-title">Conny Frischauf - Moves - IML008 by International Major Labelhttps://ift.tt/2tBCs9Z</h3>
+                </div>
+                <div class="card-body">
+                    <p class="card-excerpt"> Conny Frischauf - Moves - IML008 by International Major Label &lt;a href=&quot;https://ift.tt/2tBCs9Z&quot;&gt;https://ift.tt/2tBCs9Z&lt;/a&gt;  </p>
+                    <div class="card-tags"></div>
+                </div>
+            </div>
+<div class="card" onclick="location.href='/tumblr/post.html?id=182828466794'">
+                <div class="card-header">
+                    <div class="card-date">2019-02-15</div>
+                    <h3 class="card-title">Krossfingers Podcast 157 - Millos Kaiser by Krossfingershttp://bit.ly/2SCQuH9</h3>
+                </div>
+                <div class="card-body">
+                    <p class="card-excerpt"> Krossfingers Podcast 157 - Millos Kaiser by Krossfingers &lt;a href=&quot;http://bit.ly/2SCQuH9&quot;&gt;http://bit.ly/2SCQuH9&lt;/a&gt;  </p>
+                    <div class="card-tags"><span class="tag">millos kaiser</span><span class="tag">krossfingers</span><span class="tag">brazilian</span><span class="tag">selvagem</span><span class="tag">Synth</span><span class="tag">journey</span></div>
+                </div>
+            </div>
+<div class="card" onclick="location.href='/tumblr/post.html?id=182609661354'">
+                <div class="card-header">
+                    <div class="card-date">2019-02-06</div>
+                    <h3 class="card-title">SFX - Shabale (Anatolian Weapons Edit)#6 - Free download by HARD FISThttp://bit.ly/2Gbwh4N</h3>
+                </div>
+                <div class="card-body">
+                    <p class="card-excerpt"> SFX - Shabale (Anatolian Weapons Edit)#6 - Free download by HARD FIST &lt;a href=&quot;http://bit.ly/2Gbwh4N&quot;&gt;http://bit.ly/2Gbwh4N&lt;/a&gt;  </p>
+                    <div class="card-tags"></div>
+                </div>
+            </div>
+<div class="card" onclick="location.href='/tumblr/post.html?id=181893107669'">
+                <div class="card-header">
+                    <div class="card-date">2019-01-10</div>
+                    <h3 class="card-title">Tribute To Galt MacDermot (FREE DOWNLOAD) by Souleancehttp://bit.ly/2H2tpIJ</h3>
+                </div>
+                <div class="card-body">
+                    <p class="card-excerpt"> Tribute To Galt MacDermot (FREE DOWNLOAD) by Souleance &lt;a href=&quot;http://bit.ly/2H2tpIJ&quot;&gt;http://bit.ly/2H2tpIJ&lt;/a&gt;  </p>
+                    <div class="card-tags"></div>
+                </div>
+            </div>
+<div class="card" onclick="location.href='/tumblr/post.html?id=181893107914'">
+                <div class="card-header">
+                    <div class="card-date">2019-01-10</div>
+                    <h3 class="card-title">Trujillo presents Exotic Lounge At The Michelberger Hotel by Michelberger Hotelhttp://bit.ly/2RBdPI8</h3>
+                </div>
+                <div class="card-body">
+                    <p class="card-excerpt"> Trujillo presents Exotic Lounge At The Michelberger Hotel by Michelberger Hotel &lt;a href=&quot;http://bit.ly/2RBdPI8&quot;&gt;http://bit.ly/2RBdPI8&lt;/a&gt;  </p>
+                    <div class="card-tags"></div>
+                </div>
+            </div>
+<div class="card" onclick="location.href='/tumblr/post.html?id=181894746534'">
+                <div class="card-header">
+                    <div class="card-date">2019-01-10</div>
+                    <h3 class="card-title">Elias Mazian presents Private Hearts #28 w/ Job Jobse (20.12.18, Red Light Radio) by Elias Mazianhtt</h3>
+                </div>
+                <div class="card-body">
+                    <p class="card-excerpt"> Elias Mazian presents Private Hearts #28 w/ Job Jobse (20.12.18, Red Light Radio) by Elias Mazian &lt;a href=&quot;http://bit.ly/2Cbtq7w&quot;&gt;http://bit.ly/2Cbtq7w&lt;/a&gt;  </p>
+                    <div class="card-tags"></div>
+                </div>
+            </div>
+<div class="card" onclick="location.href='/tumblr/post.html?id=181894747109'">
+                <div class="card-header">
+                    <div class="card-date">2019-01-10</div>
+                    <h3 class="card-title">2019-01-01_8h27m50_03h18m08 by Dogukan Ireshttp://bit.ly/2RmSTFx</h3>
+                </div>
+                <div class="card-body">
+                    <p class="card-excerpt"> 2019-01-01_8h27m50_03h18m08 by Dogukan Ires &lt;a href=&quot;http://bit.ly/2RmSTFx&quot;&gt;http://bit.ly/2RmSTFx&lt;/a&gt;  </p>
+                    <div class="card-tags"></div>
+                </div>
+            </div>
+<div class="card" onclick="location.href='/tumblr/post.html?id=181608559369'">
+                <div class="card-header">
+                    <div class="card-date">2019-01-01</div>
+                    <h3 class="card-title">Undomondo’s Top 100 songs of 2018</h3>
+                </div>
+                <div class="card-body">
+                    <p class="card-excerpt"> Undomondo’s Top 100 songs of 2018  </p>
+                    <div class="card-tags"><span class="tag">bestof</span><span class="tag">2018</span></div>
+                </div>
+            </div>
+<div class="card" onclick="location.href='/tumblr/post.html?id=181611528309'">
+                <div class="card-header">
+                    <div class="card-date">2019-01-01</div>
+                    <h3 class="card-title">OGUZ - 999 by Kegffnayy — Everyone On Acidhttp://bit.ly/2ApUIqx</h3>
+                </div>
+                <div class="card-body">
+                    <p class="card-excerpt"> OGUZ - 999 by Kegffnayy — Everyone On Acid &lt;a href=&quot;http://bit.ly/2ApUIqx&quot;&gt;http://bit.ly/2ApUIqx&lt;/a&gt;  </p>
+                    <div class="card-tags"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="load-more" id="load-more-container" style="display: none;">
+            <button class="load-more-btn" onclick="loadMorePosts()">Load More Posts</button>
+        </div>
+    </div>
+
+    <footer>
+    <div style="max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; gap: 24px;">
+        <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-start; gap: 24px;">
+            <div>
+                <p style="font-family: 'Space Grotesk', sans-serif; font-size: 20px; font-weight: 700; margin-bottom: 8px;">UNDOMONDO</p>
+                <p style="font-size: 13px; opacity: 0.7;">Independent music, no borders.</p>
+            </div>
+            <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+                <a href="https://bsky.app/profile/undomondo.bsky.social" target="_blank" style="border: 2px solid #F2EFE5; padding: 8px 16px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; text-decoration: none; color: #F2EFE5; transition: all 0.2s;">BSKY</a>
+                <a href="https://www.instagram.com/undomondo" target="_blank" style="border: 2px solid #F2EFE5; padding: 8px 16px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; text-decoration: none; color: #F2EFE5;">Instagram</a>
+                <a href="https://www.mixcloud.com/undomondo/" target="_blank" style="border: 2px solid #F2EFE5; padding: 8px 16px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; text-decoration: none; color: #F2EFE5;">Mixcloud</a>
+                <a href="https://soundcloud.com/undomondo" target="_blank" style="border: 2px solid #F2EFE5; padding: 8px 16px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; text-decoration: none; color: #F2EFE5;">SoundCloud</a>
+                <a href="https://www.last.fm/user/kidindigo" target="_blank" style="border: 2px solid #F2EFE5; padding: 8px 16px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; text-decoration: none; color: #F2EFE5;">Last.fm</a>
+                <a href="https://record.club/undomondo/" target="_blank" style="border: 2px solid #F2EFE5; padding: 8px 16px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; text-decoration: none; color: #F2EFE5;">Record Club</a>
+                <a href="https://www.linkedin.com/in/mehmet-a%C4%9Fao%C4%9Fullar%C4%B1-aa15b39/" target="_blank" style="border: 2px solid #F2EFE5; padding: 8px 16px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; text-decoration: none; color: #F2EFE5;">LinkedIn</a>
+                <a href="#" target="_blank" style="border: 2px solid #F2EFE5; padding: 8px 16px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; text-decoration: none; color: #F2EFE5;">Reverie For Two</a>
+            </div>
+        </div>
+        <div style="border-top: 1px solid rgba(242,239,229,0.3); padding-top: 16px; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 16px;">
+            <a href="/" style="font-family: 'Space Grotesk', sans-serif; font-size: 16px; font-weight: 700; color: #F2EFE5; text-decoration: none;">← Back to Undomondo</a>
+            <span style="font-family: 'Space Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 3px; opacity: 0.7;">© 2025 · Istanbul / Barcelona / Internet</span>
+        </div>
+    </div>
+</footer>
+
+    <script>
+    const allPosts = [{"id": "189755819794", "title": "Lido Pimienta - No Pude", "date": "2019-12-19", "content": "<p>Lido Pimienta - No Pude </p> ", "tags": ["latin", "pop"]}, {"id": "189623337949", "title": "Purple Mountains - Maybe I\u2019m the only one for meOn holidays, in lonely hauntsAt closing time, in res", "date": "2019-12-12", "content": "<p>Purple Mountains - Maybe I\u2019m the only one for me</p><p>On holidays, in lonely haunts<br/>At closing time, in restaurants<br/>I can\u2019t keep on pretending not to see<br/>Yeah, I\u2019m starting to suspect<br/>Though I hope I\u2019m incorrect<br/>That maybe I\u2019m the only one for me</p><p>X</p><p>Bended knee, honeymoon<br/>Nursery, another soon<br/>Into my mind, the thought begins to seep<br/>If no one\u2019s fond of fucking me<br/>Maybe no one\u2019s fucking fond of me<br/>Yeah, maybe I\u2019m the only one for me</p> ", "tags": ["2019"]}, {"id": "189608729079", "title": "KEN ISHII - Bells of New LifeBells of New Life from the album \u201cM\u00f6bius Strip\u201d", "date": "2019-12-11", "content": "<p>KEN ISHII - Bells of New Life </p><p>Bells of New Life from the album \u201cM\u00f6bius Strip\u201d<br/></p> ", "tags": ["electronic", "japan"]}, {"id": "189608892384", "title": "Kutiman feat. Melike \u015eahin - Sakla Beni", "date": "2019-12-11", "content": "<p>Kutiman feat. Melike \u015eahin - Sakla Beni </p> ", "tags": ["psychedelic", "turk"]}, {"id": "189056099499", "title": "The Kids - Fascist Cops", "date": "2019-11-14", "content": "<p>The Kids - Fascist Cops </p> ", "tags": ["punk"]}, {"id": "189056117704", "title": "HOBOCOP \u201cGood News\u201d", "date": "2019-11-14", "content": "<p>HOBOCOP \u201cGood News\u201d</p> ", "tags": ["punk"]}, {"id": "188648781349", "title": "Bohren & der Club of Gore - Sollen es doch Alle wissenBest news of the year 2019!Bohren will have a ", "date": "2019-10-28", "content": "<p>Bohren &amp; der Club of Gore - Sollen es doch Alle wissen</p><p>Best news of the year 2019!</p><p>Bohren will have a new album on 2020 and this shitty decade will come to an end!</p> ", "tags": ["2020"]}, {"id": "188654648794", "title": "Adriano Celentano - Il Re Degli Ignoranti (Good Block Edit) by Good Blockhttps://ift.tt/34dgVED", "date": "2019-10-28", "content": "<p>Adriano Celentano - Il Re Degli Ignoranti (Good Block Edit) by Good Block <a href=\"https://ift.tt/34dgVED\">https://ift.tt/34dgVED</a></p> ", "tags": ["balearic", "New Wave", "Edit", "Synthpop", "italy", "Dub"]}, {"id": "188582453704", "title": "ghaas:The Real King of Rock n Roll", "date": "2019-10-25", "content": "<p><a class=\"tumblr_blog\" href=\"https://ghaas.tumblr.com/post/188568710479/the-real-king-of-rock-n-roll\">ghaas</a>:</p>\n<blockquote><p>The Real King of Rock n Roll</p></blockquote> ", "tags": []}, {"id": "188473471134", "title": "Leny Andrade \u200e\u2013 Ingratid\u00e3o", "date": "2019-10-20", "content": "<p>Leny Andrade \u200e\u2013 Ingratid\u00e3o </p> ", "tags": ["vintage", "brasil"]}, {"id": "188473501849", "title": "Nahawa Doumbia \u2014 Tou DibileFrom the forthcoming reissue Nahwa Doumbia \u201cLa Grande Cantatrice Malienne", "date": "2019-10-20", "content": "<p>Nahawa Doumbia \u2014 Tou Dibile </p><p>From the forthcoming reissue Nahwa Doumbia \u201cLa Grande Cantatrice Malienne Vol 1\u201d. Malian singer\u2019s debut album from nearly 40 years ago, simply acoustic guitar and voice. Her youthful voice and stark instrumentation belies the powerful future of Wassoulou music magic.\u00a0<br/></p> ", "tags": ["reissue", "vintage", "africa"]}, {"id": "188473658504", "title": "Undomondo Postcards 04: From Ayval\u0131k with LoveSoundtrack to an imaginary romcom, conceived in Ayval\u0131", "date": "2019-10-20", "content": "<p>Undomondo Postcards 04: From Ayval\u0131k with Love</p><p>Soundtrack to an imaginary romcom, conceived in Ayval\u0131k, in May 2019.</p><p>Tangos, boleros &amp; sambas love songs from Sergio Mendes, Roberto Menescal, Alcides Gerardi, Jacob do Bandolim, Osmar Milito, Mantovani, Sinatra and Dean Martin among others..</p> ", "tags": ["2019", "mixes"]}, {"id": "188431924284", "title": "Dekmantel Podcast 227 - Nu Guinea by dekmantelhttps://ift.tt/2N83iSS", "date": "2019-10-18", "content": "<p>Dekmantel Podcast 227 - Nu Guinea by dekmantel <a href=\"https://ift.tt/2N83iSS\">https://ift.tt/2N83iSS</a></p> ", "tags": ["Nu Guinea", "dekmantel", "podcast"]}, {"id": "188403181649", "title": "I had been collecting pieces into this playlist that I had initially labelled \u201cnoit vibes\u201d, mixing n", "date": "2019-10-17", "content": "<p>I had been collecting pieces into this playlist that I had initially labelled \u201cnoit vibes\u201d, mixing night/noir and vibraphones together; pieces that have the b^w cinematic jazz feel of the 60s. After Debora\u2019s invitation, I\u2019ve tried to get a coherent 60 min mix out of them. Hope you enjoy it. I\u2019ve made the rest of them into a spotify playlist. <a href=\"https://ift.tt/33Cihss\">https://ift.tt/33Cihss</a></p>\n<p>Originally released on Worldwide.fm, thanks to Debora Ipekel.<br/>\n<a href=\"https://ift.tt/32rr5kI\">https://ift.tt/32rr5kI</a></p>\n<p><br/>\nCal Tjader - Somewhere in the Night (1965) \t<br/>\nPiero Umiliani - Dawn (1962)<br/>\nEddie Harris - Born to be blue (1965)<br/>\nJerzy Milian Trio - Tempus Jazz 67 (1970)<br/>\nEli Keszler - The Tenth Part of a Featured World (2019)<br/>\nBelmondo &amp; Yusef Lateef - Iqbal (2005)<br/>\nManu Dibango - Liberation Song (1975)<br/>\nJaco Pastorius - Okonkol\u00e9 Y Trompa (1976)<br/>\nBley-Peacock Synthesizer Show - The Cynic (1971)<br/>\nMario Nascimbene - Love Scene (1966)<br/>\nRufus Jones - Theme from \u201cThe Prize\u201d (1964)<br/>\nMonica Zetterlund - The Saga of Harrison  Crabfeathers (1972)<br/>\nJohn Coltrane Quartet - Too Young to go Steady (1963)<br/>\nLAM - LAM 3 (Part Four) (2016)<br/>\nGreg Foat - The Magic Radish (2019) <a href=\"https://ift.tt/2oQj4aj\">https://ift.tt/2oQj4aj</a></p> ", "tags": ["Jazz", "b&w", "Latin", "Oldies", "Soul", "Ambient", "noir"]}, {"id": "187563553979", "title": "B2 - Royalty Booty Funk - Philou Louzolo(CLIP) by Banoffee Pies Recordshttps://ift.tt/316lBeC", "date": "2019-09-08", "content": "<p>B2 - Royalty Booty Funk - Philou Louzolo(CLIP) by Banoffee Pies Records <a href=\"https://ift.tt/316lBeC\">https://ift.tt/316lBeC</a></p> ", "tags": ["BPR"]}, {"id": "187462663169", "title": "GHMIX002 - Ece \u00f6zel by Greenhousehttps://ift.tt/2Uvs5B9", "date": "2019-09-03", "content": "<p>GHMIX002 - Ece \u00f6zel by Greenhouse <a href=\"https://ift.tt/2Uvs5B9\">https://ift.tt/2Uvs5B9</a></p> ", "tags": ["Ece", "Oddities", "Istanbul"]}, {"id": "187441851104", "title": "Dekmantel Podcast 242 - CEM by dekmantelhttps://ift.tt/2Zxe2ko", "date": "2019-09-02", "content": "<p>Dekmantel Podcast 242 - CEM by dekmantel <a href=\"https://ift.tt/2Zxe2ko\">https://ift.tt/2Zxe2ko</a></p> ", "tags": ["dekmantel", "Podcast", "CEM"]}, {"id": "187381743874", "title": "RADARE \u2013 LOUP DE MER (Official Video)From\u00a0\u201cDer Endless Dream\u201d released March 29, 2019 on Golden Ante", "date": "2019-08-31", "content": "<p>RADARE \u2013 LOUP DE MER (Official Video) </p><p>From\u00a0\u201cDer Endless Dream\u201d released March 29, 2019 on Golden Antenna.\u00a0</p> ", "tags": ["2019"]}, {"id": "187378758879", "title": "Bossa x Umfang 001 by Bossa Nova Civic Clubhttps://ift.tt/2U9x1vt", "date": "2019-08-30", "content": "<p>Bossa x Umfang 001 by Bossa Nova Civic Club <a href=\"https://ift.tt/2U9x1vt\">https://ift.tt/2U9x1vt</a></p> ", "tags": ["Brooklyn", "New", "Nova", "Civic", "Club", "UMFANG", "techno"]}, {"id": "187378759249", "title": "The Slow Music Movement Radio Show #42 by The Slow Music Movementhttps://ift.tt/2UmDeV0", "date": "2019-08-30", "content": "<p>The Slow Music Movement Radio Show #42 by The Slow Music Movement <a href=\"https://ift.tt/2UmDeV0\">https://ift.tt/2UmDeV0</a></p> ", "tags": ["Slow Music", "Ambient", "chill", "Electronic", "Jazz", "Downtempo", "dub", "leftfield", "Balearic", "African", "\"chill"]}, {"id": "187379701454", "title": "Miles Davis - Birth Of The Cool (Theatrical Trailer)", "date": "2019-08-30", "content": "<p>Miles Davis - Birth Of The Cool (Theatrical Trailer) </p> ", "tags": ["2019", "docu"]}, {"id": "187278712719", "title": "Soundtrack to an imaginary romcom, conceived in Ayval\u0131k, in May 2019.Tangos, boleros & sambas love s", "date": "2019-08-26", "content": "<p>Soundtrack to an imaginary romcom, conceived in Ayval\u0131k, in May 2019.</p>\n<p>Tangos, boleros &amp; sambas love songs from Sergio Mendes, Roberto Menescal, Alcides Gerardi, Jacob do Bandolim, Osmar Milito, Mantovani, Sinatra and Dean Martin among others.. </p>\n<p>Enjoy <a href=\"https://ift.tt/2zptUpD\">https://ift.tt/2zptUpD</a></p> ", "tags": ["Easy Listening", "Oldies", "Jazz", "Latin", "Samba"]}, {"id": "187256862719", "title": "Koma Tema by We Jazzhttps://ift.tt/33WGV8a", "date": "2019-08-25", "content": "<p>Koma Tema by We Jazz <a href=\"https://ift.tt/33WGV8a\">https://ift.tt/33WGV8a</a></p> ", "tags": ["fire music", "Jazz", "freejazz"]}, {"id": "187235807909", "title": "Left Alone. 33 \u2192 Ca\u034fn\u034fd\u034fo\u034fm\u034fb\u034fl\u00e9 (Aki Aki, Rasputin & Dj Ungel) by Left Alone.https://ift.tt/2XD5SpL", "date": "2019-08-24", "content": "<p>Left Alone. 33 \u2192 Ca\u034fn\u034fd\u034fo\u034fm\u034fb\u034fl\u00e9 (Aki Aki, Rasputin &amp; Dj Ungel) by Left Alone. <a href=\"https://ift.tt/2XD5SpL\">https://ift.tt/2XD5SpL</a></p> ", "tags": []}, {"id": "187235808329", "title": "A personal history of Hardcore \u2013 Mixed by Basic Rhythm by Crack Magazinehttps://ift.tt/2G7afOY", "date": "2019-08-24", "content": "<p>A personal history of Hardcore \u2013 Mixed by Basic Rhythm by Crack Magazine <a href=\"https://ift.tt/2G7afOY\">https://ift.tt/2G7afOY</a></p> ", "tags": ["Jungle", "Footwork", "hardcore", "house"]}, {"id": "187235808669", "title": "Killer Whale (demo) by L1f3stylehttps://ift.tt/2ZnzB62", "date": "2019-08-24", "content": "<p>Killer Whale (demo) by L1f3style <a href=\"https://ift.tt/2ZnzB62\">https://ift.tt/2ZnzB62</a></p> ", "tags": []}, {"id": "187235808959", "title": "GHMIX003 - Ilias Pitsios by Greenhousehttps://ift.tt/30wBZon", "date": "2019-08-24", "content": "<p>GHMIX003 - Ilias Pitsios by Greenhouse <a href=\"https://ift.tt/30wBZon\">https://ift.tt/30wBZon</a></p> ", "tags": ["Ilias Pitsios", "Greece", "80s", "Tropica", "Synth", "wave"]}, {"id": "187036813914", "title": "Huntleys + Palmers Istanbul Special_Rinse FM 07.08.19 by Ece \u00d6zelhttps://ift.tt/2OSvQ4A", "date": "2019-08-16", "content": "<p>Huntleys + Palmers Istanbul Special_Rinse FM 07.08.19 by Ece \u00d6zel <a href=\"https://ift.tt/2OSvQ4A\">https://ift.tt/2OSvQ4A</a></p> ", "tags": []}, {"id": "187036814209", "title": "Joutro Mundo Live 31/12 @ MAREH NYE 2018 by Mareh Musichttps://ift.tt/2nw8RMs", "date": "2019-08-16", "content": "<p>Joutro Mundo Live 31/12 @ MAREH NYE 2018 by Mareh Music <a href=\"https://ift.tt/2nw8RMs\">https://ift.tt/2nw8RMs</a></p> ", "tags": []}, {"id": "187036814524", "title": "Chris Kontos - SANPO 152 by Sanpo Discohttps://ift.tt/2KMECvv", "date": "2019-08-16", "content": "<p>Chris Kontos - SANPO 152 by Sanpo Disco <a href=\"https://ift.tt/2KMECvv\">https://ift.tt/2KMECvv</a></p> ", "tags": []}, {"id": "187036815659", "title": "If-Only Podcast #52: Aleksa Alaska by If-Onlyhttps://ift.tt/2KUy7Hk", "date": "2019-08-16", "content": "<p>If-Only Podcast #52: Aleksa Alaska by If-Only <a href=\"https://ift.tt/2KUy7Hk\">https://ift.tt/2KUy7Hk</a></p> ", "tags": ["Mix", "Electro", "Techno", "Acid"]}, {"id": "186752969449", "title": "YNV | Gray Area Festival(July 26, 2019) by Fault Radiohttps://ift.tt/2Zvi7BB", "date": "2019-08-04", "content": "<p>YNV | Gray Area Festival(July 26, 2019) by Fault Radio <a href=\"https://ift.tt/2Zvi7BB\">https://ift.tt/2Zvi7BB</a></p> ", "tags": ["Down Tempo", "Idm", "Leftfield"]}, {"id": "186748705384", "title": "Sharon & Vida by Unknown Mobilehttps://ift.tt/2T3mqSj", "date": "2019-08-03", "content": "<p>Sharon &amp; Vida by Unknown Mobile <a href=\"https://ift.tt/2T3mqSj\">https://ift.tt/2T3mqSj</a></p> ", "tags": ["feel free", "a1", "Soca", "cancon", "mwah", "maybegoodforthedancefloor"]}, {"id": "186301072649", "title": "Minyo Crusaders - Aizu BandaisanThe mission of the Minyo Crusaders, a 10-piece big band, is to rescu", "date": "2019-07-15", "content": "<p>Minyo Crusaders - Aizu Bandaisan</p><p>The mission of the Minyo Crusaders, a 10-piece big band, is to rescue min\u2019yo from its highbrow status and return it to everyday life by setting its songs to assorted world styles. This debut opens with a blast of loping Colombian cumbia before moving on to Afrobeat, reggae, salsa and more.<br/></p><p>[<a href=\"https://maisumdiscos.bandcamp.com/album/echoes-of-japan\">Bandcamp</a>]</p> ", "tags": ["japan", "world", "2019", "bestof"]}, {"id": "186261548594", "title": "Itsuroh Shimoda - Everybody Anyone (1974)", "date": "2019-07-13", "content": "<p>Itsuroh Shimoda - Everybody Anyone (1974) </p> ", "tags": ["70s", "obscure"]}, {"id": "186262325699", "title": "CASSIUS - Don\u2019t Let Me Be feat. Owlle (Official Video)", "date": "2019-07-13", "content": "<p>CASSIUS - Don\u2019t Let Me Be feat. Owlle (Official Video) </p> ", "tags": ["2019", "obit"]}, {"id": "184010640819", "title": "James Blake - Barefoot In The Park (feat. Rosal\u00eda)", "date": "2019-04-07", "content": "<p>James Blake - Barefoot In The Park (feat. Rosal\u00eda) </p> ", "tags": ["2019"]}, {"id": "183049047604", "title": "Conny Frischauf - Moves - IML008 by International Major Labelhttps://ift.tt/2tBCs9Z", "date": "2019-02-25", "content": "<p>Conny Frischauf - Moves - IML008 by International Major Label <a href=\"https://ift.tt/2tBCs9Z\">https://ift.tt/2tBCs9Z</a></p> ", "tags": []}, {"id": "182828466794", "title": "Krossfingers Podcast 157 - Millos Kaiser by Krossfingershttp://bit.ly/2SCQuH9", "date": "2019-02-15", "content": "<p>Krossfingers Podcast 157 - Millos Kaiser by Krossfingers <a href=\"http://bit.ly/2SCQuH9\">http://bit.ly/2SCQuH9</a></p> ", "tags": ["millos kaiser", "krossfingers", "brazilian", "selvagem", "Synth", "journey"]}, {"id": "182609661354", "title": "SFX - Shabale (Anatolian Weapons Edit)#6 - Free download by HARD FISThttp://bit.ly/2Gbwh4N", "date": "2019-02-06", "content": "<p>SFX - Shabale (Anatolian Weapons Edit)#6 - Free download by HARD FIST <a href=\"http://bit.ly/2Gbwh4N\">http://bit.ly/2Gbwh4N</a></p> ", "tags": []}, {"id": "181893107669", "title": "Tribute To Galt MacDermot (FREE DOWNLOAD) by Souleancehttp://bit.ly/2H2tpIJ", "date": "2019-01-10", "content": "<p>Tribute To Galt MacDermot (FREE DOWNLOAD) by Souleance <a href=\"http://bit.ly/2H2tpIJ\">http://bit.ly/2H2tpIJ</a></p> ", "tags": []}, {"id": "181893107914", "title": "Trujillo presents Exotic Lounge At The Michelberger Hotel by Michelberger Hotelhttp://bit.ly/2RBdPI8", "date": "2019-01-10", "content": "<p>Trujillo presents Exotic Lounge At The Michelberger Hotel by Michelberger Hotel <a href=\"http://bit.ly/2RBdPI8\">http://bit.ly/2RBdPI8</a></p> ", "tags": []}, {"id": "181894746534", "title": "Elias Mazian presents Private Hearts #28 w/ Job Jobse (20.12.18, Red Light Radio) by Elias Mazianhtt", "date": "2019-01-10", "content": "<p>Elias Mazian presents Private Hearts #28 w/ Job Jobse (20.12.18, Red Light Radio) by Elias Mazian <a href=\"http://bit.ly/2Cbtq7w\">http://bit.ly/2Cbtq7w</a></p> ", "tags": []}, {"id": "181894747109", "title": "2019-01-01_8h27m50_03h18m08 by Dogukan Ireshttp://bit.ly/2RmSTFx", "date": "2019-01-10", "content": "<p>2019-01-01_8h27m50_03h18m08 by Dogukan Ires <a href=\"http://bit.ly/2RmSTFx\">http://bit.ly/2RmSTFx</a></p> ", "tags": []}, {"id": "181608559369", "title": "Undomondo\u2019s Top 100 songs of 2018", "date": "2019-01-01", "content": "<p>Undomondo\u2019s Top 100 songs of 2018</p> ", "tags": ["bestof", "2018"]}, {"id": "181611528309", "title": "OGUZ - 999 by Kegffnayy \u2014 Everyone On Acidhttp://bit.ly/2ApUIqx", "date": "2019-01-01", "content": "<p>OGUZ - 999 by Kegffnayy \u2014 Everyone On Acid <a href=\"http://bit.ly/2ApUIqx\">http://bit.ly/2ApUIqx</a></p> ", "tags": []}];
+    let currentFilter = null;
+    let postsPerPage = 50;
+    let currentPage = 0;
+
+    function formatDate(dateStr) {
+        const d = new Date(dateStr);
+        return d.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
+    }
+
+    function renderPost(post) {
+        const excerpt = post.content.replace(/<[^>]*>/g, '').substring(0, 150);
+        const tags = (post.tags || []).map(t => `<span class="tag">${escape(t)}</span>`).join('');
+        return `
+            <div class="card" onclick="location.href='/tumblr/post.html?id=${post.id}'">
+                <div class="card-header">
+                    <div class="card-date">${formatDate(post.date)}</div>
+                    <h3 class="card-title">${escape(post.title)}</h3>
+                </div>
+                <div class="card-body">
+                    <p class="card-excerpt">${excerpt}...</p>
+                    <div class="card-tags">${tags}</div>
+                </div>
+            </div>
+        `;
+    }
+
+    function escape(text) {
+        const div = document.createElement('div');
+        div.textContent = text;
+        return div.innerHTML;
+    }
+
+    function filterByTag(tag) {
+        if (currentFilter === tag) {
+            currentFilter = null;
+        } else {
+            currentFilter = tag;
+        }
+        document.querySelectorAll('.pill').forEach(p => {
+            p.classList.remove('active');
+            if (p.textContent.trim() === (tag || '')) {
+                p.classList.add('active');
+            }
+        });
+        currentPage = 0;
+        renderPosts();
+    }
+
+    function getVisiblePosts() {
+        if (!currentFilter) return allPosts;
+        return allPosts.filter(p => (p.tags || []).includes(currentFilter));
+    }
+
+    function renderPosts() {
+        const visible = getVisiblePosts();
+        const grid = document.getElementById('grid');
+        const startIdx = 0;
+        const endIdx = (currentPage + 1) * postsPerPage;
+        const toRender = visible.slice(startIdx, endIdx);
+        
+        grid.innerHTML = toRender.map(renderPost).join('');
+        
+        const loadMoreContainer = document.getElementById('load-more-container');
+        if (endIdx < visible.length) {
+            loadMoreContainer.style.display = 'block';
+        } else {
+            loadMoreContainer.style.display = 'none';
+        }
+    }
+
+    function loadMorePosts() {
+        currentPage++;
+        renderPosts();
+    }
+
+    renderPosts();
+    </script>
+</body>
+</html>

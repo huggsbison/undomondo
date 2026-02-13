@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2021 — Undomondo Tumblr Archive</title>
+    <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    html, body {
+        font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        background: #f8f6f1;
+        color: #222;
+        line-height: 1.6;
+    }
+    
+    @import url('https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Space+Mono:wght@400;700&family=DM+Sans:wght@400;500;700&family=Space+Grotesk:wght@400;600;700&display=swap');
+    
+    nav {
+        background: white;
+        padding: 1.5rem 2rem;
+        border-bottom: 3px solid #D62828;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-family: 'Space Grotesk', sans-serif;
+    }
+    
+    .nav-brand {
+        font-size: 1.2rem;
+        font-weight: 700;
+        color: #111;
+        text-decoration: none;
+        letter-spacing: 0.05em;
+    }
+    
+    .nav-links {
+        display: flex;
+        gap: 2rem;
+        list-style: none;
+    }
+    
+    .nav-links a {
+        text-decoration: none;
+        color: #111;
+        font-weight: 600;
+        font-size: 0.95rem;
+        transition: color 0.2s;
+    }
+    
+    .nav-links a:hover,
+    .nav-links a.active {
+        color: #D62828;
+    }
+    
+    .hero {
+        background-color: #111111;
+        background-image: radial-gradient(circle, #005F99 8px, transparent 8px);
+        background-size: 24px 24px;
+        padding: 4rem 2rem;
+        text-align: center;
+        color: white;
+    }
+    
+    .year-big {
+        font-family: 'Dela Gothic One', sans-serif;
+        font-size: clamp(4rem, 10vw, 8rem);
+        margin: 0;
+        text-transform: uppercase;
+        opacity: 0.3;
+        line-height: 1;
+    }
+    
+    .year-info {
+        font-size: 1.2rem;
+        margin: 1.5rem 0;
+        opacity: 0.9;
+    }
+    
+    .year-nav {
+        text-align: center;
+        padding: 2rem;
+        font-family: 'Space Grotesk', sans-serif;
+    }
+    
+    .year-nav a, .year-nav span {
+        margin: 0 0.5rem;
+        text-decoration: none;
+        color: #005F99;
+        font-weight: 600;
+    }
+    
+    .year-nav .current {
+        color: #D62828;
+        text-decoration: underline;
+    }
+    
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; }
+    
+    .filter-bar {
+        margin: 2rem 0;
+        padding: 1.5rem;
+        background: white;
+        border-radius: 4px;
+    }
+    
+    .filter-label {
+        font-weight: 600;
+        margin-bottom: 1rem;
+        display: block;
+    }
+    
+    .pills {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin-bottom: 1rem;
+    }
+    
+    .pill {
+        display: inline-block;
+        padding: 0.35rem 0.75rem;
+        background: #f0f0f0;
+        border: 1px solid #ddd;
+        border-radius: 20px;
+        font-size: 0.8rem;
+        text-decoration: none;
+        color: #111;
+        transition: all 0.2s;
+        cursor: pointer;
+    }
+    
+    .pill:hover {
+        background: #D62828;
+        color: white;
+        border-color: #D62828;
+    }
+    
+    .pill.active {
+        background: #D62828;
+        color: white;
+        border-color: #D62828;
+    }
+    
+    .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+        gap: 2rem;
+        margin: 2rem 0;
+    }
+    
+    .card {
+        background: white;
+        border-radius: 4px;
+        overflow: hidden;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        transition: transform 0.2s, box-shadow 0.2s;
+        display: flex;
+        flex-direction: column;
+        cursor: pointer;
+    }
+    
+    .card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+    }
+    
+    .card-header {
+        background: #111;
+        color: white;
+        padding: 1.5rem;
+        border-left: 4px solid #D62828;
+    }
+    
+    .card-title {
+        font-size: 1.1rem;
+        font-weight: 700;
+        margin: 0.5rem 0;
+    }
+    
+    .card-date {
+        font-family: 'Space Mono', monospace;
+        font-size: 0.75rem;
+        opacity: 0.8;
+    }
+    
+    .card-body {
+        padding: 1.5rem;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .card-excerpt {
+        color: #666;
+        font-size: 0.9rem;
+        margin-bottom: 1rem;
+        flex: 1;
+    }
+    
+    .card-tags {
+        margin-top: auto;
+    }
+    
+    .tag {
+        display: inline-block;
+        padding: 0.25rem 0.6rem;
+        background: #f0f0f0;
+        border-radius: 3px;
+        font-size: 0.75rem;
+        margin-right: 0.5rem;
+        margin-bottom: 0.3rem;
+        color: #666;
+    }
+    
+    .load-more {
+        text-align: center;
+        padding: 2rem;
+    }
+    
+    .load-more-btn {
+        padding: 0.75rem 2rem;
+        background: #D62828;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        font-weight: 600;
+        cursor: pointer;
+        font-size: 1rem;
+        transition: opacity 0.2s;
+    }
+    
+    .load-more-btn:hover {
+        opacity: 0.85;
+    }
+    
+    footer {
+    background: #D62828;
+    color: #F2EFE5;
+    padding: 48px 40px;
+}
+footer a { color: #F2EFE5; text-decoration: none; }
+footer a:hover { opacity: 0.8; background: #F2EFE5; color: #D62828; }
+    footer a:hover { opacity: 0.8; }
+    
+    @media (max-width: 768px) {
+        nav { flex-direction: column; gap: 1rem; }
+        .nav-links { gap: 1rem; }
+        .year-big { font-size: clamp(2rem, 6vw, 4rem); }
+    }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="/" class="nav-brand">UNDOMONDO</a>
+        <ul class="nav-links">
+            <li><a href="/">Home</a></li>
+            <li><a href="/archive/" class="active">Archive</a></li>
+            <li><a href="https://undomondo.substack.com">Newsletter</a></li>
+            <li><a href="/#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <div class="hero">
+        <h1 class="year-big">2021</h1>
+        <p class="year-info">2 posts</p>
+    </div>
+
+    <div class="container">
+        <div class="year-nav">
+            <a href="/tumblr/">← Tumblr Hub</a>
+            <a href="/tumblr/2020.html">← 2020</a> · <span class="current">2021</span>
+        </div>
+
+        <div class="filter-bar">
+            <label class="filter-label">Filter by genre:</label>
+            <div class="pills">
+                <span class="pill" onclick="filterByTag('obit')">obit</span>
+<span class="pill" onclick="filterByTag('jazz')">jazz</span>
+            </div>
+        </div>
+
+        <div class="grid" id="grid">
+            <div class="card" onclick="location.href='/tumblr/post.html?id=642897410056749056'">
+                <div class="card-header">
+                    <div class="card-date">2021-02-12</div>
+                    <h3 class="card-title">Chick Corea - What Game Shall We Play TodayChick Corea, Grammy-winning jazz musician, dies at 79The </h3>
+                </div>
+                <div class="card-body">
+                    <p class="card-excerpt"> Chick Corea - What Game Shall We Play Today   Chick Corea, Grammy-winning jazz musician, dies at 79   The composer, keyboardist and bandleader, who won 23 Grammy awards, has died of a rare form of ca...</p>
+                    <div class="card-tags"><span class="tag">obit</span></div>
+                </div>
+            </div>
+<div class="card" onclick="location.href='/tumblr/post.html?id=640655904559251456'">
+                <div class="card-header">
+                    <div class="card-date">2021-01-18</div>
+                    <h3 class="card-title">Redman Mehldau McBride Blade - “Right Back Round Again”</h3>
+                </div>
+                <div class="card-body">
+                    <p class="card-excerpt"> Redman Mehldau McBride Blade - “Right Back Round Again”   </p>
+                    <div class="card-tags"><span class="tag">jazz</span></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="load-more" id="load-more-container" style="display: none;">
+            <button class="load-more-btn" onclick="loadMorePosts()">Load More Posts</button>
+        </div>
+    </div>
+
+    <footer>
+    <div style="max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; gap: 24px;">
+        <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-start; gap: 24px;">
+            <div>
+                <p style="font-family: 'Space Grotesk', sans-serif; font-size: 20px; font-weight: 700; margin-bottom: 8px;">UNDOMONDO</p>
+                <p style="font-size: 13px; opacity: 0.7;">Independent music, no borders.</p>
+            </div>
+            <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+                <a href="https://bsky.app/profile/undomondo.bsky.social" target="_blank" style="border: 2px solid #F2EFE5; padding: 8px 16px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; text-decoration: none; color: #F2EFE5; transition: all 0.2s;">BSKY</a>
+                <a href="https://www.instagram.com/undomondo" target="_blank" style="border: 2px solid #F2EFE5; padding: 8px 16px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; text-decoration: none; color: #F2EFE5;">Instagram</a>
+                <a href="https://www.mixcloud.com/undomondo/" target="_blank" style="border: 2px solid #F2EFE5; padding: 8px 16px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; text-decoration: none; color: #F2EFE5;">Mixcloud</a>
+                <a href="https://soundcloud.com/undomondo" target="_blank" style="border: 2px solid #F2EFE5; padding: 8px 16px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; text-decoration: none; color: #F2EFE5;">SoundCloud</a>
+                <a href="https://www.last.fm/user/kidindigo" target="_blank" style="border: 2px solid #F2EFE5; padding: 8px 16px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; text-decoration: none; color: #F2EFE5;">Last.fm</a>
+                <a href="https://record.club/undomondo/" target="_blank" style="border: 2px solid #F2EFE5; padding: 8px 16px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; text-decoration: none; color: #F2EFE5;">Record Club</a>
+                <a href="https://www.linkedin.com/in/mehmet-a%C4%9Fao%C4%9Fullar%C4%B1-aa15b39/" target="_blank" style="border: 2px solid #F2EFE5; padding: 8px 16px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; text-decoration: none; color: #F2EFE5;">LinkedIn</a>
+                <a href="#" target="_blank" style="border: 2px solid #F2EFE5; padding: 8px 16px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; text-decoration: none; color: #F2EFE5;">Reverie For Two</a>
+            </div>
+        </div>
+        <div style="border-top: 1px solid rgba(242,239,229,0.3); padding-top: 16px; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 16px;">
+            <a href="/" style="font-family: 'Space Grotesk', sans-serif; font-size: 16px; font-weight: 700; color: #F2EFE5; text-decoration: none;">← Back to Undomondo</a>
+            <span style="font-family: 'Space Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 3px; opacity: 0.7;">© 2025 · Istanbul / Barcelona / Internet</span>
+        </div>
+    </div>
+</footer>
+
+    <script>
+    const allPosts = [{"id": "642897410056749056", "title": "Chick Corea - What Game Shall We Play TodayChick Corea, Grammy-winning jazz musician, dies at 79The ", "date": "2021-02-12", "content": "<p>Chick Corea - What Game Shall We Play Today </p><p>Chick Corea, Grammy-winning jazz musician, dies at 79<br/></p><p>The composer, keyboardist and bandleader, who won 23 Grammy awards, has died of a rare form of cancer</p><p>RIP\u00a0<br/></p> ", "tags": ["obit"]}, {"id": "640655904559251456", "title": "Redman Mehldau McBride Blade - \u201cRight Back Round Again\u201d", "date": "2021-01-18", "content": "<p>Redman Mehldau McBride Blade - \u201cRight Back Round Again\u201d </p> ", "tags": ["jazz"]}];
+    let currentFilter = null;
+    let postsPerPage = 50;
+    let currentPage = 0;
+
+    function formatDate(dateStr) {
+        const d = new Date(dateStr);
+        return d.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
+    }
+
+    function renderPost(post) {
+        const excerpt = post.content.replace(/<[^>]*>/g, '').substring(0, 150);
+        const tags = (post.tags || []).map(t => `<span class="tag">${escape(t)}</span>`).join('');
+        return `
+            <div class="card" onclick="location.href='/tumblr/post.html?id=${post.id}'">
+                <div class="card-header">
+                    <div class="card-date">${formatDate(post.date)}</div>
+                    <h3 class="card-title">${escape(post.title)}</h3>
+                </div>
+                <div class="card-body">
+                    <p class="card-excerpt">${excerpt}...</p>
+                    <div class="card-tags">${tags}</div>
+                </div>
+            </div>
+        `;
+    }
+
+    function escape(text) {
+        const div = document.createElement('div');
+        div.textContent = text;
+        return div.innerHTML;
+    }
+
+    function filterByTag(tag) {
+        if (currentFilter === tag) {
+            currentFilter = null;
+        } else {
+            currentFilter = tag;
+        }
+        document.querySelectorAll('.pill').forEach(p => {
+            p.classList.remove('active');
+            if (p.textContent.trim() === (tag || '')) {
+                p.classList.add('active');
+            }
+        });
+        currentPage = 0;
+        renderPosts();
+    }
+
+    function getVisiblePosts() {
+        if (!currentFilter) return allPosts;
+        return allPosts.filter(p => (p.tags || []).includes(currentFilter));
+    }
+
+    function renderPosts() {
+        const visible = getVisiblePosts();
+        const grid = document.getElementById('grid');
+        const startIdx = 0;
+        const endIdx = (currentPage + 1) * postsPerPage;
+        const toRender = visible.slice(startIdx, endIdx);
+        
+        grid.innerHTML = toRender.map(renderPost).join('');
+        
+        const loadMoreContainer = document.getElementById('load-more-container');
+        if (endIdx < visible.length) {
+            loadMoreContainer.style.display = 'block';
+        } else {
+            loadMoreContainer.style.display = 'none';
+        }
+    }
+
+    function loadMorePosts() {
+        currentPage++;
+        renderPosts();
+    }
+
+    renderPosts();
+    </script>
+</body>
+</html>

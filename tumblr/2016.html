@@ -1,0 +1,910 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2016 — Undomondo Tumblr Archive</title>
+    <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    html, body {
+        font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        background: #f8f6f1;
+        color: #222;
+        line-height: 1.6;
+    }
+    
+    @import url('https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Space+Mono:wght@400;700&family=DM+Sans:wght@400;500;700&family=Space+Grotesk:wght@400;600;700&display=swap');
+    
+    nav {
+        background: white;
+        padding: 1.5rem 2rem;
+        border-bottom: 3px solid #D62828;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-family: 'Space Grotesk', sans-serif;
+    }
+    
+    .nav-brand {
+        font-size: 1.2rem;
+        font-weight: 700;
+        color: #111;
+        text-decoration: none;
+        letter-spacing: 0.05em;
+    }
+    
+    .nav-links {
+        display: flex;
+        gap: 2rem;
+        list-style: none;
+    }
+    
+    .nav-links a {
+        text-decoration: none;
+        color: #111;
+        font-weight: 600;
+        font-size: 0.95rem;
+        transition: color 0.2s;
+    }
+    
+    .nav-links a:hover,
+    .nav-links a.active {
+        color: #D62828;
+    }
+    
+    .hero {
+        background-color: #111111;
+        background-image: radial-gradient(circle, #005F99 8px, transparent 8px);
+        background-size: 24px 24px;
+        padding: 4rem 2rem;
+        text-align: center;
+        color: white;
+    }
+    
+    .year-big {
+        font-family: 'Dela Gothic One', sans-serif;
+        font-size: clamp(4rem, 10vw, 8rem);
+        margin: 0;
+        text-transform: uppercase;
+        opacity: 0.3;
+        line-height: 1;
+    }
+    
+    .year-info {
+        font-size: 1.2rem;
+        margin: 1.5rem 0;
+        opacity: 0.9;
+    }
+    
+    .year-nav {
+        text-align: center;
+        padding: 2rem;
+        font-family: 'Space Grotesk', sans-serif;
+    }
+    
+    .year-nav a, .year-nav span {
+        margin: 0 0.5rem;
+        text-decoration: none;
+        color: #005F99;
+        font-weight: 600;
+    }
+    
+    .year-nav .current {
+        color: #D62828;
+        text-decoration: underline;
+    }
+    
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; }
+    
+    .filter-bar {
+        margin: 2rem 0;
+        padding: 1.5rem;
+        background: white;
+        border-radius: 4px;
+    }
+    
+    .filter-label {
+        font-weight: 600;
+        margin-bottom: 1rem;
+        display: block;
+    }
+    
+    .pills {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin-bottom: 1rem;
+    }
+    
+    .pill {
+        display: inline-block;
+        padding: 0.35rem 0.75rem;
+        background: #f0f0f0;
+        border: 1px solid #ddd;
+        border-radius: 20px;
+        font-size: 0.8rem;
+        text-decoration: none;
+        color: #111;
+        transition: all 0.2s;
+        cursor: pointer;
+    }
+    
+    .pill:hover {
+        background: #D62828;
+        color: white;
+        border-color: #D62828;
+    }
+    
+    .pill.active {
+        background: #D62828;
+        color: white;
+        border-color: #D62828;
+    }
+    
+    .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+        gap: 2rem;
+        margin: 2rem 0;
+    }
+    
+    .card {
+        background: white;
+        border-radius: 4px;
+        overflow: hidden;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        transition: transform 0.2s, box-shadow 0.2s;
+        display: flex;
+        flex-direction: column;
+        cursor: pointer;
+    }
+    
+    .card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+    }
+    
+    .card-header {
+        background: #111;
+        color: white;
+        padding: 1.5rem;
+        border-left: 4px solid #D62828;
+    }
+    
+    .card-title {
+        font-size: 1.1rem;
+        font-weight: 700;
+        margin: 0.5rem 0;
+    }
+    
+    .card-date {
+        font-family: 'Space Mono', monospace;
+        font-size: 0.75rem;
+        opacity: 0.8;
+    }
+    
+    .card-body {
+        padding: 1.5rem;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .card-excerpt {
+        color: #666;
+        font-size: 0.9rem;
+        margin-bottom: 1rem;
+        flex: 1;
+    }
+    
+    .card-tags {
+        margin-top: auto;
+    }
+    
+    .tag {
+        display: inline-block;
+        padding: 0.25rem 0.6rem;
+        background: #f0f0f0;
+        border-radius: 3px;
+        font-size: 0.75rem;
+        margin-right: 0.5rem;
+        margin-bottom: 0.3rem;
+        color: #666;
+    }
+    
+    .load-more {
+        text-align: center;
+        padding: 2rem;
+    }
+    
+    .load-more-btn {
+        padding: 0.75rem 2rem;
+        background: #D62828;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        font-weight: 600;
+        cursor: pointer;
+        font-size: 1rem;
+        transition: opacity 0.2s;
+    }
+    
+    .load-more-btn:hover {
+        opacity: 0.85;
+    }
+    
+    footer {
+    background: #D62828;
+    color: #F2EFE5;
+    padding: 48px 40px;
+}
+footer a { color: #F2EFE5; text-decoration: none; }
+footer a:hover { opacity: 0.8; background: #F2EFE5; color: #D62828; }
+    footer a:hover { opacity: 0.8; }
+    
+    @media (max-width: 768px) {
+        nav { flex-direction: column; gap: 1rem; }
+        .nav-links { gap: 1rem; }
+        .year-big { font-size: clamp(2rem, 6vw, 4rem); }
+    }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="/" class="nav-brand">UNDOMONDO</a>
+        <ul class="nav-links">
+            <li><a href="/">Home</a></li>
+            <li><a href="/archive/" class="active">Archive</a></li>
+            <li><a href="https://undomondo.substack.com">Newsletter</a></li>
+            <li><a href="/#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <div class="hero">
+        <h1 class="year-big">2016</h1>
+        <p class="year-info">126 posts</p>
+    </div>
+
+    <div class="container">
+        <div class="year-nav">
+            <a href="/tumblr/">← Tumblr Hub</a>
+            <a href="/tumblr/2015.html">← 2015</a> · <span class="current">2016</span> · <a href="/tumblr/2017.html">2017 →</a>
+        </div>
+
+        <div class="filter-bar">
+            <label class="filter-label">Filter by genre:</label>
+            <div class="pills">
+                <span class="pill" onclick="filterByTag('2016')">2016</span>
+<span class="pill" onclick="filterByTag('vintage')">vintage</span>
+<span class="pill" onclick="filterByTag('2015')">2015</span>
+<span class="pill" onclick="filterByTag('live')">live</span>
+<span class="pill" onclick="filterByTag('hipsterism')">hipsterism</span>
+<span class="pill" onclick="filterByTag('House')">House</span>
+<span class="pill" onclick="filterByTag('worldobscure')">worldobscure</span>
+<span class="pill" onclick="filterByTag('electronic')">electronic</span>
+<span class="pill" onclick="filterByTag('bestof')">bestof</span>
+<span class="pill" onclick="filterByTag('disco')">disco</span>
+            </div>
+        </div>
+
+        <div class="grid" id="grid">
+            <div class="card" onclick="location.href='/tumblr/post.html?id=155212845654'">
+                <div class="card-header">
+                    <div class="card-date">2016-12-31</div>
+                    <h3 class="card-title">#173Enter 2017 in a la Uncle Undomondo with vintage pieces from 70s soundtrack masters Piero Umilian</h3>
+                </div>
+                <div class="card-body">
+                    <p class="card-excerpt"> #173 
+ Enter 2017 in a la Uncle Undomondo with vintage pieces from 70s soundtrack masters Piero Umiliani, Luis Bacalov, Nino Rota, Nico Fidenco, Gianni Marchetti &amp;amp; Fred Bongusto / Funky Xmas ...</p>
+                    <div class="card-tags"><span class="tag">Jazzy</span><span class="tag">exotica</span><span class="tag">christmas</span><span class="tag">OST</span><span class="tag">70s</span><span class="tag">vintage</span><span class="tag">disco</span></div>
+                </div>
+            </div>
+<div class="card" onclick="location.href='/tumblr/post.html?id=155094165742'">
+                <div class="card-header">
+                    <div class="card-date">2016-12-29</div>
+                    <h3 class="card-title">Siouxsie &amp; The Banshees - So it goesMake Up To Break Up and Metal Postcard, live from 1977</h3>
+                </div>
+                <div class="card-body">
+                    <p class="card-excerpt"> Siouxsie &amp;amp; The Banshees - So it goes  Make Up To Break Up and Metal Postcard, live from 1977   </p>
+                    <div class="card-tags"><span class="tag">vintage</span><span class="tag">live</span><span class="tag">punk</span></div>
+                </div>
+            </div>
+<div class="card" onclick="location.href='/tumblr/post.html?id=155099037434'">
+                <div class="card-header">
+                    <div class="card-date">2016-12-29</div>
+                    <h3 class="card-title">Freeez - Southern FreeezJohn Rocca and Freeez’ first appearance on Top Of The Pops in 1981, performi</h3>
+                </div>
+                <div class="card-body">
+                    <p class="card-excerpt"> Freeez - Southern Freeez  John Rocca and Freeez’ first appearance on Top Of The Pops in 1981, performing “Southern Freeez”.   </p>
+                    <div class="card-tags"><span class="tag">vintage</span><span class="tag">dance</span></div>
+                </div>
+            </div>
+<div class="card" onclick="location.href='/tumblr/post.html?id=155076520144'">
+                <div class="card-header">
+                    <div class="card-date">2016-12-28</div>
+                    <h3 class="card-title">Chelou - Halfway to NowhereGreat video to a hummable indie folk melody.</h3>
+                </div>
+                <div class="card-body">
+                    <p class="card-excerpt"> Chelou - Halfway to Nowhere  Great video to a hummable indie folk melody.   </p>
+                    <div class="card-tags"><span class="tag">2016</span><span class="tag">hipsterism</span></div>
+                </div>
+            </div>
+<div class="card" onclick="location.href='/tumblr/post.html?id=154354206919'">
+                <div class="card-header">
+                    <div class="card-date">2016-12-12</div>
+                    <h3 class="card-title">Grails - Chalice HymnalAnother reason to look for 2017.Chalice Hymnal is out February 17 on Temporar</h3>
+                </div>
+                <div class="card-body">
+                    <p class="card-excerpt"> Grails - Chalice Hymnal  Another reason to look for 2017.   Chalice Hymnal is out February 17 on Temporary Residence Ltd., and a press release comments on how individualized style proclivities all jo...</p>
+                    <div class="card-tags"><span class="tag">2017</span></div>
+                </div>
+            </div>
+<div class="card" onclick="location.href='/tumblr/post.html?id=154155065024'">
+                <div class="card-header">
+                    <div class="card-date">2016-12-07</div>
+                    <h3 class="card-title">Decorating Mind by tolerance breakhttp://ift.tt/2gRGDJs</h3>
+                </div>
+                <div class="card-body">
+                    <p class="card-excerpt"> Decorating Mind by tolerance break &lt;a href=&quot;http://ift.tt/2gRGDJs&quot;&gt;http://ift.tt/2gRGDJs&lt;/a&gt;  </p>
+                    <div class="card-tags"><span class="tag">tolerance break</span><span class="tag">Electronic</span><span class="tag">eclectic</span><span class="tag">Chill</span><span class="tag">Chillout</span></div>
+                </div>
+            </div>
+<div class="card" onclick="location.href='/tumblr/post.html?id=153811671724'">
+                <div class="card-header">
+                    <div class="card-date">2016-11-29</div>
+                    <h3 class="card-title">Suuns - Pitchfork Music Festival Paris 2016 Full Concert</h3>
+                </div>
+                <div class="card-body">
+                    <p class="card-excerpt"> Suuns - Pitchfork Music Festival Paris 2016 Full Concert  </p>
+                    <div class="card-tags"><span class="tag">2016</span><span class="tag">concert</span></div>
+                </div>
+            </div>
+<div class="card" onclick="location.href='/tumblr/post.html?id=153658340029'">
+                <div class="card-header">
+                    <div class="card-date">2016-11-26</div>
+                    <h3 class="card-title">MASALO &amp; KAMMA @ BRIGHTER DAYS - 20.02.16 by BRIGHTER DAYShttp://ift.tt/2ge2Q1L</h3>
+                </div>
+                <div class="card-body">
+                    <p class="card-excerpt"> MASALO &amp;amp; KAMMA @ BRIGHTER DAYS - 20.02.16 by BRIGHTER DAYS &lt;a href=&quot;http://ift.tt/2ge2Q1L&quot;&gt;http://ift.tt/2ge2Q1L&lt;/a&gt;  </p>
+                    <div class="card-tags"><span class="tag">masalo</span><span class="tag">kamma</span><span class="tag">brighterdays</span><span class="tag">House</span><span class="tag">disco</span><span class="tag">afro</span><span class="tag">Acid</span></div>
+                </div>
+            </div>
+<div class="card" onclick="location.href='/tumblr/post.html?id=153658340989'">
+                <div class="card-header">
+                    <div class="card-date">2016-11-26</div>
+                    <h3 class="card-title">Amila - Mixtape 014 (Side A) by Amilahttp://ift.tt/2fA5DE9</h3>
+                </div>
+                <div class="card-body">
+                    <p class="card-excerpt"> Amila - Mixtape 014 (Side A) by Amila &lt;a href=&quot;http://ift.tt/2fA5DE9&quot;&gt;http://ift.tt/2fA5DE9&lt;/a&gt;  </p>
+                    <div class="card-tags"><span class="tag">Boogie</span><span class="tag">alteredsoulexperiment</span></div>
+                </div>
+            </div>
+<div class="card" onclick="location.href='/tumblr/post.html?id=153685127514'">
+                <div class="card-header">
+                    <div class="card-date">2016-11-26</div>
+                    <h3 class="card-title">VULFPECK - Dean Town</h3>
+                </div>
+                <div class="card-body">
+                    <p class="card-excerpt"> VULFPECK - Dean Town  </p>
+                    <div class="card-tags"><span class="tag">2016</span></div>
+                </div>
+            </div>
+<div class="card" onclick="location.href='/tumblr/post.html?id=153342461114'">
+                <div class="card-header">
+                    <div class="card-date">2016-11-18</div>
+                    <h3 class="card-title">New Wave + Post-punk + Electro Pop etc. set I played before Nouvelle Vague @ Babylon 15.10.16US Girl</h3>
+                </div>
+                <div class="card-body">
+                    <p class="card-excerpt"> New Wave + Post-punk + Electro Pop etc. set I played before Nouvelle Vague @ Babylon 15.10.16 
+ US Girls - The Boy is Mine 
+TV Baby - New York Is Alright (Eric ‘Dunks’ Duncan Remix) 
+Masha Qrella - B...</p>
+                    <div class="card-tags"><span class="tag">Post Punk</span><span class="tag">New Wave</span><span class="tag">Electronic Pop</span></div>
+                </div>
+            </div>
+<div class="card" onclick="location.href='/tumblr/post.html?id=152938152839'">
+                <div class="card-header">
+                    <div class="card-date">2016-11-09</div>
+                    <h3 class="card-title">Oy - Space DiasporaBeautiful humans of the world, what we need now is a “Space Diaspora”.</h3>
+                </div>
+                <div class="card-body">
+                    <p class="card-excerpt"> Oy - Space Diaspora  Beautiful humans of the world, what we need now is a “Space Diaspora”.   </p>
+                    <div class="card-tags"><span class="tag">2016</span></div>
+                </div>
+            </div>
+<div class="card" onclick="location.href='/tumblr/post.html?id=152819192594'">
+                <div class="card-header">
+                    <div class="card-date">2016-11-06</div>
+                    <h3 class="card-title">Jean-Jacques Perrey RIP</h3>
+                </div>
+                <div class="card-body">
+                    <p class="card-excerpt"> &lt;b&gt;Jean-Jacques Perrey RIP&lt;/b&gt;  Güle güle büyük usta // &lt;a href=&quot;http://www.rollingstone.com/music/news/jean-jacques-perrey-electronic-music-pioneer-dead-at-87-w448782&quot;&gt;Je...</p>
+                    <div class="card-tags"><span class="tag">obit</span></div>
+                </div>
+            </div>
+<div class="card" onclick="location.href='/tumblr/post.html?id=152640347924'">
+                <div class="card-header">
+                    <div class="card-date">2016-11-02</div>
+                    <h3 class="card-title">009++cyann 160404 215341 NuBF 50 by ali y.http://ift.tt/2e1U7m1</h3>
+                </div>
+                <div class="card-body">
+                    <p class="card-excerpt"> 009++cyann 160404 215341 NuBF 50 by ali y. &lt;a href=&quot;http://ift.tt/2e1U7m1&quot;&gt;http://ift.tt/2e1U7m1&lt;/a&gt;  </p>
+                    <div class="card-tags"></div>
+                </div>
+            </div>
+<div class="card" onclick="location.href='/tumblr/post.html?id=152331574064'">
+                <div class="card-header">
+                    <div class="card-date">2016-10-26</div>
+                    <h3 class="card-title">Edip Akbayram Daglar dagladi Sound Sanayi Mix by dj tutanhttp://ift.tt/2eKU8s2</h3>
+                </div>
+                <div class="card-body">
+                    <p class="card-excerpt"> Edip Akbayram Daglar dagladi Sound Sanayi Mix by dj tutan &lt;a href=&quot;http://ift.tt/2eKU8s2&quot;&gt;http://ift.tt/2eKU8s2&lt;/a&gt;  </p>
+                    <div class="card-tags"></div>
+                </div>
+            </div>
+<div class="card" onclick="location.href='/tumblr/post.html?id=152289275584'">
+                <div class="card-header">
+                    <div class="card-date">2016-10-25</div>
+                    <h3 class="card-title">The Hanging Garden- Vladimir Ivkovic by The Nationhttp://ift.tt/2eNJcJr</h3>
+                </div>
+                <div class="card-body">
+                    <p class="card-excerpt"> The Hanging Garden- Vladimir Ivkovic by The Nation &lt;a href=&quot;http://ift.tt/2eNJcJr&quot;&gt;http://ift.tt/2eNJcJr&lt;/a&gt;  </p>
+                    <div class="card-tags"><span class="tag">Musical Sensitivity</span><span class="tag">Influence</span><span class="tag">Passion</span></div>
+                </div>
+            </div>
+<div class="card" onclick="location.href='/tumblr/post.html?id=151510872539'">
+                <div class="card-header">
+                    <div class="card-date">2016-10-08</div>
+                    <h3 class="card-title">50 song playlist covering my favourites from the last couple of months, spanning many genres and art</h3>
+                </div>
+                <div class="card-body">
+                    <p class="card-excerpt"> 50 song playlist covering my favourites from the last couple of months, spanning many genres and artists: New stuff from Silver Apples, Devendra Banhart, Peter Broderick, LA FEMME, Causa Sui, Goat, S...</p>
+                    <div class="card-tags"><span class="tag">music</span><span class="tag">spotify</span></div>
+                </div>
+            </div>
+<div class="card" onclick="location.href='/tumblr/post.html?id=151053512979'">
+                <div class="card-header">
+                    <div class="card-date">2016-09-28</div>
+                    <h3 class="card-title">Orient Art podcast 021 Dansa Davet / Baris &amp; Dogan by Orient Arthttp://ift.tt/2cVuzlH</h3>
+                </div>
+                <div class="card-body">
+                    <p class="card-excerpt"> Orient Art podcast 021 Dansa Davet / Baris &amp;amp; Dogan by Orient Art &lt;a href=&quot;http://ift.tt/2cVuzlH&quot;&gt;http://ift.tt/2cVuzlH&lt;/a&gt;  </p>
+                    <div class="card-tags"><span class="tag">Orient Art</span></div>
+                </div>
+            </div>
+<div class="card" onclick="location.href='/tumblr/post.html?id=151053982849'">
+                <div class="card-header">
+                    <div class="card-date">2016-09-28</div>
+                    <h3 class="card-title">Tufan Demir - Re/fraction 08 by Tufan Demirhttp://ift.tt/2dzvCsD</h3>
+                </div>
+                <div class="card-body">
+                    <p class="card-excerpt"> Tufan Demir - Re/fraction 08 by Tufan Demir &lt;a href=&quot;http://ift.tt/2dzvCsD&quot;&gt;http://ift.tt/2dzvCsD&lt;/a&gt;  </p>
+                    <div class="card-tags"><span class="tag">Tech House</span><span class="tag">House</span><span class="tag">Techno</span><span class="tag">Deep</span><span class="tag">Bass</span></div>
+                </div>
+            </div>
+<div class="card" onclick="location.href='/tumblr/post.html?id=150935993405'">
+                <div class="card-header">
+                    <div class="card-date">2016-09-26</div>
+                    <h3 class="card-title">Mild High Club - KokopelliNew Mild High Club alert!! Out on Stones Throw.</h3>
+                </div>
+                <div class="card-body">
+                    <p class="card-excerpt"> Mild High Club - Kokopelli  New Mild High Club alert!! Out on Stones Throw.  </p>
+                    <div class="card-tags"><span class="tag">2016</span><span class="tag">hipsterism</span></div>
+                </div>
+            </div>
+<div class="card" onclick="location.href='/tumblr/post.html?id=150962741944'">
+                <div class="card-header">
+                    <div class="card-date">2016-09-26</div>
+                    <h3 class="card-title">Huilen in de Disco by Venderstrooikhttp://ift.tt/2dweerL</h3>
+                </div>
+                <div class="card-body">
+                    <p class="card-excerpt"> Huilen in de Disco by Venderstrooik &lt;a href=&quot;http://ift.tt/2dweerL&quot;&gt;http://ift.tt/2dweerL&lt;/a&gt;  </p>
+                    <div class="card-tags"><span class="tag">Dance Pop</span><span class="tag">Party</span><span class="tag">yeah</span><span class="tag">Dance</span><span class="tag">Pop</span><span class="tag">House</span><span class="tag">Edm</span><span class="tag">TripTechTribleDANCE</span><span class="tag">Comazuipen</span><span class="tag">Teen</span><span class="tag">&quot;Feest DJ T</span></div>
+                </div>
+            </div>
+<div class="card" onclick="location.href='/tumblr/post.html?id=150636729809'">
+                <div class="card-header">
+                    <div class="card-date">2016-09-19</div>
+                    <h3 class="card-title">Undomondo, Ece Özel &amp; Baris K. Set by LYLhttp://ift.tt/2d2ke81</h3>
+                </div>
+                <div class="card-body">
+                    <p class="card-excerpt"> Undomondo, Ece Özel &amp;amp; Baris K. Set by LYL &lt;a href=&quot;http://ift.tt/2d2ke81&quot;&gt;http://ift.tt/2d2ke81&lt;/a&gt;  </p>
+                    <div class="card-tags"><span class="tag">Istanbul</span><span class="tag">Mehmet</span><span class="tag">Mersenne</span><span class="tag">Calypso</span><span class="tag">Funk</span><span class="tag">Psychedelic</span><span class="tag">Traditionnal</span><span class="tag">House</span><span class="tag">Acid</span><span class="tag">LYL</span><span class="tag">&quot;Emotional E</span></div>
+                </div>
+            </div>
+<div class="card" onclick="location.href='/tumblr/post.html?id=150487754399'">
+                <div class="card-header">
+                    <div class="card-date">2016-09-16</div>
+                    <h3 class="card-title">SKINNERBOX LIVE @ FUSION FESTIVAL 2016 - TURMBÜHNE by skinnerboxhttp://ift.tt/2cKIe24</h3>
+                </div>
+                <div class="card-body">
+                    <p class="card-excerpt"> SKINNERBOX LIVE @ FUSION FESTIVAL 2016 - TURMBÜHNE by skinnerbox &lt;a href=&quot;http://ift.tt/2cKIe24&quot;&gt;http://ift.tt/2cKIe24&lt;/a&gt;  </p>
+                    <div class="card-tags"><span class="tag">fusion festival</span><span class="tag">fusion 2016</span><span class="tag">turmbühne</span></div>
+                </div>
+            </div>
+<div class="card" onclick="location.href='/tumblr/post.html?id=150498942174'">
+                <div class="card-header">
+                    <div class="card-date">2016-09-16</div>
+                    <h3 class="card-title">The Wehringhausen Aftermath by Scroungerhttp://ift.tt/2be5ofM</h3>
+                </div>
+                <div class="card-body">
+                    <p class="card-excerpt"> The Wehringhausen Aftermath by Scrounger &lt;a href=&quot;http://ift.tt/2be5ofM&quot;&gt;http://ift.tt/2be5ofM&lt;/a&gt;  </p>
+                    <div class="card-tags"><span class="tag">Laut&amp;Luise</span><span class="tag">Cologne</span><span class="tag">Wehringhausen</span></div>
+                </div>
+            </div>
+<div class="card" onclick="location.href='/tumblr/post.html?id=150456789779'">
+                <div class="card-header">
+                    <div class="card-date">2016-09-15</div>
+                    <h3 class="card-title">Live From Music Gallery Detroit by Sound Signaturehttp://ift.tt/2cq51Qs</h3>
+                </div>
+                <div class="card-body">
+                    <p class="card-excerpt"> Live From Music Gallery Detroit by Sound Signature &lt;a href=&quot;http://ift.tt/2cq51Qs&quot;&gt;http://ift.tt/2cq51Qs&lt;/a&gt;  </p>
+                    <div class="card-tags"><span class="tag">Sound Signature</span><span class="tag">Theo Parrish</span><span class="tag">Music Gallery</span><span class="tag">Movement Festival</span><span class="tag">Specter</span><span class="tag">Detroit</span></div>
+                </div>
+            </div>
+<div class="card" onclick="location.href='/tumblr/post.html?id=150050341524'">
+                <div class="card-header">
+                    <div class="card-date">2016-09-07</div>
+                    <h3 class="card-title">Lemurian - Chayana  (FREE DOWNLOAD) by Lemurianhttp://ift.tt/2ceyK0d</h3>
+                </div>
+                <div class="card-body">
+                    <p class="card-excerpt"> Lemurian - Chayana  (FREE DOWNLOAD) by Lemurian &lt;a href=&quot;http://ift.tt/2ceyK0d&quot;&gt;http://ift.tt/2ceyK0d&lt;/a&gt;  </p>
+                    <div class="card-tags"></div>
+                </div>
+            </div>
+<div class="card" onclick="location.href='/tumblr/post.html?id=150050343089'">
+                <div class="card-header">
+                    <div class="card-date">2016-09-07</div>
+                    <h3 class="card-title">Ali Farka Toure - Bonde (Lemurian In Mali Edit) FREE DOWNLOAD by Lemurianhttp://ift.tt/2c2rTDz</h3>
+                </div>
+                <div class="card-body">
+                    <p class="card-excerpt"> Ali Farka Toure - Bonde (Lemurian In Mali Edit) FREE DOWNLOAD by Lemurian &lt;a href=&quot;http://ift.tt/2c2rTDz&quot;&gt;http://ift.tt/2c2rTDz&lt;/a&gt;  </p>
+                    <div class="card-tags"></div>
+                </div>
+            </div>
+<div class="card" onclick="location.href='/tumblr/post.html?id=149409771844'">
+                <div class="card-header">
+                    <div class="card-date">2016-08-24</div>
+                    <h3 class="card-title">Bader Motor - Bongo Bongo BongoBader Motor’s third LP, appropriately titled ‘Drei Drei Drei’ is due </h3>
+                </div>
+                <div class="card-body">
+                    <p class="card-excerpt"> Bader Motor - Bongo Bongo Bongo  Bader Motor’s third LP, appropriately titled ‘Drei Drei Drei’ is due to be released in the coming months on Brussels-based label Veals &amp;amp; Geeks.    </p>
+                    <div class="card-tags"><span class="tag">2016</span><span class="tag">kraut</span><span class="tag">hipsterism</span></div>
+                </div>
+            </div>
+<div class="card" onclick="location.href='/tumblr/post.html?id=149096614539'">
+                <div class="card-header">
+                    <div class="card-date">2016-08-18</div>
+                    <h3 class="card-title">Ibrahim Houssein - Al Ghuroub (The Sunset)Gözlerim doluyor dinlerken. Tarifsiz hisler.From the amazi</h3>
+                </div>
+                <div class="card-body">
+                    <p class="card-excerpt"> Ibrahim Houssein - Al Ghuroub (The Sunset)   Gözlerim doluyor dinlerken. Tarifsiz hisler.   From the amazing &lt;a href=&quot;https://shellachead.bandcamp.com/album/the-lost-45s-of-sudan-shellachead-...</p>
+                    <div class="card-tags"><span class="tag">worldobscure</span></div>
+                </div>
+            </div>
+<div class="card" onclick="location.href='/tumblr/post.html?id=149091761549'">
+                <div class="card-header">
+                    <div class="card-date">2016-08-17</div>
+                    <h3 class="card-title">Lemurian - Chayana (Original Mix) - FREE DOWNLOAD by Cosmic Awakeningshttp://ift.tt/2aWeUFG</h3>
+                </div>
+                <div class="card-body">
+                    <p class="card-excerpt"> Lemurian - Chayana (Original Mix) - FREE DOWNLOAD by Cosmic Awakenings &lt;a href=&quot;http://ift.tt/2aWeUFG&quot;&gt;http://ift.tt/2aWeUFG&lt;/a&gt;  </p>
+                    <div class="card-tags"></div>
+                </div>
+            </div>
+<div class="card" onclick="location.href='/tumblr/post.html?id=149004741835'">
+                <div class="card-header">
+                    <div class="card-date">2016-08-16</div>
+                    <h3 class="card-title">Ishmael - Mercy, Mercy MeGood gospel house onWolf Music.</h3>
+                </div>
+                <div class="card-body">
+                    <p class="card-excerpt"> Ishmael - Mercy, Mercy Me  Good gospel house on &lt;a href=&quot;https://soundcloud.com/nysoul/ishmael-mercy-mercy-me-wolfep036&quot;&gt;Wolf Music&lt;/a&gt;.  </p>
+                    <div class="card-tags"><span class="tag">house</span><span class="tag">dance</span><span class="tag">2016</span></div>
+                </div>
+            </div>
+<div class="card" onclick="location.href='/tumblr/post.html?id=149010087818'">
+                <div class="card-header">
+                    <div class="card-date">2016-08-16</div>
+                    <h3 class="card-title">Dolly Parton - Dumb Blonde (1967)</h3>
+                </div>
+                <div class="card-body">
+                    <p class="card-excerpt"> Dolly Parton - Dumb Blonde (1967)  </p>
+                    <div class="card-tags"><span class="tag">vintageobscure</span></div>
+                </div>
+            </div>
+<div class="card" onclick="location.href='/tumblr/post.html?id=149015492759'">
+                <div class="card-header">
+                    <div class="card-date">2016-08-16</div>
+                    <h3 class="card-title">Selda - Dane Dane Benleri Var (fattish’s Summer Rework)</h3>
+                </div>
+                <div class="card-body">
+                    <p class="card-excerpt"> Selda - Dane Dane Benleri Var (fattish’s Summer Rework)  </p>
+                    <div class="card-tags"><span class="tag">edit</span><span class="tag">2016</span><span class="tag">dance</span></div>
+                </div>
+            </div>
+<div class="card" onclick="location.href='/tumblr/post.html?id=149020148174'">
+                <div class="card-header">
+                    <div class="card-date">2016-08-16</div>
+                    <h3 class="card-title">Undomondo Radio Show #171Trying to return to a more content state of mind in these extremely turbule</h3>
+                </div>
+                <div class="card-body">
+                    <p class="card-excerpt"> Undomondo Radio Show #171 
+ Trying to return to a more content state of mind in these extremely turbulent times, I fell back on music again. Just finished this show which is the signature Undomondo s...</p>
+                    <div class="card-tags"><span class="tag">Easy Listening</span><span class="tag">Exotica</span><span class="tag">OST</span><span class="tag">Jazz</span><span class="tag">African</span><span class="tag">Caribbean</span></div>
+                </div>
+            </div>
+<div class="card" onclick="location.href='/tumblr/post.html?id=149023519901'">
+                <div class="card-header">
+                    <div class="card-date">2016-08-16</div>
+                    <h3 class="card-title">Hanni El Khatib - Mondo and His MakeupFromHanni El Khatib - Savage Times Vol. 3</h3>
+                </div>
+                <div class="card-body">
+                    <p class="card-excerpt"> Hanni El Khatib - Mondo and His Makeup  From &lt;a href=&quot;http://hyperurl.co/savagetimes3&quot;&gt;Hanni El Khatib - Savage Times Vol. 3&lt;/a&gt;  </p>
+                    <div class="card-tags"><span class="tag">2016</span><span class="tag">hipsterism</span></div>
+                </div>
+            </div>
+<div class="card" onclick="location.href='/tumblr/post.html?id=149023907844'">
+                <div class="card-header">
+                    <div class="card-date">2016-08-16</div>
+                    <h3 class="card-title">Camp C∅smic 2◐16 by André Pahlhttp://ift.tt/2baI8in</h3>
+                </div>
+                <div class="card-body">
+                    <p class="card-excerpt"> Camp C∅smic 2◐16 by André Pahl &lt;a href=&quot;http://ift.tt/2baI8in&quot;&gt;http://ift.tt/2baI8in&lt;/a&gt;  </p>
+                    <div class="card-tags"><span class="tag">Camp Cosmic</span><span class="tag">Summer nights</span><span class="tag">Safari</span><span class="tag">Psychedelic</span><span class="tag">Experimental</span><span class="tag">Campcosmic</span></div>
+                </div>
+            </div>
+<div class="card" onclick="location.href='/tumblr/post.html?id=148976745152'">
+                <div class="card-header">
+                    <div class="card-date">2016-08-15</div>
+                    <h3 class="card-title">Caetano Veloso - Asa BrancaLive at Discorama, 1972</h3>
+                </div>
+                <div class="card-body">
+                    <p class="card-excerpt"> Caetano Veloso - Asa Branca   Live at Discorama, 1972  </p>
+                    <div class="card-tags"><span class="tag">vintageobscure</span></div>
+                </div>
+            </div>
+<div class="card" onclick="location.href='/tumblr/post.html?id=148934841054'">
+                <div class="card-header">
+                    <div class="card-date">2016-08-14</div>
+                    <h3 class="card-title">Trilha Sonora Original (1969-1976) - A mixtape of brazilian soap opera soundtracks by DJ DvBz by Dig</h3>
+                </div>
+                <div class="card-body">
+                    <p class="card-excerpt"> Trilha Sonora Original (1969-1976) - A mixtape of brazilian soap opera soundtracks by DJ DvBz by Digital_Vagabondz &lt;a href=&quot;http://ift.tt/2bqZ9no&quot;&gt;http://ift.tt/2bqZ9no&lt;/a&gt;  </p>
+                    <div class="card-tags"></div>
+                </div>
+            </div>
+<div class="card" onclick="location.href='/tumblr/post.html?id=148321757691'">
+                <div class="card-header">
+                    <div class="card-date">2016-08-02</div>
+                    <h3 class="card-title">Dr. J.K. Sutherland - Mid-Eastern MeditationsArmenian-American oud player J.K. Sutherland’s home-rec</h3>
+                </div>
+                <div class="card-body">
+                    <p class="card-excerpt"> Dr. J.K. Sutherland - Mid-Eastern Meditations  Armenian-American oud player J.K. Sutherland’s home-recorded solo improvisations on the oud . Saddest liner notes I’ve ever read. Transferred and issued...</p>
+                    <div class="card-tags"><span class="tag">worldobscure</span></div>
+                </div>
+            </div>
+<div class="card" onclick="location.href='/tumblr/post.html?id=148236961554'">
+                <div class="card-header">
+                    <div class="card-date">2016-07-31</div>
+                    <h3 class="card-title">Bill Callahan - So Long MarianneMarianne Ihlen, the woman immortalized in “So Long, Marianne” and th</h3>
+                </div>
+                <div class="card-body">
+                    <p class="card-excerpt"> Bill Callahan - So Long Marianne  Marianne Ihlen, the woman immortalized in “So Long, Marianne” and the woman in Leonard Cohen’s life through the 1960s, died July 28, 2016 after being diagnosed with ...</p>
+                    <div class="card-tags"><span class="tag">cover</span><span class="tag">obit</span></div>
+                </div>
+            </div>
+<div class="card" onclick="location.href='/tumblr/post.html?id=148238230464'">
+                <div class="card-header">
+                    <div class="card-date">2016-07-31</div>
+                    <h3 class="card-title">Mustafa Çavusef - Hangi - Sanki</h3>
+                </div>
+                <div class="card-body">
+                    <p class="card-excerpt"> Mustafa Çavusef - Hangi - Sanki  </p>
+                    <div class="card-tags"><span class="tag">turkish</span><span class="tag">worldobscure</span><span class="tag">vintage</span></div>
+                </div>
+            </div>
+<div class="card" onclick="location.href='/tumblr/post.html?id=147999101394'">
+                <div class="card-header">
+                    <div class="card-date">2016-07-26</div>
+                    <h3 class="card-title">Undomondo 2016 Rotation (Spotify Playlist)Trying to return to a more content state of mind in these </h3>
+                </div>
+                <div class="card-body">
+                    <p class="card-excerpt"> Undomondo 2016 Rotation (Spotify Playlist) 
+ Trying to return to a more content state of mind in these extremely turbulent times, I fell back on music once again. Just finished a new undomondo radio ...</p>
+                    <div class="card-tags"><span class="tag">music</span><span class="tag">spotify</span></div>
+                </div>
+            </div>
+<div class="card" onclick="location.href='/tumblr/post.html?id=147959411769'">
+                <div class="card-header">
+                    <div class="card-date">2016-07-25</div>
+                    <h3 class="card-title">Norman Records Podcast #15: Ian WIlliam Craig (“To Glorious Art and Golden Prints”) by Norman Record</h3>
+                </div>
+                <div class="card-body">
+                    <p class="card-excerpt"> Norman Records Podcast #15: Ian WIlliam Craig (“To Glorious Art and Golden Prints”) by Norman Records &lt;a href=&quot;http://ift.tt/2aG4SoZ&quot;&gt;http://ift.tt/2aG4SoZ&lt;/a&gt;  </p>
+                    <div class="card-tags"><span class="tag">norman records</span><span class="tag">Podcast</span><span class="tag">powerful!!!</span><span class="tag">Pop</span><span class="tag">Drone</span><span class="tag">Ambient</span><span class="tag">fatcat</span><span class="tag">recital</span><span class="tag">exciting</span><span class="tag">&quot;ian william</span></div>
+                </div>
+            </div>
+<div class="card" onclick="location.href='/tumblr/post.html?id=147566217753'">
+                <div class="card-header">
+                    <div class="card-date">2016-07-18</div>
+                    <h3 class="card-title">Plaid - Do MatterFrom Plaid’s new album ‘The Digging Remedy’, released on 10 June via Warp Records</h3>
+                </div>
+                <div class="card-body">
+                    <p class="card-excerpt"> Plaid - Do Matter  From Plaid’s new album ‘The Digging Remedy’, released on 10 June via Warp Records  </p>
+                    <div class="card-tags"><span class="tag">2016</span></div>
+                </div>
+            </div>
+<div class="card" onclick="location.href='/tumblr/post.html?id=147537467969'">
+                <div class="card-header">
+                    <div class="card-date">2016-07-17</div>
+                    <h3 class="card-title">Alan Vega RIP</h3>
+                </div>
+                <div class="card-body">
+                    <p class="card-excerpt"> Alan Vega RIP  </p>
+                    <div class="card-tags"><span class="tag">photo</span><span class="tag">2016</span><span class="tag">obit</span></div>
+                </div>
+            </div>
+<div class="card" onclick="location.href='/tumblr/post.html?id=147537555144'">
+                <div class="card-header">
+                    <div class="card-date">2016-07-17</div>
+                    <h3 class="card-title">Suicide - Dream Baby Dream</h3>
+                </div>
+                <div class="card-body">
+                    <p class="card-excerpt"> Suicide - Dream Baby Dream  </p>
+                    <div class="card-tags"><span class="tag">obit</span></div>
+                </div>
+            </div>
+<div class="card" onclick="location.href='/tumblr/post.html?id=147495975934'">
+                <div class="card-header">
+                    <div class="card-date">2016-07-16</div>
+                    <h3 class="card-title">Brazil 16 Mix Antal // Rush Hour by antalrushhourhttp://ift.tt/1P0RfMj</h3>
+                </div>
+                <div class="card-body">
+                    <p class="card-excerpt"> Brazil 16 Mix Antal // Rush Hour by antalrushhour &lt;a href=&quot;http://ift.tt/1P0RfMj&quot;&gt;http://ift.tt/1P0RfMj&lt;/a&gt;  </p>
+                    <div class="card-tags"><span class="tag">rush</span><span class="tag">hour</span><span class="tag">antal</span><span class="tag">love</span></div>
+                </div>
+            </div>
+<div class="card" onclick="location.href='/tumblr/post.html?id=147234517014'">
+                <div class="card-header">
+                    <div class="card-date">2016-07-11</div>
+                    <h3 class="card-title">Voodoocast 003 - Pigmalião (live-set) by voodoohophttp://ift.tt/1TJlFtf</h3>
+                </div>
+                <div class="card-body">
+                    <p class="card-excerpt"> Voodoocast 003 - Pigmalião (live-set) by voodoohop &lt;a href=&quot;http://ift.tt/1TJlFtf&quot;&gt;http://ift.tt/1TJlFtf&lt;/a&gt;  </p>
+                    <div class="card-tags"><span class="tag">podcast</span></div>
+                </div>
+            </div>
+<div class="card" onclick="location.href='/tumblr/post.html?id=147235770844'">
+                <div class="card-header">
+                    <div class="card-date">2016-07-11</div>
+                    <h3 class="card-title">L&#x27;amour A La Plage III (Mixtape) by Mrs. Blythehttp://ift.tt/29xMMcE</h3>
+                </div>
+                <div class="card-body">
+                    <p class="card-excerpt"> L&#x27;amour A La Plage III (Mixtape) by Mrs. Blythe &lt;a href=&quot;http://ift.tt/29xMMcE&quot;&gt;http://ift.tt/29xMMcE&lt;/a&gt;  </p>
+                    <div class="card-tags"><span class="tag">L&#x27;amour a la plage</span><span class="tag">mixtape</span><span class="tag">mrsblythe</span></div>
+                </div>
+            </div>
+<div class="card" onclick="location.href='/tumblr/post.html?id=147240769334'">
+                <div class="card-header">
+                    <div class="card-date">2016-07-11</div>
+                    <h3 class="card-title">“Jo Que?” feat. Wide Awake - A Visit to the Crystal Museum by jO.K.ehttp://ift.tt/29C0vgY</h3>
+                </div>
+                <div class="card-body">
+                    <p class="card-excerpt"> “Jo Que?” feat. Wide Awake - A Visit to the Crystal Museum by jO.K.e &lt;a href=&quot;http://ift.tt/29C0vgY&quot;&gt;http://ift.tt/29C0vgY&lt;/a&gt;  </p>
+                    <div class="card-tags"><span class="tag">headphone music</span><span class="tag">JoKe</span><span class="tag">WideAwake</span><span class="tag">Pulpos</span></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="load-more" id="load-more-container" style="display: none;">
+            <button class="load-more-btn" onclick="loadMorePosts()">Load More Posts</button>
+        </div>
+    </div>
+
+    <footer>
+    <div style="max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; gap: 24px;">
+        <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-start; gap: 24px;">
+            <div>
+                <p style="font-family: 'Space Grotesk', sans-serif; font-size: 20px; font-weight: 700; margin-bottom: 8px;">UNDOMONDO</p>
+                <p style="font-size: 13px; opacity: 0.7;">Independent music, no borders.</p>
+            </div>
+            <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+                <a href="https://bsky.app/profile/undomondo.bsky.social" target="_blank" style="border: 2px solid #F2EFE5; padding: 8px 16px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; text-decoration: none; color: #F2EFE5; transition: all 0.2s;">BSKY</a>
+                <a href="https://www.instagram.com/undomondo" target="_blank" style="border: 2px solid #F2EFE5; padding: 8px 16px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; text-decoration: none; color: #F2EFE5;">Instagram</a>
+                <a href="https://www.mixcloud.com/undomondo/" target="_blank" style="border: 2px solid #F2EFE5; padding: 8px 16px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; text-decoration: none; color: #F2EFE5;">Mixcloud</a>
+                <a href="https://soundcloud.com/undomondo" target="_blank" style="border: 2px solid #F2EFE5; padding: 8px 16px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; text-decoration: none; color: #F2EFE5;">SoundCloud</a>
+                <a href="https://www.last.fm/user/kidindigo" target="_blank" style="border: 2px solid #F2EFE5; padding: 8px 16px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; text-decoration: none; color: #F2EFE5;">Last.fm</a>
+                <a href="https://record.club/undomondo/" target="_blank" style="border: 2px solid #F2EFE5; padding: 8px 16px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; text-decoration: none; color: #F2EFE5;">Record Club</a>
+                <a href="https://www.linkedin.com/in/mehmet-a%C4%9Fao%C4%9Fullar%C4%B1-aa15b39/" target="_blank" style="border: 2px solid #F2EFE5; padding: 8px 16px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; text-decoration: none; color: #F2EFE5;">LinkedIn</a>
+                <a href="#" target="_blank" style="border: 2px solid #F2EFE5; padding: 8px 16px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; text-decoration: none; color: #F2EFE5;">Reverie For Two</a>
+            </div>
+        </div>
+        <div style="border-top: 1px solid rgba(242,239,229,0.3); padding-top: 16px; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 16px;">
+            <a href="/" style="font-family: 'Space Grotesk', sans-serif; font-size: 16px; font-weight: 700; color: #F2EFE5; text-decoration: none;">← Back to Undomondo</a>
+            <span style="font-family: 'Space Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 3px; opacity: 0.7;">© 2025 · Istanbul / Barcelona / Internet</span>
+        </div>
+    </div>
+</footer>
+
+    <script>
+    const allPosts = [{"id": "155212845654", "title": "#173Enter 2017 in a la Uncle Undomondo with vintage pieces from 70s soundtrack masters Piero Umilian", "date": "2016-12-31", "content": "<p>#173</p>\n<p>Enter 2017 in a la Uncle Undomondo with vintage pieces from 70s soundtrack masters Piero Umiliani, Luis Bacalov, Nino Rota, Nico Fidenco, Gianni Marchetti &amp; Fred Bongusto / Funky Xmas &amp; Disco tunes to top up your Turkey Trauma. Enjoy! </p>\n<p>Bert Kaempfert - Jumpin\u2019 Jiminy Christmas<br/>\nHenry Mancini - Cha Cha Cha for Gia<br/>\nNico Fidenco - Red Hot Wax<br/>\nNino Rota - La Loro Storia<br/>\nOrquestra Serenata Tropical - Ale\u0301m do Horizonte<br/>\nLuis Bacalov - Members Only<br/>\nArmando Trovaioli - Signora Sono Le Otto<br/>\nEartha Kitt - Santa Baby<br/>\nBeverely Sisters - Sphinx won\u2019t tell<br/>\nPiero Umiliani - Sophisticated Lady<br/>\nShigeo Sekito - \u3042\u307e\u3044\u56c1\u304d<br/>\nMel Torm\u00e9 - The Moon was Yellow<br/>\nMarlene Shaw - Where Can I go<br/>\nAhmed Malek - Omar Gatlatou<br/>\nJos\u00e9 Mauro - Obn\u00f3xius<br/>\nPercy Faith - The Theme from \u201cA Summer Place\u201d<br/>\nJeanette - Porque te vas<br/>\nEvie Sands - You can do it<br/>\nRon Dante &amp; Peter Link - Mighty Gents<br/>\nNohelani Cypriano - Lihue<br/>\nThe Bionic I - Disco Claus<br/>\n20th Century Steel Band - Heaven &amp; Hell (7\u201d Edit)<br/>\nDusty Springfield - I can\u2019t wait until I see my Baby\u2019s face<br/>\nMantovani And His Orchestra - Theme From \u2018Valla Rides\u2019<br/>\nGianni Marchetti - Cicciolina, Amore Mio (Seq. 10)<br/>\nFred Bongusto - Spaghetti A Detroit (Choir Version) <a href=\"http://ift.tt/2iAM91A\">http://ift.tt/2iAM91A</a></p> ", "tags": ["Jazzy", "exotica", "christmas", "OST", "70s", "vintage", "disco"]}, {"id": "155094165742", "title": "Siouxsie & The Banshees - So it goesMake Up To Break Up and Metal Postcard, live from 1977", "date": "2016-12-29", "content": "<p>Siouxsie &amp; The Banshees - So it goes</p><p>Make Up To Break Up and Metal Postcard, live from 1977<br/></p> ", "tags": ["vintage", "live", "punk"]}, {"id": "155099037434", "title": "Freeez - Southern FreeezJohn Rocca and Freeez\u2019 first appearance on Top Of The Pops in 1981, performi", "date": "2016-12-29", "content": "<p>Freeez - Southern Freeez</p><p>John Rocca and Freeez\u2019 first appearance on Top Of The Pops in 1981, performing \u201cSouthern Freeez\u201d. </p> ", "tags": ["vintage", "dance"]}, {"id": "155076520144", "title": "Chelou - Halfway to NowhereGreat video to a hummable indie folk melody.", "date": "2016-12-28", "content": "<p>Chelou - Halfway to Nowhere</p><p>Great video to a hummable indie folk melody.\u00a0</p> ", "tags": ["2016", "hipsterism"]}, {"id": "154354206919", "title": "Grails - Chalice HymnalAnother reason to look for 2017.Chalice Hymnal is out February 17 on Temporar", "date": "2016-12-12", "content": "<p>Grails - Chalice Hymnal</p><p>Another reason to look for 2017.\u00a0</p><p>Chalice Hymnal is out February 17 on Temporary Residence Ltd., and a press release comments on how individualized style proclivities all joined figurative hands to mold the character of the new album.\u00a0<br/></p> ", "tags": ["2017"]}, {"id": "154155065024", "title": "Decorating Mind by tolerance breakhttp://ift.tt/2gRGDJs", "date": "2016-12-07", "content": "<p>Decorating Mind by tolerance break <a href=\"http://ift.tt/2gRGDJs\">http://ift.tt/2gRGDJs</a></p> ", "tags": ["tolerance break", "Electronic", "eclectic", "Chill", "Chillout"]}, {"id": "153811671724", "title": "Suuns - Pitchfork Music Festival Paris 2016 Full Concert", "date": "2016-11-29", "content": "<p>Suuns - Pitchfork Music Festival Paris 2016 Full Concert</p> ", "tags": ["2016", "concert"]}, {"id": "153658340029", "title": "MASALO & KAMMA @ BRIGHTER DAYS - 20.02.16 by BRIGHTER DAYShttp://ift.tt/2ge2Q1L", "date": "2016-11-26", "content": "<p>MASALO &amp; KAMMA @ BRIGHTER DAYS - 20.02.16 by BRIGHTER DAYS <a href=\"http://ift.tt/2ge2Q1L\">http://ift.tt/2ge2Q1L</a></p> ", "tags": ["masalo", "kamma", "brighterdays", "House", "disco", "afro", "Acid"]}, {"id": "153658340989", "title": "Amila - Mixtape 014 (Side A) by Amilahttp://ift.tt/2fA5DE9", "date": "2016-11-26", "content": "<p>Amila - Mixtape 014 (Side A) by Amila <a href=\"http://ift.tt/2fA5DE9\">http://ift.tt/2fA5DE9</a></p> ", "tags": ["Boogie", "alteredsoulexperiment"]}, {"id": "153685127514", "title": "VULFPECK - Dean Town", "date": "2016-11-26", "content": "<p>VULFPECK - Dean Town</p> ", "tags": ["2016"]}, {"id": "153342461114", "title": "New Wave + Post-punk + Electro Pop etc. set I played before Nouvelle Vague @ Babylon 15.10.16US Girl", "date": "2016-11-18", "content": "<p>New Wave + Post-punk + Electro Pop etc. set I played before Nouvelle Vague @ Babylon 15.10.16</p>\n<p>US Girls - The Boy is Mine<br/>\nTV Baby - New York Is Alright (Eric \u2018Dunks\u2019 Duncan Remix)<br/>\nMasha Qrella - Bogota<br/>\nYoung Marble Giants - Colossal Youth<br/>\n1. Futurologischer Congress - Sch\u00fctzt die Verliebten<br/>\nSoft Cell - Tainted Love<br/>\nLa Femme - Ou va le Monde<br/>\nThe Jazz Butcher - Real Men<br/>\nAntena - Bye Bye Papaye (Lexx mix)<br/>\nSilver Apples - The Edge of Wonder<br/>\nPeter Kernel - Anthem of Hearts<br/>\nAmbitious Lovers - Let\u2019s be Adult<br/>\nLa Femme - Septembre<br/>\nMick Harvey - Coffee Colour<br/>\nField Music - Don\u2019t You Want to Know What\u2019s Wrong?<br/>\nAnika - Yang Yang <a href=\"http://ift.tt/2eNnOrc\">http://ift.tt/2eNnOrc</a></p> ", "tags": ["Post Punk", "New Wave", "Electronic Pop"]}, {"id": "152938152839", "title": "Oy - Space DiasporaBeautiful humans of the world, what we need now is a \u201cSpace Diaspora\u201d.", "date": "2016-11-09", "content": "<p>Oy - Space Diaspora</p><p>Beautiful humans of the world, what we need now is a \u201cSpace Diaspora\u201d.<br/></p> ", "tags": ["2016"]}, {"id": "152819192594", "title": "Jean-Jacques Perrey RIP", "date": "2016-11-06", "content": "<p><b>Jean-Jacques Perrey RIP</b></p><p>G\u00fcle g\u00fcle b\u00fcy\u00fck usta //\u00a0<a href=\"http://www.rollingstone.com/music/news/jean-jacques-perrey-electronic-music-pioneer-dead-at-87-w448782\">Jean-Jacques Perrey, Electronic Music Pioneer, Dead at 87</a></p> ", "tags": ["obit"]}, {"id": "152640347924", "title": "009++cyann 160404 215341 NuBF 50 by ali y.http://ift.tt/2e1U7m1", "date": "2016-11-02", "content": "<p>009++cyann 160404 215341 NuBF 50 by ali y. <a href=\"http://ift.tt/2e1U7m1\">http://ift.tt/2e1U7m1</a></p> ", "tags": []}, {"id": "152331574064", "title": "Edip Akbayram Daglar dagladi Sound Sanayi Mix by dj tutanhttp://ift.tt/2eKU8s2", "date": "2016-10-26", "content": "<p>Edip Akbayram Daglar dagladi Sound Sanayi Mix by dj tutan <a href=\"http://ift.tt/2eKU8s2\">http://ift.tt/2eKU8s2</a></p> ", "tags": []}, {"id": "152289275584", "title": "The Hanging Garden- Vladimir Ivkovic by The Nationhttp://ift.tt/2eNJcJr", "date": "2016-10-25", "content": "<p>The Hanging Garden- Vladimir Ivkovic by The Nation <a href=\"http://ift.tt/2eNJcJr\">http://ift.tt/2eNJcJr</a></p> ", "tags": ["Musical Sensitivity", "Influence", "Passion"]}, {"id": "151510872539", "title": "50 song playlist covering my favourites from the last couple of months, spanning many genres and art", "date": "2016-10-08", "content": "<p>50 song playlist covering my favourites from the last couple of months, spanning many genres and artists: New stuff from Silver Apples, Devendra Banhart, Peter Broderick, LA FEMME, Causa Sui, Goat, Soccer96, De La Soul, ANOHNI, GoGo Penguin, Nels Cline, Moses Boyd, Idris Ackamoor, Anthony Joseph, Skepta, Gay Marvine and some vintage faves from Cornell Campbell, Dolly Parton, Wganda Kenya, Donald Byrd and more!</p> ", "tags": ["music", "spotify"]}, {"id": "151053512979", "title": "Orient Art podcast 021 Dansa Davet / Baris & Dogan by Orient Arthttp://ift.tt/2cVuzlH", "date": "2016-09-28", "content": "<p>Orient Art podcast 021 Dansa Davet / Baris &amp; Dogan by Orient Art <a href=\"http://ift.tt/2cVuzlH\">http://ift.tt/2cVuzlH</a></p> ", "tags": ["Orient Art"]}, {"id": "151053982849", "title": "Tufan Demir - Re/fraction 08 by Tufan Demirhttp://ift.tt/2dzvCsD", "date": "2016-09-28", "content": "<p>Tufan Demir - Re/fraction 08 by Tufan Demir <a href=\"http://ift.tt/2dzvCsD\">http://ift.tt/2dzvCsD</a></p> ", "tags": ["Tech House", "House", "Techno", "Deep", "Bass"]}, {"id": "150935993405", "title": "Mild High Club - KokopelliNew Mild High Club alert!! Out on Stones Throw.", "date": "2016-09-26", "content": "<p>Mild High Club - Kokopelli</p><p>New Mild High Club alert!! Out on Stones Throw.</p> ", "tags": ["2016", "hipsterism"]}, {"id": "150962741944", "title": "Huilen in de Disco by Venderstrooikhttp://ift.tt/2dweerL", "date": "2016-09-26", "content": "<p>Huilen in de Disco by Venderstrooik <a href=\"http://ift.tt/2dweerL\">http://ift.tt/2dweerL</a></p> ", "tags": ["Dance Pop", "Party", "yeah", "Dance", "Pop", "House", "Edm", "TripTechTribleDANCE", "Comazuipen", "Teen", "\"Feest DJ T"]}, {"id": "150636729809", "title": "Undomondo, Ece \u00d6zel & Baris K. Set by LYLhttp://ift.tt/2d2ke81", "date": "2016-09-19", "content": "<p>Undomondo, Ece \u00d6zel &amp; Baris K. Set by LYL <a href=\"http://ift.tt/2d2ke81\">http://ift.tt/2d2ke81</a></p> ", "tags": ["Istanbul", "Mehmet", "Mersenne", "Calypso", "Funk", "Psychedelic", "Traditionnal", "House", "Acid", "LYL", "\"Emotional E"]}, {"id": "150487754399", "title": "SKINNERBOX LIVE @ FUSION FESTIVAL 2016 - TURMB\u00dcHNE by skinnerboxhttp://ift.tt/2cKIe24", "date": "2016-09-16", "content": "<p>SKINNERBOX LIVE @ FUSION FESTIVAL 2016 - TURMB\u00dcHNE by skinnerbox <a href=\"http://ift.tt/2cKIe24\">http://ift.tt/2cKIe24</a></p> ", "tags": ["fusion festival", "fusion 2016", "turmb\u00fchne"]}, {"id": "150498942174", "title": "The Wehringhausen Aftermath by Scroungerhttp://ift.tt/2be5ofM", "date": "2016-09-16", "content": "<p>The Wehringhausen Aftermath by Scrounger <a href=\"http://ift.tt/2be5ofM\">http://ift.tt/2be5ofM</a></p> ", "tags": ["Laut&Luise", "Cologne", "Wehringhausen"]}, {"id": "150456789779", "title": "Live From Music Gallery Detroit by Sound Signaturehttp://ift.tt/2cq51Qs", "date": "2016-09-15", "content": "<p>Live From Music Gallery Detroit by Sound Signature <a href=\"http://ift.tt/2cq51Qs\">http://ift.tt/2cq51Qs</a></p> ", "tags": ["Sound Signature", "Theo Parrish", "Music Gallery", "Movement Festival", "Specter", "Detroit"]}, {"id": "150050341524", "title": "Lemurian - Chayana  (FREE DOWNLOAD) by Lemurianhttp://ift.tt/2ceyK0d", "date": "2016-09-07", "content": "<p>Lemurian - Chayana  (FREE DOWNLOAD) by Lemurian <a href=\"http://ift.tt/2ceyK0d\">http://ift.tt/2ceyK0d</a></p> ", "tags": []}, {"id": "150050343089", "title": "Ali Farka Toure - Bonde (Lemurian In Mali Edit) FREE DOWNLOAD by Lemurianhttp://ift.tt/2c2rTDz", "date": "2016-09-07", "content": "<p>Ali Farka Toure - Bonde (Lemurian In Mali Edit) FREE DOWNLOAD by Lemurian <a href=\"http://ift.tt/2c2rTDz\">http://ift.tt/2c2rTDz</a></p> ", "tags": []}, {"id": "149409771844", "title": "Bader Motor - Bongo Bongo BongoBader Motor\u2019s third LP, appropriately titled \u2018Drei Drei Drei\u2019 is due ", "date": "2016-08-24", "content": "<p>Bader Motor - Bongo Bongo Bongo</p><p>Bader Motor\u2019s third LP, appropriately titled \u2018Drei Drei Drei\u2019 is due to be released in the coming months on Brussels-based label Veals &amp; Geeks.\u00a0<br/></p> ", "tags": ["2016", "kraut", "hipsterism"]}, {"id": "149096614539", "title": "Ibrahim Houssein - Al Ghuroub (The Sunset)G\u00f6zlerim doluyor dinlerken. Tarifsiz hisler.From the amazi", "date": "2016-08-18", "content": "<p>Ibrahim Houssein - Al Ghuroub (The Sunset)<br/></p><p>G\u00f6zlerim doluyor dinlerken. Tarifsiz hisler.\u00a0</p><p>From the amazing <a href=\"https://shellachead.bandcamp.com/album/the-lost-45s-of-sudan-shellachead-annual-2015\">Lost 45s of Sudan compilation by ShellacHead</a></p> ", "tags": ["worldobscure"]}, {"id": "149091761549", "title": "Lemurian - Chayana (Original Mix) - FREE DOWNLOAD by Cosmic Awakeningshttp://ift.tt/2aWeUFG", "date": "2016-08-17", "content": "<p>Lemurian - Chayana (Original Mix) - FREE DOWNLOAD by Cosmic Awakenings <a href=\"http://ift.tt/2aWeUFG\">http://ift.tt/2aWeUFG</a></p> ", "tags": []}, {"id": "149004741835", "title": "Ishmael - Mercy, Mercy MeGood gospel house onWolf Music.", "date": "2016-08-16", "content": "<p>Ishmael - Mercy, Mercy Me</p><p>Good gospel house on <a href=\"https://soundcloud.com/nysoul/ishmael-mercy-mercy-me-wolfep036\">Wolf Music</a>.</p> ", "tags": ["house", "dance", "2016"]}, {"id": "149010087818", "title": "Dolly Parton - Dumb Blonde (1967)", "date": "2016-08-16", "content": "<p>Dolly Parton - Dumb Blonde (1967)</p> ", "tags": ["vintageobscure"]}, {"id": "149015492759", "title": "Selda - Dane Dane Benleri Var (fattish\u2019s Summer Rework)", "date": "2016-08-16", "content": "<p>Selda - Dane Dane Benleri Var (fattish\u2019s Summer Rework)</p> ", "tags": ["edit", "2016", "dance"]}, {"id": "149020148174", "title": "Undomondo Radio Show #171Trying to return to a more content state of mind in these extremely turbule", "date": "2016-08-16", "content": "<p>Undomondo Radio Show #171</p>\n<p>Trying to return to a more content state of mind in these extremely turbulent times, I fell back on music again. Just finished this show which is the signature Undomondo sound blending, jazz, exotica, OST\u2019s, from all over. I had dreamt of a nice breeze on a hot summer day by the seaside, and hope this mix will make you feel the same. </p>\n<p>Vince Guaraldi Trio - Willow weep for me (1957)<br/>\nArmando Trovaioli - Louise (1976)<br/>\nHenry Mancini - Off Shore (2012, comp)<br/>\nHaruomi Hosono - \u201cSayonara\u201d, The Japanese Farewell Song (1976)<br/>\nNostalgia 77 and the Monster - Island in the Sun (2015)<br/>\nMasami Kawahara &amp; The Exotic Sounds - Mit Day Lagoon (1970)<br/>\nGrupo Fantasma - Porque<br/>\nDoc Severinsen - I will wait for you (1965)<br/>\nThe Web - Kilimanjaro (2008)<br/>\nDennis Farnon - Very Contrary Mary<br/>\nJohn Kenneth Nelson - Manuel Bitor (2015, comp)<br/>\nOnno ve Kumpanyasi - Ho\u015f Bilezik (1976)<br/>\nRupert Clemendore - Princess Charming (1961)<br/>\nJack Melick - Lisbon Antigua (1967)<br/>\nSir Victor Uwaifo &amp; His Melody Maestroes - Siwo-Siwo<br/>\nPernambuco e Seu Conjunto - O Menino Grande (1957)<br/>\nAl Lirvat et son Antillais Wabap - Pour Toi Mon Amour (1977)<br/>\nEsquivel - Todavia (1968) <a href=\"http://ift.tt/29YSwLo\">http://ift.tt/29YSwLo</a></p> ", "tags": ["Easy Listening", "Exotica", "OST", "Jazz", "African", "Caribbean"]}, {"id": "149023519901", "title": "Hanni El Khatib - Mondo and His MakeupFromHanni El Khatib - Savage Times Vol. 3", "date": "2016-08-16", "content": "<p>Hanni El Khatib - Mondo and His Makeup</p><p>From\u00a0<a href=\"http://hyperurl.co/savagetimes3\">Hanni El Khatib - Savage Times Vol. 3</a></p> ", "tags": ["2016", "hipsterism"]}, {"id": "149023907844", "title": "Camp C\u2205smic 2\u25d016 by Andr\u00e9 Pahlhttp://ift.tt/2baI8in", "date": "2016-08-16", "content": "<p>Camp C\u2205smic 2\u25d016 by Andr\u00e9 Pahl <a href=\"http://ift.tt/2baI8in\">http://ift.tt/2baI8in</a></p> ", "tags": ["Camp Cosmic", "Summer nights", "Safari", "Psychedelic", "Experimental", "Campcosmic"]}, {"id": "148976745152", "title": "Caetano Veloso - Asa BrancaLive at Discorama, 1972", "date": "2016-08-15", "content": "<p>Caetano Veloso - Asa Branca\u00a0</p><p>Live at Discorama, 1972</p> ", "tags": ["vintageobscure"]}, {"id": "148934841054", "title": "Trilha Sonora Original (1969-1976) - A mixtape of brazilian soap opera soundtracks by DJ DvBz by Dig", "date": "2016-08-14", "content": "<p>Trilha Sonora Original (1969-1976) - A mixtape of brazilian soap opera soundtracks by DJ DvBz by Digital_Vagabondz <a href=\"http://ift.tt/2bqZ9no\">http://ift.tt/2bqZ9no</a></p> ", "tags": []}, {"id": "148321757691", "title": "Dr. J.K. Sutherland - Mid-Eastern MeditationsArmenian-American oud player J.K. Sutherland\u2019s home-rec", "date": "2016-08-02", "content": "<p>Dr. J.K. Sutherland - Mid-Eastern Meditations</p><p>Armenian-American oud player J.K. Sutherland\u2019s home-recorded solo improvisations on the oud . Saddest liner notes I\u2019ve ever read. Transferred and issued on the amazing <a href=\"https://canary-records.bandcamp.com/\">Canary Records</a> by Ian Nagoski.</p> ", "tags": ["worldobscure"]}, {"id": "148236961554", "title": "Bill Callahan - So Long MarianneMarianne Ihlen, the woman immortalized in \u201cSo Long, Marianne\u201d and th", "date": "2016-07-31", "content": "<p>Bill Callahan - So Long Marianne</p><p>Marianne Ihlen, the woman immortalized in \u201cSo Long, Marianne\u201d and the woman in Leonard Cohen\u2019s life through the 1960s, died July 28, 2016 after being diagnosed with leukemia less than a week ago.</p> ", "tags": ["cover", "obit"]}, {"id": "148238230464", "title": "Mustafa C\u0327avusef - Hangi - Sanki", "date": "2016-07-31", "content": "<p>Mustafa C\u0327avusef - Hangi - Sanki</p> ", "tags": ["turkish", "worldobscure", "vintage"]}, {"id": "147999101394", "title": "Undomondo 2016 Rotation (Spotify Playlist)Trying to return to a more content state of mind in these ", "date": "2016-07-26", "content": "<p>Undomondo 2016 Rotation (Spotify Playlist)</p>\n<p>Trying to return to a more content state of mind in these extremely turbulent times, I fell back on music once again. Just finished a new undomondo radio show for the weekend + updated my ongoing spotify lists for 2016. Tune in! and hope some of the stuff you catch might take your mind off world politics + 2nd hand stress you feel from our bleak future these days.</p> ", "tags": ["music", "spotify"]}, {"id": "147959411769", "title": "Norman Records Podcast #15: Ian WIlliam Craig (\u201cTo Glorious Art and Golden Prints\u201d) by Norman Record", "date": "2016-07-25", "content": "<p>Norman Records Podcast #15: Ian WIlliam Craig (\u201cTo Glorious Art and Golden Prints\u201d) by Norman Records <a href=\"http://ift.tt/2aG4SoZ\">http://ift.tt/2aG4SoZ</a></p> ", "tags": ["norman records", "Podcast", "powerful!!!", "Pop", "Drone", "Ambient", "fatcat", "recital", "exciting", "\"ian william"]}, {"id": "147566217753", "title": "Plaid - Do MatterFrom Plaid\u2019s new album \u2018The Digging Remedy\u2019, released on 10 June via Warp Records", "date": "2016-07-18", "content": "<p>Plaid - Do Matter</p><p>From Plaid\u2019s new album \u2018The Digging Remedy\u2019, released on 10 June via Warp Records</p> ", "tags": ["2016"]}, {"id": "147537467969", "title": "Alan Vega RIP", "date": "2016-07-17", "content": "<p>Alan Vega RIP</p> ", "tags": ["photo", "2016", "obit"]}, {"id": "147537555144", "title": "Suicide - Dream Baby Dream", "date": "2016-07-17", "content": "<p>Suicide - Dream Baby Dream</p> ", "tags": ["obit"]}, {"id": "147495975934", "title": "Brazil 16 Mix Antal // Rush Hour by antalrushhourhttp://ift.tt/1P0RfMj", "date": "2016-07-16", "content": "<p>Brazil 16 Mix Antal // Rush Hour by antalrushhour <a href=\"http://ift.tt/1P0RfMj\">http://ift.tt/1P0RfMj</a></p> ", "tags": ["rush", "hour", "antal", "love"]}, {"id": "147234517014", "title": "Voodoocast 003 - Pigmali\u00e3o (live-set) by voodoohophttp://ift.tt/1TJlFtf", "date": "2016-07-11", "content": "<p>Voodoocast 003 - Pigmali\u00e3o (live-set) by voodoohop <a href=\"http://ift.tt/1TJlFtf\">http://ift.tt/1TJlFtf</a></p> ", "tags": ["podcast"]}, {"id": "147235770844", "title": "L'amour A La Plage III (Mixtape) by Mrs. Blythehttp://ift.tt/29xMMcE", "date": "2016-07-11", "content": "<p>L'amour A La Plage III (Mixtape) by Mrs. Blythe <a href=\"http://ift.tt/29xMMcE\">http://ift.tt/29xMMcE</a></p> ", "tags": ["L'amour a la plage", "mixtape", "mrsblythe"]}, {"id": "147240769334", "title": "\u201cJo Que?\u201d feat. Wide Awake - A Visit to the Crystal Museum by jO.K.ehttp://ift.tt/29C0vgY", "date": "2016-07-11", "content": "<p>\u201cJo Que?\u201d feat. Wide Awake - A Visit to the Crystal Museum by jO.K.e <a href=\"http://ift.tt/29C0vgY\">http://ift.tt/29C0vgY</a></p> ", "tags": ["headphone music", "JoKe", "WideAwake", "Pulpos"]}, {"id": "147182621349", "title": "psychedelicway:Marvin Gaye - Paris, 1976Photo de Claude GassianMarvin Gaye - Paris, 1976", "date": "2016-07-10", "content": "<p><a class=\"tumblr_blog\" href=\"http://psychedelicway.tumblr.com/post/139296501222\">psychedelicway</a>:</p>\n<blockquote>\n<p>Marvin Gaye - Paris, 1976</p>\n<p>Photo de Claude Gassian</p>\n</blockquote>\n<p>Marvin Gaye - Paris, 1976</p> ", "tags": ["photo"]}, {"id": "147115624818", "title": "Krokofant - Sail AheadRune Grammofon power trio Krokofant, live @ Nasjonal Jazzscene Oslo", "date": "2016-07-09", "content": "<p>Krokofant - Sail Ahead</p><p>Rune Grammofon power trio Krokofant, live @ Nasjonal Jazzscene Oslo</p> ", "tags": ["2016", "avant"]}, {"id": "147120180968", "title": "Neurosis - Live @Union Transfer, 2015Forthcoming Neurosis album, imminent", "date": "2016-07-09", "content": "<p>Neurosis - Live @Union Transfer, 2015</p><p>Forthcoming Neurosis album, imminent</p> ", "tags": ["concert", "whiteanger"]}, {"id": "147085853560", "title": "NO ZU - Ui Yia UiaFrom NO ZU albumAfterlifeon Chapter Music.", "date": "2016-07-08", "content": "<p>NO ZU - Ui Yia Uia<br/></p><p>From NO ZU album <a href=\"https://chaptermusic.bandcamp.com/album/afterlife\">Afterlife</a> on Chapter Music.<br/></p> ", "tags": ["2016", "hipsterism"]}, {"id": "147086703074", "title": "Funki Porcini - Conservative ApocalypseWow just wow at the video!!", "date": "2016-07-08", "content": "<p>Funki Porcini - Conservative Apocalypse</p><p>Wow just wow at the video!!</p> ", "tags": ["2016", "electronic"]}, {"id": "147088583876", "title": "Alex Cameron - She\u2019s mineThis Ozzie boy is on fire!!", "date": "2016-07-08", "content": "<p>Alex Cameron - She\u2019s mine</p><p>This Ozzie boy is on fire!!</p> ", "tags": ["2016", "hipsterism"]}, {"id": "146905242344", "title": "Hailu Mergia & Dahlak Band \u2014 Wede Harer Guzo OUT NOW by Awesome Tapes From Africahttp://ift.tt/29k6f", "date": "2016-07-04", "content": "<p>Hailu Mergia &amp; Dahlak Band \u2014 Wede Harer Guzo OUT NOW by Awesome Tapes From Africa <a href=\"http://ift.tt/29k6feR\">http://ift.tt/29k6feR</a></p> ", "tags": ["Hailu Mergia", "Ethiopia", "Ethiojazz", "Soul", "R&B"]}, {"id": "146905243499", "title": "GGLP-009 | A2. KARINA - Vicente Barreto by Goma Gringa Discoshttp://ift.tt/29IzOEr", "date": "2016-07-04", "content": "<p>GGLP-009 | A2. KARINA - Vicente Barreto by Goma Gringa Discos <a href=\"http://ift.tt/29IzOEr\">http://ift.tt/29IzOEr</a></p> ", "tags": ["vicente barreto", "goma gringa discos", "cambaco", "brazil", "Contemporary"]}, {"id": "146905244674", "title": "10TRAX #032 : Albion Venables by Undermadhttp://ift.tt/29hOITE", "date": "2016-07-04", "content": "<p>10TRAX #032 : Albion Venables by Undermad <a href=\"http://ift.tt/29hOITE\">http://ift.tt/29hOITE</a></p> ", "tags": []}, {"id": "146905246384", "title": "Selah Sue - I Won\u2019t Go For More (MNDSGN Remix) (STW Premiere) by Stamp The Waxhttp://ift.tt/29bGnDq", "date": "2016-07-04", "content": "<p>Selah Sue - I Won\u2019t Go For More (MNDSGN Remix) (STW Premiere) by Stamp The Wax <a href=\"http://ift.tt/29bGnDq\">http://ift.tt/29bGnDq</a></p> ", "tags": ["Beats"]}, {"id": "146905247389", "title": "Halal Nein by SpatzHabibi by Disco Halalhttp://ift.tt/29hOBaQ", "date": "2016-07-04", "content": "<p>Halal Nein by SpatzHabibi by Disco Halal <a href=\"http://ift.tt/29hOBaQ\">http://ift.tt/29hOBaQ</a></p> ", "tags": ["disco", "mixtape", "nein", "spatzhabibi"]}, {"id": "146905248564", "title": "Spaniol - Rio Japura na Paulic\u00e9ia | NachtEin.TagAus [FREE DOWNLOAD] by NachtEin.TagAushttp://ift.tt/", "date": "2016-07-04", "content": "<p>Spaniol - Rio Japura na Paulic\u00e9ia | NachtEin.TagAus [FREE DOWNLOAD] by NachtEin.TagAus <a href=\"http://ift.tt/1mHGbNF\">http://ift.tt/1mHGbNF</a></p> ", "tags": ["Rio Japura na Paulic\u00e9ia", "Freetrack", "NachtEin.TagAus", "Download"]}, {"id": "146905249569", "title": "Mousik\u0113 07 | \u201cSonntagstanz\u201d by Fata & Morgana by Mousik\u0113http://ift.tt/29hOoUY", "date": "2016-07-04", "content": "<p>Mousik\u0113 07 | \u201cSonntagstanz\u201d by Fata &amp; Morgana by Mousik\u0113 <a href=\"http://ift.tt/29hOoUY\">http://ift.tt/29hOoUY</a></p> ", "tags": ["mousike", "fata", "disco", "katerblau", "ethnic", "melodic"]}, {"id": "146905250754", "title": "Mira presents \u2018Tributo de los Andes\u2019 Afterhour Sounds Podcast Nr. 83 by Afterhour Soundshttp://ift.t", "date": "2016-07-04", "content": "<p>Mira presents \u2018Tributo de los Andes\u2019 Afterhour Sounds Podcast Nr. 83 by Afterhour Sounds <a href=\"http://ift.tt/29IzHcl\">http://ift.tt/29IzHcl</a></p> ", "tags": ["Kater Blau", "Deep House", "Mira", "Bar25", "Berlin", "Elektro"]}, {"id": "146905252084", "title": "19 - BLACK BOWIE by OKO EBOMBOhttp://ift.tt/29hOxaQ", "date": "2016-07-04", "content": "<p>19 - BLACK BOWIE by OKO EBOMBO <a href=\"http://ift.tt/29hOxaQ\">http://ift.tt/29hOxaQ</a></p> ", "tags": ["TRIBUTE", "POOL"]}, {"id": "146905256649", "title": "Tom Jones by guitarwizardsofthefuturehttp://ift.tt/29IzGoq", "date": "2016-07-04", "content": "<p>Tom Jones by guitarwizardsofthefuture <a href=\"http://ift.tt/29IzGoq\">http://ift.tt/29IzGoq</a></p> ", "tags": ["balls out", "weirdo"]}, {"id": "146697411264", "title": "Klaus Johann Grobe -\u00a0Geschichten aus erster HandFrom their debutSpagat der Liebe. Warm and catchy kr", "date": "2016-06-30", "content": "<p>Klaus Johann Grobe -\u00a0Geschichten aus erster Hand</p><p>From their debut <a href=\"http://www.troubleinmindrecs.com/klaus-johann-grobe-spagat-der-liebe-pink-vinyl-or-cd-version/\">Spagat der Liebe</a>. Warm and catchy kraut pop / dance.\u00a0</p> ", "tags": ["2016", "bestof"]}, {"id": "146697425669", "title": "Klaus Johann Grobe - Spagat der LiebeMy favourites are #1, #6, #8! #1 goes straight to best of 2016 ", "date": "2016-06-30", "content": "<p>Klaus Johann Grobe - Spagat der Liebe</p><p>My favourites are #1, #6, #8! #1 goes straight to best of 2016 list!\u00a0</p> ", "tags": ["2016", "bestof"]}, {"id": "144518791869", "title": "Frank Yankovic \u201cYou Are My Sunshine\u201dFrank and the Yanks\u2019 polka version of \u201cYou Are My Sunshine\u201d", "date": "2016-05-17", "content": "<p>Frank Yankovic \u201cYou Are My Sunshine\u201d<br/></p><p>Frank and the Yanks\u2019 polka version of \u201cYou Are My Sunshine\u201d<br/></p> ", "tags": ["worldobscure", "vintage"]}, {"id": "144453065144", "title": "PREMIERE: Miajica - Der Schlosser [LGDZ] by The Ransom Notehttp://ift.tt/1rP43kY", "date": "2016-05-16", "content": "<p>PREMIERE: Miajica - Der Schlosser [LGDZ] by The Ransom Note <a href=\"http://ift.tt/1rP43kY\">http://ift.tt/1rP43kY</a></p> ", "tags": ["miajica", "techno", "kraut"]}, {"id": "144453066304", "title": "Von Party - Cobra Kush Feat. Naduve by XLR8Rhttp://ift.tt/1TkhJu5", "date": "2016-05-16", "content": "<p>Von Party - Cobra Kush Feat. Naduve by XLR8R <a href=\"http://ift.tt/1TkhJu5\">http://ift.tt/1TkhJu5</a></p> ", "tags": ["Multi City", "Disco", "House"]}, {"id": "144453066749", "title": "Free Disco Drum Samples FREE DOWNLOAD! by HomeroEspinosahttp://ift.tt/1qnCpu2", "date": "2016-05-16", "content": "<p>Free Disco Drum Samples FREE DOWNLOAD! by HomeroEspinosa <a href=\"http://ift.tt/1qnCpu2\">http://ift.tt/1qnCpu2</a></p> ", "tags": ["House", "disco", "freesamples", "loops"]}, {"id": "144414641129", "title": "Originais do Samba | Do Lado Direito da Rua Direita", "date": "2016-05-15", "content": "<p>Originais do Samba | Do Lado Direito da Rua Direita</p> ", "tags": ["brasil"]}, {"id": "143528102959", "title": "Comunite 03: Matanza by Comunitehttp://ift.tt/1S5uL38", "date": "2016-04-28", "content": "<p>Comunite 03: Matanza by Comunite <a href=\"http://ift.tt/1S5uL38\">http://ift.tt/1S5uL38</a></p> ", "tags": []}, {"id": "143348552624", "title": "LEN LEISE - SANPO 022Sweet mix by Len Leise.", "date": "2016-04-25", "content": "<p>LEN LEISE - SANPO 022</p>\n<p>Sweet mix by Len Leise.</p> ", "tags": ["mixes"]}, {"id": "143354286283", "title": "Louis Jordan & his Tymphany Band - Early in the MorningLouis Jordan & his Tymphany Band - Early In T", "date": "2016-04-25", "content": "<p>Louis Jordan &amp; his Tymphany Band - Early in the Morning</p>\n<p><br/>\nLouis Jordan &amp; his Tymphany Band - Early In The Morning From the movie \u2018Look Out Sister\u2019 1947</p> ", "tags": ["worldobscure"]}, {"id": "143360479789", "title": "Undomondo Radio Show #169No. 169 is a very spontaneous guest mix by none other than our friend @Miaj", "date": "2016-04-25", "content": "<p>Undomondo Radio Show #169</p>\n<p>No. 169 is a very spontaneous guest mix by none other than our friend @Miajica from the @almanegramusic collective. An hour of ethio jams for your enjoyment.</p> ", "tags": ["ethnic", "ethio", "World", "guest", "beat", "jazz"]}, {"id": "143365366696", "title": "Celia Cruz & Tito Puente - Quimbara (Live)", "date": "2016-04-25", "content": "<p>Celia Cruz &amp; Tito Puente - Quimbara (Live)</p> ", "tags": ["latin", "vintage"]}, {"id": "143292812253", "title": "The Sonics - I Don\u2019t Need No Doctor (Live at Easy Street)The Sonics performing \u201cI Don\u2019t Need No Doct", "date": "2016-04-24", "content": "<p>The Sonics - I Don\u2019t Need No Doctor (Live at Easy Street)</p>\n<p>The Sonics performing \u201cI Don\u2019t Need No Doctor\u201d live in the KEXP studio. Recorded April 18, 2015.</p> ", "tags": ["garage", "live"]}, {"id": "143297805414", "title": "F\u00f6llakzoid - Earth Live at NRMAL 2016F\u00f6llakzoid perform \u201cEarth\u201d at NRMAL 2016", "date": "2016-04-24", "content": "<p>F\u00f6llakzoid - Earth Live at NRMAL 2016</p> \n\nF\u00f6llakzoid perform \u201cEarth\u201d at NRMAL 2016 ", "tags": ["2016", "live"]}, {"id": "143303254989", "title": "Pierre Bastien - Me\u0301canologiOff Machinations on Rephlex", "date": "2016-04-24", "content": "<p>Pierre Bastien - Me\u0301canologi</p>\nOff Machinations on Rephlex ", "tags": ["electronic"]}, {"id": "143308091947", "title": "Harry Hosono - Merry Go RoundFrom Harry Hosono - Crown Years 1974-1977 boxset Tinpan Alley 1975-1976", "date": "2016-04-24", "content": "<p>Harry Hosono - Merry Go Round</p>\n\nFrom Harry Hosono - Crown Years 1974-1977 boxset Tinpan Alley 1975-1976 DVD ", "tags": ["video", "vintage"]}, {"id": "143311872125", "title": "Masha Qrella: DJ \n\nTaken from \u201cKeys\u201d - out now on Morr Music \n\nDJ is a song about Berlin, about the ", "date": "2016-04-24", "content": "<p>Masha Qrella: DJ \n\nTaken from \u201cKeys\u201d - out now on Morr Music \n\nDJ is a song about Berlin, about the state you can find yourself in in this city. The DJ in the video is Hannes Lehmann, whom Masha Qrella has known since he was 16 years old, with whom she shared her first apartment, and next to whom she stood onstage with MINA and CONTRIVA. Qrella leaves open which story is told in DJ \u2013 that of hers or that of her friend.</p> ", "tags": ["2016", "bestof"]}, {"id": "143315090743", "title": "Eartheater - HomonymsSeveral months in the making, director Sigrid Lauren\u2019s video for the hypnotic y", "date": "2016-04-24", "content": "<p>Eartheater - Homonyms</p>\n<blockquote>Several months in the making, director Sigrid Lauren\u2019s video for the hypnotic yet frenetic \u201cHomonym\u201d not only captures the dreamlike quality of the song, but also gives it an origin story. Set in a lush countryside, four androgynous dancers exude utopian bliss despite wearing gas masks: \u201cCreatures born into whatever harshness will always find joy if this is all they know,\u201d Drewchin writes in a treatment for the video. </blockquote> <a href=\"http://www.npr.org/event/music/467115089/watch-eartheaters-homonyms-is-a-waking-dream\">NPR</a> ", "tags": ["hipsterism"]}, {"id": "141633543353", "title": "A Tribe Called Quest - Jazz (We\u2019ve Got) Buggin\u2019 OutRIP", "date": "2016-03-25", "content": "<p>A Tribe Called Quest - Jazz (We\u2019ve Got) Buggin\u2019 Out</p>\n\nRIP ", "tags": ["hip-hop", "obit"]}, {"id": "141639573046", "title": "You See Me Laughin\u2019: the last of the hill country bluesmen(Mississippi Blues documentary - 2002) You", "date": "2016-03-25", "content": "<p>You See Me Laughin\u2019: the last of the hill country bluesmen</p> (Mississippi Blues documentary - 2002) You See Me Laughin\u2019 is a personal journey into the lives and music of the last of the hill country bluesmen who\u2019ve kept their music alive on the back porches and in the tiny juke joints of the Mississippi backwoods. Director: Mandy Stein Stars: R.L. Burnside, Junior Kimbrough, Cedell Davis, T Model Ford, Bono (U2), Iggy Pop. ", "tags": ["docu"]}, {"id": "141645308015", "title": "Fania all Stars - live in Africa En 1974Full concert!", "date": "2016-03-25", "content": "<p>Fania all Stars - live in Africa En 1974</p>\n\nFull concert! ", "tags": ["concert", "latin", "vintage"]}, {"id": "141649456385", "title": "Steve Hiett - Welcome To Your Beach Steve Hiett (1983)Rare!", "date": "2016-03-25", "content": "<p>Steve Hiett - Welcome To Your Beach Steve Hiett (1983)</p>\n\nRare! ", "tags": ["vintage"]}, {"id": "141652625043", "title": "\u0645\u062d\u0645\u062f \u0645\u064a\u0631\u063a\u0646 - Mohamed MirghaniVintage from Hartoum, Sudan", "date": "2016-03-25", "content": "<p>\u0645\u062d\u0645\u062f \u0645\u064a\u0631\u063a\u0646 - Mohamed Mirghani</p>\n\nVintage from Hartoum, Sudan ", "tags": ["worldobscure"]}, {"id": "140863659374", "title": "Stolid Seal Mix by The Dandelion Sethttp://ift.tt/1nD85du", "date": "2016-03-11", "content": "<p>Stolid Seal Mix by The Dandelion Set <a href=\"http://ift.tt/1nD85du\">http://ift.tt/1nD85du</a></p> ", "tags": ["Instrumental Hip Hop", "Progressive Rock", "experimental electronic", "soundtracks", "hauntology", "\"lib"]}, {"id": "140748668264", "title": "Grup Ses Beats Meets Dj No Frost by Grup Ses Beatshttp://ift.tt/1R7AVR3", "date": "2016-03-09", "content": "<p>Grup Ses Beats Meets Dj No Frost by Grup Ses Beats <a href=\"http://ift.tt/1R7AVR3\">http://ift.tt/1R7AVR3</a></p> ", "tags": ["hiphop", "beat", "psychedelic", "turkish", "turntableism", "mix"]}, {"id": "140702607154", "title": "Mark Seven - Airport Riot by electriks musichttp://ift.tt/1W6QgiP", "date": "2016-03-08", "content": "<p>Mark Seven - Airport Riot by electriks music <a href=\"http://ift.tt/1W6QgiP\">http://ift.tt/1W6QgiP</a></p> ", "tags": []}, {"id": "139692274712", "title": "Anoushka Shankar - \u201cTraveller\u201d Live @ Festival Les Nuits de Fourvier, France [2012]", "date": "2016-02-21", "content": "<p>Anoushka Shankar - \u201cTraveller\u201d Live @ Festival Les Nuits de Fourvier, France [2012]</p> ", "tags": ["concert", "world"]}, {"id": "139327002598", "title": "Borai - Anybody from LondonMassive Bristol jungle/hip-house revival EP. \u00a0Also wonderful old VHS foot", "date": "2016-02-15", "content": "<p>Borai - Anybody from London</p><p>Massive Bristol jungle/hip-house revival EP. \u00a0Also wonderful old VHS footage for the movie.\u00a0</p> ", "tags": ["2015", "bestof", "dance"]}, {"id": "139288067499", "title": "Konk - Konk Party Official Video Konk rocked the Lower East Side of Manhattan in the 80\u2019s, playing w", "date": "2016-02-14", "content": "<p>Konk - Konk Party Official Video Konk rocked the Lower East Side of Manhattan in the 80\u2019s, playing with greats such as ESG, Liquid Liquid, Bad Brains, Bush Tetras, Sonic Youth and many more. Konk Party was a hit on WKTU, WBLS and WLIR. Live shows every weekend included Danceteria, Mudd Club, CBGB, The Loft, Paradise Garage, the Pyramid Bar, 8 BC and many more\u2026 Produced and Directed by Ed Steinberg, of RockAmerica. The next weekend he shot Madonna\u2019s Everybody - iTunes: <a href=\"http://ift.tt/1U0EHek\">http://ift.tt/1U0EHek</a> Web: <a href=\"http://konknyc.com\">http://konknyc.com</a> Connect: <a href=\"http://ift.tt/212nzH7\">http://ift.tt/212nzH7</a></p> ", "tags": []}, {"id": "139288067844", "title": "Konk - Love Attack in Tompkins Square Park NYC 1986 Konk and friends perform 20 minute version of Lo", "date": "2016-02-14", "content": "<p>Konk - Love Attack in Tompkins Square Park NYC 1986 Konk and friends perform 20 minute version of Love Attack at Tompkins Square Park - Life in and around Tompkins Square iTunes: <a href=\"http://ift.tt/1U0EHen\">http://ift.tt/1U0EHen</a> Web: <a href=\"http://konknyc.com\">http://konknyc.com</a> Connect: <a href=\"http://ift.tt/212nzH7\">http://ift.tt/212nzH7</a></p> ", "tags": []}, {"id": "139142487701", "title": "Mikael Seifu - How to save a life (Vector of Eternity)Out onRVNG Intl.Mikael\u2019s music does not wester", "date": "2016-02-12", "content": "<p>Mikael Seifu - How to save a life (Vector of Eternity)</p><p>Out on <a href=\"http://smarturl.it/zelalem-rvng\">RVNG Intl.</a></p><blockquote><p>Mikael\u2019s music does not westernize or electronicize extant Ethiopian music. Instead, Seifu uses Ethio-Jazz\u2019s spirit of brewing estranged styles for his own musical tincturing. Seifu\u2019s passion above all else is to create something befitting of its time, yet \u201ceternally Ethiopian.\u201d The latter phrase was the mantra guiding Seifu through the creation of Zelalem, and a source of inspiration for the cover artwork.</p></blockquote> ", "tags": ["electronic", "2016", "world", "african"]}, {"id": "139120876584", "title": "Alma Negra - MagekoThe Alma Negra boys have done it again. Out soon onSofrito.\u201cPurveyors of all thin", "date": "2016-02-11", "content": "<p>Alma Negra - Mageko</p><p>The Alma Negra boys have done it again. Out soon on <a href=\"https://boilerroom.tv/recording/sofrito/#/video\">Sofrito</a>.\u00a0</p><blockquote><p>\u201cPurveyors of all things tropical \u2013 Sofrito are currently readying the release of the ninth instalment in their Sofrito Super Singles Series. For this outing Basel\u2019s Alma Negra deliver three percussion heavy tracks at the crossroads between organic &amp; electronic sounds, inspired by the Carnival celebrations on the Cape Verdean island of Santiago.\u201d<br/></p></blockquote> ", "tags": ["world", "dance", "2016"]}, {"id": "139023808024", "title": "http://ift.tt/1KaQgxv", "date": "2016-02-10", "content": "<p><a href=\"http://ift.tt/1KaQgxv\">http://ift.tt/1KaQgxv</a></p> ", "tags": []}, {"id": "138784735839", "title": "Cypress Hill - How I Could Just Kill a Man \u201cMusic video by Cypress Hill;Rage Against The Machine per", "date": "2016-02-06", "content": "<p>Cypress Hill - How I Could Just Kill a Man \u201cMusic video by Cypress Hill;Rage Against The Machine performing How I Could Just Kill A Man. \u00a9 1991 SONY BMG MUSIC ENTERTAINMENT\u201d</p> ", "tags": []}, {"id": "138638019528", "title": "Junun [Official Album Trailer]From the film Junun with Shye Ben Tzur, Jonny Greenwood, and the Rajas", "date": "2016-02-04", "content": "<p>Junun [Official Album Trailer]</p>\n<blockquote>From the film Junun with Shye Ben Tzur, Jonny Greenwood, and the Rajasthan Express. Directed by Paul Thomas Anderson. Featuring the album track \u201cRoked.\u201d</blockquote> ", "tags": ["bestof", "2015", "world"]}, {"id": "138613650574", "title": "Admas - Kalatashew Waga (Andras Fox Remix)Out onMajor Problems", "date": "2016-02-03", "content": "<p>Admas - Kalatashew Waga (Andras Fox Remix)</p>\n\nOut on <a href=\"http://majorproblems.bandcamp.com\">Major Problems</a> ", "tags": ["electronic", "2016"]}, {"id": "138613846524", "title": "Stara Rzeka -\u00a0Ogniste Kazania B. B.Psych folk from Poland, buy the album onbandcamp. On our best of ", "date": "2016-02-03", "content": "<p>Stara Rzeka -\u00a0Ogniste Kazania B. B.</p><p>Psych folk from Poland, buy the album on <a href=\"https://stararzeka.bandcamp.com/album/zamkn-y-si-oczy-ziemi-instant-classic\">bandcamp</a>. On our best of 2015 list.\u00a0</p> ", "tags": ["2015", "bestof", "ilerici"]}, {"id": "138311242898", "title": "Yusef Lateef & Adam Rudolph - Live in Milan 20122 people 1 hour improv/free jazz show by the master ", "date": "2016-01-30", "content": "<p>Yusef Lateef &amp; Adam Rudolph - Live in Milan 2012</p> \n\n2 people 1 hour improv/free jazz show by the master Yusef Lateef. \n\nTrack list: 1. When (a poem) 2. Dakpa # 1 3. Trouble in Mind 4. Hexatonic 5. Brother hold your light 6. Dakpa # 2 7. Horse Collar Yusef Lateef - sax, flute, piano, vocal Adam Rudolph - percussion, guembri ", "tags": ["concert", "jazz", "ilerici"]}, {"id": "138317624139", "title": "Oguz B\u00fcy\u00fckberber & Tobias Klein - Diminutus (live @Bimhuis Amsterdam)", "date": "2016-01-30", "content": "<p>Oguz B\u00fcy\u00fckberber &amp; Tobias Klein - Diminutus (live @Bimhuis Amsterdam)</p> ", "tags": ["live", "improv", "ilerici", "jazz"]}, {"id": "138324074375", "title": "Savages - AdoreFirst video from the new Savages album, which went straight into 2016\u2032s best of lists", "date": "2016-01-30", "content": "<p>Savages - Adore</p><p>First video from the new Savages album, which went straight into 2016\u2032s best of lists.. Some mindblowing songs in here, too bad this one isn\u2019t one of the strongest of the album, IMHO.</p> ", "tags": ["2016", "indie"]}, {"id": "138215345289", "title": "Halal Eight By Mrs. Blythe by Disco Halalhttp://ift.tt/1JI8031", "date": "2016-01-28", "content": "<p>Halal Eight By Mrs. Blythe by Disco Halal <a href=\"http://ift.tt/1JI8031\">http://ift.tt/1JI8031</a></p> ", "tags": ["mix", "mrs.blythe", "eight"]}, {"id": "138054210462", "title": "Nicola Cruz - La MiradaWhatever the hand of The Ecuadorean touches, turns to solid gold.\u201cHis penchan", "date": "2016-01-26", "content": "<p>Nicola Cruz - La Mirada </p>\n\nWhatever the hand of The Ecuadorean touches, turns to solid gold. \n\n<blockquote><div>\u201cHis penchant for leaving percussion alone and undisturbed is one of the driving forces of the record. This can be heard in \u201cLa Mirada\u201d, one of the most urgent and intriguing tracks on Prender el Alma. It\u2019s playful in a dark way, with it\u2019s strange use of echo to fill in silence, and the acoustic guitar riffs that waver in intensity from danceable to mildly melancholic.\u201d <a href=\"http://soundsandcolours.com/articles/ecuador/nicola-cruz-prender-el-alma-30230/\">Sounds and Colours</a></div></blockquote> ", "tags": ["2015", "electronic"]}, {"id": "138061494658", "title": "Ayyuka- S\u00f6mestr feat \u0130lhan Er\u015fahin (Live at Salon IKSV Istanbul)Istanbul\u2019s own boys feat. Ilhan Ersa", "date": "2016-01-26", "content": "<p>Ayyuka- S\u00f6mestr feat \u0130lhan Er\u015fahin (Live at Salon IKSV Istanbul)</p> \n\nIstanbul\u2019s own boys feat. Ilhan Ersahin. ", "tags": ["2015", "live"]}, {"id": "138068841031", "title": "Hello: Ought at Le Guess Who? 2015 Le Guess Who?\u201cWe met up with Montreal post-punk quartet Ought bef", "date": "2016-01-26", "content": "<p>Hello: Ought at Le Guess Who? 2015 Le Guess Who?</p>\n<blockquote>\u201cWe met up with Montreal post-punk quartet Ought before their show, and talked about Constellation Records, the dynamics of the band and how fun talk-shouting is. Afterwards, we captured their live performance at TivoliVredenburg.\u201d</blockquote> ", "tags": ["2015", "live"]}, {"id": "138074449733", "title": "Hello: Lightning Bolt at Le Guess Who? 2015 Le Guess Who?\u201cWe met Rhode Island-based noise dissidents", "date": "2016-01-26", "content": "<p>Hello: Lightning Bolt at Le Guess Who? 2015 Le Guess Who?</p>\n<blockquote>\u201cWe met Rhode Island-based noise dissidents Lightning Bolt backstage, and spoke with Brian Gibson and Brian Chippendale about distortion, masks and new album Fantasy Empire. Afterwards, we captured the band\u2019s explosive live performance as part of the program presented by Levitation (formerly Austin Psych Fest).</blockquote> ", "tags": ["2015", "live"]}, {"id": "138078036578", "title": "Turkish diggin report vol 2 by Turkish Diggin\u2019", "date": "2016-01-26", "content": "<p>Turkish diggin report vol 2 by Turkish Diggin\u2019</p> ", "tags": ["turkish", "mixes"]}, {"id": "138081115322", "title": "Animals Dancing Mix #9 BufimanThis Friday djing at our own club Minimuzikhol.", "date": "2016-01-26", "content": "<p>Animals Dancing Mix #9 Bufiman</p>\n\nThis Friday djing at our own club Minimuzikhol. ", "tags": ["mixes"]}, {"id": "137700042324", "title": "Ali Kuru - Araf - CLIP by LengRecordshttp://ift.tt/1Pp1daN", "date": "2016-01-20", "content": "<p>Ali Kuru - Araf - CLIP by LengRecords <a href=\"http://ift.tt/1Pp1daN\">http://ift.tt/1Pp1daN</a></p> ", "tags": ["Istanbul", "Leng"]}, {"id": "137700044049", "title": "Urubu Marinka MixTape - Festival Nomade by Festival Nomadehttp://ift.tt/1ZpWexB", "date": "2016-01-20", "content": "<p>Urubu Marinka MixTape - Festival Nomade by Festival Nomade <a href=\"http://ift.tt/1ZpWexB\">http://ift.tt/1ZpWexB</a></p> ", "tags": ["UrubuMarinka"]}, {"id": "137532233242", "title": "Harry Belafonte &\u00a0Dr. Martin Luther King, Jr., have a laugh.", "date": "2016-01-19", "content": "<p><b>Harry Belafonte &amp;\u00a0Dr. Martin Luther King, Jr., have a laugh.\u00a0</b></p><p>via <a href=\"https://twitter.com/collectorswkly/status/688089081050468356/photo/1\">Collectors Weekly</a></p> ", "tags": ["photo", "vintage"]}, {"id": "137587884085", "title": "Kamasi Washington at Le Guess Who? 2015Le Guess Who? and de Volkskrant bring you video portraits of ", "date": "2016-01-19", "content": "<p>Kamasi Washington at Le Guess Who? 2015</p> \n\nLe Guess Who? and de Volkskrant bring you video portraits of artists performing at Le Guess Who? Festival 2015. We met up with jazz sensation Kamasi Washington backstage, and talked about his first European tour, trying to get the planets to align, making a record for Flying Lotus\u2019 Brainfeeder Records and John Coltrane. Afterwards, we captured the band\u2019s euphoric live performance at TivoliVredenburg\u2019s beautiful Grote Zaal. ", "tags": ["live", "2015", "jazz"]}, {"id": "137595211934", "title": "Julia Holter - \u2018Horns Surrounding Me\u2019 live at Le Guess Who? 2015Julia Holter performs 'Horns Surroun", "date": "2016-01-19", "content": "<p>Julia Holter - \u2018Horns Surrounding Me\u2019 live at Le Guess Who? 2015</p> \n\nJulia Holter performs 'Horns Surrounding Me\u2019 at Le Guess Who? Festival in Utrecht, 19 November 2015. The performance took place in Janskerk: a beautiful church in the city centre of Utrecht that dates back to the 11th century. ", "tags": ["2015", "live"]}, {"id": "137517406791", "title": "Punks on the Streets of London (1981)Wonderful oldtime video archive.", "date": "2016-01-18", "content": "<p>Punks on the Streets of London (1981)</p>\n<p>Wonderful oldtime video archive.</p> ", "tags": ["docu"]}, {"id": "137524657425", "title": "UK Illegal Rave (1989)From the Kinolibrary Archive Film collections.", "date": "2016-01-18", "content": "<p>UK Illegal Rave (1989)</p>\n<p>From the Kinolibrary Archive Film collections.</p> ", "tags": ["docu", "vintage"]}, {"id": "137148335434", "title": "David Bowie Star Special Sunday 20th May 1979Ustan\u0131n sadece m\u00fczik yetene\u011fi de\u011fil m\u00fczik zevki de iyiy", "date": "2016-01-12", "content": "<p>David Bowie Star Special Sunday 20th May 1979</p><p>Ustan\u0131n sadece m\u00fczik yetene\u011fi de\u011fil m\u00fczik zevki de iyiymi\u015f.</p><blockquote><p>Bowie provides a 2 hour BBC mix featuring some of his favourite tracks of the time. It is a solid combination of well known classics and under-appreciated gems, each introduced by the seminal tastemaker himself. Velvet Underground, Talking Heads, Blondie, Roxy Music, even Bruce Springsteen, all feature, alongside more obscure fair like ? &amp; The Mysterians and The Mekons.<br/></p></blockquote> ", "tags": ["mixes", "vintage"]}, {"id": "136780373484", "title": "Romperayo - Alegria Por Un Zumo De NaranjaReleased on Discrepant, Colombia\u2019s Romperayo is a sister g", "date": "2016-01-07", "content": "<p>Romperayo - Alegria Por Un Zumo De Naranja</p>\n<p>Released on Discrepant, Colombia\u2019s Romperayo is a sister group of Meridian Brothers</p> ", "tags": ["latin", "electronic", "2015"]}, {"id": "136787839453", "title": "Undomondo 168: A Latino NYEHappy New Year kids. \n\nThis mix has been brewing since years; a selection", "date": "2016-01-07", "content": "<p>Undomondo 168: A Latino NYE</p>\n<blockquote>Happy New Year kids. \n\nThis mix has been brewing since years; a selection of the best latin music I\u2019ve been listening to, incl. many cumbia favorites! No filler all killer! A hopeful way to start 2016, and save the world etc. </blockquote> ", "tags": ["undomondo", "mixes"]}, {"id": "136737836792", "title": "Kamasi Washington - \u201cRe Run Home\u201d (Recorded Live for World Cafe)Kamasi Washington performs \u201cRe Run H", "date": "2016-01-06", "content": "Kamasi Washington - \u201cRe Run Home\u201d (Recorded Live for World Cafe)\n\n<p>Kamasi Washington performs \u201cRe Run Home\u201d at World Cafe Live, Philadelphia on August 27, 2015.</p> ", "tags": ["2015", "jazz", "live"]}, {"id": "136741305683", "title": "TheNuLatAmSound Ep. 1Music video by Nicola Cruz, Quixosis, Evha, Huiara, Juan Diego Illescas, Ivis F", "date": "2016-01-06", "content": "<p>TheNuLatAmSound Ep. 1</p>\n\nMusic video by Nicola Cruz, Quixosis, Evha, Huiara, Juan Diego Illescas, Ivis Flies, Mujeres de Luna performing TheNuLatamSound Ep. 1. Produced by: ZZK Films ", "tags": ["docu"]}, {"id": "136380014694", "title": "\u30ad\u30e3\u30ce\u30f3\u30dc\u30fc\u30eb Cannonball Adderley Sextet: Bohemia after dark-Sweet Georgia Brown; JAZZ625, Part-4 Julian \u2018", "date": "2016-01-01", "content": "<p>\u30ad\u30e3\u30ce\u30f3\u30dc\u30fc\u30eb Cannonball Adderley Sextet: Bohemia after dark-Sweet Georgia Brown; JAZZ625, Part-4 Julian \u2018Cannonball\u2019 Adderley Sextet: Julian 'Cannonball\u2019 Adderley(as)/ Nat Adderley (cor)/ Charles Lloyd (ts)/ Joe Zawinul (p)/ Sam Jones (b)/ Louis Hayes (ds) 7.Bohemia after dark 0:00 8.Come Sunday 5:00 9.Sweet Georgia Brown 10:50 Cannonball Adderley Sextet: Bohemia after dark-Come Sunday-Sweet Georgia Brown; Live In JAZZ625, 1964, Part-4; ft Nat Adderley-Charles Lloyd-Joe Zawinul 060156: STD</p> ", "tags": []}];
+    let currentFilter = null;
+    let postsPerPage = 50;
+    let currentPage = 0;
+
+    function formatDate(dateStr) {
+        const d = new Date(dateStr);
+        return d.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
+    }
+
+    function renderPost(post) {
+        const excerpt = post.content.replace(/<[^>]*>/g, '').substring(0, 150);
+        const tags = (post.tags || []).map(t => `<span class="tag">${escape(t)}</span>`).join('');
+        return `
+            <div class="card" onclick="location.href='/tumblr/post.html?id=${post.id}'">
+                <div class="card-header">
+                    <div class="card-date">${formatDate(post.date)}</div>
+                    <h3 class="card-title">${escape(post.title)}</h3>
+                </div>
+                <div class="card-body">
+                    <p class="card-excerpt">${excerpt}...</p>
+                    <div class="card-tags">${tags}</div>
+                </div>
+            </div>
+        `;
+    }
+
+    function escape(text) {
+        const div = document.createElement('div');
+        div.textContent = text;
+        return div.innerHTML;
+    }
+
+    function filterByTag(tag) {
+        if (currentFilter === tag) {
+            currentFilter = null;
+        } else {
+            currentFilter = tag;
+        }
+        document.querySelectorAll('.pill').forEach(p => {
+            p.classList.remove('active');
+            if (p.textContent.trim() === (tag || '')) {
+                p.classList.add('active');
+            }
+        });
+        currentPage = 0;
+        renderPosts();
+    }
+
+    function getVisiblePosts() {
+        if (!currentFilter) return allPosts;
+        return allPosts.filter(p => (p.tags || []).includes(currentFilter));
+    }
+
+    function renderPosts() {
+        const visible = getVisiblePosts();
+        const grid = document.getElementById('grid');
+        const startIdx = 0;
+        const endIdx = (currentPage + 1) * postsPerPage;
+        const toRender = visible.slice(startIdx, endIdx);
+        
+        grid.innerHTML = toRender.map(renderPost).join('');
+        
+        const loadMoreContainer = document.getElementById('load-more-container');
+        if (endIdx < visible.length) {
+            loadMoreContainer.style.display = 'block';
+        } else {
+            loadMoreContainer.style.display = 'none';
+        }
+    }
+
+    function loadMorePosts() {
+        currentPage++;
+        renderPosts();
+    }
+
+    renderPosts();
+    </script>
+</body>
+</html>

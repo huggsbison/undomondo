@@ -1,0 +1,908 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2018 — Undomondo Tumblr Archive</title>
+    <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    html, body {
+        font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        background: #f8f6f1;
+        color: #222;
+        line-height: 1.6;
+    }
+    
+    @import url('https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Space+Mono:wght@400;700&family=DM+Sans:wght@400;500;700&family=Space+Grotesk:wght@400;600;700&display=swap');
+    
+    nav {
+        background: white;
+        padding: 1.5rem 2rem;
+        border-bottom: 3px solid #D62828;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-family: 'Space Grotesk', sans-serif;
+    }
+    
+    .nav-brand {
+        font-size: 1.2rem;
+        font-weight: 700;
+        color: #111;
+        text-decoration: none;
+        letter-spacing: 0.05em;
+    }
+    
+    .nav-links {
+        display: flex;
+        gap: 2rem;
+        list-style: none;
+    }
+    
+    .nav-links a {
+        text-decoration: none;
+        color: #111;
+        font-weight: 600;
+        font-size: 0.95rem;
+        transition: color 0.2s;
+    }
+    
+    .nav-links a:hover,
+    .nav-links a.active {
+        color: #D62828;
+    }
+    
+    .hero {
+        background-color: #111111;
+        background-image: radial-gradient(circle, #005F99 8px, transparent 8px);
+        background-size: 24px 24px;
+        padding: 4rem 2rem;
+        text-align: center;
+        color: white;
+    }
+    
+    .year-big {
+        font-family: 'Dela Gothic One', sans-serif;
+        font-size: clamp(4rem, 10vw, 8rem);
+        margin: 0;
+        text-transform: uppercase;
+        opacity: 0.3;
+        line-height: 1;
+    }
+    
+    .year-info {
+        font-size: 1.2rem;
+        margin: 1.5rem 0;
+        opacity: 0.9;
+    }
+    
+    .year-nav {
+        text-align: center;
+        padding: 2rem;
+        font-family: 'Space Grotesk', sans-serif;
+    }
+    
+    .year-nav a, .year-nav span {
+        margin: 0 0.5rem;
+        text-decoration: none;
+        color: #005F99;
+        font-weight: 600;
+    }
+    
+    .year-nav .current {
+        color: #D62828;
+        text-decoration: underline;
+    }
+    
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; }
+    
+    .filter-bar {
+        margin: 2rem 0;
+        padding: 1.5rem;
+        background: white;
+        border-radius: 4px;
+    }
+    
+    .filter-label {
+        font-weight: 600;
+        margin-bottom: 1rem;
+        display: block;
+    }
+    
+    .pills {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin-bottom: 1rem;
+    }
+    
+    .pill {
+        display: inline-block;
+        padding: 0.35rem 0.75rem;
+        background: #f0f0f0;
+        border: 1px solid #ddd;
+        border-radius: 20px;
+        font-size: 0.8rem;
+        text-decoration: none;
+        color: #111;
+        transition: all 0.2s;
+        cursor: pointer;
+    }
+    
+    .pill:hover {
+        background: #D62828;
+        color: white;
+        border-color: #D62828;
+    }
+    
+    .pill.active {
+        background: #D62828;
+        color: white;
+        border-color: #D62828;
+    }
+    
+    .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+        gap: 2rem;
+        margin: 2rem 0;
+    }
+    
+    .card {
+        background: white;
+        border-radius: 4px;
+        overflow: hidden;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        transition: transform 0.2s, box-shadow 0.2s;
+        display: flex;
+        flex-direction: column;
+        cursor: pointer;
+    }
+    
+    .card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+    }
+    
+    .card-header {
+        background: #111;
+        color: white;
+        padding: 1.5rem;
+        border-left: 4px solid #D62828;
+    }
+    
+    .card-title {
+        font-size: 1.1rem;
+        font-weight: 700;
+        margin: 0.5rem 0;
+    }
+    
+    .card-date {
+        font-family: 'Space Mono', monospace;
+        font-size: 0.75rem;
+        opacity: 0.8;
+    }
+    
+    .card-body {
+        padding: 1.5rem;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .card-excerpt {
+        color: #666;
+        font-size: 0.9rem;
+        margin-bottom: 1rem;
+        flex: 1;
+    }
+    
+    .card-tags {
+        margin-top: auto;
+    }
+    
+    .tag {
+        display: inline-block;
+        padding: 0.25rem 0.6rem;
+        background: #f0f0f0;
+        border-radius: 3px;
+        font-size: 0.75rem;
+        margin-right: 0.5rem;
+        margin-bottom: 0.3rem;
+        color: #666;
+    }
+    
+    .load-more {
+        text-align: center;
+        padding: 2rem;
+    }
+    
+    .load-more-btn {
+        padding: 0.75rem 2rem;
+        background: #D62828;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        font-weight: 600;
+        cursor: pointer;
+        font-size: 1rem;
+        transition: opacity 0.2s;
+    }
+    
+    .load-more-btn:hover {
+        opacity: 0.85;
+    }
+    
+    footer {
+    background: #D62828;
+    color: #F2EFE5;
+    padding: 48px 40px;
+}
+footer a { color: #F2EFE5; text-decoration: none; }
+footer a:hover { opacity: 0.8; background: #F2EFE5; color: #D62828; }
+    footer a:hover { opacity: 0.8; }
+    
+    @media (max-width: 768px) {
+        nav { flex-direction: column; gap: 1rem; }
+        .nav-links { gap: 1rem; }
+        .year-big { font-size: clamp(2rem, 6vw, 4rem); }
+    }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="/" class="nav-brand">UNDOMONDO</a>
+        <ul class="nav-links">
+            <li><a href="/">Home</a></li>
+            <li><a href="/archive/" class="active">Archive</a></li>
+            <li><a href="https://undomondo.substack.com">Newsletter</a></li>
+            <li><a href="/#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <div class="hero">
+        <h1 class="year-big">2018</h1>
+        <p class="year-info">54 posts</p>
+    </div>
+
+    <div class="container">
+        <div class="year-nav">
+            <a href="/tumblr/">← Tumblr Hub</a>
+            <a href="/tumblr/2017.html">← 2017</a> · <span class="current">2018</span> · <a href="/tumblr/2019.html">2019 →</a>
+        </div>
+
+        <div class="filter-bar">
+            <label class="filter-label">Filter by genre:</label>
+            <div class="pills">
+                <span class="pill" onclick="filterByTag('2018')">2018</span>
+<span class="pill" onclick="filterByTag('House')">House</span>
+<span class="pill" onclick="filterByTag('Techno')">Techno</span>
+<span class="pill" onclick="filterByTag('jazz')">jazz</span>
+<span class="pill" onclick="filterByTag('Jazz')">Jazz</span>
+<span class="pill" onclick="filterByTag('Acid')">Acid</span>
+<span class="pill" onclick="filterByTag('Free Jazz')">Free Jazz</span>
+<span class="pill" onclick="filterByTag('ambient')">ambient</span>
+<span class="pill" onclick="filterByTag('undomondo')">undomondo</span>
+<span class="pill" onclick="filterByTag('mixes')">mixes</span>
+            </div>
+        </div>
+
+        <div class="grid" id="grid">
+            <div class="card" onclick="location.href='/tumblr/post.html?id=181458182619'">
+                <div class="card-header">
+                    <div class="card-date">2018-12-27</div>
+                    <h3 class="card-title">Undomondo Radio Show #177: An Undomondo Xmas 2018Another year is going down the drain. I wonder how </h3>
+                </div>
+                <div class="card-body">
+                    <p class="card-excerpt"> Undomondo Radio Show #177: An Undomondo Xmas 2018  Another year is going down the drain. I wonder how many years we have left together on this planet! :(  Hope to have a bit more peace and understand...</p>
+                    <div class="card-tags"><span class="tag">undomondo</span><span class="tag">2018</span><span class="tag">mixes</span></div>
+                </div>
+            </div>
+<div class="card" onclick="location.href='/tumblr/post.html?id=181405625209'">
+                <div class="card-header">
+                    <div class="card-date">2018-12-25</div>
+                    <h3 class="card-title">Arthur Lynds Bigelow - Lo, How a rose e’er bloomingVince Guaraldi Trio - My Little DrumMel Torme - G</h3>
+                </div>
+                <div class="card-body">
+                    <p class="card-excerpt"> Arthur Lynds Bigelow - Lo, How a rose e’er blooming 
+Vince Guaraldi Trio - My Little Drum 
+Mel Torme - Glow Worm 
+Joe Loss and his Orchestra - Edelweiss 
+Bing Crosby with John Scott Trotter and his O...</p>
+                    <div class="card-tags"><span class="tag">Easy Listening</span><span class="tag">Christmas</span><span class="tag">Jazz</span><span class="tag">vintage</span></div>
+                </div>
+            </div>
+<div class="card" onclick="location.href='/tumblr/post.html?id=181215028299'">
+                <div class="card-header">
+                    <div class="card-date">2018-12-18</div>
+                    <h3 class="card-title">John Parsley - Do Not Wear My Coat (Inigo Vontier Remix) by Iñigo Vontierhttps://ift.tt/2LpndZD</h3>
+                </div>
+                <div class="card-body">
+                    <p class="card-excerpt"> John Parsley - Do Not Wear My Coat (Inigo Vontier Remix) by Iñigo Vontier &lt;a href=&quot;https://ift.tt/2LpndZD&quot;&gt;https://ift.tt/2LpndZD&lt;/a&gt;  </p>
+                    <div class="card-tags"></div>
+                </div>
+            </div>
+<div class="card" onclick="location.href='/tumblr/post.html?id=181194343019'">
+                <div class="card-header">
+                    <div class="card-date">2018-12-17</div>
+                    <h3 class="card-title">2018 Essentials by Cenk Akyolhttps://ift.tt/2Bqjab1</h3>
+                </div>
+                <div class="card-body">
+                    <p class="card-excerpt"> 2018 Essentials by Cenk Akyol &lt;a href=&quot;https://ift.tt/2Bqjab1&quot;&gt;https://ift.tt/2Bqjab1&lt;/a&gt;  </p>
+                    <div class="card-tags"><span class="tag">Digital Processing</span><span class="tag">Field Recordings</span><span class="tag">Experimental</span></div>
+                </div>
+            </div>
+<div class="card" onclick="location.href='/tumblr/post.html?id=180987499774'">
+                <div class="card-header">
+                    <div class="card-date">2018-12-10</div>
+                    <h3 class="card-title">Truancy Volume 217: Fantastic Man by TRUANTShttps://ift.tt/2SGcQ6o</h3>
+                </div>
+                <div class="card-body">
+                    <p class="card-excerpt"> Truancy Volume 217: Fantastic Man by TRUANTS &lt;a href=&quot;https://ift.tt/2SGcQ6o&quot;&gt;https://ift.tt/2SGcQ6o&lt;/a&gt;  </p>
+                    <div class="card-tags"><span class="tag">Fantastic M</span><span class="tag">Truancy</span><span class="tag">Melbourne</span><span class="tag">Berlin</span><span class="tag">Superconcious</span><span class="tag">House</span><span class="tag">Techno</span><span class="tag">Australia</span><span class="tag">Acid</span><span class="tag">&quot;Francis I</span></div>
+                </div>
+            </div>
+<div class="card" onclick="location.href='/tumblr/post.html?id=180715042084'">
+                <div class="card-header">
+                    <div class="card-date">2018-12-02</div>
+                    <h3 class="card-title">Selvagem at Dekmantel Festival 2018 by selvagemhttps://ift.tt/2NRlIIx</h3>
+                </div>
+                <div class="card-body">
+                    <p class="card-excerpt"> Selvagem at Dekmantel Festival 2018 by selvagem &lt;a href=&quot;https://ift.tt/2NRlIIx&quot;&gt;https://ift.tt/2NRlIIx&lt;/a&gt;  </p>
+                    <div class="card-tags"></div>
+                </div>
+            </div>
+<div class="card" onclick="location.href='/tumblr/post.html?id=180659345999'">
+                <div class="card-header">
+                    <div class="card-date">2018-11-30</div>
+                    <h3 class="card-title">Mischpappeau 10 / Canilo &amp; Breitbeyer - In der Frühphase des Stoned und Drunk by dübleauhttps://ift.</h3>
+                </div>
+                <div class="card-body">
+                    <p class="card-excerpt"> Mischpappeau 10 / Canilo &amp;amp; Breitbeyer - In der Frühphase des Stoned und Drunk by dübleau &lt;a href=&quot;https://ift.tt/2KNxTBm&quot;&gt;https://ift.tt/2KNxTBm&lt;/a&gt;  </p>
+                    <div class="card-tags"><span class="tag">Keta Tech</span><span class="tag">Lichtgeschwindigkeit rückwärts</span><span class="tag">Ketapop</span><span class="tag">Haschtag</span><span class="tag">&quot;Lieber Stoned und Drunk als Sturm</span></div>
+                </div>
+            </div>
+<div class="card" onclick="location.href='/tumblr/post.html?id=180659346659'">
+                <div class="card-header">
+                    <div class="card-date">2018-11-30</div>
+                    <h3 class="card-title">Mischpappeau 11 / Carl Mars - Pizza Cartong by dübleauhttps://ift.tt/2BHVfoM</h3>
+                </div>
+                <div class="card-body">
+                    <p class="card-excerpt"> Mischpappeau 11 / Carl Mars - Pizza Cartong by dübleau &lt;a href=&quot;https://ift.tt/2BHVfoM&quot;&gt;https://ift.tt/2BHVfoM&lt;/a&gt;  </p>
+                    <div class="card-tags"></div>
+                </div>
+            </div>
+<div class="card" onclick="location.href='/tumblr/post.html?id=180619364264'">
+                <div class="card-header">
+                    <div class="card-date">2018-11-29</div>
+                    <h3 class="card-title">Missy Elliott - The Rain (Benedikt Frey Tribute) by benedikt freyhttps://ift.tt/2iZoGqP</h3>
+                </div>
+                <div class="card-body">
+                    <p class="card-excerpt"> Missy Elliott - The Rain (Benedikt Frey Tribute) by benedikt frey &lt;a href=&quot;https://ift.tt/2iZoGqP&quot;&gt;https://ift.tt/2iZoGqP&lt;/a&gt;  </p>
+                    <div class="card-tags"><span class="tag">Missy Elliott</span><span class="tag">Tribute</span></div>
+                </div>
+            </div>
+<div class="card" onclick="location.href='/tumblr/post.html?id=180619365314'">
+                <div class="card-header">
+                    <div class="card-date">2018-11-29</div>
+                    <h3 class="card-title">IV71 - Oliver Deutschmann - Control - Secret Weapons Part 9 by Innervisionshttps://ift.tt/2Qw1HYw</h3>
+                </div>
+                <div class="card-body">
+                    <p class="card-excerpt"> IV71 - Oliver Deutschmann - Control - Secret Weapons Part 9 by Innervisions &lt;a href=&quot;https://ift.tt/2Qw1HYw&quot;&gt;https://ift.tt/2Qw1HYw&lt;/a&gt;  </p>
+                    <div class="card-tags"><span class="tag">Oliver Deutschmann</span><span class="tag">Secret Weapons Part 9</span><span class="tag">IV71</span><span class="tag">Control</span></div>
+                </div>
+            </div>
+<div class="card" onclick="location.href='/tumblr/post.html?id=180516452964'">
+                <div class="card-header">
+                    <div class="card-date">2018-11-26</div>
+                    <h3 class="card-title">WRECKS020 - Dos Ritmos - Antropophony by Klasse Wreckshttps://ift.tt/2Ky1ZIM</h3>
+                </div>
+                <div class="card-body">
+                    <p class="card-excerpt"> WRECKS020 - Dos Ritmos - Antropophony by Klasse Wrecks &lt;a href=&quot;https://ift.tt/2Ky1ZIM&quot;&gt;https://ift.tt/2Ky1ZIM&lt;/a&gt;  </p>
+                    <div class="card-tags"><span class="tag">Dos Ritmos</span></div>
+                </div>
+            </div>
+<div class="card" onclick="location.href='/tumblr/post.html?id=180485822154'">
+                <div class="card-header">
+                    <div class="card-date">2018-11-25</div>
+                    <h3 class="card-title">Crack Mix 242 – Moody Mehran by Crack Magazinehttps://ift.tt/2DWwEPt</h3>
+                </div>
+                <div class="card-body">
+                    <p class="card-excerpt"> Crack Mix 242 – Moody Mehran by Crack Magazine &lt;a href=&quot;https://ift.tt/2DWwEPt&quot;&gt;https://ift.tt/2DWwEPt&lt;/a&gt;  </p>
+                    <div class="card-tags"><span class="tag">New Wave</span><span class="tag">80s</span><span class="tag">Electronic</span></div>
+                </div>
+            </div>
+<div class="card" onclick="location.href='/tumblr/post.html?id=180128839269'">
+                <div class="card-header">
+                    <div class="card-date">2018-11-15</div>
+                    <h3 class="card-title">Shabazz Palaces - Julian’s Dream</h3>
+                </div>
+                <div class="card-body">
+                    <p class="card-excerpt"> Shabazz Palaces - Julian’s Dream   </p>
+                    <div class="card-tags"><span class="tag">2018</span></div>
+                </div>
+            </div>
+<div class="card" onclick="location.href='/tumblr/post.html?id=180129119154'">
+                <div class="card-header">
+                    <div class="card-date">2018-11-15</div>
+                    <h3 class="card-title">Shabazz Palaces - Julian’s Dream</h3>
+                </div>
+                <div class="card-body">
+                    <p class="card-excerpt"> Shabazz Palaces - Julian’s Dream  </p>
+                    <div class="card-tags"><span class="tag">hip-hop</span></div>
+                </div>
+            </div>
+<div class="card" onclick="location.href='/tumblr/post.html?id=179560125939'">
+                <div class="card-header">
+                    <div class="card-date">2018-10-29</div>
+                    <h3 class="card-title">Emma Ruth Rundle - Light Songfrom the album “On Dark Horses”, Available Sept 14th on Sargent House</h3>
+                </div>
+                <div class="card-body">
+                    <p class="card-excerpt"> Emma Ruth Rundle - Light Song  from the album “On Dark Horses”, Available Sept 14th on Sargent House   </p>
+                    <div class="card-tags"><span class="tag">2018</span><span class="tag">americana</span></div>
+                </div>
+            </div>
+<div class="card" onclick="location.href='/tumblr/post.html?id=179341245354'">
+                <div class="card-header">
+                    <div class="card-date">2018-10-23</div>
+                    <h3 class="card-title">Image: Dizzy Gillespie cuts a watermelon.https://ift.tt/2CzBFMv</h3>
+                </div>
+                <div class="card-body">
+                    <p class="card-excerpt"> Image: Dizzy Gillespie cuts a watermelon. &lt;a href=&quot;https://ift.tt/2CzBFMv&quot;&gt;https://ift.tt/2CzBFMv&lt;/a&gt;  </p>
+                    <div class="card-tags"><span class="tag">Free Jazz</span><span class="tag">Jazz</span><span class="tag">Bebop</span><span class="tag">ECM</span></div>
+                </div>
+            </div>
+<div class="card" onclick="location.href='/tumblr/post.html?id=179317338159'">
+                <div class="card-header">
+                    <div class="card-date">2018-10-22</div>
+                    <h3 class="card-title">Kamasi Washington - Hub-Tones</h3>
+                </div>
+                <div class="card-body">
+                    <p class="card-excerpt"> Kamasi Washington - Hub-Tones  </p>
+                    <div class="card-tags"><span class="tag">2018</span><span class="tag">bestof</span></div>
+                </div>
+            </div>
+<div class="card" onclick="location.href='/tumblr/post.html?id=179044261144'">
+                <div class="card-header">
+                    <div class="card-date">2018-10-14</div>
+                    <h3 class="card-title">Sha La Das - Those years are overThe Sha La Das’ debut album, Love in the Wind, is available now.</h3>
+                </div>
+                <div class="card-body">
+                    <p class="card-excerpt"> Sha La Das - Those years are over  The Sha La Das’ debut album, Love in the Wind, is available now.   </p>
+                    <div class="card-tags"><span class="tag">2018</span></div>
+                </div>
+            </div>
+<div class="card" onclick="location.href='/tumblr/post.html?id=178369018354'">
+                <div class="card-header">
+                    <div class="card-date">2018-09-23</div>
+                    <h3 class="card-title">Bárbara Boeing @ Xama 2019 by Gop Tunhttps://ift.tt/2MUwKaw</h3>
+                </div>
+                <div class="card-body">
+                    <p class="card-excerpt"> Bárbara Boeing @ Xama 2019 by Gop Tun &lt;a href=&quot;https://ift.tt/2MUwKaw&quot;&gt;https://ift.tt/2MUwKaw&lt;/a&gt;  </p>
+                    <div class="card-tags"><span class="tag">barbara boeing</span><span class="tag">xama</span></div>
+                </div>
+            </div>
+<div class="card" onclick="location.href='/tumblr/post.html?id=178341340604'">
+                <div class="card-header">
+                    <div class="card-date">2018-09-22</div>
+                    <h3 class="card-title">Marc Ribot - “Bella Ciao (Goodbye Beautiful)” (feat. Tom Waits)“Bella Ciao (Goodbye Beautiful)” by M</h3>
+                </div>
+                <div class="card-body">
+                    <p class="card-excerpt"> Marc Ribot - “Bella Ciao (Goodbye Beautiful)” (feat. Tom Waits)   “Bella Ciao (Goodbye Beautiful)” by Marc Ribot (feat. Tom Waits) from the album ‘Songs Of Resistance 1942 - 2018.   </p>
+                    <div class="card-tags"><span class="tag">2018</span></div>
+                </div>
+            </div>
+<div class="card" onclick="location.href='/tumblr/post.html?id=178073608569'">
+                <div class="card-header">
+                    <div class="card-date">2018-09-14</div>
+                    <h3 class="card-title">Dekmantel Podcast 181 - SHXCXCHCXSH by dekmantelhttps://ift.tt/2p63FPV</h3>
+                </div>
+                <div class="card-body">
+                    <p class="card-excerpt"> Dekmantel Podcast 181 - SHXCXCHCXSH by dekmantel &lt;a href=&quot;https://ift.tt/2p63FPV&quot;&gt;https://ift.tt/2p63FPV&lt;/a&gt;  </p>
+                    <div class="card-tags"><span class="tag">dekmantel</span><span class="tag">podcast</span></div>
+                </div>
+            </div>
+<div class="card" onclick="location.href='/tumblr/post.html?id=177579531189'">
+                <div class="card-header">
+                    <div class="card-date">2018-08-31</div>
+                    <h3 class="card-title">Zeal &amp; Ardor - Baphomet (Live at Lowlands Festival 2018)</h3>
+                </div>
+                <div class="card-body">
+                    <p class="card-excerpt"> Zeal &amp;amp; Ardor - Baphomet (Live at Lowlands Festival 2018)   </p>
+                    <div class="card-tags"><span class="tag">2018</span></div>
+                </div>
+            </div>
+<div class="card" onclick="location.href='/tumblr/post.html?id=177513463994'">
+                <div class="card-header">
+                    <div class="card-date">2018-08-29</div>
+                    <h3 class="card-title">CKFM.028 - ECE ÖZEL by Craigie Knoweshttps://ift.tt/2oj3AaX</h3>
+                </div>
+                <div class="card-body">
+                    <p class="card-excerpt"> CKFM.028 - ECE ÖZEL by Craigie Knowes &lt;a href=&quot;https://ift.tt/2oj3AaX&quot;&gt;https://ift.tt/2oj3AaX&lt;/a&gt;  </p>
+                    <div class="card-tags"><span class="tag">Ece Ozel</span><span class="tag">CKFM</span><span class="tag">CKFM.029</span><span class="tag">CKFM029</span><span class="tag">ECE</span><span class="tag">ÖZEL</span><span class="tag">Mix</span><span class="tag">House</span><span class="tag">Techno</span><span class="tag">Electro</span><span class="tag">Electronix</span><span class="tag">Acid</span><span class="tag">&quot;Crai</span></div>
+                </div>
+            </div>
+<div class="card" onclick="location.href='/tumblr/post.html?id=176804372799'">
+                <div class="card-header">
+                    <div class="card-date">2018-08-09</div>
+                    <h3 class="card-title">Epic Vinyls from Brazil - ABOM-3 Afro Brazil Orixá Mix - Terceiro. by Le Mellotronhttps://ift.tt/2Ok</h3>
+                </div>
+                <div class="card-body">
+                    <p class="card-excerpt"> Epic Vinyls from Brazil - ABOM-3 Afro Brazil Orixá Mix - Terceiro. by Le Mellotron &lt;a href=&quot;https://ift.tt/2OkuY3x&quot;&gt;https://ift.tt/2OkuY3x&lt;/a&gt;  </p>
+                    <div class="card-tags"><span class="tag">brazilian</span><span class="tag">samba</span><span class="tag">bossa</span><span class="tag">tropical</span></div>
+                </div>
+            </div>
+<div class="card" onclick="location.href='/tumblr/post.html?id=176526120764'">
+                <div class="card-header">
+                    <div class="card-date">2018-08-01</div>
+                    <h3 class="card-title">RUBBER BULLIES by TROPICAL FUCK STORMMy fave band these days</h3>
+                </div>
+                <div class="card-body">
+                    <p class="card-excerpt"> RUBBER BULLIES by TROPICAL FUCK STORM   My fave band these days  </p>
+                    <div class="card-tags"><span class="tag">2018</span></div>
+                </div>
+            </div>
+<div class="card" onclick="location.href='/tumblr/post.html?id=176047663684'">
+                <div class="card-header">
+                    <div class="card-date">2018-07-19</div>
+                    <h3 class="card-title">Fargo July 11 by seven secrets of snowhttps://ift.tt/2mtY5oU</h3>
+                </div>
+                <div class="card-body">
+                    <p class="card-excerpt"> Fargo July 11 by seven secrets of snow &lt;a href=&quot;https://ift.tt/2mtY5oU&quot;&gt;https://ift.tt/2mtY5oU&lt;/a&gt;  </p>
+                    <div class="card-tags"></div>
+                </div>
+            </div>
+<div class="card" onclick="location.href='/tumblr/post.html?id=176047664239'">
+                <div class="card-header">
+                    <div class="card-date">2018-07-19</div>
+                    <h3 class="card-title">Jetti &amp; Post #2 by BAR ROTTERDAMhttps://ift.tt/2uIvss0</h3>
+                </div>
+                <div class="card-body">
+                    <p class="card-excerpt"> Jetti &amp;amp; Post #2 by BAR ROTTERDAM &lt;a href=&quot;https://ift.tt/2uIvss0&quot;&gt;https://ift.tt/2uIvss0&lt;/a&gt;  </p>
+                    <div class="card-tags"><span class="tag">House</span><span class="tag">Tribal</span><span class="tag">slowbeat</span></div>
+                </div>
+            </div>
+<div class="card" onclick="location.href='/tumblr/post.html?id=175387592174'">
+                <div class="card-header">
+                    <div class="card-date">2018-06-30</div>
+                    <h3 class="card-title">Neko Case - Bad Luck (Live on KEXP)Superb new album from Neko Case, the queen.http://KEXP.ORGpresent</h3>
+                </div>
+                <div class="card-body">
+                    <p class="card-excerpt"> Neko Case - Bad Luck (Live on KEXP)   Superb new album from Neko Case, the queen.  &lt;a href=&quot;https://www.youtube.com/redirect?q=http%3A%2F%2FKEXP.ORG&amp;amp;event=video_description&amp;amp;v=...</p>
+                    <div class="card-tags"><span class="tag">2018</span><span class="tag">indie</span></div>
+                </div>
+            </div>
+<div class="card" onclick="location.href='/tumblr/post.html?id=175390847164'">
+                <div class="card-header">
+                    <div class="card-date">2018-06-30</div>
+                    <h3 class="card-title">Khotin - Planet BNew Khotin album forthcoming early July 2018.</h3>
+                </div>
+                <div class="card-body">
+                    <p class="card-excerpt"> Khotin - Planet B   New Khotin album forthcoming early July 2018.  </p>
+                    <div class="card-tags"><span class="tag">2018</span><span class="tag">electronic</span><span class="tag">lo-fi</span></div>
+                </div>
+            </div>
+<div class="card" onclick="location.href='/tumblr/post.html?id=175367037623'">
+                <div class="card-header">
+                    <div class="card-date">2018-06-29</div>
+                    <h3 class="card-title">IDLES - DANNY NEDELKO‘Joy as an Act of Resistance.’ out 31st August 2018</h3>
+                </div>
+                <div class="card-body">
+                    <p class="card-excerpt"> IDLES - DANNY NEDELKO   ‘Joy as an Act of Resistance.’ out 31st August 2018    </p>
+                    <div class="card-tags"><span class="tag">2018</span><span class="tag">punk</span></div>
+                </div>
+            </div>
+<div class="card" onclick="location.href='/tumblr/post.html?id=175368909572'">
+                <div class="card-header">
+                    <div class="card-date">2018-06-29</div>
+                    <h3 class="card-title">Kamasi Washington - Street Fighter MasHe’s back!!‘Street Fighter Mas’, a single from Kamasi Washingt</h3>
+                </div>
+                <div class="card-body">
+                    <p class="card-excerpt"> Kamasi Washington - Street Fighter Mas   He’s back!!  ‘Street Fighter Mas’, a single from Kamasi Washington’s sophomore album Heaven and Earth.  &lt;blockquote&gt; “[Jazz] comes from poor black neigh...</p>
+                    <div class="card-tags"><span class="tag">2018</span><span class="tag">jazz</span></div>
+                </div>
+            </div>
+<div class="card" onclick="location.href='/tumblr/post.html?id=174059894809'">
+                <div class="card-header">
+                    <div class="card-date">2018-05-20</div>
+                    <h3 class="card-title">https://ift.tt/2wVVmwS</h3>
+                </div>
+                <div class="card-body">
+                    <p class="card-excerpt"> &lt;a href=&quot;https://ift.tt/2wVVmwS&quot;&gt;https://ift.tt/2wVVmwS&lt;/a&gt;  </p>
+                    <div class="card-tags"><span class="tag">Brasil</span></div>
+                </div>
+            </div>
+<div class="card" onclick="location.href='/tumblr/post.html?id=173921242109'">
+                <div class="card-header">
+                    <div class="card-date">2018-05-15</div>
+                    <h3 class="card-title">Live from the Opening of the 212 Photography Festival in Istanbul.https://ift.tt/2IFNRPb</h3>
+                </div>
+                <div class="card-body">
+                    <p class="card-excerpt"> Live from the Opening of the 212 Photography Festival in Istanbul. &lt;a href=&quot;https://ift.tt/2IFNRPb&quot;&gt;https://ift.tt/2IFNRPb&lt;/a&gt;  </p>
+                    <div class="card-tags"><span class="tag">eclectic</span><span class="tag">latin</span><span class="tag">jazz</span><span class="tag">caribeean</span><span class="tag">Brazil</span></div>
+                </div>
+            </div>
+<div class="card" onclick="location.href='/tumblr/post.html?id=173876482351'">
+                <div class="card-header">
+                    <div class="card-date">2018-05-14</div>
+                    <h3 class="card-title">Art Zoyd - Dernière danseThe board of Association Art Zoyd 3 is deeply saddened to announce the deat</h3>
+                </div>
+                <div class="card-body">
+                    <p class="card-excerpt"> Art Zoyd - Dernière danse   The board of Association Art Zoyd 3 is deeply saddened to announce the death of Mr Gérard Hourbette, its director and composer, which occurred on Friday, May 4th, 2018 at ...</p>
+                    <div class="card-tags"><span class="tag">prog</span><span class="tag">obit</span></div>
+                </div>
+            </div>
+<div class="card" onclick="location.href='/tumblr/post.html?id=173865738649'">
+                <div class="card-header">
+                    <div class="card-date">2018-05-13</div>
+                    <h3 class="card-title">Laura Palmer’s Death Parade - I’m the Only OneBandcamp</h3>
+                </div>
+                <div class="card-body">
+                    <p class="card-excerpt"> Laura Palmer’s Death Parade - I’m the Only One  &lt;a href=&quot;https://laurapalmersdeathparade.bandcamp.com/&quot;&gt;Bandcamp&lt;/a&gt;  </p>
+                    <div class="card-tags"><span class="tag">2018</span></div>
+                </div>
+            </div>
+<div class="card" onclick="location.href='/tumblr/post.html?id=173834417364'">
+                <div class="card-header">
+                    <div class="card-date">2018-05-12</div>
+                    <h3 class="card-title">Tirzah - Gladly (Official Video)Tirzah - “Gladly” from ‘Devotion’, out 10th August 2018 on Domino Re</h3>
+                </div>
+                <div class="card-body">
+                    <p class="card-excerpt"> Tirzah - Gladly (Official Video)   Tirzah - “Gladly” from ‘Devotion’, out 10th August 2018 on Domino Record Co.   </p>
+                    <div class="card-tags"><span class="tag">2018</span></div>
+                </div>
+            </div>
+<div class="card" onclick="location.href='/tumblr/post.html?id=173666510754'">
+                <div class="card-header">
+                    <div class="card-date">2018-05-07</div>
+                    <h3 class="card-title">Red Light Radio | 24.03.2018 by HüNKARhttps://ift.tt/2FSjEH5</h3>
+                </div>
+                <div class="card-body">
+                    <p class="card-excerpt"> Red Light Radio | 24.03.2018 by HüNKAR &lt;a href=&quot;https://ift.tt/2FSjEH5&quot;&gt;https://ift.tt/2FSjEH5&lt;/a&gt;  </p>
+                    <div class="card-tags"></div>
+                </div>
+            </div>
+<div class="card" onclick="location.href='/tumblr/post.html?id=173605486039'">
+                <div class="card-header">
+                    <div class="card-date">2018-05-05</div>
+                    <h3 class="card-title">Oumou Sangaré - Minata Waraba (live @TivoliVredenburg Utrecht)“The Songbird of Wassoulou” Malinese s</h3>
+                </div>
+                <div class="card-body">
+                    <p class="card-excerpt"> Oumou Sangaré - Minata Waraba (live @TivoliVredenburg Utrecht)   “The Songbird of Wassoulou” Malinese singer Oumou Sangaré performs her own song Minata Waraba from her album Mogoya   </p>
+                    <div class="card-tags"><span class="tag">world</span></div>
+                </div>
+            </div>
+<div class="card" onclick="location.href='/tumblr/post.html?id=171565565529'">
+                <div class="card-header">
+                    <div class="card-date">2018-03-05</div>
+                    <h3 class="card-title">EVFB MIX: ABOM-2 / Afro Brazil Orixá Mix - Segundo by Epic Vinyls from Brazilhttp://ift.tt/2Fgv9Zt</h3>
+                </div>
+                <div class="card-body">
+                    <p class="card-excerpt"> EVFB MIX: ABOM-2 / Afro Brazil Orixá Mix - Segundo by Epic Vinyls from Brazil &lt;a href=&quot;http://ift.tt/2Fgv9Zt&quot;&gt;http://ift.tt/2Fgv9Zt&lt;/a&gt;  </p>
+                    <div class="card-tags"></div>
+                </div>
+            </div>
+<div class="card" onclick="location.href='/tumblr/post.html?id=171485251489'">
+                <div class="card-header">
+                    <div class="card-date">2018-03-03</div>
+                    <h3 class="card-title">Champloo Music Podcast 43 with KOMPLEKS by CHAMPLOO MUSIChttp://ift.tt/2thuPIC</h3>
+                </div>
+                <div class="card-body">
+                    <p class="card-excerpt"> Champloo Music Podcast 43 with KOMPLEKS by CHAMPLOO MUSIC &lt;a href=&quot;http://ift.tt/2thuPIC&quot;&gt;http://ift.tt/2thuPIC&lt;/a&gt;  </p>
+                    <div class="card-tags"><span class="tag">Balearic</span><span class="tag">House</span><span class="tag">Deep</span><span class="tag">Techno</span><span class="tag">Soul</span><span class="tag">Kompleks</span><span class="tag">Lüle</span><span class="tag">Belgrad</span><span class="tag">Görlitz</span><span class="tag">Podcast</span><span class="tag">Serbia</span><span class="tag">Zgorzelec</span><span class="tag">F</span></div>
+                </div>
+            </div>
+<div class="card" onclick="location.href='/tumblr/post.html?id=171353478979'">
+                <div class="card-header">
+                    <div class="card-date">2018-02-27</div>
+                    <h3 class="card-title">Tv and Furniture by nixxon (Nikolaj Birgens)http://ift.tt/2BW7oqD</h3>
+                </div>
+                <div class="card-body">
+                    <p class="card-excerpt"> Tv and Furniture by nixxon (Nikolaj Birgens) &lt;a href=&quot;http://ift.tt/2BW7oqD&quot;&gt;http://ift.tt/2BW7oqD&lt;/a&gt;  </p>
+                    <div class="card-tags"></div>
+                </div>
+            </div>
+<div class="card" onclick="location.href='/tumblr/post.html?id=171172633444'">
+                <div class="card-header">
+                    <div class="card-date">2018-02-22</div>
+                    <h3 class="card-title">Lucrecia Dalt - TarSpellbound with this one, third listen in a row</h3>
+                </div>
+                <div class="card-body">
+                    <p class="card-excerpt"> Lucrecia Dalt - Tar   Spellbound with this one, third listen in a row  </p>
+                    <div class="card-tags"><span class="tag">2018</span><span class="tag">avant</span></div>
+                </div>
+            </div>
+<div class="card" onclick="location.href='/tumblr/post.html?id=171007805348'">
+                <div class="card-header">
+                    <div class="card-date">2018-02-18</div>
+                    <h3 class="card-title">Skinny Pelembe - Spit / Swallow (Official Video)Having recently signed to Brownswood Recordings, ann</h3>
+                </div>
+                <div class="card-body">
+                    <p class="card-excerpt"> Skinny Pelembe - Spit / Swallow (Official Video)   Having recently signed to Brownswood Recordings, announced via new track ‘I’ll Be On Your Mind’, Skinny Pelembe lines up his first single proper for...</p>
+                    <div class="card-tags"><span class="tag">2018</span></div>
+                </div>
+            </div>
+<div class="card" onclick="location.href='/tumblr/post.html?id=170958216348'">
+                <div class="card-header">
+                    <div class="card-date">2018-02-17</div>
+                    <h3 class="card-title">Tigran Hamasyan - DripTigran Hamasyan’s “Drip” performed with the Berklee Middle Eastern Fusion Ense</h3>
+                </div>
+                <div class="card-body">
+                    <p class="card-excerpt"> Tigran Hamasyan - Drip  Tigran Hamasyan’s “Drip” performed with the Berklee Middle Eastern Fusion Ensemble. This recording of “Drip” was arranged by the ensemble.  </p>
+                    <div class="card-tags"><span class="tag">2018</span><span class="tag">jazz</span></div>
+                </div>
+            </div>
+<div class="card" onclick="location.href='/tumblr/post.html?id=170980633099'">
+                <div class="card-header">
+                    <div class="card-date">2018-02-17</div>
+                    <h3 class="card-title">DIRTY SOUND SYSTEM - winter hits 2017 (japanese edition) by dirty sound systemhttp://ift.tt/2o6kvOf</h3>
+                </div>
+                <div class="card-body">
+                    <p class="card-excerpt"> DIRTY SOUND SYSTEM - winter hits 2017 (japanese edition) by dirty sound system &lt;a href=&quot;http://ift.tt/2o6kvOf&quot;&gt;http://ift.tt/2o6kvOf&lt;/a&gt;  </p>
+                    <div class="card-tags"><span class="tag">ambient</span></div>
+                </div>
+            </div>
+<div class="card" onclick="location.href='/tumblr/post.html?id=170790564214'">
+                <div class="card-header">
+                    <div class="card-date">2018-02-12</div>
+                    <h3 class="card-title">#068: SpatzHabibi - Montagssorbet mit Laut &amp; Luise by Laut &amp; Luisehttp://ift.tt/2DBRu2D</h3>
+                </div>
+                <div class="card-body">
+                    <p class="card-excerpt"> #068: SpatzHabibi - Montagssorbet mit Laut &amp;amp; Luise by Laut &amp;amp; Luise &lt;a href=&quot;http://ift.tt/2DBRu2D&quot;&gt;http://ift.tt/2DBRu2D&lt;/a&gt;  </p>
+                    <div class="card-tags"></div>
+                </div>
+            </div>
+<div class="card" onclick="location.href='/tumblr/post.html?id=170764493324'">
+                <div class="card-header">
+                    <div class="card-date">2018-02-11</div>
+                    <h3 class="card-title">Aleksa Alaska - Les Belles de Nuit Podcast NR 4 by Les Belles de Nuithttp://ift.tt/2nZkNG1</h3>
+                </div>
+                <div class="card-body">
+                    <p class="card-excerpt"> Aleksa Alaska - Les Belles de Nuit Podcast NR 4 by Les Belles de Nuit &lt;a href=&quot;http://ift.tt/2nZkNG1&quot;&gt;http://ift.tt/2nZkNG1&lt;/a&gt;  </p>
+                    <div class="card-tags"></div>
+                </div>
+            </div>
+<div class="card" onclick="location.href='/tumblr/post.html?id=170620057624'">
+                <div class="card-header">
+                    <div class="card-date">2018-02-07</div>
+                    <h3 class="card-title">Dekmantel Podcast 158 - Ece Özel by dekmantelhttp://ift.tt/2EOFyw9</h3>
+                </div>
+                <div class="card-body">
+                    <p class="card-excerpt"> Dekmantel Podcast 158 - Ece Özel by dekmantel &lt;a href=&quot;http://ift.tt/2EOFyw9&quot;&gt;http://ift.tt/2EOFyw9&lt;/a&gt;  </p>
+                    <div class="card-tags"><span class="tag">dekmantelpodcast</span><span class="tag">eceözel</span></div>
+                </div>
+            </div>
+<div class="card" onclick="location.href='/tumblr/post.html?id=170583587549'">
+                <div class="card-header">
+                    <div class="card-date">2018-02-06</div>
+                    <h3 class="card-title">憶故人 - 中國古琴 by meditationshttp://ift.tt/2nLGme3</h3>
+                </div>
+                <div class="card-body">
+                    <p class="card-excerpt"> 憶故人 - 中國古琴 by meditations &lt;a href=&quot;http://ift.tt/2nLGme3&quot;&gt;http://ift.tt/2nLGme3&lt;/a&gt;  </p>
+                    <div class="card-tags"></div>
+                </div>
+            </div>
+<div class="card" onclick="location.href='/tumblr/post.html?id=170583593109'">
+                <div class="card-header">
+                    <div class="card-date">2018-02-06</div>
+                    <h3 class="card-title">ADT - Commotional Rescue by Hausu Mountainhttp://ift.tt/2C1eir7</h3>
+                </div>
+                <div class="card-body">
+                    <p class="card-excerpt"> ADT - Commotional Rescue by Hausu Mountain &lt;a href=&quot;http://ift.tt/2C1eir7&quot;&gt;http://ift.tt/2C1eir7&lt;/a&gt;  </p>
+                    <div class="card-tags"><span class="tag">Free Jazz</span><span class="tag">free improv</span><span class="tag">zones</span><span class="tag">Psychedelic</span><span class="tag">psychojazz</span><span class="tag">kosmiche</span><span class="tag">space</span><span class="tag">Synth</span></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="load-more" id="load-more-container" style="display: none;">
+            <button class="load-more-btn" onclick="loadMorePosts()">Load More Posts</button>
+        </div>
+    </div>
+
+    <footer>
+    <div style="max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; gap: 24px;">
+        <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-start; gap: 24px;">
+            <div>
+                <p style="font-family: 'Space Grotesk', sans-serif; font-size: 20px; font-weight: 700; margin-bottom: 8px;">UNDOMONDO</p>
+                <p style="font-size: 13px; opacity: 0.7;">Independent music, no borders.</p>
+            </div>
+            <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+                <a href="https://bsky.app/profile/undomondo.bsky.social" target="_blank" style="border: 2px solid #F2EFE5; padding: 8px 16px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; text-decoration: none; color: #F2EFE5; transition: all 0.2s;">BSKY</a>
+                <a href="https://www.instagram.com/undomondo" target="_blank" style="border: 2px solid #F2EFE5; padding: 8px 16px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; text-decoration: none; color: #F2EFE5;">Instagram</a>
+                <a href="https://www.mixcloud.com/undomondo/" target="_blank" style="border: 2px solid #F2EFE5; padding: 8px 16px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; text-decoration: none; color: #F2EFE5;">Mixcloud</a>
+                <a href="https://soundcloud.com/undomondo" target="_blank" style="border: 2px solid #F2EFE5; padding: 8px 16px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; text-decoration: none; color: #F2EFE5;">SoundCloud</a>
+                <a href="https://www.last.fm/user/kidindigo" target="_blank" style="border: 2px solid #F2EFE5; padding: 8px 16px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; text-decoration: none; color: #F2EFE5;">Last.fm</a>
+                <a href="https://record.club/undomondo/" target="_blank" style="border: 2px solid #F2EFE5; padding: 8px 16px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; text-decoration: none; color: #F2EFE5;">Record Club</a>
+                <a href="https://www.linkedin.com/in/mehmet-a%C4%9Fao%C4%9Fullar%C4%B1-aa15b39/" target="_blank" style="border: 2px solid #F2EFE5; padding: 8px 16px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; text-decoration: none; color: #F2EFE5;">LinkedIn</a>
+                <a href="#" target="_blank" style="border: 2px solid #F2EFE5; padding: 8px 16px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; text-decoration: none; color: #F2EFE5;">Reverie For Two</a>
+            </div>
+        </div>
+        <div style="border-top: 1px solid rgba(242,239,229,0.3); padding-top: 16px; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 16px;">
+            <a href="/" style="font-family: 'Space Grotesk', sans-serif; font-size: 16px; font-weight: 700; color: #F2EFE5; text-decoration: none;">← Back to Undomondo</a>
+            <span style="font-family: 'Space Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 3px; opacity: 0.7;">© 2025 · Istanbul / Barcelona / Internet</span>
+        </div>
+    </div>
+</footer>
+
+    <script>
+    const allPosts = [{"id": "181458182619", "title": "Undomondo Radio Show #177: An Undomondo Xmas 2018Another year is going down the drain. I wonder how ", "date": "2018-12-27", "content": "<p>Undomondo Radio Show #177: An Undomondo Xmas 2018</p><p>Another year is going down the drain. I wonder how many years we have left together on this planet! :( <br/>Hope to have a bit more peace and understanding while slowing down in the rat race this year.</p><p>Here\u2019s another vintage Undomondo Christmas show a la 50s. Probably our 5th? <br/>Hope you enjoy it with your friends and family! </p><p>[<a href=\"https://o.ello.co/https://www.mixcloud.com/undomondo/undomondo-radio-show-177-an-undomondo-xmas-2018/\">mixcloud</a>]<br/>[<a href=\"https://o.ello.co/https://soundcloud.com/undomondo/radioshow-177-an-undomondo-xmas-2018\">soundcloud</a>]</p><p>Arthur Lynds Bigelow - Lo, How a rose e\u2019er blooming<br/>Vince Guaraldi Trio - My Little Drum<br/>Mel Torme - Glow Worm<br/>Joe Loss and his Orchestra - Edelweiss<br/>Bing Crosby with John Scott Trotter and his Orchestra - It\u2019s beginning to look a lot like Christmas<br/>Ella Fitzgerald - What are you doing New Year\u2019s Eve<br/>Rosemary Clooney - Suzy Snowflake<br/>The George Shearing Quintet - September in the Rain<br/>Elvis Presley - In the Ghetto<br/>Frank Sinatra - The Christmas Waltz<br/>Gene Autry and The Pinafores - Rudolph, The Red-Nosed Reindeer<br/>Harry Belafonte - Mary\u2019s Boy Child<br/>Ray Draper - I talk to the trees<br/>Johnny Mercer and The Pied Pipers - Winter Wonderland<br/>Herb Alpert &amp; The Tijuana Brass - The Bell that couldn\u2019t jingle<br/>The Pop\u2019s - Feliz Natal<br/>Perry Como and The Fontana Sisters - It\u2019s Beginning to Look a lot like Christmas<br/>Ernest Tubb - Blue Christmas<br/>Petula Clark - Downtown<br/>Dolly Parton - Go Tell it on the Mountain</p> ", "tags": ["undomondo", "2018", "mixes"]}, {"id": "181405625209", "title": "Arthur Lynds Bigelow - Lo, How a rose e\u2019er bloomingVince Guaraldi Trio - My Little DrumMel Torme - G", "date": "2018-12-25", "content": "<p>Arthur Lynds Bigelow - Lo, How a rose e\u2019er blooming<br/>\nVince Guaraldi Trio - My Little Drum<br/>\nMel Torme - Glow Worm<br/>\nJoe Loss and his Orchestra - Edelweiss<br/>\nBing Crosby with John Scott Trotter and his Orchestra - It\u2019s beginning to look a lot like Christmas<br/>\nElla Fitzgerald - What are you doing New Year\u2019s Eve<br/>\nRosemary Clooney - Suzy Snowflake<br/>\nThe George Shearing Quintet - September in the Rain<br/>\nElvis Presley - In the Ghetto<br/>\nFrank Sinatra - The Christmas Waltz<br/>\nGene Autry and The Pinafores - Rudolph, The Red-Nosed Reindeer<br/>\nHarry Belafonte - Mary\u2019s Boy Child<br/>\nRay Draper - I talk to the trees<br/>\nJohnny Mercer and The Pied Pipers - Winter Wonderland<br/>\nHerb Alpert &amp; The Tijuana Brass - The Bell that couldn\u2019t jingle<br/>\nThe Pop\u2019s - Feliz Natal<br/>\nPerry Como and The Fontana Sisters - It\u2019s Beginning to Look a lot like Christmas<br/>\nErnest Tubb - Blue Christmas<br/>\nPetula Clark - Downtown<br/>\nDolly Parton - Go Tell it on the Mountain <a href=\"http://bit.ly/2rVp8fE\">http://bit.ly/2rVp8fE</a></p> ", "tags": ["Easy Listening", "Christmas", "Jazz", "vintage"]}, {"id": "181215028299", "title": "John Parsley - Do Not Wear My Coat (Inigo Vontier Remix) by I\u00f1igo Vontierhttps://ift.tt/2LpndZD", "date": "2018-12-18", "content": "<p>John Parsley - Do Not Wear My Coat (Inigo Vontier Remix) by I\u00f1igo Vontier <a href=\"https://ift.tt/2LpndZD\">https://ift.tt/2LpndZD</a></p> ", "tags": []}, {"id": "181194343019", "title": "2018 Essentials by Cenk Akyolhttps://ift.tt/2Bqjab1", "date": "2018-12-17", "content": "<p>2018 Essentials by Cenk Akyol <a href=\"https://ift.tt/2Bqjab1\">https://ift.tt/2Bqjab1</a></p> ", "tags": ["Digital Processing", "Field Recordings", "Experimental"]}, {"id": "180987499774", "title": "Truancy Volume 217: Fantastic Man by TRUANTShttps://ift.tt/2SGcQ6o", "date": "2018-12-10", "content": "<p>Truancy Volume 217: Fantastic Man by TRUANTS <a href=\"https://ift.tt/2SGcQ6o\">https://ift.tt/2SGcQ6o</a></p> ", "tags": ["Fantastic M", "Truancy", "Melbourne", "Berlin", "Superconcious", "House", "Techno", "Australia", "Acid", "\"Francis I"]}, {"id": "180715042084", "title": "Selvagem at Dekmantel Festival 2018 by selvagemhttps://ift.tt/2NRlIIx", "date": "2018-12-02", "content": "<p>Selvagem at Dekmantel Festival 2018 by selvagem <a href=\"https://ift.tt/2NRlIIx\">https://ift.tt/2NRlIIx</a></p> ", "tags": []}, {"id": "180659345999", "title": "Mischpappeau 10 / Canilo & Breitbeyer - In der Fr\u00fchphase des Stoned und Drunk by d\u00fcbleauhttps://ift.", "date": "2018-11-30", "content": "<p>Mischpappeau 10 / Canilo &amp; Breitbeyer - In der Fr\u00fchphase des Stoned und Drunk by d\u00fcbleau <a href=\"https://ift.tt/2KNxTBm\">https://ift.tt/2KNxTBm</a></p> ", "tags": ["Keta Tech", "Lichtgeschwindigkeit r\u00fcckw\u00e4rts", "Ketapop", "Haschtag", "\"Lieber Stoned und Drunk als Sturm"]}, {"id": "180659346659", "title": "Mischpappeau 11 / Carl Mars - Pizza Cartong by d\u00fcbleauhttps://ift.tt/2BHVfoM", "date": "2018-11-30", "content": "<p>Mischpappeau 11 / Carl Mars - Pizza Cartong by d\u00fcbleau <a href=\"https://ift.tt/2BHVfoM\">https://ift.tt/2BHVfoM</a></p> ", "tags": []}, {"id": "180619364264", "title": "Missy Elliott - The Rain (Benedikt Frey Tribute) by benedikt freyhttps://ift.tt/2iZoGqP", "date": "2018-11-29", "content": "<p>Missy Elliott - The Rain (Benedikt Frey Tribute) by benedikt frey <a href=\"https://ift.tt/2iZoGqP\">https://ift.tt/2iZoGqP</a></p> ", "tags": ["Missy Elliott", "Tribute"]}, {"id": "180619365314", "title": "IV71 - Oliver Deutschmann - Control - Secret Weapons Part 9 by Innervisionshttps://ift.tt/2Qw1HYw", "date": "2018-11-29", "content": "<p>IV71 - Oliver Deutschmann - Control - Secret Weapons Part 9 by Innervisions <a href=\"https://ift.tt/2Qw1HYw\">https://ift.tt/2Qw1HYw</a></p> ", "tags": ["Oliver Deutschmann", "Secret Weapons Part 9", "IV71", "Control"]}, {"id": "180516452964", "title": "WRECKS020 - Dos Ritmos - Antropophony by Klasse Wreckshttps://ift.tt/2Ky1ZIM", "date": "2018-11-26", "content": "<p>WRECKS020 - Dos Ritmos - Antropophony by Klasse Wrecks <a href=\"https://ift.tt/2Ky1ZIM\">https://ift.tt/2Ky1ZIM</a></p> ", "tags": ["Dos Ritmos"]}, {"id": "180485822154", "title": "Crack Mix 242 \u2013 Moody Mehran by Crack Magazinehttps://ift.tt/2DWwEPt", "date": "2018-11-25", "content": "<p>Crack Mix 242 \u2013 Moody Mehran by Crack Magazine <a href=\"https://ift.tt/2DWwEPt\">https://ift.tt/2DWwEPt</a></p> ", "tags": ["New Wave", "80s", "Electronic"]}, {"id": "180128839269", "title": "Shabazz Palaces - Julian\u2019s Dream", "date": "2018-11-15", "content": "<p>Shabazz Palaces - Julian\u2019s Dream\u00a0</p> ", "tags": ["2018"]}, {"id": "180129119154", "title": "Shabazz Palaces - Julian\u2019s Dream", "date": "2018-11-15", "content": "<p>Shabazz Palaces - Julian\u2019s Dream</p> ", "tags": ["hip-hop"]}, {"id": "179560125939", "title": "Emma Ruth Rundle - Light Songfrom the album \u201cOn Dark Horses\u201d, Available Sept 14th on Sargent House", "date": "2018-10-29", "content": "<p>Emma Ruth Rundle - Light Song</p><p>from the album \u201cOn Dark Horses\u201d, Available Sept 14th on Sargent House<br/></p> ", "tags": ["2018", "americana"]}, {"id": "179341245354", "title": "Image: Dizzy Gillespie cuts a watermelon.https://ift.tt/2CzBFMv", "date": "2018-10-23", "content": "<p>Image: Dizzy Gillespie cuts a watermelon. <a href=\"https://ift.tt/2CzBFMv\">https://ift.tt/2CzBFMv</a></p> ", "tags": ["Free Jazz", "Jazz", "Bebop", "ECM"]}, {"id": "179317338159", "title": "Kamasi Washington - Hub-Tones", "date": "2018-10-22", "content": "<p>Kamasi Washington - Hub-Tones</p> ", "tags": ["2018", "bestof"]}, {"id": "179044261144", "title": "Sha La Das - Those years are overThe Sha La Das\u2019 debut album, Love in the Wind, is available now.", "date": "2018-10-14", "content": "<p>Sha La Das - Those years are over</p><p>The Sha La Das\u2019 debut album, Love in the Wind, is available now.<br/></p> ", "tags": ["2018"]}, {"id": "178369018354", "title": "B\u00e1rbara Boeing @ Xama 2019 by Gop Tunhttps://ift.tt/2MUwKaw", "date": "2018-09-23", "content": "<p>B\u00e1rbara Boeing @ Xama 2019 by Gop Tun <a href=\"https://ift.tt/2MUwKaw\">https://ift.tt/2MUwKaw</a></p> ", "tags": ["barbara boeing", "xama"]}, {"id": "178341340604", "title": "Marc Ribot - \u201cBella Ciao (Goodbye Beautiful)\u201d (feat. Tom Waits)\u201cBella Ciao (Goodbye Beautiful)\u201d by M", "date": "2018-09-22", "content": "<p>Marc Ribot - \u201cBella Ciao (Goodbye Beautiful)\u201d (feat. Tom Waits) </p><p>\u201cBella Ciao (Goodbye Beautiful)\u201d by Marc Ribot (feat. Tom Waits) from the album \u2018Songs Of Resistance 1942 - 2018.<br/></p> ", "tags": ["2018"]}, {"id": "178073608569", "title": "Dekmantel Podcast 181 - SHXCXCHCXSH by dekmantelhttps://ift.tt/2p63FPV", "date": "2018-09-14", "content": "<p>Dekmantel Podcast 181 - SHXCXCHCXSH by dekmantel <a href=\"https://ift.tt/2p63FPV\">https://ift.tt/2p63FPV</a></p> ", "tags": ["dekmantel", "podcast"]}, {"id": "177579531189", "title": "Zeal & Ardor - Baphomet (Live at Lowlands Festival 2018)", "date": "2018-08-31", "content": "<p>Zeal &amp; Ardor - Baphomet (Live at Lowlands Festival 2018) </p> ", "tags": ["2018"]}, {"id": "177513463994", "title": "CKFM.028 - ECE \u00d6ZEL by Craigie Knoweshttps://ift.tt/2oj3AaX", "date": "2018-08-29", "content": "<p>CKFM.028 - ECE \u00d6ZEL by Craigie Knowes <a href=\"https://ift.tt/2oj3AaX\">https://ift.tt/2oj3AaX</a></p> ", "tags": ["Ece Ozel", "CKFM", "CKFM.029", "CKFM029", "ECE", "\u00d6ZEL", "Mix", "House", "Techno", "Electro", "Electronix", "Acid", "\"Crai"]}, {"id": "176804372799", "title": "Epic Vinyls from Brazil - ABOM-3 Afro Brazil Orix\u00e1 Mix - Terceiro. by Le Mellotronhttps://ift.tt/2Ok", "date": "2018-08-09", "content": "<p>Epic Vinyls from Brazil - ABOM-3 Afro Brazil Orix\u00e1 Mix - Terceiro. by Le Mellotron <a href=\"https://ift.tt/2OkuY3x\">https://ift.tt/2OkuY3x</a></p> ", "tags": ["brazilian", "samba", "bossa", "tropical"]}, {"id": "176526120764", "title": "RUBBER BULLIES by TROPICAL FUCK STORMMy fave band these days", "date": "2018-08-01", "content": "<p>RUBBER BULLIES by TROPICAL FUCK STORM </p><p>My fave band these days</p> ", "tags": ["2018"]}, {"id": "176047663684", "title": "Fargo July 11 by seven secrets of snowhttps://ift.tt/2mtY5oU", "date": "2018-07-19", "content": "<p>Fargo July 11 by seven secrets of snow <a href=\"https://ift.tt/2mtY5oU\">https://ift.tt/2mtY5oU</a></p> ", "tags": []}, {"id": "176047664239", "title": "Jetti & Post #2 by BAR ROTTERDAMhttps://ift.tt/2uIvss0", "date": "2018-07-19", "content": "<p>Jetti &amp; Post #2 by BAR ROTTERDAM <a href=\"https://ift.tt/2uIvss0\">https://ift.tt/2uIvss0</a></p> ", "tags": ["House", "Tribal", "slowbeat"]}, {"id": "175387592174", "title": "Neko Case - Bad Luck (Live on KEXP)Superb new album from Neko Case, the queen.http://KEXP.ORGpresent", "date": "2018-06-30", "content": "<p>Neko Case - Bad Luck (Live on KEXP) </p><p>Superb new album from Neko Case, the queen.</p><p><a href=\"https://www.youtube.com/redirect?q=http%3A%2F%2FKEXP.ORG&amp;event=video_description&amp;v=4aMyv7i1Nw4&amp;redir_token=8QgYAQE9pdprIfy2R_cIiCrP_HZ8MTUzMDM0NjE2NUAxNTMwMjU5NzY1\">http://KEXP.ORG</a> presents Neko Case performing \u201cBad Luck\u201d live in the KEXP studio. Recorded May 17, 2018.<br/></p> ", "tags": ["2018", "indie"]}, {"id": "175390847164", "title": "Khotin - Planet BNew Khotin album forthcoming early July 2018.", "date": "2018-06-30", "content": "<p>Khotin - Planet B </p><p>New Khotin album forthcoming early July 2018.</p> ", "tags": ["2018", "electronic", "lo-fi"]}, {"id": "175367037623", "title": "IDLES - DANNY NEDELKO\u2018Joy as an Act of Resistance.\u2019 out 31st August 2018", "date": "2018-06-29", "content": "<p>IDLES - DANNY NEDELKO </p><p>\u2018Joy as an Act of Resistance.\u2019 out 31st August 2018\u00a0<br/></p> ", "tags": ["2018", "punk"]}, {"id": "175368909572", "title": "Kamasi Washington - Street Fighter MasHe\u2019s back!!\u2018Street Fighter Mas\u2019, a single from Kamasi Washingt", "date": "2018-06-29", "content": "<p>Kamasi Washington - Street Fighter Mas </p><p>He\u2019s back!!</p><p>\u2018Street Fighter Mas\u2019, a single from Kamasi Washington\u2019s sophomore album Heaven and Earth.\u00a0</p><blockquote><p>\u201c[Jazz] comes from poor black neighbourhoods, so because of that foundation we thought of it as a support. It feels more like a horse that you can ride out on than a weight, the horse that\u2019s taken all your forefathers around the world and allowed you to express yourself.\u201d <a href=\"https://www.theguardian.com/music/2018/jun/16/kamasi-washington-interview-jazz-is-like-a-horse-you-can-ride-out-on-heaven-and-earth?CMP=share_btn_fb\">Guardian</a><br/></p></blockquote> ", "tags": ["2018", "jazz"]}, {"id": "174059894809", "title": "https://ift.tt/2wVVmwS", "date": "2018-05-20", "content": "<p><a href=\"https://ift.tt/2wVVmwS\">https://ift.tt/2wVVmwS</a></p> ", "tags": ["Brasil"]}, {"id": "173921242109", "title": "Live from the Opening of the 212 Photography Festival in Istanbul.https://ift.tt/2IFNRPb", "date": "2018-05-15", "content": "<p>Live from the Opening of the 212 Photography Festival in Istanbul. <a href=\"https://ift.tt/2IFNRPb\">https://ift.tt/2IFNRPb</a></p> ", "tags": ["eclectic", "latin", "jazz", "caribeean", "Brazil"]}, {"id": "173876482351", "title": "Art Zoyd - Derni\u00e8re danseThe board of Association Art Zoyd 3 is deeply saddened to announce the deat", "date": "2018-05-14", "content": "<p>Art Zoyd - Derni\u00e8re danse </p><p>The board of Association Art Zoyd 3 is deeply saddened to announce the death of Mr G\u00e9rard Hourbette, its director and composer, which occurred on Friday, May 4th, 2018 at the age of 64.\n\nA major figure of the musical avant-garde, G\u00e9rard Hourbette contributed to it through his work as a composer, his commitment to the advancement of musical writing and instrumental approach.<br/></p> ", "tags": ["prog", "obit"]}, {"id": "173865738649", "title": "Laura Palmer\u2019s Death Parade - I\u2019m the Only OneBandcamp", "date": "2018-05-13", "content": "<p>Laura Palmer\u2019s Death Parade - I\u2019m the Only One</p><p><a href=\"https://laurapalmersdeathparade.bandcamp.com/\">Bandcamp</a></p> ", "tags": ["2018"]}, {"id": "173834417364", "title": "Tirzah - Gladly (Official Video)Tirzah - \u201cGladly\u201d from \u2018Devotion\u2019, out 10th August 2018 on Domino Re", "date": "2018-05-12", "content": "<p>Tirzah - Gladly (Official Video) </p><p>Tirzah - \u201cGladly\u201d from \u2018Devotion\u2019, out 10th August 2018 on Domino Record Co.<br/></p> ", "tags": ["2018"]}, {"id": "173666510754", "title": "Red Light Radio | 24.03.2018 by H\u00fcNKARhttps://ift.tt/2FSjEH5", "date": "2018-05-07", "content": "<p>Red Light Radio | 24.03.2018 by H\u00fcNKAR <a href=\"https://ift.tt/2FSjEH5\">https://ift.tt/2FSjEH5</a></p> ", "tags": []}, {"id": "173605486039", "title": "Oumou Sangar\u00e9 - Minata Waraba (live @TivoliVredenburg Utrecht)\u201cThe Songbird of Wassoulou\u201d Malinese s", "date": "2018-05-05", "content": "<p>Oumou Sangar\u00e9 - Minata Waraba (live @TivoliVredenburg Utrecht) </p><p>\u201cThe Songbird of Wassoulou\u201d Malinese singer Oumou Sangar\u00e9 performs her own song Minata Waraba from her album Mogoya<br/></p> ", "tags": ["world"]}, {"id": "171565565529", "title": "EVFB MIX: ABOM-2 / Afro Brazil Orix\u00e1 Mix - Segundo by Epic Vinyls from Brazilhttp://ift.tt/2Fgv9Zt", "date": "2018-03-05", "content": "<p>EVFB MIX: ABOM-2 / Afro Brazil Orix\u00e1 Mix - Segundo by Epic Vinyls from Brazil <a href=\"http://ift.tt/2Fgv9Zt\">http://ift.tt/2Fgv9Zt</a></p> ", "tags": []}, {"id": "171485251489", "title": "Champloo Music Podcast 43 with KOMPLEKS by CHAMPLOO MUSIChttp://ift.tt/2thuPIC", "date": "2018-03-03", "content": "<p>Champloo Music Podcast 43 with KOMPLEKS by CHAMPLOO MUSIC <a href=\"http://ift.tt/2thuPIC\">http://ift.tt/2thuPIC</a></p> ", "tags": ["Balearic", "House", "Deep", "Techno", "Soul", "Kompleks", "L\u00fcle", "Belgrad", "G\u00f6rlitz", "Podcast", "Serbia", "Zgorzelec", "F"]}, {"id": "171353478979", "title": "Tv and Furniture by nixxon (Nikolaj Birgens)http://ift.tt/2BW7oqD", "date": "2018-02-27", "content": "<p>Tv and Furniture by nixxon (Nikolaj Birgens) <a href=\"http://ift.tt/2BW7oqD\">http://ift.tt/2BW7oqD</a></p> ", "tags": []}, {"id": "171172633444", "title": "Lucrecia Dalt - TarSpellbound with this one, third listen in a row", "date": "2018-02-22", "content": "<p>Lucrecia Dalt - Tar\u00a0</p><p>Spellbound with this one, third listen in a row</p> ", "tags": ["2018", "avant"]}, {"id": "171007805348", "title": "Skinny Pelembe - Spit / Swallow (Official Video)Having recently signed to Brownswood Recordings, ann", "date": "2018-02-18", "content": "<p>Skinny Pelembe - Spit / Swallow (Official Video) </p><p>Having recently signed to Brownswood Recordings, announced via new track \u2018I\u2019ll Be On Your Mind\u2019, Skinny Pelembe lines up his first single proper for the London imprint. \u2018Spit / Swallow\u2019 spans pastoral pop, psychedelic textures and hip-hop-tipped, chopped and spliced guitar, interlacings samples with rolling drum breaks and echoed falsettos. B-side \u2018Toy Shooter\u2019 follows in similar fashion, bridging psych-rock exaltation with beat-head, synth-jamming production.<br/></p> ", "tags": ["2018"]}, {"id": "170958216348", "title": "Tigran Hamasyan - DripTigran Hamasyan\u2019s \u201cDrip\u201d performed with the Berklee Middle Eastern Fusion Ense", "date": "2018-02-17", "content": "<p>Tigran Hamasyan - Drip</p><p>Tigran Hamasyan\u2019s \u201cDrip\u201d performed with the Berklee Middle Eastern Fusion Ensemble. This recording of \u201cDrip\u201d was arranged by the ensemble.</p> ", "tags": ["2018", "jazz"]}, {"id": "170980633099", "title": "DIRTY SOUND SYSTEM - winter hits 2017 (japanese edition) by dirty sound systemhttp://ift.tt/2o6kvOf", "date": "2018-02-17", "content": "<p>DIRTY SOUND SYSTEM - winter hits 2017 (japanese edition) by dirty sound system <a href=\"http://ift.tt/2o6kvOf\">http://ift.tt/2o6kvOf</a></p> ", "tags": ["ambient"]}, {"id": "170790564214", "title": "#068: SpatzHabibi - Montagssorbet mit Laut & Luise by Laut & Luisehttp://ift.tt/2DBRu2D", "date": "2018-02-12", "content": "<p>#068: SpatzHabibi - Montagssorbet mit Laut &amp; Luise by Laut &amp; Luise <a href=\"http://ift.tt/2DBRu2D\">http://ift.tt/2DBRu2D</a></p> ", "tags": []}, {"id": "170764493324", "title": "Aleksa Alaska - Les Belles de Nuit Podcast NR 4 by Les Belles de Nuithttp://ift.tt/2nZkNG1", "date": "2018-02-11", "content": "<p>Aleksa Alaska - Les Belles de Nuit Podcast NR 4 by Les Belles de Nuit <a href=\"http://ift.tt/2nZkNG1\">http://ift.tt/2nZkNG1</a></p> ", "tags": []}, {"id": "170620057624", "title": "Dekmantel Podcast 158 - Ece \u00d6zel by dekmantelhttp://ift.tt/2EOFyw9", "date": "2018-02-07", "content": "<p>Dekmantel Podcast 158 - Ece \u00d6zel by dekmantel <a href=\"http://ift.tt/2EOFyw9\">http://ift.tt/2EOFyw9</a></p> ", "tags": ["dekmantelpodcast", "ece\u00f6zel"]}, {"id": "170583587549", "title": "\u61b6\u6545\u4eba - \u4e2d\u570b\u53e4\u7434 by meditationshttp://ift.tt/2nLGme3", "date": "2018-02-06", "content": "<p>\u61b6\u6545\u4eba - \u4e2d\u570b\u53e4\u7434 by meditations <a href=\"http://ift.tt/2nLGme3\">http://ift.tt/2nLGme3</a></p> ", "tags": []}, {"id": "170583593109", "title": "ADT - Commotional Rescue by Hausu Mountainhttp://ift.tt/2C1eir7", "date": "2018-02-06", "content": "<p>ADT - Commotional Rescue by Hausu Mountain <a href=\"http://ift.tt/2C1eir7\">http://ift.tt/2C1eir7</a></p> ", "tags": ["Free Jazz", "free improv", "zones", "Psychedelic", "psychojazz", "kosmiche", "space", "Synth"]}, {"id": "170503579014", "title": "SMALA RADIO 020: AUFGANG B by Opium Clubhttp://ift.tt/2BTLVuZ", "date": "2018-02-04", "content": "<p>SMALA RADIO 020: AUFGANG B by Opium Club <a href=\"http://ift.tt/2BTLVuZ\">http://ift.tt/2BTLVuZ</a></p> ", "tags": ["neue deutsche welle"]}, {"id": "170447221109", "title": "Eraldo BernocchI & Chihei Hatakeyama -  Those Glorious Days by Aagoohttp://ift.tt/2DYlTIQ", "date": "2018-02-03", "content": "<p>Eraldo BernocchI &amp; Chihei Hatakeyama -  Those Glorious Days by Aagoo <a href=\"http://ift.tt/2DYlTIQ\">http://ift.tt/2DYlTIQ</a></p> ", "tags": ["Eraldo Bernocci", "Chihei Hatakeyma", "Aagoo", "guitar", "ambient", "Solitary", "Universe", "\"Petulia Mattio"]}, {"id": "170453473919", "title": "Tropical Fuck Storm - You let my tyres down", "date": "2018-02-03", "content": "<p><b>Tropical Fuck Storm - You let my tyres down</b></p><p>First mega video/song of 2018 from The Drones main man, Gareth Liddiard.</p> ", "tags": ["2018"]}, {"id": "170259061724", "title": "Afacan Turk (http://ift.tt/1vJN3Ms) by jonnyrockhttp://ift.tt/1szK0CH", "date": "2018-01-29", "content": "<p>Afacan Turk (<a href=\"http://ift.tt/1vJN3Ms\">http://ift.tt/1vJN3Ms</a>) by jonnyrock <a href=\"http://ift.tt/1szK0CH\">http://ift.tt/1szK0CH</a></p> ", "tags": ["t\u00fcrk m\u00fczi\u011fi", "t\u00fcrk\u00e7e twist", "60s", "70s"]}];
+    let currentFilter = null;
+    let postsPerPage = 50;
+    let currentPage = 0;
+
+    function formatDate(dateStr) {
+        const d = new Date(dateStr);
+        return d.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
+    }
+
+    function renderPost(post) {
+        const excerpt = post.content.replace(/<[^>]*>/g, '').substring(0, 150);
+        const tags = (post.tags || []).map(t => `<span class="tag">${escape(t)}</span>`).join('');
+        return `
+            <div class="card" onclick="location.href='/tumblr/post.html?id=${post.id}'">
+                <div class="card-header">
+                    <div class="card-date">${formatDate(post.date)}</div>
+                    <h3 class="card-title">${escape(post.title)}</h3>
+                </div>
+                <div class="card-body">
+                    <p class="card-excerpt">${excerpt}...</p>
+                    <div class="card-tags">${tags}</div>
+                </div>
+            </div>
+        `;
+    }
+
+    function escape(text) {
+        const div = document.createElement('div');
+        div.textContent = text;
+        return div.innerHTML;
+    }
+
+    function filterByTag(tag) {
+        if (currentFilter === tag) {
+            currentFilter = null;
+        } else {
+            currentFilter = tag;
+        }
+        document.querySelectorAll('.pill').forEach(p => {
+            p.classList.remove('active');
+            if (p.textContent.trim() === (tag || '')) {
+                p.classList.add('active');
+            }
+        });
+        currentPage = 0;
+        renderPosts();
+    }
+
+    function getVisiblePosts() {
+        if (!currentFilter) return allPosts;
+        return allPosts.filter(p => (p.tags || []).includes(currentFilter));
+    }
+
+    function renderPosts() {
+        const visible = getVisiblePosts();
+        const grid = document.getElementById('grid');
+        const startIdx = 0;
+        const endIdx = (currentPage + 1) * postsPerPage;
+        const toRender = visible.slice(startIdx, endIdx);
+        
+        grid.innerHTML = toRender.map(renderPost).join('');
+        
+        const loadMoreContainer = document.getElementById('load-more-container');
+        if (endIdx < visible.length) {
+            loadMoreContainer.style.display = 'block';
+        } else {
+            loadMoreContainer.style.display = 'none';
+        }
+    }
+
+    function loadMorePosts() {
+        currentPage++;
+        renderPosts();
+    }
+
+    renderPosts();
+    </script>
+</body>
+</html>

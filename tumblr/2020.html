@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2020 — Undomondo Tumblr Archive</title>
+    <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    html, body {
+        font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        background: #f8f6f1;
+        color: #222;
+        line-height: 1.6;
+    }
+    
+    @import url('https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Space+Mono:wght@400;700&family=DM+Sans:wght@400;500;700&family=Space+Grotesk:wght@400;600;700&display=swap');
+    
+    nav {
+        background: white;
+        padding: 1.5rem 2rem;
+        border-bottom: 3px solid #D62828;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-family: 'Space Grotesk', sans-serif;
+    }
+    
+    .nav-brand {
+        font-size: 1.2rem;
+        font-weight: 700;
+        color: #111;
+        text-decoration: none;
+        letter-spacing: 0.05em;
+    }
+    
+    .nav-links {
+        display: flex;
+        gap: 2rem;
+        list-style: none;
+    }
+    
+    .nav-links a {
+        text-decoration: none;
+        color: #111;
+        font-weight: 600;
+        font-size: 0.95rem;
+        transition: color 0.2s;
+    }
+    
+    .nav-links a:hover,
+    .nav-links a.active {
+        color: #D62828;
+    }
+    
+    .hero {
+        background-color: #111111;
+        background-image: radial-gradient(circle, #005F99 8px, transparent 8px);
+        background-size: 24px 24px;
+        padding: 4rem 2rem;
+        text-align: center;
+        color: white;
+    }
+    
+    .year-big {
+        font-family: 'Dela Gothic One', sans-serif;
+        font-size: clamp(4rem, 10vw, 8rem);
+        margin: 0;
+        text-transform: uppercase;
+        opacity: 0.3;
+        line-height: 1;
+    }
+    
+    .year-info {
+        font-size: 1.2rem;
+        margin: 1.5rem 0;
+        opacity: 0.9;
+    }
+    
+    .year-nav {
+        text-align: center;
+        padding: 2rem;
+        font-family: 'Space Grotesk', sans-serif;
+    }
+    
+    .year-nav a, .year-nav span {
+        margin: 0 0.5rem;
+        text-decoration: none;
+        color: #005F99;
+        font-weight: 600;
+    }
+    
+    .year-nav .current {
+        color: #D62828;
+        text-decoration: underline;
+    }
+    
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; }
+    
+    .filter-bar {
+        margin: 2rem 0;
+        padding: 1.5rem;
+        background: white;
+        border-radius: 4px;
+    }
+    
+    .filter-label {
+        font-weight: 600;
+        margin-bottom: 1rem;
+        display: block;
+    }
+    
+    .pills {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin-bottom: 1rem;
+    }
+    
+    .pill {
+        display: inline-block;
+        padding: 0.35rem 0.75rem;
+        background: #f0f0f0;
+        border: 1px solid #ddd;
+        border-radius: 20px;
+        font-size: 0.8rem;
+        text-decoration: none;
+        color: #111;
+        transition: all 0.2s;
+        cursor: pointer;
+    }
+    
+    .pill:hover {
+        background: #D62828;
+        color: white;
+        border-color: #D62828;
+    }
+    
+    .pill.active {
+        background: #D62828;
+        color: white;
+        border-color: #D62828;
+    }
+    
+    .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+        gap: 2rem;
+        margin: 2rem 0;
+    }
+    
+    .card {
+        background: white;
+        border-radius: 4px;
+        overflow: hidden;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        transition: transform 0.2s, box-shadow 0.2s;
+        display: flex;
+        flex-direction: column;
+        cursor: pointer;
+    }
+    
+    .card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+    }
+    
+    .card-header {
+        background: #111;
+        color: white;
+        padding: 1.5rem;
+        border-left: 4px solid #D62828;
+    }
+    
+    .card-title {
+        font-size: 1.1rem;
+        font-weight: 700;
+        margin: 0.5rem 0;
+    }
+    
+    .card-date {
+        font-family: 'Space Mono', monospace;
+        font-size: 0.75rem;
+        opacity: 0.8;
+    }
+    
+    .card-body {
+        padding: 1.5rem;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .card-excerpt {
+        color: #666;
+        font-size: 0.9rem;
+        margin-bottom: 1rem;
+        flex: 1;
+    }
+    
+    .card-tags {
+        margin-top: auto;
+    }
+    
+    .tag {
+        display: inline-block;
+        padding: 0.25rem 0.6rem;
+        background: #f0f0f0;
+        border-radius: 3px;
+        font-size: 0.75rem;
+        margin-right: 0.5rem;
+        margin-bottom: 0.3rem;
+        color: #666;
+    }
+    
+    .load-more {
+        text-align: center;
+        padding: 2rem;
+    }
+    
+    .load-more-btn {
+        padding: 0.75rem 2rem;
+        background: #D62828;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        font-weight: 600;
+        cursor: pointer;
+        font-size: 1rem;
+        transition: opacity 0.2s;
+    }
+    
+    .load-more-btn:hover {
+        opacity: 0.85;
+    }
+    
+    footer {
+    background: #D62828;
+    color: #F2EFE5;
+    padding: 48px 40px;
+}
+footer a { color: #F2EFE5; text-decoration: none; }
+footer a:hover { opacity: 0.8; background: #F2EFE5; color: #D62828; }
+    footer a:hover { opacity: 0.8; }
+    
+    @media (max-width: 768px) {
+        nav { flex-direction: column; gap: 1rem; }
+        .nav-links { gap: 1rem; }
+        .year-big { font-size: clamp(2rem, 6vw, 4rem); }
+    }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="/" class="nav-brand">UNDOMONDO</a>
+        <ul class="nav-links">
+            <li><a href="/">Home</a></li>
+            <li><a href="/archive/" class="active">Archive</a></li>
+            <li><a href="https://undomondo.substack.com">Newsletter</a></li>
+            <li><a href="/#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <div class="hero">
+        <h1 class="year-big">2020</h1>
+        <p class="year-info">23 posts</p>
+    </div>
+
+    <div class="container">
+        <div class="year-nav">
+            <a href="/tumblr/">← Tumblr Hub</a>
+            <a href="/tumblr/2019.html">← 2019</a> · <span class="current">2020</span> · <a href="/tumblr/2021.html">2021 →</a>
+        </div>
+
+        <div class="filter-bar">
+            <label class="filter-label">Filter by genre:</label>
+            <div class="pills">
+                <span class="pill" onclick="filterByTag('2020')">2020</span>
+<span class="pill" onclick="filterByTag('live')">live</span>
+<span class="pill" onclick="filterByTag('africa')">africa</span>
+<span class="pill" onclick="filterByTag('vintage')">vintage</span>
+<span class="pill" onclick="filterByTag('indie')">indie</span>
+<span class="pill" onclick="filterByTag('punk')">punk</span>
+<span class="pill" onclick="filterByTag('SoundCloud')">SoundCloud</span>
+<span class="pill" onclick="filterByTag('music')">music</span>
+<span class="pill" onclick="filterByTag('Delüks')">Delüks</span>
+<span class="pill" onclick="filterByTag('jazz')">jazz</span>
+            </div>
+        </div>
+
+        <div class="grid" id="grid">
+            <div class="card" onclick="location.href='/tumblr/post.html?id=638965639848017920'">
+                <div class="card-header">
+                    <div class="card-date">2020-12-31</div>
+                    <h3 class="card-title">Undomondo’s Best of 2020What a year this was! Barren socially, yet elated creatively. It took the la</h3>
+                </div>
+                <div class="card-body">
+                    <p class="card-excerpt"> Undomondo’s Best of 2020  What a year this was! Barren socially, yet elated creatively. It took the last three days to sort out the already fleshed out best of list.  An overwhelming amount of music ...</p>
+                    <div class="card-tags"></div>
+                </div>
+            </div>
+<div class="card" onclick="location.href='/tumblr/post.html?id=621360948792410112'">
+                <div class="card-header">
+                    <div class="card-date">2020-06-19</div>
+                    <h3 class="card-title">Tigran Hamasyan - Levitation 21“Levitation 21” - from Tigran Hamasyan’s new album “The Call Within”
+</h3>
+                </div>
+                <div class="card-body">
+                    <p class="card-excerpt"> Tigran Hamasyan - Levitation 21   “Levitation 21” - from Tigran Hamasyan’s new album “The Call Within”
+Available on August 28th 2020.   </p>
+                    <div class="card-tags"><span class="tag">2020</span></div>
+                </div>
+            </div>
+<div class="card" onclick="location.href='/tumblr/post.html?id=620431196380430337'">
+                <div class="card-header">
+                    <div class="card-date">2020-06-09</div>
+                    <h3 class="card-title">ZENZILE - “Après ça” feat. NERLOV (Official Video)</h3>
+                </div>
+                <div class="card-body">
+                    <p class="card-excerpt"> ZENZILE - “Après ça” feat. NERLOV (Official Video)   </p>
+                    <div class="card-tags"><span class="tag">2020</span></div>
+                </div>
+            </div>
+<div class="card" onclick="location.href='/tumblr/post.html?id=619547407057879040'">
+                <div class="card-header">
+                    <div class="card-date">2020-05-30</div>
+                    <h3 class="card-title">Baris K. &amp; Undomondo Ramadan Special for Radio Alhara</h3>
+                </div>
+                <div class="card-body">
+                    <p class="card-excerpt"> Baris K. &amp;amp; Undomondo Ramadan Special for Radio Alhara  </p>
+                    <div class="card-tags"><span class="tag">SoundCloud</span><span class="tag">music</span><span class="tag">Delüks</span><span class="tag">jazz</span><span class="tag">spiritual</span><span class="tag">arabic</span><span class="tag">africa</span></div>
+                </div>
+            </div>
+<div class="card" onclick="location.href='/tumblr/post.html?id=617025939257393152'">
+                <div class="card-header">
+                    <div class="card-date">2020-05-02</div>
+                    <h3 class="card-title">Knxwledge - Makeitliveforever“makeitliveforever” from the album 1988http://sthrow.com/1988• Animatio</h3>
+                </div>
+                <div class="card-body">
+                    <p class="card-excerpt"> Knxwledge - Makeitliveforever      “makeitliveforever” from the album 1988 &lt;a href=&quot;https://www.youtube.com/redirect?v=N9ff07MnTEI&amp;amp;event=video_description&amp;amp;q=http%3A%2F%2Fsthro...</p>
+                    <div class="card-tags"><span class="tag">2020</span></div>
+                </div>
+            </div>
+<div class="card" onclick="location.href='/tumblr/post.html?id=616934757754880000'">
+                <div class="card-header">
+                    <div class="card-date">2020-05-01</div>
+                    <h3 class="card-title">Khruangbin - Time (You and I) (Official Video)</h3>
+                </div>
+                <div class="card-body">
+                    <p class="card-excerpt"> Khruangbin - Time (You and I) (Official Video)   </p>
+                    <div class="card-tags"><span class="tag">2020</span></div>
+                </div>
+            </div>
+<div class="card" onclick="location.href='/tumblr/post.html?id=616038311283359744'">
+                <div class="card-header">
+                    <div class="card-date">2020-04-21</div>
+                    <h3 class="card-title">Tom Misch &amp; Yussef Dayes - Nightrider (feat. Freddie Gibbs)</h3>
+                </div>
+                <div class="card-body">
+                    <p class="card-excerpt"> Tom Misch &amp;amp; Yussef Dayes - Nightrider (feat. Freddie Gibbs)   </p>
+                    <div class="card-tags"></div>
+                </div>
+            </div>
+<div class="card" onclick="location.href='/tumblr/post.html?id=613097960742469632'">
+                <div class="card-header">
+                    <div class="card-date">2020-03-20</div>
+                    <h3 class="card-title">Betsayda Machado y La Parranda El Clavo  - La rana / No la pele…Their Tiny Desk was also amazing.. W</h3>
+                </div>
+                <div class="card-body">
+                    <p class="card-excerpt"> Betsayda Machado y La Parranda El Clavo  - La rana / No la pele…  Their Tiny Desk was also amazing.. Will I ever get the chance to watch them live?!  </p>
+                    <div class="card-tags"><span class="tag">live</span></div>
+                </div>
+            </div>
+<div class="card" onclick="location.href='/tumblr/post.html?id=612981045165539328'">
+                <div class="card-header">
+                    <div class="card-date">2020-03-19</div>
+                    <h3 class="card-title">Michelle Gurevich - Lovers are StrangersSlowed down old folks dancing + bittersweet melancholic melo</h3>
+                </div>
+                <div class="card-body">
+                    <p class="card-excerpt"> Michelle Gurevich - Lovers are Strangers   Slowed down old folks dancing + bittersweet melancholic melodies remind me of old folks perishing by COVID-19. A bittersweet elegy to these days.. Shed a te...</p>
+                    <div class="card-tags"></div>
+                </div>
+            </div>
+<div class="card" onclick="location.href='/tumblr/post.html?id=612989088690241536'">
+                <div class="card-header">
+                    <div class="card-date">2020-03-19</div>
+                    <h3 class="card-title">Tropical Fuck Storm - Suburbiopia (Official Video)Suburbiopia is an epic exploration of the upside o</h3>
+                </div>
+                <div class="card-body">
+                    <p class="card-excerpt"> Tropical Fuck Storm - Suburbiopia (Official Video)   Suburbiopia is an epic exploration of the upside of being in a suicide cult. Filmed in a parallel universe by Oscar O’Shea, you will be enlightene...</p>
+                    <div class="card-tags"><span class="tag">2020</span></div>
+                </div>
+            </div>
+<div class="card" onclick="location.href='/tumblr/post.html?id=612924557623443456'">
+                <div class="card-header">
+                    <div class="card-date">2020-03-18</div>
+                    <h3 class="card-title">Max Cooper - Transcendental Tree Map</h3>
+                </div>
+                <div class="card-body">
+                    <p class="card-excerpt"> Max Cooper - Transcendental Tree Map  </p>
+                    <div class="card-tags"></div>
+                </div>
+            </div>
+<div class="card" onclick="location.href='/tumblr/post.html?id=612924863943999488'">
+                <div class="card-header">
+                    <div class="card-date">2020-03-18</div>
+                    <h3 class="card-title">Protomartyr - Processed By The Boys (Official Video)Best band in the world.</h3>
+                </div>
+                <div class="card-body">
+                    <p class="card-excerpt"> Protomartyr - Processed By The Boys (Official Video)   Best band in the world.  </p>
+                    <div class="card-tags"><span class="tag">2020</span></div>
+                </div>
+            </div>
+<div class="card" onclick="location.href='/tumblr/post.html?id=611776522771202048'">
+                <div class="card-header">
+                    <div class="card-date">2020-03-05</div>
+                    <h3 class="card-title">King Krule - Cellular</h3>
+                </div>
+                <div class="card-body">
+                    <p class="card-excerpt"> King Krule - Cellular   </p>
+                    <div class="card-tags"></div>
+                </div>
+            </div>
+<div class="card" onclick="location.href='/tumblr/post.html?id=190969356709'">
+                <div class="card-header">
+                    <div class="card-date">2020-02-22</div>
+                    <h3 class="card-title">Max Cooper - In Pursuit of Ghosts (Official Video by Kevin McGloughlin)The final track from the albu</h3>
+                </div>
+                <div class="card-body">
+                    <p class="card-excerpt"> Max Cooper - In Pursuit of Ghosts (Official Video by Kevin McGloughlin)   The final track from the album was written with my long-term collaborator, the great pianist and composer, Tom Hodge. Visuall...</p>
+                    <div class="card-tags"><span class="tag">2020</span></div>
+                </div>
+            </div>
+<div class="card" onclick="location.href='/tumblr/post.html?id=190565368749'">
+                <div class="card-header">
+                    <div class="card-date">2020-01-31</div>
+                    <h3 class="card-title">Charles Trénet “Douce France” | Archive INAEn public, Charles Trenet chante “Douce France” sur le pl</h3>
+                </div>
+                <div class="card-body">
+                    <p class="card-excerpt"> Charles Trénet “Douce France” | Archive INA   En public, Charles Trenet chante “Douce France” sur le plateau de l&#x27;émission “Palmarès des chansons” en 1967. 
+     </p>
+                    <div class="card-tags"><span class="tag">chanson</span><span class="tag">vintage</span></div>
+                </div>
+            </div>
+<div class="card" onclick="location.href='/tumblr/post.html?id=190548975969'">
+                <div class="card-header">
+                    <div class="card-date">2020-01-30</div>
+                    <h3 class="card-title">Porridge Radio - LilacCathartic</h3>
+                </div>
+                <div class="card-body">
+                    <p class="card-excerpt"> Porridge Radio - Lilac   Cathartic  </p>
+                    <div class="card-tags"><span class="tag">indie</span><span class="tag">punk</span></div>
+                </div>
+            </div>
+<div class="card" onclick="location.href='/tumblr/post.html?id=190548980419'">
+                <div class="card-header">
+                    <div class="card-date">2020-01-30</div>
+                    <h3 class="card-title">Lalalar - Hata Benim Göbek Adım (LIVE@Babylon )</h3>
+                </div>
+                <div class="card-body">
+                    <p class="card-excerpt"> Lalalar - Hata Benim Göbek Adım (LIVE@Babylon )   </p>
+                    <div class="card-tags"><span class="tag">live</span><span class="tag">indie</span><span class="tag">turkish</span></div>
+                </div>
+            </div>
+<div class="card" onclick="location.href='/tumblr/post.html?id=190495106879'">
+                <div class="card-header">
+                    <div class="card-date">2020-01-27</div>
+                    <h3 class="card-title">Yellow Magic Orchestra - RYDEENA blonde Yukihiro Takahashi and Haruomi Hosono with his giant sidebur</h3>
+                </div>
+                <div class="card-body">
+                    <p class="card-excerpt"> Yellow Magic Orchestra - RYDEEN  A blonde Yukihiro Takahashi and Haruomi Hosono with his giant sideburns, jamming with the always cool Ryuichi. Massive video.   </p>
+                    <div class="card-tags"><span class="tag">vintage</span></div>
+                </div>
+            </div>
+<div class="card" onclick="location.href='/tumblr/post.html?id=190495112469'">
+                <div class="card-header">
+                    <div class="card-date">2020-01-27</div>
+                    <h3 class="card-title">BCUC - Nobody Knows‘Nobody Knows’  from the album EMAKHOSINI out on the BUDA Musique label in Spring</h3>
+                </div>
+                <div class="card-body">
+                    <p class="card-excerpt"> BCUC - Nobody Knows  ‘Nobody Knows’  from the album EMAKHOSINI out on the BUDA Musique label in Spring 2018 and produced by Nyami Nyami records   </p>
+                    <div class="card-tags"><span class="tag">2018</span><span class="tag">world</span><span class="tag">africa</span></div>
+                </div>
+            </div>
+<div class="card" onclick="location.href='/tumblr/post.html?id=190495122839'">
+                <div class="card-header">
+                    <div class="card-date">2020-01-27</div>
+                    <h3 class="card-title">Little Simz covers Gorillaz ‘Feel Good Inc’ for Like A Version</h3>
+                </div>
+                <div class="card-body">
+                    <p class="card-excerpt"> Little Simz covers Gorillaz ‘Feel Good Inc’ for Like A Version   </p>
+                    <div class="card-tags"></div>
+                </div>
+            </div>
+<div class="card" onclick="location.href='/tumblr/post.html?id=190498284164'">
+                <div class="card-header">
+                    <div class="card-date">2020-01-27</div>
+                    <h3 class="card-title">GACKED ON ANGER - AMYL AND THE SNIFFERS OFFICIAL</h3>
+                </div>
+                <div class="card-body">
+                    <p class="card-excerpt"> GACKED ON ANGER - AMYL AND THE SNIFFERS OFFICIAL   </p>
+                    <div class="card-tags"><span class="tag">2020</span><span class="tag">punk</span></div>
+                </div>
+            </div>
+<div class="card" onclick="location.href='/tumblr/post.html?id=190474522479'">
+                <div class="card-header">
+                    <div class="card-date">2020-01-26</div>
+                    <h3 class="card-title">black midi - “Ducter” | Pitchfork Music Festival 2019black midi perform “Ducter” live in Chicago for</h3>
+                </div>
+                <div class="card-body">
+                    <p class="card-excerpt"> black midi - “Ducter” | Pitchfork Music Festival 2019   black midi perform “Ducter” live in Chicago for Pitchfork Music Festival 2019.   </p>
+                    <div class="card-tags"><span class="tag">live</span><span class="tag">2019</span></div>
+                </div>
+            </div>
+<div class="card" onclick="location.href='/tumblr/post.html?id=190175383154'">
+                <div class="card-header">
+                    <div class="card-date">2020-01-10</div>
+                    <h3 class="card-title">Undomondo’s Best of 20195*Big Business - The Beast You AreKate Tempest - The Book of Traps and Lesso</h3>
+                </div>
+                <div class="card-body">
+                    <p class="card-excerpt"> Undomondo’s Best of 2019   5*  Big Business - The Beast You Are Kate Tempest - The Book of Traps and Lessons Fire! Orchestra - Arrival Fontaines D.C. - Dogrel Burna Boy - African Giant FKA Twigs – Ma...</p>
+                    <div class="card-tags"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="load-more" id="load-more-container" style="display: none;">
+            <button class="load-more-btn" onclick="loadMorePosts()">Load More Posts</button>
+        </div>
+    </div>
+
+    <footer>
+    <div style="max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; gap: 24px;">
+        <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-start; gap: 24px;">
+            <div>
+                <p style="font-family: 'Space Grotesk', sans-serif; font-size: 20px; font-weight: 700; margin-bottom: 8px;">UNDOMONDO</p>
+                <p style="font-size: 13px; opacity: 0.7;">Independent music, no borders.</p>
+            </div>
+            <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+                <a href="https://bsky.app/profile/undomondo.bsky.social" target="_blank" style="border: 2px solid #F2EFE5; padding: 8px 16px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; text-decoration: none; color: #F2EFE5; transition: all 0.2s;">BSKY</a>
+                <a href="https://www.instagram.com/undomondo" target="_blank" style="border: 2px solid #F2EFE5; padding: 8px 16px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; text-decoration: none; color: #F2EFE5;">Instagram</a>
+                <a href="https://www.mixcloud.com/undomondo/" target="_blank" style="border: 2px solid #F2EFE5; padding: 8px 16px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; text-decoration: none; color: #F2EFE5;">Mixcloud</a>
+                <a href="https://soundcloud.com/undomondo" target="_blank" style="border: 2px solid #F2EFE5; padding: 8px 16px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; text-decoration: none; color: #F2EFE5;">SoundCloud</a>
+                <a href="https://www.last.fm/user/kidindigo" target="_blank" style="border: 2px solid #F2EFE5; padding: 8px 16px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; text-decoration: none; color: #F2EFE5;">Last.fm</a>
+                <a href="https://record.club/undomondo/" target="_blank" style="border: 2px solid #F2EFE5; padding: 8px 16px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; text-decoration: none; color: #F2EFE5;">Record Club</a>
+                <a href="https://www.linkedin.com/in/mehmet-a%C4%9Fao%C4%9Fullar%C4%B1-aa15b39/" target="_blank" style="border: 2px solid #F2EFE5; padding: 8px 16px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; text-decoration: none; color: #F2EFE5;">LinkedIn</a>
+                <a href="#" target="_blank" style="border: 2px solid #F2EFE5; padding: 8px 16px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; text-decoration: none; color: #F2EFE5;">Reverie For Two</a>
+            </div>
+        </div>
+        <div style="border-top: 1px solid rgba(242,239,229,0.3); padding-top: 16px; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 16px;">
+            <a href="/" style="font-family: 'Space Grotesk', sans-serif; font-size: 16px; font-weight: 700; color: #F2EFE5; text-decoration: none;">← Back to Undomondo</a>
+            <span style="font-family: 'Space Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 3px; opacity: 0.7;">© 2025 · Istanbul / Barcelona / Internet</span>
+        </div>
+    </div>
+</footer>
+
+    <script>
+    const allPosts = [{"id": "638965639848017920", "title": "Undomondo\u2019s Best of 2020What a year this was! Barren socially, yet elated creatively. It took the la", "date": "2020-12-31", "content": "<p>Undomondo\u2019s Best of 2020</p><p>What a year this was! Barren socially, yet elated creatively. It took the last three days to sort out the already fleshed out best of list.</p><p>An overwhelming amount of music has been released during the pandemic, and it\u2019s always hard to judge different genres against each other. I\u2019ve spent a lot of time and brain cells, going back and listening to snippets of songs and albums. In the end making year lists are always very subjective, trying to balance repeat listen albums with albums breaking new ground stylistically. After countless hours I think I\u2019ve done justice to MY OWN listening history this year.</p><p><a href=\"http://cutt.ly/undodiscoweek\">Undomodno Best of 2020 Spotify Playlist</a></p><p>Here are some notes:</p><p>UK dance/funk/soul troupe Sault wins 2020 easily, by releasing two albums that both end up in the Top 30.</p><p>I feel I\u2019ve listened way more hip-hop this year than previous years, and artists like Armand Hammer, Freddie Gibbs, Conway the Machine and the Griselda label, Clipping. &amp; The Koreatown Oddity are breaking new ground in hip-hop.</p><p>Jazz features significantly like always. Aaron Parks topped my jazz releases this year, with a close call by Makaya McCraven\u2019s remake of Gil Scott-Heron\u2019s final album, but there are some amazing albums by the mighty Sun Ra Arkestra, Jeff Parker, Alabaster DePlume, Moses Boyd, Idris Ackamoor..</p><p>Usual Undomondo suspects like Oranssi Pazuzu, Protomartyr, Bohren, Bill Callahan, Tigran Hamasyan, Meridian Brothers, Khruangbin, Woods and No Age feature on the list, although I should single out Oranssi Pazuzu, as they are the best avant/psych extreme metal band by leaps and bounds. I\u2019ve picked them for <a href=\"https://theatticmag.com/features/2405/favourite-albums-of-2020.html\">The Attic\u2019s end of year list</a>. (which is a required read that I will attend to after I wrap this up, because there\u2019s so much I\u2019ve missed on that list.)</p><p>Debutantes on the list are Billy Nomates, Tara Clerkin, K-Lone, Villaelvinand Vague Imaginaires \u2014 whom released 2 amazing albums this year that I had trouble picking \u2014 .</p><p>Some amount of major label artists such as Natalia Fourcade, Jessie Ware, Lianne La Havas &amp; Fiona Apple can be found among a 90% indie label list. It\u2019s alright, don\u2019t fret, even major labels can sometimes put out good stuff. :)</p><p>I\u2019m now a fullblown Afrobeats fan (do not confuse it with Fela\u2019s afrobeat) after listening to Burna Boy non stop last year. Wizkid\u2019s Ginger has been <a href=\"https://www.last.fm/user/kidindigo\">my most scrobbled song</a> this year, even though it was released in the last Q.</p><p>We\u2019ve lost two <a href=\"https://undomondo.medium.com/2020-musicians-artists-pioneers-weve-lost-cfa97d83facd\">Tony Allen &amp; Andrew Weatherall</a>, Hum returned to form after 25 years, Kruder &amp; Dorfmeister found their lost 1995 album, The Microphones and Aksak Maboul are back..</p><p>Helsinki label, <a href=\"https://wejazzrecords.bandcamp.com/merch\">We Jazz</a> has been my favourite jazz label this year. Although not represented on the list \u2014 songs by JAF Trio and Superposition, Jonah Parzen-Johnson are on the playlist \u2014 was one of the most consistent labels this year with over 5 avantgarde jazz albums all worth repeat listens.</p><p>Strangely no label had 3 releases, but Nuclear Blast, Sub Pop, Stones Throw, Thrill Jockey, Ghostly, Strut, Century Media, International Anthem, Ninja Tune and Drag City all have 2 releases in the long list..</p><p>I\u2019ve handpicked and loosely tied together 170 songs which amounts to over 13 hours of music and around 20 genres, both from albums noted below and from other material. Please do take your time, I\u2019ve really put a lot of effort and I truly believe this music is the creme of the crop.</p><p>Like earlier years, I\u2019ve missed around 15 albums that I feel might have ended on this list if I had the time.. This is -unfortunately- the way! More on those later.</p><p>And without further ado, <a href=\"http://cutt.ly/undodiscoweek\">here\u2019s the best music that has reached my eardrums this year.</a></p><p>Top 30</p><p>1. Sault \u2014 Untitled (Black Is) (Forever Living Originals)<br/>2. Oranssi Pazuzu \u2014 Mestarin Kynsi (Nuclear Blast)<br/>3. Hum \u2014 Inlet (Earth Analog)<br/>4. Billy Nomates \u2014 Billy Nomates (Invada)<br/>5. Aaron Parks \u2014 Little Big II: Dreams of a Mechanical Man (Ropeadope)<br/>6. Armand Hammer \u2014 Shrines (Backwoodz Studios)<br/>7. Koniec Pola \u2014 Trop EP (Spoldzielnia)<br/>8. Gil Scott-Heron &amp; Makaya McCraven \u2014 We\u2019re New Again (XL Recordings)<br/>9. Y-Bayani &amp; Baby Naa And The Band of Enlightenment, Reason &amp; Love \u2014 Nsie Nsie (Philophon)<br/>10. Tom Misch &amp; Yussef Dayes \u2014 What Kinda Music (Beyond the Groove)<br/>11. Alabaster DePlume \u2014 To Cy &amp; Lee: Instrumentals Vol. 1 (International Anthem)<br/>12. Freddie Gibbs &amp; The Alchemist \u2014 Alfredo (ESGN)<br/>13. Conway the Machine \u2014 From King to A GOD (Griselda)<br/>14. Ana Roxanne \u2014 Because of a Flower (Kranky)<br/>15. Clipping. \u2014 Visions of Bodies Being Burned (Sub Pop)<br/>16. Protomartyr \u2014 Ultimate Success Today (Domino)<br/>17. Bill Callahan \u2014 Gold Record (Drag City)<br/>18. Jessie Ware \u2014 What\u2019s your Pleasure? (Universal)<br/>19. Sault \u2014 Untitled (Rise) (Forever Living Originals)<br/>20. The Koreatown Oddity \u2014 Little Dominiques Nosebleed (Stones Throw)<br/>21. Laura Marling \u2014 Song for our Daughter (Chrysalis)<br/>22. Porridge Radio \u2014 Every Bad (Secretly Canadian)<br/>23. Wood River \u2014 More than I can see (yellowbird)<br/>24. Art Feynman \u2014 Half Price at 3:30 (Western Vinyl)<br/>25. Bohren &amp; Der Club of Gore \u2014 Patchouli Blue (PIAS)<br/>26. Nubya Garcia \u2014 SOURCE (Concord)<br/>27. WizKid \u2014 Made in Lagos (Starboy/RCA)<br/>28. Pallbearer \u2014 Forgotten Days (Nuclear Blast)<br/>29. Lianne La Havas \u2014 Lianne La Havas (Warner Music)<br/>30. The Microphones \u2014 Microphones in 2020 (P.W. Elverum &amp; Sun)</p><p>Just Missed</p><p>31. Causa Sui \u2014 Szabodelico (El Paraiso)<br/>32. Obongjayar \u2014 Which way is forward? EP (September Recordings)<br/>33. DJ Python \u2014 Mas Amable (Incienso)<br/>34. Automat \u2014 Modul (Compost)<br/>35. Tara Clerkin Trio \u2014 Self Titled (Laura Lies In)<br/>36. Fiona Apple \u2014 Fetch the Bolt Cutters (Epic / Sony)<br/>37. Pigs Pigs Pigs Pigs Pigs Pigs Pigs \u2014 Viscerals (Rocket Recordings)<br/>38. Moaning \u2014 Uneasy Laughter (Sub Pop)<br/>39. Tiwa Savage \u2014 Celia (Universal)<br/>40. Khruangbin \u2014 Mordechai (Dead Oceans)<br/>41. Laurent Bardainne &amp; Tigre d\u2019Eau Douce \u2014 Love is Everywhere (Heavenly Sweetness)<br/>42. Moses Boyd \u2014 Dark Matter (Exodus Records)<br/>43. Emma Ruth Rundle &amp; Thou \u2014 May Our Chambers be Full (Sacred Bones)<br/>44. FUJIIIITA \u2014 iki (Hallow Ground)<br/>45. Imperial Triumphant \u2014 Alphaville (Century Media)<br/>46. Tigran Hamasyan \u2014 The Call Within (Nonesuch)<br/>47. Keeley Forsyth \u2014 Debris (The Leaf Label)<br/>48. Vague Imaginaires \u2014 L\u2019\u00eele D\u2019or (Not Not Fun)<br/>49. TOPS \u2014 I Feel Alive (Arbutus Records)<br/>50. Sevdaliza \u2014 Shabrang (Twisted Elegance)</p><p>Mentions</p><p>Actress \u2014 Karma &amp; Desire (Ninja Tune)<br/>Knxwledge \u2014 1988 (Stones Throw)<br/>Malvern Brume \u2014 Tendrils (Alter)<br/>Soft Pink Truth \u2014 Shall we go on sinning (Thrill Jockey)<br/>The Revolutionary Army of Infant Jesus \u2014 Songs of Yearning (Occultation)<br/>Forest Drive West \u2014 Terminus EP (R&amp;S)<br/>Jeff Parker \u2014 Suite for Max Brown (International Anthem)<br/>Holy Sons \u2014 Raw and Disfigured (Thrill Jockey)<br/>Juliana Barwick \u2014 Healing is a Miracle (Ninja Tune)<br/>No Age \u2014 Goons Be Gone (Drag City)<br/>Likwid Continual Space Motion \u2014 Earthbound (Super-Sonic Jazz)<br/>Marcin Wasilewski Trio &amp; Joe Lovano \u2014 Arctic Riff (ECM)<br/>Silvia Tarozzi \u2014 Mi Specchio e Rifletto (Unseen Worlds)<br/>Vikingur \u00d3lafsson \u2014 Rameau / Debussy (Deutsche Grammophon)<br/>Habibi \u2014 Anywhere but here (muddguts)<br/>Woods \u2014 Strange to Explain (Woodsist)<br/>Dogleg \u2014 Melee (Triple Crown)<br/>Gigi Masin \u2014 Calypso (Apollo Records)<br/>Tony Allen &amp; Hugh Masakela \u2014 Rejoice (World Circuit)<br/>Jasper H\u00f8iby \u2014 Planet B (Edition Records)<br/>Idris Ackamoor &amp; The Pyramids \u2014 Shaman! (Strut Records)<br/>Sun Ra Arkestra \u2014 Swirling (Strut Records)<br/>Godthrymm \u2014 Reflections (Profound Lore)<br/>CS + Kreme \u2014 Snoopy (The Trilogy Tapes)<br/>Bullion \u2014 We Had a Good Time EP (PIAS)<br/>Hey Colossus \u2014 Dances / Curses (Wrong Speed)<br/>Andrew Weatherall \u2014 Endtimes Sound EP (ByrdOut)<br/>Aksak Maboul \u2014 Figures (Crammed Discs)<br/>Fontaines D.C. \u2014 A Hero\u2019s Death (Partisan Records)<br/>K-Lone \u2014 Cape Cira (Wisdom Teeth)<br/>Lyra Pramuk \u2014 Fountain (Bedroom Community)<br/>Kl\u00f4 Pelgag \u2014 Notre-Dame-des-Sept-Douleurs (Secret City Records)<br/>Meridian Brothers \u2014 Cumbia Siglo XXI (Bongo Joe)<br/>Revbjelde \u2014 Hooha Hubbub (Buried Treasure)<br/>Holden Zimpel \u2014 Long Weekend EP (Border Community)<br/>Galya Bisengalieva \u2014 Aralkum (One Little Independent Records)<br/>Moodymann \u2014 Taken Away (Kenneth Dixon)<br/>Mary Lattimore \u2014 Silver Ladders (Ghostly International)<br/>Natalia Lafourcade \u2014 Un Canto por Mexico vol. 1 (Sony Mexico)<br/>Napalm Death \u2014 Throes of Joy in the Jaws of Defeatism (Century Media)<br/>Maarja Nuut &amp; Ruum \u2014 World Inverted (\u00d5unaviks)<br/>Botanist \u2014 Photosynthesis (The Flenser)<br/>Raymond Richards \u2014 The Lost Art of Wandering (ESP Institute)<br/>Molero \u2014 Ficciones Del Tr\u00f3pico (Holuzam)<br/>Laila Sakini \u2014 Vivienne (Total Stasis)<br/>Patricia \u2014 Maxyboy (Ghostly International)<br/>Felicia Atkinson \u2014 Everything Evaporate (Shelter Press)<br/>Villaelvin \u2014 Headroof (Hakuna Kulala)<br/>Kruder &amp; Dorfmeister \u2014 1995 (G-Stone Recordings)<br/>Andrew Wasylyk \u2014 Fugitive Light and Themes of Consolation (Athens of the North)</p> ", "tags": []}, {"id": "621360948792410112", "title": "Tigran Hamasyan - Levitation 21\u201cLevitation 21\u201d - from Tigran Hamasyan\u2019s new album \u201cThe Call Within\u201d\n", "date": "2020-06-19", "content": "<p>Tigran Hamasyan - Levitation 21 </p><p>\u201cLevitation 21\u201d - from Tigran Hamasyan\u2019s new album \u201cThe Call Within\u201d\nAvailable on August 28th 2020.<br/></p> ", "tags": ["2020"]}, {"id": "620431196380430337", "title": "ZENZILE - \u201cApr\u00e8s \u00e7a\u201d feat. NERLOV (Official Video)", "date": "2020-06-09", "content": "<p>ZENZILE - \u201cApr\u00e8s \u00e7a\u201d feat. NERLOV (Official Video) </p> ", "tags": ["2020"]}, {"id": "619547407057879040", "title": "Baris K. & Undomondo Ramadan Special for Radio Alhara", "date": "2020-05-30", "content": "<p>Baris K. &amp; Undomondo Ramadan Special for Radio Alhara</p> ", "tags": ["SoundCloud", "music", "Del\u00fcks", "jazz", "spiritual", "arabic", "africa"]}, {"id": "617025939257393152", "title": "Knxwledge - Makeitliveforever\u201cmakeitliveforever\u201d from the album 1988http://sthrow.com/1988\u2022 Animatio", "date": "2020-05-02", "content": "<p>Knxwledge - Makeitliveforever </p><p><br/></p><p>\u201cmakeitliveforever\u201d from the album 1988 <a href=\"https://www.youtube.com/redirect?v=N9ff07MnTEI&amp;event=video_description&amp;q=http%3A%2F%2Fsthrow.com%2F1988&amp;redir_token=D1R-aZG7cBTh02tm_v03OTH57sd8MTU4ODUyNzY5OUAxNTg4NDQxMjk5\">http://sthrow.com/1988</a> \u2022 Animation by Rhymezlikedimez. That\u2019s Knx\u2019s dog Koko hanging out in the tree in case ur wondering.<br/></p> ", "tags": ["2020"]}, {"id": "616934757754880000", "title": "Khruangbin - Time (You and I) (Official Video)", "date": "2020-05-01", "content": "<p>Khruangbin - Time (You and I) (Official Video) </p> ", "tags": ["2020"]}, {"id": "616038311283359744", "title": "Tom Misch & Yussef Dayes - Nightrider (feat. Freddie Gibbs)", "date": "2020-04-21", "content": "<p>Tom Misch &amp; Yussef Dayes - Nightrider (feat. Freddie Gibbs) </p> ", "tags": []}, {"id": "613097960742469632", "title": "Betsayda Machado y La Parranda El Clavo  - La rana / No la pele\u2026Their Tiny Desk was also amazing.. W", "date": "2020-03-20", "content": "<p>Betsayda Machado y La Parranda El Clavo  - La rana / No la pele\u2026</p><p>Their Tiny Desk was also amazing.. Will I ever get the chance to watch them live?!</p> ", "tags": ["live"]}, {"id": "612981045165539328", "title": "Michelle Gurevich - Lovers are StrangersSlowed down old folks dancing + bittersweet melancholic melo", "date": "2020-03-19", "content": "<p>Michelle Gurevich - Lovers are Strangers </p><p>Slowed down old folks dancing + bittersweet melancholic melodies remind me of old folks perishing by COVID-19. A bittersweet elegy to these days.. Shed a tear. \u00a0<br/></p> ", "tags": []}, {"id": "612989088690241536", "title": "Tropical Fuck Storm - Suburbiopia (Official Video)Suburbiopia is an epic exploration of the upside o", "date": "2020-03-19", "content": "<p>Tropical Fuck Storm - Suburbiopia (Official Video) </p><p>Suburbiopia is an epic exploration of the upside of being in a suicide cult. Filmed in a parallel universe by Oscar O\u2019Shea, you will be enlightened and inspired once you\u2019ve gazed through it\u2019s glory hole into the third eye of your Ra\u00eblian overlords. \n<br/><br/><br/></p> ", "tags": ["2020"]}, {"id": "612924557623443456", "title": "Max Cooper - Transcendental Tree Map", "date": "2020-03-18", "content": "<p>Max Cooper - Transcendental Tree Map</p> ", "tags": []}, {"id": "612924863943999488", "title": "Protomartyr - Processed By The Boys (Official Video)Best band in the world.", "date": "2020-03-18", "content": "<p>Protomartyr - Processed By The Boys (Official Video) </p><p>Best band in the world.</p> ", "tags": ["2020"]}, {"id": "611776522771202048", "title": "King Krule - Cellular", "date": "2020-03-05", "content": "<p>King Krule - Cellular </p> ", "tags": []}, {"id": "190969356709", "title": "Max Cooper - In Pursuit of Ghosts (Official Video by Kevin McGloughlin)The final track from the albu", "date": "2020-02-22", "content": "<p>Max Cooper - In Pursuit of Ghosts (Official Video by Kevin McGloughlin) </p><p>The final track from the album was written with my long-term collaborator, the great pianist and composer, Tom Hodge. Visually it\u2019s a story of how, as individuals, we are compelled to keep going, indefinitely. The imagery from Kevin McGloughlin uses an early example of moving image, featuring a woman walking, the simplest few frames, yet a scene which speaks a thousand words. It needed something somber but with hope, our endless pursuit and attempts to make sense of the world we live in, and my synth work didn\u2019t seem to do it justice. It needed an old instrument to match, so I drew on work with Tom to find the right musical fit. The same applies throughout the project, the music is primarily defined by visual requirements.<br/></p> ", "tags": ["2020"]}, {"id": "190565368749", "title": "Charles Tr\u00e9net \u201cDouce France\u201d | Archive INAEn public, Charles Trenet chante \u201cDouce France\u201d sur le pl", "date": "2020-01-31", "content": "<p>Charles Tr\u00e9net \u201cDouce France\u201d | Archive INA </p><p>En public, Charles Trenet chante \u201cDouce France\u201d sur le plateau de l'\u00e9mission \u201cPalmar\u00e8s des chansons\u201d en 1967. \n<br/><br/><br/></p> ", "tags": ["chanson", "vintage"]}, {"id": "190548975969", "title": "Porridge Radio - LilacCathartic", "date": "2020-01-30", "content": "<p>Porridge Radio - Lilac\u00a0</p><p>Cathartic</p> ", "tags": ["indie", "punk"]}, {"id": "190548980419", "title": "Lalalar - Hata Benim G\u00f6bek Ad\u0131m (LIVE@Babylon )", "date": "2020-01-30", "content": "<p>Lalalar - Hata Benim G\u00f6bek Ad\u0131m (LIVE@Babylon ) </p> ", "tags": ["live", "indie", "turkish"]}, {"id": "190495106879", "title": "Yellow Magic Orchestra - RYDEENA blonde Yukihiro Takahashi and Haruomi Hosono with his giant sidebur", "date": "2020-01-27", "content": "<p>Yellow Magic Orchestra - RYDEEN</p><p>A blonde Yukihiro Takahashi and Haruomi Hosono with his giant sideburns, jamming with the always cool Ryuichi. Massive video.<br/></p> ", "tags": ["vintage"]}, {"id": "190495112469", "title": "BCUC - Nobody Knows\u2018Nobody Knows\u2019 \u00a0from the album EMAKHOSINI out on the BUDA Musique label in Spring", "date": "2020-01-27", "content": "<p>BCUC - Nobody Knows</p><p>\u2018Nobody Knows\u2019 \u00a0from the album EMAKHOSINI out on the BUDA Musique label in Spring 2018 and produced by Nyami Nyami records<br/></p> ", "tags": ["2018", "world", "africa"]}, {"id": "190495122839", "title": "Little Simz covers Gorillaz \u2018Feel Good Inc\u2019 for Like A Version", "date": "2020-01-27", "content": "<p>Little Simz covers Gorillaz \u2018Feel Good Inc\u2019 for Like A Version </p> ", "tags": []}, {"id": "190498284164", "title": "GACKED ON ANGER - AMYL AND THE SNIFFERS OFFICIAL", "date": "2020-01-27", "content": "<p>GACKED ON ANGER - AMYL AND THE SNIFFERS OFFICIAL </p> ", "tags": ["2020", "punk"]}, {"id": "190474522479", "title": "black midi - \u201cDucter\u201d | Pitchfork Music Festival 2019black midi perform \u201cDucter\u201d live in Chicago for", "date": "2020-01-26", "content": "<p>black midi - \u201cDucter\u201d | Pitchfork Music Festival 2019 </p><p>black midi perform \u201cDucter\u201d live in Chicago for Pitchfork Music Festival 2019.<br/></p> ", "tags": ["live", "2019"]}, {"id": "190175383154", "title": "Undomondo\u2019s Best of 20195*Big Business - The Beast You AreKate Tempest - The Book of Traps and Lesso", "date": "2020-01-10", "content": "<p>Undomondo\u2019s Best of 2019 </p><p>5*</p><p>Big Business - The Beast You Are<br/>Kate Tempest - The Book of Traps and Lessons<br/>Fire! Orchestra - Arrival<br/>Fontaines D.C. - Dogrel<br/>Burna Boy - African Giant<br/>FKA Twigs \u2013 Magdalene<br/>Freddie Gibbs &amp; Madlib - Bandana<br/>Kokoroko - Kokoroko EP<br/>Black Midi - Schlagenheim<br/>Cochemea - All My Relations</p><p>4*</p><p>Fat White Family - Serfs Up!<br/>Enablers - Zones<br/>Tropical Fuck Storm - Braindrops<br/>Comet is Coming - Trust in the lifeforce of the deep mystery<br/>Carla dal Forno - So Much Better<br/>Brad Mehldau - Finding Gabriel<br/>Solange - When I get home<br/>Ayyuka - Yukadans<br/>Susanna &amp; The Brotherhood of Our Lady - Garden of Earthly Delights<br/>Deerhunter - Why Hasn\u2019t everything already disappeared?</p><p>3*</p><p>Flying Lotus - Flamagra<br/>Little Simz - Grey Area<br/>Purple Mountains - Purple Mountains<br/>Tenesha the Wordsmith - Peacocks &amp; Other Savage Beasts<br/>Billy Eilish - When We All Fall Asleep, Where Do We Go?<br/>Orville Peck - Pony<br/>Floating Points - Crush<br/>Nazamba - Nazamba<br/>King Gizzard - Infest the Rats\u2019 Nest<br/>Hermanos Gutierrez - Amor Y Vivir</p><p>2*</p><p>Aldous Harding - Designer<br/>Jessica Pratt - Quiet Signs<br/>Function - Existenz<br/>The Caretaker - Everywhere, An Empty Bliss<br/>Khruangbin - Hasta El Cielo<br/>Andrew Wasylyk - The Paralian<br/>Eli Keszler - Empire EP<br/>Durand Jones &amp; The Indications - American Love Call<br/>Yugen Blakrok - Anima Mysterium<br/>Xylouris White - The Sisypheans</p><p>_MENTIONS_</p><p>Faye Webster - Atlanta Millionaires Club<br/>Donna Regina - Transient<br/>Ana Roxane - ~~~ EP<br/>Chelsea Wolfe - Birth of Violence<br/>Tool - Fear Inoculum<br/>Mike Patton / Jean Claude Vanier - Corpse Flower<br/>Karl Hector &amp; The Malcouns - Non Ex Orbis<br/>Kali Malone - The Sacrifical Code<br/>Wojciech Rosin - The Funnel<br/>Mega Bog - Dolphine<br/>Big Thief - UFOF<br/>Weyes Blood - Titanic Rising<br/>Konx-Om-Pax - Ways of Seeing<br/>Dexter Story - Bahir<br/>Jenny Hval - The Practice of Love<br/>Swans - leaving meaning.<br/>Benny Sings - City Pop<br/>Insanlar - Demedim Mi? <br/>Minyo Crusaders - Echoes of Japan<br/>Grup Ses &amp; Elektro Haf\u0131z - Varyete<br/>CFCF - Liquid Colours\t</p><p>## BEST METAL </p><p>An Isolated Mind - I\u2019m Losing Myself<br/>Waste of Space Orchestra - Syntheosis<br/>Sun Worship - Emanations of Desolation<br/>Mgla - Age of Excuse<br/>Von Stroheim - Love? Who Gets Love?<br/>Liturgy - HAQQ<br/>Lightning Bolt - Sonic Citadel<br/>Tomb Mold - Planetary Clairvoyance<br/>Mis\u00feyrming - Algleymi<br/>Blood Incantation - Hidden History<br/>Tomb Mold - Planetary Clairvoyance<br/>Fen - The Dead Light<br/>Krallice - Wolf EP<br/>Kampfar - Ofidians Manifest<br/>Dawn Ray\u2019d - Behold Sedition Plainsong <br/>Abigail Williams - Walk Beyond the Dark</p><p>\u2014</p><p>## BEST ELECTRONIC<br/>Floating Points - Crush<br/>Function - Existenz<br/>The Caretaker - Everywhere, An Empty Bliss<br/>Karenn - Grapefruit Regret<br/>Eli Keszler - Empire EP<br/>Felicia Atkinson - The Flower and the Vessel<br/>Donna Regina - Transient<br/>Kornel Kovacs - Stockholm Marathon<br/>Carl Gari &amp; Abdullah Miniawy - Whities 023 (The Act of Falling from the 8th Floor)<br/>Mateo Kingman - Lucero<br/>Ana Roxane - ~~~ EP<br/>CFCF - Liquid Colours<br/>Konx-Om-Pax - Ways of Seeing<br/>Territroy - Skulls &amp; Plants<br/>MSYLMA - Dhil-un Taht Shajarat Al-Zaqum</p><p>\u2014</p><p>## BEST JAZZ<br/>Fire! Orchestra - Arrival<br/>The Comet is Coming - Trust in the lifeforce of the deep mystery<br/>Brandee Younger - Soul Awakening<br/>Alfa Mist - Structuralism<br/>Greg Foat - The Mage<br/>Steve Lehman &amp; Craig Taborn - The People I Love<br/>Kris Davis - Diatom Ribbons<br/>Tomeka Reid Quartet - Old New<br/>Nerija - Blume<br/>Junius Paul - As\u00e9<br/>Nat Birchall - The Storyteller <br/>Fazer - Nadi<br/>Radare - Der Endless Dream<br/>Marquis Hill - Love Tape<br/>Matana Roberts - Coin Coin Chapter Four: Memphis<br/></p> ", "tags": []}];
+    let currentFilter = null;
+    let postsPerPage = 50;
+    let currentPage = 0;
+
+    function formatDate(dateStr) {
+        const d = new Date(dateStr);
+        return d.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
+    }
+
+    function renderPost(post) {
+        const excerpt = post.content.replace(/<[^>]*>/g, '').substring(0, 150);
+        const tags = (post.tags || []).map(t => `<span class="tag">${escape(t)}</span>`).join('');
+        return `
+            <div class="card" onclick="location.href='/tumblr/post.html?id=${post.id}'">
+                <div class="card-header">
+                    <div class="card-date">${formatDate(post.date)}</div>
+                    <h3 class="card-title">${escape(post.title)}</h3>
+                </div>
+                <div class="card-body">
+                    <p class="card-excerpt">${excerpt}...</p>
+                    <div class="card-tags">${tags}</div>
+                </div>
+            </div>
+        `;
+    }
+
+    function escape(text) {
+        const div = document.createElement('div');
+        div.textContent = text;
+        return div.innerHTML;
+    }
+
+    function filterByTag(tag) {
+        if (currentFilter === tag) {
+            currentFilter = null;
+        } else {
+            currentFilter = tag;
+        }
+        document.querySelectorAll('.pill').forEach(p => {
+            p.classList.remove('active');
+            if (p.textContent.trim() === (tag || '')) {
+                p.classList.add('active');
+            }
+        });
+        currentPage = 0;
+        renderPosts();
+    }
+
+    function getVisiblePosts() {
+        if (!currentFilter) return allPosts;
+        return allPosts.filter(p => (p.tags || []).includes(currentFilter));
+    }
+
+    function renderPosts() {
+        const visible = getVisiblePosts();
+        const grid = document.getElementById('grid');
+        const startIdx = 0;
+        const endIdx = (currentPage + 1) * postsPerPage;
+        const toRender = visible.slice(startIdx, endIdx);
+        
+        grid.innerHTML = toRender.map(renderPost).join('');
+        
+        const loadMoreContainer = document.getElementById('load-more-container');
+        if (endIdx < visible.length) {
+            loadMoreContainer.style.display = 'block';
+        } else {
+            loadMoreContainer.style.display = 'none';
+        }
+    }
+
+    function loadMorePosts() {
+        currentPage++;
+        renderPosts();
+    }
+
+    renderPosts();
+    </script>
+</body>
+</html>
