@@ -1,360 +1,333 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Archive (2005-2008) | Undomondo</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
-<style>
-  :root {
-    --red: #D42B2B;
-    --dark: #1a1a1a;
-    --cream: #F2EFE5;
-    --warm-gray: #e8e3db;
-    --paper: #F2EFE9;
-    --blue: #005F99;
-    --golden: #FFB703;
-  }
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--dark); }
-  ::selection { background: var(--red); color: var(--cream); }
-
-  /* NAV */
-  .top-nav {
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 20px 40px; background: white; border-bottom: 3px solid var(--red);
-    position: sticky; top: 0; z-index: 50;
-  }
-  .top-nav .logo-area { display: flex; align-items: center; gap: 16px; }
-  .top-nav .logo-area .wordmark {
-    font-family: 'Space Grotesk', sans-serif; font-size: 28px; font-weight: 700;
-    letter-spacing: -1px; color: var(--dark); text-decoration: none;
-  }
-  .nav-links { display: flex; gap: 32px; }
-  .nav-links a {
-    font-family: 'Space Grotesk', sans-serif; font-size: 13px;
-    text-transform: uppercase; letter-spacing: 2px; text-decoration: none;
-    color: var(--dark); padding-bottom: 4px; transition: all 0.2s;
-  }
-  .nav-links a:hover, .nav-links a.active { color: var(--red); border-bottom: 2px solid var(--red); }
-
-  /* HERO */
-  .archive-hero {
-    background: var(--dark); color: var(--cream); padding: 80px 60px 60px;
-    text-align: center;
-  }
-  .archive-hero h1 {
-    font-family: 'Space Grotesk', sans-serif; font-size: 72px; font-weight: 700;
-    line-height: 1; letter-spacing: -3px; margin-bottom: 20px;
-  }
-  .archive-hero h1 span { color: var(--red); }
-  .archive-hero .subtitle {
-    font-family: 'DM Sans', sans-serif; font-size: 18px;
-    color: rgba(242,239,229,0.5); margin-bottom: 10px;
-  }
-  .archive-hero .years {
-    font-family: 'Space Mono', monospace; font-size: 12px;
-    letter-spacing: 3px; text-transform: uppercase; color: var(--blue);
-  }
-
-  /* STATS BAR */
-  .stats-bar {
-    display: flex; justify-content: center; gap: 60px; padding: 30px 40px;
-    background: white; border-bottom: 1px solid #eee;
-  }
-  .stat { text-align: center; }
-  .stat .num { font-family: 'Space Mono', monospace; font-size: 36px; font-weight: 700; color: var(--red); }
-  .stat .label { font-size: 10px; text-transform: uppercase; letter-spacing: 3px; color: #999; margin-top: 4px; }
-
-  /* FILTERS */
-  .filters {
-    padding: 40px; background: white; border-bottom: 1px solid #eee;
-    display: flex; align-items: center; gap: 20px; flex-wrap: wrap;
-  }
-  .filter-label {
-    font-family: 'Space Grotesk', sans-serif; font-size: 11px;
-    text-transform: uppercase; letter-spacing: 2px; color: #999;
-  }
-  .filter-pills { display: flex; flex-wrap: wrap; gap: 10px; flex: 1; }
-  .filter-pill {
-    font-family: 'Space Mono', monospace; font-size: 11px; padding: 8px 16px;
-    background: var(--cream); border: 1px solid #ddd; border-radius: 20px;
-    cursor: pointer; transition: all 0.2s; text-transform: lowercase;
-  }
-  .filter-pill:hover { border-color: var(--red); color: var(--red); }
-  .filter-pill.active { background: var(--red); color: white; border-color: var(--red); }
-  .search-box {
-    flex: 1; min-width: 300px; max-width: 400px;
-  }
-  .search-box input {
-    width: 100%; padding: 12px 20px; border: 1px solid #ddd; border-radius: 4px;
-    font-family: 'DM Sans', sans-serif; font-size: 14px;
-  }
-  .search-box input:focus {
-    outline: none; border-color: var(--red);
-  }
-
-  /* POSTS GRID */
-  .posts-container { padding: 40px; max-width: 1600px; margin: 0 auto; }
-  .year-section { margin-bottom: 80px; }
-  .year-header {
-    font-family: 'Space Grotesk', sans-serif; font-size: 120px; font-weight: 700;
-    color: var(--red); opacity: 0.15; line-height: 1; margin-bottom: -40px;
-  }
-  .posts-grid {
-    display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-    gap: 30px; margin-top: 20px;
-  }
-  .post-card {
-    background: white; border-radius: 8px; overflow: hidden;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.05); transition: all 0.3s;
-    cursor: pointer; text-decoration: none; color: inherit;
-    display: flex; flex-direction: column;
-  }
-  .post-card:hover {
-    transform: translateY(-4px); box-shadow: 0 8px 24px rgba(0,0,0,0.12);
-  }
-  .post-card-header {
-    background: var(--dark); color: var(--cream); padding: 24px;
-    min-height: 140px; display: flex; flex-direction: column; justify-content: space-between;
-  }
-  .post-card-date {
-    font-family: 'Space Mono', monospace; font-size: 10px;
-    letter-spacing: 2px; text-transform: uppercase; color: var(--blue);
-  }
-  .post-card-title {
-    font-family: 'Space Grotesk', sans-serif; font-size: 24px; font-weight: 600;
-    line-height: 1.2; margin-top: 12px;
-  }
-  .post-card-body { padding: 24px; flex: 1; }
-  .post-card-excerpt {
-    font-size: 14px; line-height: 1.6; color: #666;
-    overflow: hidden; display: -webkit-box; -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-  }
-  .post-card-tags {
-    display: flex; flex-wrap: wrap; gap: 6px; margin-top: 16px;
-  }
-  .post-card-tag {
-    font-family: 'Space Mono', monospace; font-size: 9px;
-    padding: 4px 10px; background: var(--cream); border-radius: 3px;
-    color: #666; text-transform: lowercase;
-  }
-
-  /* LOADING */
-  .loading {
-    text-align: center; padding: 100px 40px;
-    font-family: 'Space Mono', monospace; color: #999;
-  }
-
-  /* NO RESULTS */
-  .no-results {
-    text-align: center; padding: 100px 40px; display: none;
-  }
-  .no-results.show { display: block; }
-  .no-results h3 {
-    font-family: 'Space Grotesk', sans-serif; font-size: 24px;
-    color: var(--dark); margin-bottom: 10px;
-  }
-  .no-results p { color: #999; }
-
-  /* RESPONSIVE */
-  @media (max-width: 768px) {
-    .top-nav { flex-direction: column; gap: 20px; padding: 20px; }
-    .nav-links { flex-wrap: wrap; justify-content: center; }
-    .archive-hero h1 { font-size: 48px; }
-    .stats-bar { flex-wrap: wrap; gap: 30px; }
-    .filters { flex-direction: column; align-items: flex-start; }
-    .search-box { width: 100%; max-width: 100%; }
-    .year-header { font-size: 72px; }
-    .posts-grid { grid-template-columns: 1fr; }
-  }
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Archive — Undomondo</title>
+    <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    html, body {
+        font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        background: #f8f6f1;
+        color: #222;
+        line-height: 1.6;
+    }
+    
+    @import url('https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Space+Mono:wght@400;700&family=DM+Sans:wght@400;500;700&family=Space+Grotesk:wght@400;600;700&display=swap');
+    
+    /* Navigation */
+    nav {
+        background: white;
+        padding: 1.5rem 2rem;
+        border-bottom: 3px solid #D62828;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-family: 'Space Grotesk', sans-serif;
+    }
+    
+    .nav-brand {
+        font-size: 1.2rem;
+        font-weight: 700;
+        color: #111;
+        text-decoration: none;
+        letter-spacing: 0.05em;
+    }
+    
+    .nav-links {
+        display: flex;
+        gap: 2rem;
+        list-style: none;
+    }
+    
+    .nav-links a {
+        text-decoration: none;
+        color: #111;
+        font-weight: 600;
+        font-size: 0.95rem;
+        transition: color 0.2s;
+    }
+    
+    .nav-links a:hover,
+    .nav-links a.active {
+        color: #D62828;
+    }
+    
+    /* Hero Section */
+    .hero {
+        background-color: #111111;
+        background-image: radial-gradient(circle, #005F99 8px, transparent 8px);
+        background-size: 24px 24px;
+        padding: 6rem 2rem;
+        text-align: center;
+        color: white;
+    }
+    
+    .hero-title {
+        font-family: 'Dela Gothic One', sans-serif;
+        font-size: clamp(3rem, 8vw, 5rem);
+        margin: 1rem 0;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+    }
+    
+    .hero-subtitle {
+        font-size: 1.5rem;
+        margin: 1rem 0;
+        opacity: 0.9;
+    }
+    
+    .hero-meta {
+        font-size: 1rem;
+        opacity: 0.7;
+        margin-top: 1.5rem;
+    }
+    
+    /* Container */
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; }
+    
+    /* Era sections */
+    .era-section {
+        margin: 3rem 0;
+        padding: 2rem;
+        background: white;
+        border-radius: 4px;
+        border-left: 4px solid #D62828;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    
+    .era-title {
+        font-size: 1.8rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+        color: #111;
+        font-family: 'Space Grotesk', sans-serif;
+    }
+    
+    .era-meta {
+        font-size: 0.95rem;
+        margin-bottom: 1.5rem;
+        color: #666;
+    }
+    
+    .year-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        margin: 1.5rem 0;
+    }
+    
+    .year-link {
+        padding: 0.75rem 1.5rem;
+        background: #f0f0f0;
+        border: 2px solid #ddd;
+        border-radius: 4px;
+        text-decoration: none;
+        color: #111;
+        font-weight: 600;
+        transition: all 0.2s;
+        font-size: 0.95rem;
+    }
+    
+    .year-link:hover {
+        background: #D62828;
+        color: white;
+        border-color: #D62828;
+    }
+    
+    .browse-link {
+        display: inline-block;
+        margin-top: 1rem;
+        padding: 0.75rem 1.5rem;
+        background: #D62828;
+        color: white;
+        text-decoration: none;
+        border-radius: 4px;
+        font-weight: 600;
+        transition: opacity 0.2s;
+    }
+    
+    .browse-link:hover { opacity: 0.85; }
+    
+    /* Tags section */
+    .tags-section {
+        margin: 3rem 0;
+        padding: 2rem;
+        background: white;
+        border-radius: 4px;
+        border-left: 4px solid #005F99;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    
+    .tags-title {
+        font-size: 1.5rem;
+        font-weight: 700;
+        margin-bottom: 1.5rem;
+        color: #111;
+        font-family: 'Space Grotesk', sans-serif;
+    }
+    
+    .pills {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+    }
+    
+    .pill {
+        display: inline-block;
+        padding: 0.5rem 1rem;
+        background: #f0f0f0;
+        border: 1px solid #ddd;
+        border-radius: 20px;
+        font-size: 0.85rem;
+        text-decoration: none;
+        color: #111;
+        transition: all 0.2s;
+    }
+    
+    .pill:hover {
+        background: #005F99;
+        color: white;
+        border-color: #005F99;
+    }
+    
+    /* Footer */
+    footer {
+    background: #D62828;
+    color: #F2EFE5;
+    padding: 48px 40px;
+}
+footer a { color: #F2EFE5; text-decoration: none; }
+footer a:hover { opacity: 0.8; background: #F2EFE5; color: #D62828; }
+    footer a:hover { opacity: 0.8; }
+    
+    @media (max-width: 768px) {
+        nav {
+            flex-direction: column;
+            gap: 1rem;
+        }
+        .nav-links {
+            gap: 1rem;
+        }
+        .year-links {
+            gap: 0.5rem;
+        }
+        .year-link {
+            padding: 0.5rem 1rem;
+            font-size: 0.85rem;
+        }
+    }
+    </style>
 </head>
 <body>
+    <nav>
+        <a href="/" class="nav-brand">UNDOMONDO</a>
+        <ul class="nav-links">
+            <li><a href="/">Home</a></li>
+            <li><a href="/archive/" class="active">Archive</a></li>
+            <li><a href="https://undomondo.substack.com">Newsletter</a></li>
+            <li><a href="/#contact">Contact</a></li>
+        </ul>
+    </nav>
 
-<!-- NAV -->
-<nav class="top-nav">
-  <div class="logo-area">
-    <a href="/" class="wordmark">UNDOMONDO</a>
-  </div>
-  <div class="nav-links">
-    <a href="/">Home</a>
-    <a href="/archive" class="active">Archive</a>
-    <a href="/#newsletter">Newsletter</a>
-    <a href="/#contact">Contact</a>
-  </div>
-</nav>
+    <div class="hero">
+        <h1 class="hero-title">THE ARCHIVE</h1>
+        <p class="hero-subtitle">4,769 posts · 2005–2021</p>
+        <p class="hero-meta">Music discoveries from Istanbul, Barcelona & the Internet</p>
+    </div>
 
-<!-- HERO -->
-<div class="archive-hero">
-  <h1>The <span>Archive</span></h1>
-  <p class="subtitle">Music discoveries from the early days</p>
-  <p class="years">2005 — 2008</p>
-</div>
-
-<!-- STATS BAR -->
-<div class="stats-bar">
-  <div class="stat">
-    <div class="num" id="total-posts">646</div>
-    <div class="label">Posts</div>
-  </div>
-  <div class="stat">
-    <div class="num">416</div>
-    <div class="label">Tags</div>
-  </div>
-  <div class="stat">
-    <div class="num">4</div>
-    <div class="label">Years</div>
-  </div>
-</div>
-
-<!-- FILTERS -->
-<div class="filters">
-  <span class="filter-label">Filter by genre:</span>
-  <div class="filter-pills" id="filter-pills">
-    <div class="filter-pill active" data-tag="all">all</div>
-    <div class="filter-pill" data-tag="electronica">electronica</div>
-    <div class="filter-pill" data-tag="jazz">jazz</div>
-    <div class="filter-pill" data-tag="indie">indie</div>
-    <div class="filter-pill" data-tag="folk">folk</div>
-    <div class="filter-pill" data-tag="electronic">electronic</div>
-    <div class="filter-pill" data-tag="house">house</div>
-    <div class="filter-pill" data-tag="avantgarde">avantgarde</div>
-    <div class="filter-pill" data-tag="rock">rock</div>
-  </div>
-  <div class="search-box">
-    <input type="text" id="search-input" placeholder="Search posts...">
-  </div>
-</div>
-
-<!-- POSTS CONTAINER -->
-<div class="posts-container">
-  <div class="loading">Loading archive...</div>
-  <div class="no-results">
-    <h3>No posts found</h3>
-    <p>Try adjusting your filters or search term</p>
-  </div>
-  <div id="posts-output"></div>
-</div>
-
-<script>
-let allPosts = [];
-let currentFilter = 'all';
-let currentSearch = '';
-
-// Load posts
-fetch('/archive/posts.json')
-  .then(res => res.json())
-  .then(posts => {
-    allPosts = posts;
-    renderPosts();
-    document.querySelector('.loading').style.display = 'none';
-  })
-  .catch(err => {
-    document.querySelector('.loading').innerHTML = 'Error loading posts. Please refresh.';
-    console.error(err);
-  });
-
-// Filter pills
-document.querySelectorAll('.filter-pill').forEach(pill => {
-  pill.addEventListener('click', () => {
-    document.querySelectorAll('.filter-pill').forEach(p => p.classList.remove('active'));
-    pill.classList.add('active');
-    currentFilter = pill.dataset.tag;
-    renderPosts();
-  });
-});
-
-// Search
-document.getElementById('search-input').addEventListener('input', (e) => {
-  currentSearch = e.target.value.toLowerCase();
-  renderPosts();
-});
-
-function stripHtml(html) {
-  const tmp = document.createElement('div');
-  tmp.innerHTML = html;
-  return tmp.textContent || tmp.innerText || '';
-}
-
-function createExcerpt(content, maxLength = 150) {
-  const text = stripHtml(content);
-  if (text.length <= maxLength) return text;
-  return text.substr(0, maxLength) + '...';
-}
-
-function renderPosts() {
-  // Filter posts
-  let filtered = allPosts;
-
-  if (currentFilter !== 'all') {
-    filtered = filtered.filter(post =>
-      post.tags && post.tags.includes(currentFilter)
-    );
-  }
-
-  if (currentSearch) {
-    filtered = filtered.filter(post => {
-      const searchable = `${post.title} ${post.content} ${post.tags.join(' ')}`.toLowerCase();
-      return searchable.includes(currentSearch);
-    });
-  }
-
-  // Update count
-  document.getElementById('total-posts').textContent = filtered.length;
-
-  // Show no results message
-  const noResults = document.querySelector('.no-results');
-  if (filtered.length === 0) {
-    noResults.classList.add('show');
-    document.getElementById('posts-output').innerHTML = '';
-    return;
-  } else {
-    noResults.classList.remove('show');
-  }
-
-  // Group by year
-  const byYear = {};
-  filtered.forEach(post => {
-    if (!byYear[post.year]) byYear[post.year] = [];
-    byYear[post.year].push(post);
-  });
-
-  // Render
-  const years = Object.keys(byYear).sort().reverse();
-  const html = years.map(year => {
-    const yearPosts = byYear[year];
-    const cardsHtml = yearPosts.map(post => `
-      <a href="/archive/post.html?slug=${post.slug}" class="post-card">
-        <div class="post-card-header">
-          <div class="post-card-date">${post.date.split(' ')[0]}</div>
-          <div class="post-card-title">${post.title}</div>
-        </div>
-        <div class="post-card-body">
-          <div class="post-card-excerpt">${createExcerpt(post.content)}</div>
-          ${post.tags && post.tags.length > 0 ? `
-            <div class="post-card-tags">
-              ${post.tags.slice(0, 5).map(tag => `<span class="post-card-tag">#${tag}</span>`).join('')}
+    <div class="container">
+        <!-- WordPress Era -->
+        <div class="era-section">
+            <h2 class="era-title">WordPress Era (2005–2008)</h2>
+            <p class="era-meta">646 posts from the blog's origins</p>
+            <div class="year-links">
+<a href="/archive/2005.html" class="year-link">2005 (103)</a>
+<a href="/archive/2006.html" class="year-link">2006 (214)</a>
+<a href="/archive/2007.html" class="year-link">2007 (233)</a>
+<a href="/archive/2008.html" class="year-link">2008 (96)</a>
             </div>
-          ` : ''}
+            <a href="/archive/browse.html" class="browse-link">Browse All WordPress Posts →</a>
         </div>
-      </a>
-    `).join('');
 
-    return `
-      <div class="year-section">
-        <div class="year-header">${year}</div>
-        <div class="posts-grid">${cardsHtml}</div>
-      </div>
-    `;
-  }).join('');
+        <!-- Tumblr Era -->
+        <div class="era-section">
+            <h2 class="era-title">Tumblr Era (2007–2021)</h2>
+            <p class="era-meta">4,123 posts from the tumblr reblog years</p>
+            <div class="year-links">
+<a href="/tumblr/2007.html" class="year-link">2007 (235)</a>
+<a href="/tumblr/2008.html" class="year-link">2008 (250)</a>
+<a href="/tumblr/2009.html" class="year-link">2009 (580)</a>
+<a href="/tumblr/2010.html" class="year-link">2010 (662)</a>
+<a href="/tumblr/2011.html" class="year-link">2011 (848)</a>
+<a href="/tumblr/2012.html" class="year-link">2012 (453)</a>
+<a href="/tumblr/2013.html" class="year-link">2013 (331)</a>
+<a href="/tumblr/2014.html" class="year-link">2014 (239)</a>
+<a href="/tumblr/2015.html" class="year-link">2015 (152)</a>
+<a href="/tumblr/2016.html" class="year-link">2016 (126)</a>
+<a href="/tumblr/2017.html" class="year-link">2017 (122)</a>
+<a href="/tumblr/2018.html" class="year-link">2018 (54)</a>
+<a href="/tumblr/2019.html" class="year-link">2019 (46)</a>
+<a href="/tumblr/2020.html" class="year-link">2020 (23)</a>
+<a href="/tumblr/2021.html" class="year-link">2021 (2)</a>
+            </div>
+            <a href="/tumblr/browse.html" class="browse-link">Browse All Tumblr Posts →</a>
+        </div>
 
-  document.getElementById('posts-output').innerHTML = html;
-}
-</script>
+        <!-- Tags Browser -->
+        <div class="tags-section">
+            <h2 class="tags-title">Explore by Genre & Tag</h2>
+            <p style="margin-bottom: 1.5rem; color: #666;">Top 20 tags across both archives</p>
+            <div class="pills">
+<a href="#tag-live" class="pill">live</a>
+<a href="#tag-ilerici" class="pill">ilerici</a>
+<a href="#tag-vintage" class="pill">vintage</a>
+<a href="#tag-jazz" class="pill">jazz</a>
+<a href="#tag-electronic" class="pill">electronic</a>
+<a href="#tag-indie" class="pill">indie</a>
+<a href="#tag-folk" class="pill">folk</a>
+<a href="#tag-photo" class="pill">photo</a>
+<a href="#tag-musicvideo" class="pill">musicvideo</a>
+<a href="#tag-punk" class="pill">punk</a>
+<a href="#tag-garage" class="pill">garage</a>
+<a href="#tag-electronica" class="pill">electronica</a>
+<a href="#tag-worldobscure" class="pill">worldobscure</a>
+<a href="#tag-mix" class="pill">mix</a>
+<a href="#tag-house" class="pill">house</a>
+<a href="#tag-rock" class="pill">rock</a>
+<a href="#tag-improv" class="pill">improv</a>
+<a href="#tag-dance" class="pill">dance</a>
+<a href="#tag-2015" class="pill">2015</a>
+<a href="#tag-soundscapes" class="pill">soundscapes</a>
 
+            </div>
+        </div>
+    </div>
+
+    <footer>
+    <div style="max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; gap: 24px;">
+        <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-start; gap: 24px;">
+            <div>
+                <p style="font-family: 'Space Grotesk', sans-serif; font-size: 20px; font-weight: 700; margin-bottom: 8px;">UNDOMONDO</p>
+                <p style="font-size: 13px; opacity: 0.7;">Independent music, no borders.</p>
+            </div>
+            <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+                <a href="https://bsky.app/profile/undomondo.bsky.social" target="_blank" style="border: 2px solid #F2EFE5; padding: 8px 16px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; text-decoration: none; color: #F2EFE5; transition: all 0.2s;">BSKY</a>
+                <a href="https://www.instagram.com/undomondo" target="_blank" style="border: 2px solid #F2EFE5; padding: 8px 16px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; text-decoration: none; color: #F2EFE5;">Instagram</a>
+                <a href="https://www.mixcloud.com/undomondo/" target="_blank" style="border: 2px solid #F2EFE5; padding: 8px 16px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; text-decoration: none; color: #F2EFE5;">Mixcloud</a>
+                <a href="https://soundcloud.com/undomondo" target="_blank" style="border: 2px solid #F2EFE5; padding: 8px 16px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; text-decoration: none; color: #F2EFE5;">SoundCloud</a>
+                <a href="https://www.last.fm/user/kidindigo" target="_blank" style="border: 2px solid #F2EFE5; padding: 8px 16px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; text-decoration: none; color: #F2EFE5;">Last.fm</a>
+                <a href="https://record.club/undomondo/" target="_blank" style="border: 2px solid #F2EFE5; padding: 8px 16px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; text-decoration: none; color: #F2EFE5;">Record Club</a>
+                <a href="https://www.linkedin.com/in/mehmet-a%C4%9Fao%C4%9Fullar%C4%B1-aa15b39/" target="_blank" style="border: 2px solid #F2EFE5; padding: 8px 16px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; text-decoration: none; color: #F2EFE5;">LinkedIn</a>
+                <a href="#" target="_blank" style="border: 2px solid #F2EFE5; padding: 8px 16px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; text-decoration: none; color: #F2EFE5;">Reverie For Two</a>
+            </div>
+        </div>
+        <div style="border-top: 1px solid rgba(242,239,229,0.3); padding-top: 16px; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 16px;">
+            <a href="/" style="font-family: 'Space Grotesk', sans-serif; font-size: 16px; font-weight: 700; color: #F2EFE5; text-decoration: none;">← Back to Undomondo</a>
+            <span style="font-family: 'Space Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 3px; opacity: 0.7;">© 2025 · Istanbul / Barcelona / Internet</span>
+        </div>
+    </div>
+</footer>
 </body>
 </html>

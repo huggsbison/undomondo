@@ -1,192 +1,307 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title id="page-title">Post | Undomondo Archive</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
-<style>
-  :root {
-    --red: #D42B2B;
-    --dark: #1a1a1a;
-    --cream: #F2EFE5;
-    --paper: #F2EFE9;
-    --blue: #005F99;
-  }
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--dark); }
-
-  /* NAV */
-  .top-nav {
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 20px 40px; background: white; border-bottom: 3px solid var(--red);
-  }
-  .top-nav .wordmark {
-    font-family: 'Space Grotesk', sans-serif; font-size: 28px; font-weight: 700;
-    color: var(--dark); text-decoration: none;
-  }
-  .nav-links { display: flex; gap: 32px; }
-  .nav-links a {
-    font-family: 'Space Grotesk', sans-serif; font-size: 13px;
-    text-transform: uppercase; letter-spacing: 2px; text-decoration: none;
-    color: var(--dark); transition: all 0.2s;
-  }
-  .nav-links a:hover { color: var(--red); }
-
-  /* POST */
-  .post-container {
-    max-width: 800px; margin: 60px auto; padding: 0 40px;
-  }
-  .breadcrumb {
-    font-family: 'Space Mono', monospace; font-size: 11px;
-    letter-spacing: 1px; color: #999; margin-bottom: 40px;
-  }
-  .breadcrumb a { color: var(--blue); text-decoration: none; }
-  .breadcrumb a:hover { text-decoration: underline; }
-
-  .post-header {
-    margin-bottom: 40px; padding-bottom: 30px;
-    border-bottom: 1px solid #ddd;
-  }
-  .post-date {
-    font-family: 'Space Mono', monospace; font-size: 11px;
-    letter-spacing: 2px; text-transform: uppercase; color: var(--blue);
-    margin-bottom: 16px;
-  }
-  .post-title {
-    font-family: 'Space Grotesk', sans-serif; font-size: 48px;
-    font-weight: 700; line-height: 1.1; margin-bottom: 20px;
-  }
-  .post-tags {
-    display: flex; flex-wrap: wrap; gap: 8px;
-  }
-  .post-tag {
-    font-family: 'Space Mono', monospace; font-size: 10px;
-    padding: 6px 12px; background: var(--dark); color: var(--cream);
-    border-radius: 3px; text-decoration: none; text-transform: lowercase;
-  }
-  .post-tag:hover { background: var(--red); }
-
-  .post-content {
-    font-size: 17px; line-height: 1.8; color: #333;
-  }
-  .post-content p { margin-bottom: 24px; }
-  .post-content a {
-    color: var(--blue); text-decoration: none;
-    border-bottom: 1px solid var(--blue);
-  }
-  .post-content a:hover { color: var(--red); border-bottom-color: var(--red); }
-  .post-content strong { font-weight: 600; color: var(--dark); }
-  .post-content img { max-width: 100%; height: auto; margin: 30px 0; border-radius: 4px; }
-  .post-content small { display: block; font-size: 13px; color: #999; margin-top: -20px; margin-bottom: 20px; }
-
-  /* Embedded content (videos, etc.) - hide broken ones */
-  .post-content embed, .post-content object { display: none; }
-
-  /* Back link */
-  .back-link {
-    margin-top: 60px; padding-top: 30px; border-top: 1px solid #ddd;
-  }
-  .back-link a {
-    font-family: 'Space Grotesk', sans-serif; font-size: 14px;
-    text-transform: uppercase; letter-spacing: 2px;
-    color: var(--dark); text-decoration: none;
-    transition: color 0.2s;
-  }
-  .back-link a:hover { color: var(--red); }
-
-  .loading {
-    text-align: center; padding: 100px 40px;
-    font-family: 'Space Mono', monospace; color: #999;
-  }
-
-  @media (max-width: 768px) {
-    .top-nav { flex-direction: column; gap: 20px; padding: 20px; }
-    .post-container { padding: 0 20px; margin: 40px auto; }
-    .post-title { font-size: 32px; }
-  }
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Post — Undomondo Archive</title>
+    <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    html, body {
+        font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        background: #f8f6f1;
+        color: #222;
+        line-height: 1.6;
+    }
+    
+    @import url('https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Space+Mono:wght@400;700&family=DM+Sans:wght@400;500;700&family=Space+Grotesk:wght@400;600;700&display=swap');
+    
+    nav {
+        background: white;
+        padding: 1.5rem 2rem;
+        border-bottom: 3px solid #D62828;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-family: 'Space Grotesk', sans-serif;
+    }
+    
+    .nav-brand {
+        font-size: 1.2rem;
+        font-weight: 700;
+        color: #111;
+        text-decoration: none;
+        letter-spacing: 0.05em;
+    }
+    
+    .nav-links {
+        display: flex;
+        gap: 2rem;
+        list-style: none;
+    }
+    
+    .nav-links a {
+        text-decoration: none;
+        color: #111;
+        font-weight: 600;
+        font-size: 0.95rem;
+        transition: color 0.2s;
+    }
+    
+    .nav-links a:hover,
+    .nav-links a.active {
+        color: #D62828;
+    }
+    
+    .container { max-width: 800px; margin: 0 auto; padding: 2rem 1.5rem; }
+    
+    .post-header {
+        margin-bottom: 2rem;
+        padding-bottom: 2rem;
+        border-bottom: 2px solid #D62828;
+    }
+    
+    .post-meta {
+        font-family: 'Space Mono', monospace;
+        font-size: 0.9rem;
+        color: #666;
+        margin-bottom: 1rem;
+    }
+    
+    .post-title {
+        font-size: clamp(1.8rem, 5vw, 2.5rem);
+        font-weight: 700;
+        color: #111;
+        margin-bottom: 1rem;
+        line-height: 1.2;
+    }
+    
+    .post-content {
+        font-size: 1.05rem;
+        line-height: 1.8;
+        color: #333;
+    }
+    
+    .post-content h2 {
+        margin-top: 2rem;
+        margin-bottom: 1rem;
+        font-size: 1.5rem;
+        color: #111;
+    }
+    
+    .post-content h3 {
+        margin-top: 1.5rem;
+        margin-bottom: 0.75rem;
+        font-size: 1.2rem;
+        color: #111;
+    }
+    
+    .post-content p {
+        margin-bottom: 1rem;
+    }
+    
+    .post-content a {
+        color: #005F99;
+        text-decoration: underline;
+    }
+    
+    .post-content a:hover {
+        color: #D62828;
+    }
+    
+    .post-content ul, .post-content ol {
+        margin-left: 2rem;
+        margin-bottom: 1rem;
+    }
+    
+    .post-content li {
+        margin-bottom: 0.5rem;
+    }
+    
+    .post-content img {
+        max-width: 100%;
+        height: auto;
+        margin: 1.5rem 0;
+        border-radius: 4px;
+    }
+    
+    .post-content iframe {
+        max-width: 100%;
+        margin: 1.5rem 0;
+    }
+    
+    .post-tags {
+        margin-top: 2rem;
+        padding-top: 2rem;
+        border-top: 2px solid #eee;
+    }
+    
+    .tag {
+        display: inline-block;
+        padding: 0.5rem 1rem;
+        background: #f0f0f0;
+        border-radius: 20px;
+        font-size: 0.85rem;
+        margin-right: 0.5rem;
+        margin-bottom: 0.5rem;
+        color: #666;
+    }
+    
+    .post-nav {
+        margin-top: 3rem;
+        padding: 2rem;
+        background: white;
+        border-radius: 4px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-left: 4px solid #D62828;
+    }
+    
+    .post-nav a {
+        text-decoration: none;
+        color: #005F99;
+        font-weight: 600;
+        transition: color 0.2s;
+    }
+    
+    .post-nav a:hover {
+        color: #D62828;
+    }
+    
+    .post-nav .nav-center {
+        text-align: center;
+    }
+    
+    footer {
+    background: #D62828;
+    color: #F2EFE5;
+    padding: 48px 40px;
+}
+footer a { color: #F2EFE5; text-decoration: none; }
+footer a:hover { opacity: 0.8; background: #F2EFE5; color: #D62828; }
+    footer a:hover { opacity: 0.8; }
+    
+    .error {
+        text-align: center;
+        padding: 4rem 2rem;
+        color: #d62828;
+    }
+    
+    @media (max-width: 768px) {
+        nav { flex-direction: column; gap: 1rem; }
+        .nav-links { gap: 1rem; }
+        .post-nav { flex-direction: column; gap: 1rem; }
+    }
+    </style>
 </head>
 <body>
+    <nav>
+        <a href="/" class="nav-brand">UNDOMONDO</a>
+        <ul class="nav-links">
+            <li><a href="/">Home</a></li>
+            <li><a href="/archive/" class="active">Archive</a></li>
+            <li><a href="https://undomondo.substack.com">Newsletter</a></li>
+            <li><a href="/#contact">Contact</a></li>
+        </ul>
+    </nav>
 
-<!-- NAV -->
-<nav class="top-nav">
-  <a href="/" class="wordmark">UNDOMONDO</a>
-  <div class="nav-links">
-    <a href="/">Home</a>
-    <a href="/archive">Archive</a>
-    <a href="/#newsletter">Newsletter</a>
-  </div>
-</nav>
-
-<!-- POST -->
-<div class="post-container">
-  <div class="loading">Loading post...</div>
-  <div id="post-output" style="display: none;">
-    <div class="breadcrumb">
-      <a href="/">Home</a> / <a href="/archive">Archive</a> / <span id="breadcrumb-year"></span> / <span id="breadcrumb-title"></span>
+    <div class="container">
+        <div id="post-container">
+            <div class="error">Loading post...</div>
+        </div>
     </div>
 
-    <div class="post-header">
-      <div class="post-date" id="post-date"></div>
-      <h1 class="post-title" id="post-title"></h1>
-      <div class="post-tags" id="post-tags"></div>
+    <footer>
+    <div style="max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; gap: 24px;">
+        <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-start; gap: 24px;">
+            <div>
+                <p style="font-family: 'Space Grotesk', sans-serif; font-size: 20px; font-weight: 700; margin-bottom: 8px;">UNDOMONDO</p>
+                <p style="font-size: 13px; opacity: 0.7;">Independent music, no borders.</p>
+            </div>
+            <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+                <a href="https://bsky.app/profile/undomondo.bsky.social" target="_blank" style="border: 2px solid #F2EFE5; padding: 8px 16px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; text-decoration: none; color: #F2EFE5; transition: all 0.2s;">BSKY</a>
+                <a href="https://www.instagram.com/undomondo" target="_blank" style="border: 2px solid #F2EFE5; padding: 8px 16px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; text-decoration: none; color: #F2EFE5;">Instagram</a>
+                <a href="https://www.mixcloud.com/undomondo/" target="_blank" style="border: 2px solid #F2EFE5; padding: 8px 16px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; text-decoration: none; color: #F2EFE5;">Mixcloud</a>
+                <a href="https://soundcloud.com/undomondo" target="_blank" style="border: 2px solid #F2EFE5; padding: 8px 16px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; text-decoration: none; color: #F2EFE5;">SoundCloud</a>
+                <a href="https://www.last.fm/user/kidindigo" target="_blank" style="border: 2px solid #F2EFE5; padding: 8px 16px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; text-decoration: none; color: #F2EFE5;">Last.fm</a>
+                <a href="https://record.club/undomondo/" target="_blank" style="border: 2px solid #F2EFE5; padding: 8px 16px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; text-decoration: none; color: #F2EFE5;">Record Club</a>
+                <a href="https://www.linkedin.com/in/mehmet-a%C4%9Fao%C4%9Fullar%C4%B1-aa15b39/" target="_blank" style="border: 2px solid #F2EFE5; padding: 8px 16px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; text-decoration: none; color: #F2EFE5;">LinkedIn</a>
+                <a href="#" target="_blank" style="border: 2px solid #F2EFE5; padding: 8px 16px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; text-decoration: none; color: #F2EFE5;">Reverie For Two</a>
+            </div>
+        </div>
+        <div style="border-top: 1px solid rgba(242,239,229,0.3); padding-top: 16px; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 16px;">
+            <a href="/" style="font-family: 'Space Grotesk', sans-serif; font-size: 16px; font-weight: 700; color: #F2EFE5; text-decoration: none;">← Back to Undomondo</a>
+            <span style="font-family: 'Space Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 3px; opacity: 0.7;">© 2025 · Istanbul / Barcelona / Internet</span>
+        </div>
     </div>
+</footer>
 
-    <div class="post-content" id="post-content"></div>
-
-    <div class="back-link">
-      <a href="/archive">← Back to Archive</a>
-    </div>
-  </div>
-</div>
-
-<script>
-// Get slug from URL
-const params = new URLSearchParams(window.location.search);
-const slug = params.get('slug');
-
-if (!slug) {
-  document.querySelector('.loading').innerHTML = 'Post not found. <a href="/archive">Return to archive</a>';
-} else {
-  // Load posts and find the one we need
-  fetch('/archive/posts.json')
-    .then(res => res.json())
-    .then(posts => {
-      const post = posts.find(p => p.slug === slug);
-
-      if (!post) {
-        document.querySelector('.loading').innerHTML = 'Post not found. <a href="/archive">Return to archive</a>';
-        return;
-      }
-
-      // Update page
-      document.getElementById('page-title').textContent = `${post.title} | Undomondo Archive`;
-      document.getElementById('breadcrumb-year').textContent = post.year;
-      document.getElementById('breadcrumb-title').textContent = post.title;
-      document.getElementById('post-date').textContent = post.date.split(' ')[0];
-      document.getElementById('post-title').textContent = post.title;
-      document.getElementById('post-content').innerHTML = post.content;
-
-      // Tags
-      if (post.tags && post.tags.length > 0) {
-        document.getElementById('post-tags').innerHTML = post.tags
-          .map(tag => `<a href="/archive?tag=${tag}" class="post-tag">#${tag}</a>`)
-          .join('');
-      }
-
-      // Show post, hide loading
-      document.querySelector('.loading').style.display = 'none';
-      document.getElementById('post-output').style.display = 'block';
-    })
-    .catch(err => {
-      document.querySelector('.loading').innerHTML = 'Error loading post. <a href="/archive">Return to archive</a>';
-      console.error(err);
-    });
-}
-</script>
-
+    <script>
+    // Load posts.json and render the post
+    async function loadPost() {
+        try {
+            const response = await fetch('/archive/posts.json');
+            const posts = await response.json();
+            
+            const params = new URLSearchParams(window.location.search);
+            const postId = params.get('id');
+            
+            const post = posts.find(p => p.id === postId);
+            if (!post) {
+                document.getElementById('post-container').innerHTML = '<div class="error">Post not found.</div>';
+                return;
+            }
+            
+            // Find current year for navigation
+            const year = post.year;
+            const yearPosts = posts.filter(p => p.year === year).sort((a, b) => new Date(b.date) - new Date(a.date));
+            const currentIndex = yearPosts.findIndex(p => p.id === postId);
+            const prevPost = currentIndex > 0 ? yearPosts[currentIndex - 1] : null;
+            const nextPost = currentIndex < yearPosts.length - 1 ? yearPosts[currentIndex + 1] : null;
+            
+            const formatDate = (dateStr) => {
+                const d = new Date(dateStr);
+                return d.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+            };
+            
+            const tagsHtml = (post.tags || []).map(t => `<span class="tag">${escape(t)}</span>`).join('');
+            
+            let navHtml = '<div class="post-nav"><div style="flex:1;">';
+            if (prevPost) {
+                navHtml += `<a href="/archive/post.html?id=${prevPost.id}">← Previous</a>`;
+            }
+            navHtml += '</div><div class="nav-center">';
+            navHtml += `<a href="/archive/${year}.html">← Back to ${year}</a>`;
+            navHtml += '</div><div style="flex:1; text-align: right;">';
+            if (nextPost) {
+                navHtml += `<a href="/archive/post.html?id=${nextPost.id}">Next →</a>`;
+            }
+            navHtml += '</div></div>';
+            
+            const container = document.getElementById('post-container');
+            container.innerHTML = `
+                <div class="post-header">
+                    <div class="post-meta">${formatDate(post.date)} · ${year}</div>
+                    <h1 class="post-title">${escape(post.title)}</h1>
+                </div>
+                <div class="post-content">${post.content}</div>
+                ${tagsHtml ? `<div class="post-tags">${tagsHtml}</div>` : ''}
+                ${navHtml}
+            `;
+        } catch (error) {
+            console.error('Error loading post:', error);
+            document.getElementById('post-container').innerHTML = '<div class="error">Error loading post. <a href="/archive/">Back to Archive</a></div>';
+        }
+    }
+    
+    function escape(text) {
+        const div = document.createElement('div');
+        div.textContent = text;
+        return div.innerHTML;
+    }
+    
+    loadPost();
+    </script>
 </body>
 </html>
