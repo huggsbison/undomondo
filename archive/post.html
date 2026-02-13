@@ -247,16 +247,16 @@ footer a:hover { opacity: 0.8; background: #F2EFE5; color: #D62828; }
             const params = new URLSearchParams(window.location.search);
             const postId = params.get('id');
             
-            const post = posts.find(p => p.id === postId);
+            const post = posts.find(p => String(p.id) === String(postId));
             if (!post) {
                 document.getElementById('post-container').innerHTML = '<div class="error">Post not found.</div>';
                 return;
             }
             
             // Find current year for navigation
-            const year = post.year;
-            const yearPosts = posts.filter(p => p.year === year).sort((a, b) => new Date(b.date) - new Date(a.date));
-            const currentIndex = yearPosts.findIndex(p => p.id === postId);
+            const year = String(post.year);
+            const yearPosts = posts.filter(p => String(p.year) === year).sort((a, b) => new Date(b.date) - new Date(a.date));
+            const currentIndex = yearPosts.findIndex(p => String(p.id) === String(postId));
             const prevPost = currentIndex > 0 ? yearPosts[currentIndex - 1] : null;
             const nextPost = currentIndex < yearPosts.length - 1 ? yearPosts[currentIndex + 1] : null;
             
