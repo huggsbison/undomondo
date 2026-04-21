@@ -16,28 +16,6 @@
         background: #F2EFE5;
         color: #111;
         line-height: 1.6;
-    }.hero {
-        background-color: #111111;
-        background-image: radial-gradient(circle, #005F99 8px, transparent 8px);
-        background-size: 24px 24px;
-        padding: 4rem 2rem;
-        text-align: center;
-        color: white;
-    }
-    
-    .year-big {
-        font-family: 'Dela Gothic One', sans-serif;
-        font-size: clamp(4rem, 10vw, 8rem);
-        margin: 0;
-        text-transform: uppercase;
-        opacity: 0.3;
-        line-height: 1;
-    }
-    
-    .year-info {
-        font-size: 1.2rem;
-        margin: 1.5rem 0;
-        opacity: 0.9;
     }
     
     .year-nav {
@@ -217,8 +195,7 @@ footer a { color: #F2EFE5; text-decoration: none; }
 footer a:hover { opacity: 0.8; background: #F2EFE5; color: #D62828; }
     footer a:hover { opacity: 0.8; }
     
-    @media (max-width: 768px) {.year-big { font-size: clamp(2rem, 6vw, 4rem); }
-    }
+    @media (max-width: 768px) {}
     
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -273,12 +250,10 @@ footer a:hover { opacity: 0.8; background: #F2EFE5; color: #D62828; }
         opacity: 1;
     }
 
-    /* Hero - Transmissions style */
+        /* Hero — unified archive-index style */
     .hero {
-        background-color: #111111;
-        background-image: radial-gradient(circle, #005F99 8px, transparent 8px);
-        background-size: 24px 24px;
-        padding: 5rem 2rem 4rem;
+        background-color: transparent;
+        padding: 5rem 2rem 3rem;
         position: relative;
         overflow: hidden;
     }
@@ -307,10 +282,11 @@ footer a:hover { opacity: 0.8; background: #F2EFE5; color: #D62828; }
         font-family: 'Dela Gothic One', sans-serif;
         font-size: clamp(4rem, 10vw, 8rem);
         line-height: 0.85;
-        color: #F2EFE5;
+        color: #111111;
         text-transform: uppercase;
         position: relative;
         z-index: 1;
+        letter-spacing: -0.02em;
     }
 
     .hero-title-shadow {
@@ -325,17 +301,27 @@ footer a:hover { opacity: 0.8; background: #F2EFE5; color: #D62828; }
         left: 4px;
         z-index: 0;
         opacity: 0.3;
+        letter-spacing: -0.02em;
+    }
+
+    .hero-brand-logo {
+        display: block;
+        width: clamp(60px, 8vw, 90px);
+        height: auto;
+        margin-top: 1.2rem;
+        position: relative;
+        z-index: 1;
     }
 
     .hero-right {
         text-align: right;
-        padding-bottom: 1rem;
+        padding-bottom: 0.5rem;
     }
 
     .hero-right .tagline {
         font-family: 'Dela Gothic One', sans-serif;
         font-size: clamp(1.2rem, 2.5vw, 1.8rem);
-        color: rgba(242,239,229,0.9);
+        color: #111111;
         text-transform: uppercase;
         line-height: 1.3;
     }
@@ -345,7 +331,7 @@ footer a:hover { opacity: 0.8; background: #F2EFE5; color: #D62828; }
     .hero-right .meta {
         font-family: 'Space Mono', monospace;
         font-size: 0.65rem;
-        color: rgba(242,239,229,0.4);
+        color: rgba(17,17,17,0.4);
         text-transform: uppercase;
         letter-spacing: 0.2em;
         margin-top: 0.75rem;
@@ -354,9 +340,17 @@ footer a:hover { opacity: 0.8; background: #F2EFE5; color: #D62828; }
     .hero-stats {
         display: flex;
         gap: 3rem;
-        margin-top: 1rem;
-        padding-top: 1.5rem;
-        border-top: 1px solid rgba(242,239,229,0.15);
+        justify-content: center;
+        align-items: center;
+        padding: 1.5rem 2rem;
+        background-color: #111;
+        background-image: radial-gradient(circle, #005F99 2px, transparent 2px);
+        background-size: 18px 18px;
+        border-top: 3px solid #D62828;
+        border-bottom: 3px solid #D62828;
+        width: 100vw;
+        margin-left: calc(50% - 50vw);
+        margin-right: calc(50% - 50vw);
     }
 
     .stat {
@@ -372,10 +366,11 @@ footer a:hover { opacity: 0.8; background: #F2EFE5; color: #D62828; }
     .stat-label {
         font-family: 'Space Mono', monospace;
         font-size: 0.7rem;
-        color: rgba(242,239,229,0.5);
+        color: rgba(242,239,229,0.7);
         text-transform: uppercase;
         letter-spacing: 0.15em;
     }
+
 
     /* Container */
     .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
@@ -537,8 +532,29 @@ footer a:hover { opacity: 0.8; background: #F2EFE5; color: #D62828; }
 </head>
 <body>
 <div class="hero">
-        <h1 class="year-big">2015</h1>
-        <p class="year-info">152 posts</p>
+        <div class="hero-inner">
+            <div class="hero-top">
+                <div class="hero-title-block">
+                    <h1 class="hero-title">2015</h1>
+                    <div class="hero-title-shadow" aria-hidden="true">2015</div>
+                    <img src="../assets/undomondo-stamp.png" alt="undomondo" class="hero-brand-logo">
+                </div>
+                <div class="hero-right">
+                    <p class="tagline">152<br><span class="red">POSTS</span><br>IN 2015</p>
+                    <p class="meta">Undomondo · Tumblr · 2015</p>
+                </div>
+            </div>
+        </div>
+        <div class="hero-stats">
+            <div class="stat">
+                <div class="stat-number">152</div>
+                <div class="stat-label">Posts</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number">2015</div>
+                <div class="stat-label">Year</div>
+            </div>
+</div>
     </div>
 
     <div class="container">
