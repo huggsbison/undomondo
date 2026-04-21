@@ -84,6 +84,17 @@
         opacity: 0.3;
     }
 
+    .hero-brand {
+        font-family: 'Fugaz One', sans-serif;
+        font-size: clamp(0.75rem, 1.2vw, 0.95rem);
+        letter-spacing: 0.45em;
+        color: rgba(17,17,17,0.45);
+        text-transform: uppercase;
+        margin-top: 1.2rem;
+        position: relative;
+        z-index: 1;
+    }
+
     .hero-right {
         text-align: right;
         padding-bottom: 1rem;
@@ -111,9 +122,13 @@
     .hero-stats {
         display: flex;
         gap: 3rem;
-        margin-top: 1rem;
-        padding-top: 1.5rem;
-        border-top: 1px solid rgba(17,17,17,0.15);
+        margin-top: 1.5rem;
+        padding: 1.5rem 2rem;
+        background-color: #111;
+        background-image: radial-gradient(circle, #005F99 2px, transparent 2px);
+        background-size: 18px 18px;
+        border-top: 3px solid #D62828;
+        align-self: flex-start;
     }
 
     .stat {
@@ -129,7 +144,7 @@
     .stat-label {
         font-family: 'Space Mono', monospace;
         font-size: 0.7rem;
-        color: rgba(17,17,17,0.6);
+        color: rgba(242,239,229,0.7);
         text-transform: uppercase;
         letter-spacing: 0.15em;
     }
@@ -295,6 +310,7 @@
                 <div class="hero-title-block">
                     <h1 class="hero-title">The<br>Archive</h1>
                     <div class="hero-title-shadow" aria-hidden="true">The<br>Archive</div>
+                    <p class="hero-brand">UNDOMONDO</p>
                 </div>
                 <div class="hero-right">
                     <p class="tagline">Music Blog<br><span class="red">&amp; Radio</span><br>Show</p>
@@ -376,7 +392,6 @@
             <div>
                 <p style="font-family:'Dela Gothic One',sans-serif; font-size:1.2rem; letter-spacing:0.05em; margin-bottom:8px;">UNDOMONDO</p>
                 <p style="font-size: 13px; opacity: 0.7;">Independent music, no borders.</p>
-                <p style="font-size: 12px; opacity: 0.6; margin-top: 6px;"><a href="mailto:mersenne@undomondo.com" style="color:#F2EFE5; text-decoration:none;">mersenne@undomondo.com</a></p>
             </div>
             <div style="display: flex; flex-wrap: wrap; gap: 8px;">
                 <a href="https://bsky.app/profile/undomondo.bsky.social" target="_blank" style="border: 2px solid rgba(242,239,229,0.6); padding: 8px 16px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; text-decoration: none; color: #F2EFE5;">BSKY</a>
@@ -390,7 +405,6 @@
             </div>
         </div>
         <div style="border-top: 1px solid rgba(242,239,229,0.3); padding-top: 16px; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 16px;">
-            <span style="font-family: 'Dela Gothic One', sans-serif; font-size: 0.85rem; letter-spacing: 0.1em; opacity: 0.8;">UNDOMONDO</span>
             <span style="font-family: 'Space Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 3px; opacity: 0.7;">&copy; 2025 &middot; Istanbul / Barcelona / Internet</span>
         </div>
     </div>
