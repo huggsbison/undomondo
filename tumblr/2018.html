@@ -269,7 +269,7 @@ footer a:hover { opacity: 0.8; background: #F2EFE5; color: #D62828; }
     .hero-top {
         display: flex;
         justify-content: space-between;
-        align-items: flex-end;
+        align-items: flex-start;
         flex-wrap: wrap;
         gap: 2rem;
     }
@@ -304,17 +304,25 @@ footer a:hover { opacity: 0.8; background: #F2EFE5; color: #D62828; }
         letter-spacing: -0.02em;
     }
 
-    .hero-brand-logo {
+    /* Stamp — top-right of hero, affixed like postage */
+    .hero-stamp-link {
         display: block;
-        width: clamp(60px, 8vw, 90px);
+        line-height: 0;
+    }
+    .hero-stamp {
+        display: block;
+        width: clamp(70px, 8.5vw, 100px);
         height: auto;
-        margin-top: 1.2rem;
-        position: relative;
-        z-index: 1;
+        transform: rotate(2deg);
+        filter: drop-shadow(2px 3px 0 rgba(0,0,0,0.08));
     }
 
     .hero-right {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
         text-align: right;
+        gap: 1.25rem;
         padding-bottom: 0.5rem;
     }
 
@@ -334,7 +342,7 @@ footer a:hover { opacity: 0.8; background: #F2EFE5; color: #D62828; }
         color: rgba(17,17,17,0.4);
         text-transform: uppercase;
         letter-spacing: 0.2em;
-        margin-top: 0.75rem;
+        margin-top: 0;
     }
 
     .hero-stats {
@@ -537,9 +545,9 @@ footer a:hover { opacity: 0.8; background: #F2EFE5; color: #D62828; }
                 <div class="hero-title-block">
                     <h1 class="hero-title">2018</h1>
                     <div class="hero-title-shadow" aria-hidden="true">2018</div>
-                    <img src="../assets/undomondo-stamp.png" alt="undomondo" class="hero-brand-logo">
                 </div>
                 <div class="hero-right">
+                    <a href="/" class="hero-stamp-link" aria-label="undomondo home"><img src="../assets/undomondo-stamp.png" alt="undomondo" class="hero-stamp"></a>
                     <p class="tagline">54<br><span class="red">POSTS</span><br>IN 2018</p>
                     <p class="meta">Undomondo · Tumblr · 2018</p>
                 </div>
