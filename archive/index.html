@@ -46,7 +46,7 @@
     .hero-top {
         display: flex;
         justify-content: space-between;
-        align-items: flex-end;
+        align-items: flex-start;
         flex-wrap: wrap;
         gap: 2rem;
     }
@@ -83,17 +83,25 @@
         opacity: 0.3;
     }
 
-    .hero-brand-logo {
+    /* Stamp — top-right of hero, affixed like postage */
+    .hero-stamp-link {
         display: block;
-        width: clamp(70px, 9vw, 110px);
+        line-height: 0;
+    }
+    .hero-stamp {
+        display: block;
+        width: clamp(80px, 10vw, 110px);
         height: auto;
-        margin-top: 1.2rem;
-        position: relative;
-        z-index: 1;
+        transform: rotate(2deg);
+        filter: drop-shadow(2px 3px 0 rgba(0,0,0,0.08));
     }
 
     .hero-right {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
         text-align: right;
+        gap: 1.5rem;
         padding-bottom: 1rem;
     }
 
@@ -113,7 +121,7 @@
         color: rgba(17,17,17,0.4);
         text-transform: uppercase;
         letter-spacing: 0.2em;
-        margin-top: 0.75rem;
+        margin-top: 0;
     }
 
     .hero-stats {
@@ -312,9 +320,11 @@
                 <div class="hero-title-block">
                     <h1 class="hero-title">The<br>Archive</h1>
                     <div class="hero-title-shadow" aria-hidden="true">The<br>Archive</div>
-                    <img src="../assets/undomondo-stamp.png" alt="undomondo" class="hero-brand-logo">
                 </div>
                 <div class="hero-right">
+                    <a href="/" class="hero-stamp-link" aria-label="undomondo home">
+                        <img src="../assets/undomondo-stamp.png" alt="undomondo" class="hero-stamp">
+                    </a>
                     <p class="tagline">Music Blog<br><span class="red">&amp; Radio</span><br>Show</p>
                     <p class="meta">Est. 2005 · Istanbul / Barcelona / Internet</p>
                 </div>
