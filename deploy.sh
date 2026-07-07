@@ -10,10 +10,14 @@ find .git -maxdepth 1 -name "*.lock" -mmin +60 -delete 2>/dev/null || true
 
 git add -A
 if git diff --cached --quiet; then
-    echo "Nothing to deploy — no changes."
-    exit 0
+    if [ -z "$(git log origin/main..HEAD --oneline 2>/dev/null)" ]; then
+        echo "Nothing to deploy — no changes."
+        exit 0
+    fi
+    echo "No new changes, but unpushed commits found — pushing those."
+else
+    git commit -m "${1:-site update $(date '+%Y-%m-%d %H:%M')}"
 fi
-git commit -m "${1:-site update $(date '+%Y-%m-%d %H:%M')}"
 git push origin main
 echo ""
 echo "Pushed. Netlify will deploy in ~1-2 min. Check: https://app.netlify.com"
