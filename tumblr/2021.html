@@ -572,7 +572,7 @@ footer a:hover { opacity: 0.8; background: #F2EFE5; color: #D62828; }
             <div class="card" onclick="location.href='/tumblr/post.html?id=642897410056749056'">
                 <div class="card-header">
                     <div class="card-date">2021-02-12</div>
-                    <h3 class="card-title">Chick Corea - What Game Shall We Play TodayChick Corea, Grammy-winning jazz musician, dies at 79The </h3>
+                    <h3 class="card-title">Chick Corea - What Game Shall We Play TodayChick Corea, Grammy-winning jazz musician, dies at 79The</h3>
                 </div>
                 <div class="card-body">
                     <p class="card-excerpt"> Chick Corea - What Game Shall We Play Today   Chick Corea, Grammy-winning jazz musician, dies at 79   The composer, keyboardist and bandleader, who won 23 Grammy awards, has died of a rare form of ca...</p>
@@ -629,7 +629,7 @@ footer a:hover { opacity: 0.8; background: #F2EFE5; color: #D62828; }
     </footer>
 
     <script>
-    const allPosts = [{"id": "642897410056749056", "title": "Chick Corea - What Game Shall We Play TodayChick Corea, Grammy-winning jazz musician, dies at 79The ", "date": "2021-02-12", "content": "<p>Chick Corea - What Game Shall We Play Today </p><p>Chick Corea, Grammy-winning jazz musician, dies at 79<br/></p><p>The composer, keyboardist and bandleader, who won 23 Grammy awards, has died of a rare form of cancer</p><p>RIP\u00a0<br/></p> ", "tags": ["obit"]}, {"id": "640655904559251456", "title": "Redman Mehldau McBride Blade - \u201cRight Back Round Again\u201d", "date": "2021-01-18", "content": "<p>Redman Mehldau McBride Blade - \u201cRight Back Round Again\u201d </p> ", "tags": ["jazz"]}];
+    const allPosts = [{"id": "642897410056749056", "title": "Chick Corea - What Game Shall We Play TodayChick Corea, Grammy-winning jazz musician, dies at 79The", "date": "2021-02-12", "content": "<p>Chick Corea - What Game Shall We Play Today </p><p>Chick Corea, Grammy-winning jazz musician, dies at 79<br/></p><p>The composer, keyboardist and bandleader, who won 23 Grammy awards, has died of a rare form of cancer</p><p>RIP <br/></p> ", "tags": ["obit"]}, {"id": "640655904559251456", "title": "Redman Mehldau McBride Blade - “Right Back Round Again”", "date": "2021-01-18", "content": "<p>Redman Mehldau McBride Blade - “Right Back Round Again” </p> ", "tags": ["jazz"]}];
     let currentFilter = null;
     let postsPerPage = 50;
     let currentPage = 0;
@@ -640,7 +640,7 @@ footer a:hover { opacity: 0.8; background: #F2EFE5; color: #D62828; }
     }
 
     function renderPost(post) {
-        const excerpt = post.content.replace(/<[^>]*>/g, '').substring(0, 150);
+        const excerpt = post.content.replace(/<[^>]*>/g, ' ').replace(/\(via[^)]*\)?/g, '').replace(/https?:\/\/\S+/g, '').replace(/\s+/g, ' ').trim().substring(0, 150);
         const tags = (post.tags || []).map(t => `<span class="tag">${escape(t)}</span>`).join('');
         return `
             <div class="card" onclick="location.href='/tumblr/post.html?id=${post.id}'">
