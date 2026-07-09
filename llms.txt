@@ -1,0 +1,26 @@
+# undomondo
+
+> Music blog, radioshow and DJ outlet, running since 2005. Istanbul / Barcelona / Internet.
+> Written and curated by one person: deep cuts, reissues, radio shows, mixes, obituaries,
+> and two decades of digging across jazz, global grooves, electronic, folk and everything between.
+
+## The archive (4569 posts, 2005-2021)
+
+Two eras, both fully static and crawlable:
+
+- WordPress era (2005-2008, 646 posts): https://www.undomondo.com/archive/
+  Post URLs: https://www.undomondo.com/archive/{year}/{slug}.html
+- Tumblr era (2007-2021, 3923 posts): https://www.undomondo.com/tumblr/
+  Post URLs: https://www.undomondo.com/tumblr/{year}/{slug}.html
+
+Year hubs: /archive/2005.html ... /archive/2008.html and /tumblr/2007.html ... /tumblr/2021.html
+
+## Machine-readable
+
+- Sitemap index: https://www.undomondo.com/sitemap.xml
+- Every post page carries schema.org BlogPosting JSON-LD.
+
+## Current output
+
+- Newsletter (Mondo Times): https://undomondo.substack.com
+- Homepage: https://www.undomondo.com/

@@ -19,3 +19,7 @@ archive/index-mockup.html
 ARCHIVE_BUILD_SUMMARY.md
 ARCHIVE_DEPLOYMENT.md
 HANDOFF-2026-04-22.md
+
+_pilot_screenshots/
+tumblr/*.bak
+archive/*.bak

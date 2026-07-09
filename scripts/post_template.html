@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Archive — Undomondo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fugaz+One&family=Dela+Gothic+One&family=Fugaz+One&family=Space+Mono:wght@400;700&family=DM+Sans:wght@400;500;700&family=Merriweather:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html, body {
+        font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        background: #F2EFE5;
+        color: #111;
+        line-height: 1.6;
+    }
+
+    /* Minimal site nav */
+    .site-nav {
+        background: #F2EFE5;
+        border-bottom: 2px solid #D62828;
+    }
+    .site-nav-inner {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 1.25rem 1.5rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 1rem;
+        flex-wrap: wrap;
+    }
+    .wordmark {
+        font-family: 'Fugaz One', sans-serif;
+        font-size: 1.5rem;
+        color: #D62828;
+        text-decoration: none;
+        letter-spacing: 0.01em;
+    }
+    .wordmark:hover { opacity: 0.85; }
+    .nav-links {
+        display: flex;
+        gap: 1.5rem;
+    }
+    .nav-links a {
+        font-family: 'Space Mono', monospace;
+        font-size: 0.75rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.2em;
+        color: #111;
+        text-decoration: none;
+        transition: color 0.15s;
+    }
+    .nav-links a:hover, .nav-links a.current { color: #D62828; }
+
+    /* Media embeds */
+    .embed-wrap {
+        position: relative;
+        margin: 1.5rem 0;
+        background: #111;
+        padding-bottom: 56.25%;
+        height: 0;
+        overflow: hidden;
+    }
+    .embed-wrap iframe {
+        position: absolute;
+        top: 0; left: 0;
+        width: 100%; height: 100%;
+        border: 0;
+        display: block;
+    }
+    .embed-sc {
+        padding-bottom: 0;
+        height: 166px;
+        background: transparent;
+    }
+    .embed-sc iframe {
+        position: static;
+        height: 166px;
+    }
+    .embed-mc {
+        padding-bottom: 0;
+        height: 120px;
+        background: transparent;
+    }
+    .embed-mc iframe {
+        position: static;
+        height: 120px;
+    }
+
+    .container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 2rem 1.5rem;
+    }
+
+    .post-header {
+        margin-bottom: 2rem;
+        padding-bottom: 2rem;
+        border-bottom: 2px solid #D62828;
+    }
+
+    .post-meta {
+        font-family: 'Space Mono', monospace;
+        font-size: 0.9rem;
+        color: #666;
+        margin-bottom: 1rem;
+    }
+
+    .post-title {
+        font-size: clamp(1.8rem, 5vw, 2.5rem);
+        font-weight: 700;
+        color: #111;
+        margin-bottom: 1rem;
+        line-height: 1.2;
+    }
+
+    .post-content {
+        font-size: 1.05rem;
+        line-height: 1.8;
+        color: #333;
+    }
+
+    .post-content h2 {
+        margin-top: 2rem;
+        margin-bottom: 1rem;
+        font-size: 1.5rem;
+        color: #111;
+    }
+
+    .post-content h3 {
+        margin-top: 1.5rem;
+        margin-bottom: 0.75rem;
+        font-size: 1.2rem;
+        color: #111;
+    }
+
+    .post-content p {
+        margin-bottom: 1rem;
+    }
+
+    .post-content a {
+        color: #005F99;
+        text-decoration: underline;
+    }
+
+    .post-content a:hover {
+        color: #D62828;
+    }
+
+    .post-content ul, .post-content ol {
+        margin-left: 2rem;
+        margin-bottom: 1rem;
+    }
+
+    .post-content li {
+        margin-bottom: 0.5rem;
+    }
+
+    .post-content img {
+        max-width: 100%;
+        height: auto;
+        margin: 1.5rem 0;
+        border-radius: 4px;
+    }
+
+    .post-content iframe {
+        max-width: 100%;
+        margin: 1.5rem 0;
+    }
+    /* Re-assert embed-wrap positioning — must beat .post-content iframe above */
+    .post-content .embed-wrap iframe {
+        position: absolute;
+        top: 0; left: 0;
+        width: 100%; height: 100%;
+        margin: 0;
+        border: 0;
+        display: block;
+    }
+    .post-content .embed-sc iframe {
+        position: static;
+        width: 100%;
+        height: 166px;
+        margin: 0;
+    }
+    .post-content .embed-mc iframe {
+        position: static;
+        width: 100%;
+        height: 120px;
+        margin: 0;
+    }
+
+    .post-tags {
+        margin-top: 2rem;
+        padding-top: 2rem;
+        border-top: 2px solid #eee;
+    }
+
+    .tag {
+        display: inline-block;
+        padding: 0.5rem 1rem;
+        background: #f0f0f0;
+        border-radius: 20px;
+        font-size: 0.85rem;
+        margin-right: 0.5rem;
+        margin-bottom: 0.5rem;
+        color: #666;
+    }
+
+    .post-nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 3rem;
+        padding-top: 2rem;
+        border-top: 2px solid #eee;
+    }
+
+    .post-nav a {
+        text-decoration: none;
+        color: #005F99;
+        font-weight: 600;
+        transition: color 0.2s;
+    }
+
+    .post-nav a:hover {
+        color: #D62828;
+    }
+
+    .post-nav .nav-center {
+        text-align: center;
+    }
+
+    .error {
+        text-align: center;
+        padding: 4rem 2rem;
+        color: #d62828;
+    }
+
+    footer {
+        background: #D62828;
+        color: #F2EFE5;
+        padding: 48px 40px;
+    }
+    footer a { color: #F2EFE5; text-decoration: none; }
+    footer a:hover { opacity: 0.8; background: #F2EFE5; color: #D62828; }
+
+    @media (max-width: 768px) {
+        .container { padding: 1.5rem 1rem; }
+        .post-nav { flex-direction: column; gap: 1rem; text-align: center; }
+    }
+    </style>
+</head>
+<body>
+    <header class="site-nav">
+        <div class="site-nav-inner">
+            <a href="/" class="wordmark"><span style="font-family:'Dela Gothic One',sans-serif; font-size:16px; color:#111111; text-transform:uppercase; letter-spacing:0.02em; line-height:1;">UNDOMONDO</span></a>
+            <nav class="nav-links">
+                <a href="/">Home</a>
+                <a href="/archive/" class="current">Archive</a>
+                <a href="https://undomondo.substack.com" target="_blank" rel="noopener">Newsletter</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <div id="post-container">
+            <div class="error">Loading post...</div>
+        </div>
+    </div>
+
+        <footer style="background:#D62828; color:#F2EFE5; padding:72px 24px; position:relative; overflow:hidden;">
+        <div style="position:absolute; inset:0; opacity:0.1; background-image: radial-gradient(circle, #F2EFE5 1px, transparent 1px); background-size: 30px 30px; pointer-events:none;"></div>
+        <div style="max-width:1200px; margin:0 auto; position:relative; z-index:1;">
+            <div style="display:flex; flex-wrap:wrap; gap:48px; justify-content:space-between; align-items:flex-start;">
+                <div>
+                    <div style="font-family:'Space Mono',monospace; font-size:13px; text-transform:uppercase; letter-spacing:0.15em; opacity:0.7; margin-bottom:16px;">Get In Touch</div>
+                    <a href="mailto:mersenne@undomondo.com" style="text-decoration:none; color:#F2EFE5; display:block;">
+                        <h2 style="font-family:'Dela Gothic One',sans-serif; font-size:clamp(2.2rem, 6vw, 3.75rem); line-height:0.9; text-transform:uppercase; margin:0;">Let's Talk<br>Music.</h2>
+                    </a>
+                </div>
+                <div style="display:flex; flex-wrap:wrap; gap:12px; max-width:520px;">
+                    <a href="https://bsky.app/profile/undomondo.bsky.social" target="_blank" style="border: 2px solid rgba(242,239,229,0.6); padding: 8px 16px; font-family:'DM Sans',sans-serif; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; text-decoration: none; color: #F2EFE5;">BSKY</a>
+                    <a href="https://www.instagram.com/undomondo" target="_blank" style="border: 2px solid rgba(242,239,229,0.6); padding: 8px 16px; font-family:'DM Sans',sans-serif; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; text-decoration: none; color: #F2EFE5;">Instagram</a>
+                    <a href="https://www.mixcloud.com/undomondo/" target="_blank" style="border: 2px solid rgba(242,239,229,0.6); padding: 8px 16px; font-family:'DM Sans',sans-serif; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; text-decoration: none; color: #F2EFE5;">Mixcloud</a>
+                    <a href="https://soundcloud.com/undomondo" target="_blank" style="border: 2px solid rgba(242,239,229,0.6); padding: 8px 16px; font-family:'DM Sans',sans-serif; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; text-decoration: none; color: #F2EFE5;">SoundCloud</a>
+                    <a href="https://www.last.fm/user/kidindigo" target="_blank" style="border: 2px solid rgba(242,239,229,0.6); padding: 8px 16px; font-family:'DM Sans',sans-serif; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; text-decoration: none; color: #F2EFE5;">Last.fm</a>
+                    <a href="https://record.club/undomondo/" target="_blank" style="border: 2px solid rgba(242,239,229,0.6); padding: 8px 16px; font-family:'DM Sans',sans-serif; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; text-decoration: none; color: #F2EFE5;">Record Club</a>
+                    <a href="https://music.apple.com/us/playlist/undomondos-terminal-optimism/pl.d403a3be2b9f4e3db9d4783d8c5dd3e8" target="_blank" style="border: 2px solid rgba(242,239,229,0.6); padding: 8px 16px; font-family:'DM Sans',sans-serif; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; text-decoration: none; color: #F2EFE5;">Apple Music</a>
+                    <a href="https://www.radioalhara.net" target="_blank" style="border: 2px solid rgba(242,239,229,0.6); padding: 8px 16px; font-family:'DM Sans',sans-serif; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; text-decoration: none; color: #F2EFE5;">Radio Alhara</a>
+                    <a href="https://www.instagram.com/reveriefortwo/" target="_blank" style="border: 2px solid rgba(242,239,229,0.6); padding: 8px 16px; font-family:'DM Sans',sans-serif; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; text-decoration: none; color: #F2EFE5;">Reverie For Two</a>
+                    <a href="https://www.linkedin.com/in/mehmet-a%C4%9Fao%C4%9Fullar%C4%B1-aa15b39/" target="_blank" style="border: 2px solid rgba(242,239,229,0.6); padding: 8px 16px; font-family:'DM Sans',sans-serif; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; text-decoration: none; color: #F2EFE5;">LinkedIn</a>
+                </div>
+            </div>
+            <div style="margin-top:56px; padding-top:24px; border-top: 1px solid rgba(242,239,229,0.3); display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 16px;">
+                <a href="../" style="line-height:0;">
+                    <span style="font-family:'Dela Gothic One',sans-serif; font-size:18px; color:#F2EFE5; text-transform:uppercase; letter-spacing:0.02em; line-height:1;">UNDOMONDO</span>
+                </a>
+                <span style="font-family: 'Space Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 3px; opacity: 0.7;">&copy; 2026 &middot; Istanbul / Barcelona / Internet</span>
+            </div>
+        </div>
+    </footer>
+    <script>
+    async function loadPost() {
+        try {
+            const response = await fetch('/archive/posts.json');
+            const posts = await response.json();
+
+            const params = new URLSearchParams(window.location.search);
+            const postId = params.get('id');
+
+            const post = posts.find(p => String(p.id) === String(postId));
+            if (!post) {
+                document.getElementById('post-container').innerHTML = '<div class="error">Post not found.</div>';
+                return;
+            }
+
+            const year = String(post.year);
+            const yearPosts = posts.filter(p => String(p.year) === year).sort((a, b) => new Date(b.date) - new Date(a.date));
+            const currentIndex = yearPosts.findIndex(p => String(p.id) === String(postId));
+            const prevPost = currentIndex > 0 ? yearPosts[currentIndex - 1] : null;
+            const nextPost = currentIndex < yearPosts.length - 1 ? yearPosts[currentIndex + 1] : null;
+
+            const formatDate = (dateStr) => {
+                const d = new Date(dateStr);
+                return d.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+            };
+
+            const tagsHtml = (post.tags || []).map(t => `<span class="tag">${escape(t)}</span>`).join('');
+
+            let navHtml = '<div class="post-nav"><div style="flex:1;">';
+            if (prevPost) {
+                navHtml += `<a href="/archive/post.html?id=${prevPost.id}">← Previous</a>`;
+            }
+            navHtml += '</div><div class="nav-center">';
+            navHtml += `<a href="/archive/${year}.html">← Back to ${year}</a>`;
+            navHtml += '</div><div style="flex:1; text-align: right;">';
+            if (nextPost) {
+                navHtml += `<a href="/archive/post.html?id=${nextPost.id}">Next →</a>`;
+            }
+            navHtml += '</div></div>';
+
+            const container = document.getElementById('post-container');
+            container.innerHTML = `
+                <div class="post-header">
+                    <div class="post-meta">${formatDate(post.date)} · ${year}</div>
+                    <h1 class="post-title">${escape(post.title)}</h1>
+                </div>
+                <div class="post-content">${buildEmbeds(post.content || '')}</div>
+                ${tagsHtml ? `<div class="post-tags">${tagsHtml}</div>` : ''}
+                ${navHtml}
+            `;
+        } catch (error) {
+            console.error('Error loading post:', error);
+            document.getElementById('post-container').innerHTML = '<div class="error">Error loading post. <a href="/archive/">Back to Archive</a></div>';
+        }
+    }
+
+    function escape(text) {
+        const div = document.createElement('div');
+        div.textContent = text;
+        return div.innerHTML;
+    }
+
+    // Scan post content for supported media URLs (in any markup) and
+    // prepend real iframe embeds. Dedupes — three links to the same
+    // video render one player. Also strips dead Flash <object>/<embed> tags.
+    function buildEmbeds(contentHtml) {
+        if (!contentHtml) return '';
+        const seen = new Set();
+        const embeds = [];
+
+        const scan = (rx, kind, makeHtml) => {
+            let m;
+            const re = new RegExp(rx.source, rx.flags.includes('g') ? rx.flags : rx.flags + 'g');
+            while ((m = re.exec(contentHtml)) !== null) {
+                const key = kind + ':' + m[1];
+                if (!seen.has(key)) {
+                    seen.add(key);
+                    embeds.push(makeHtml(m));
+                }
+            }
+        };
+
+        // YouTube — watch?v=, youtu.be/, embed/, v/
+        scan(/(?:youtube\.com\/watch\?[^"'<>\s]*?v=|youtu\.be\/|youtube\.com\/embed\/|youtube\.com\/v\/)([A-Za-z0-9_-]{11})/ig, 'yt',
+            m => `<div class="embed-wrap"><iframe src="https://www.youtube-nocookie.com/embed/${m[1]}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe></div>`);
+
+        // Vimeo — modern vimeo.com/ID or vimeo.com/video/ID
+        scan(/vimeo\.com\/(?:video\/)?(\d+)/ig, 'vimeo',
+            m => `<div class="embed-wrap"><iframe src="https://player.vimeo.com/video/${m[1]}" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen loading="lazy"></iframe></div>`);
+
+        // Vimeo — old WordPress Flash format moogaloop.swf?clip_id=NUM
+        scan(/moogaloop\.swf\?clip_id=(\d+)/ig, 'vimeo',
+            m => `<div class="embed-wrap"><iframe src="https://player.vimeo.com/video/${m[1]}" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen loading="lazy"></iframe></div>`);
+
+        // SoundCloud — match URL anywhere (many are wrapped in ello.co redirects)
+        {
+            const re = /https?:\/\/(?:www\.|m\.)?soundcloud\.com\/[A-Za-z0-9][^\s"<>?#]*/ig;
+            let m;
+            while ((m = re.exec(contentHtml)) !== null) {
+                const clean = m[0].replace(/[.,;:!?)]+$/, '');
+                const key = 'sc:' + clean;
+                if (!seen.has(key)) {
+                    seen.add(key);
+                    const src = 'https://w.soundcloud.com/player/?url=' + encodeURIComponent(clean)
+                        + '&color=%23D62828&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false';
+                    embeds.push(`<div class="embed-wrap embed-sc"><iframe src="${src}" scrolling="no" loading="lazy"></iframe></div>`);
+                }
+            }
+        }
+
+        // Mixcloud — undomondo radio shows
+        {
+            const re = /https?:\/\/(?:www\.)?mixcloud\.com\/([^\s"<>?#]+?\/[^\s"<>?#]+?\/)/ig;
+            let m;
+            while ((m = re.exec(contentHtml)) !== null) {
+                const feed = '/' + m[1].replace(/^\/+/, '');
+                const key = 'mc:' + feed;
+                if (!seen.has(key)) {
+                    seen.add(key);
+                    const src = 'https://www.mixcloud.com/widget/iframe/?feed=' + encodeURIComponent(feed) + '&hide_cover=1&light=1';
+                    embeds.push(`<div class="embed-wrap embed-mc"><iframe src="${src}" allow="autoplay" loading="lazy"></iframe></div>`);
+                }
+            }
+        }
+
+        // Strip dead Flash <object>/<embed> blocks — broken in modern browsers
+        const cleaned = contentHtml.replace(/<object\b[^>]*>[\s\S]*?<\/object>/gi, '')
+                                   .replace(/<embed\b[^>]*\/?>/gi, '');
+
+        return embeds.join('') + cleaned;
+    }
+
+
+    loadPost();
+    </script>
+</body>
+</html>
