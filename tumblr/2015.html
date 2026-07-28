@@ -12,6 +12,7 @@
     * { margin: 0; padding: 0; box-sizing: border-box; }
     
     html, body {
+        overflow-x: hidden;
         font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
         background: #F2EFE5;
         color: #111;
@@ -96,7 +97,7 @@
     
     .grid {
         display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+        grid-template-columns: repeat(auto-fill, minmax(min(350px, 100%), 1fr));
         gap: 2rem;
         margin: 2rem 0;
     }

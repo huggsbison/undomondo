@@ -11,6 +11,7 @@
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
     html, body {
+        overflow-x: hidden;
         font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
         background-color: #F2EFE5;
         background-image: radial-gradient(circle, #1A1A1A 1.5px, transparent 1.5px);
@@ -57,7 +58,7 @@
 
     .hero-title {
         font-family: 'Dela Gothic One', sans-serif;
-        font-size: clamp(4rem, 10vw, 8rem);
+        font-size: clamp(2.25rem, 12vw, 8rem);
         line-height: 0.85;
         color: #111111;
         text-transform: uppercase;
@@ -67,7 +68,7 @@
 
     .hero-title-shadow {
         font-family: 'Dela Gothic One', sans-serif;
-        font-size: clamp(4rem, 10vw, 8rem);
+        font-size: clamp(2.25rem, 12vw, 8rem);
         line-height: 0.85;
         text-transform: uppercase;
         color: transparent;
@@ -110,6 +111,8 @@
     }
 
     .hero-right .tagline .red { color: #D62828; }
+
+    .hero-right .meta-second { margin-top: -0.6rem; }
 
     .hero-right .meta {
         font-family: 'Space Mono', monospace;
@@ -310,8 +313,12 @@
     footer a:hover { opacity: 0.8; }
 
     @media (max-width: 768px) {
-        .hero-top { flex-direction: column; }
-        .hero-right { text-align: left; }
+        .hero { padding: 3rem 1.25rem 2rem; }
+        .container { padding: 0 1.25rem; }
+        .hero-top { flex-direction: column; gap: 1.25rem; }
+        .hero-right { text-align: left; align-items: flex-start; gap: 1rem; }
+        .hero-right .meta { letter-spacing: 0.12em; }
+        .hero-right .meta-second { margin-top: 0; }
         .hero-stats { gap: 1.5rem; flex-wrap: wrap; }
         .year-links { padding: 1rem 1.5rem 1.5rem; }
         .era-header { padding: 1.5rem; }
@@ -333,7 +340,7 @@
                     </a>
                     <p class="tagline">Music Blog<br><span class="red">&amp; Radio</span><br>Show</p>
                     <p class="meta">Est. 2005 · Istanbul / Barcelona / Internet</p>
-                    <p class="meta" style="margin-top:-0.75rem;">4,569 posts · 2005–2021 · 574 tags</p>
+                    <p class="meta meta-second">4,569 posts · 2005–2021 · 574 tags</p>
                 </div>
             </div>
         </div>
