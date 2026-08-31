@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy | undomondo</title>
+    <meta name="description" content="What undomondo.com collects (nothing), what it embeds, and what the YT UPLOAD tool does.">
+    <meta name="robots" content="index,follow">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Fugaz+One&family=Space+Mono:wght@400;700&family=DM+Sans:wght@400;500;700&family=Merriweather:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: { extend: {
+                colors: { cream: '#F2EFE5', tomato: '#D62828', vibrantBlue: '#005F99', charcoal: '#111111', paper: '#F2EFE9', golden: '#FFB703' },
+                fontFamily: { sans: ['DM Sans','sans-serif'], serif: ['Merriweather','Georgia','serif'], display: ['Dela Gothic One','cursive'], logo: ['Fugaz One','system-ui','sans-serif'], mono: ['Space Mono','monospace'] },
+            } }
+        }
+    </script>
+    <style>
+        body { background-color:#F2EFE5; color:#111111; overflow-x:hidden;
+            background-image: radial-gradient(circle, #1A1A1A 1.5px, transparent 1.5px);
+            background-size: 24px 24px; background-attachment: fixed; }
+        body::before { content:''; position:fixed; top:0; left:0; right:0; bottom:0;
+            background-color: rgba(242,239,229,0.92); z-index:0; pointer-events:none; }
+        .grain-overlay { position:fixed; top:0; left:0; width:100%; height:100%;
+            pointer-events:none; z-index:100; opacity:0.04;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.5' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E"); }
+        ::selection { background:#D62828; color:#F2EFE5; }
+        .content-wrapper { position:relative; z-index:1; }
+        .prose-um h2 { font-family:'Dela Gothic One',cursive; text-transform:uppercase; font-size:1.25rem; margin-top:2.75rem; margin-bottom:0.75rem; letter-spacing:-0.01em; }
+        .prose-um p { font-family:'Merriweather',Georgia,serif; line-height:1.75; margin-bottom:1.1rem; color:rgba(17,17,17,0.85); }
+        .prose-um ul { margin:0 0 1.1rem 1.15rem; }
+        .prose-um li { font-family:'Merriweather',Georgia,serif; line-height:1.75; margin-bottom:0.5rem; list-style:square; color:rgba(17,17,17,0.85); }
+        .prose-um a { color:#005F99; text-decoration:underline; text-underline-offset:3px; }
+        .prose-um a:hover { color:#D62828; }
+    </style>
+</head>
+<body class="antialiased">
+    <div class="grain-overlay"></div>
+    <div class="content-wrapper max-w-3xl mx-auto px-6 py-12 md:py-16">
+        <header class="mb-12">
+            <a href="/" class="inline-block mb-8" aria-label="undomondo">
+                <img src="/assets/undomondo-stamp.png" alt="undomondo" style="width:110px;height:auto;display:block;">
+            </a>
+            <p class="font-mono text-xs uppercase tracking-widest text-tomato mb-3">Legal</p>
+            <h1 class="font-display text-3xl md:text-5xl uppercase leading-[0.95]">Privacy Policy</h1>
+            <p class="font-mono text-xs uppercase tracking-widest text-charcoal/50 mt-5">Last updated 31 August 2026</p>
+        </header>
+        <main class="prose-um">
+<p>undomondo is a one-person music blog and radioshow. There is no company behind it, no marketing department, and no business model that depends on knowing anything about you. This page says plainly what the site touches and what it doesn't.</p>
+
+<h2>What this site collects</h2>
+<p>Nothing. undomondo.com is a set of static files served by Netlify. There are no accounts, no login, no comment system, no newsletter form, no shopping cart, and no analytics script of any kind — no Google Analytics, no Plausible, no Meta pixel, no tracking tags. I do not build a profile of you and I have no way to.</p>
+<p>Netlify, the host, keeps standard server logs of requests it serves — IP address, timestamp, page requested, browser user-agent — the way every web server on the internet does. That is Netlify's infrastructure, not something I query or export, and it is governed by <a href="https://www.netlify.com/privacy/" target="_blank" rel="noopener">Netlify's privacy policy</a>.</p>
+
+<h2>Things embedded from elsewhere</h2>
+<p>Pages here embed players and links from other services so you can hear the music. When a page loads one of these, your browser talks to that company directly, and they can set cookies and see your IP address under their own terms — not mine:</p>
+<ul>
+  <li>Mixcloud — radioshow and mix players</li>
+  <li>SoundCloud — audio players</li>
+  <li>Spotify — playlist embeds</li>
+  <li>YouTube — video embeds, subject to the <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google Privacy Policy</a></li>
+  <li>Substack — the Mondo Times newsletter; if you subscribe, Substack holds your email address under its own policy, and I can see the subscriber list there</li>
+  <li>Google Fonts — typefaces are fetched from Google's font servers</li>
+</ul>
+<p>If you would rather none of that happen, a content blocker or a browser set to block third-party requests will stop the embeds loading. The rest of the site still works.</p>
+
+<h2>Email</h2>
+<p>If you write to me at <a href="mailto:mersenne@undomondo.com">mersenne@undomondo.com</a>, I have your email and whatever you put in it, for as long as the message sits in my mailbox. I don't add senders to any list and I don't pass addresses to anyone.</p>
+
+<h2>The YouTube tool</h2>
+<p>Separately from this website, I run a small private script called <strong>YT UPLOAD</strong> that manages my own YouTube channel — it renames videos, updates descriptions and uploads mixes on a schedule. It uses the YouTube Data API and signs in as me, to my own channel, and no one else can use it.</p>
+<p>It reads and writes video titles, descriptions and tags on the undomondo channel, and it stores its Google authorisation token in a single file on my own computer. It collects no data about viewers, subscribers or anyone else, sends nothing to any third party, and is never used for advertising or profiling. If you have arrived at this page from that app's consent screen, that is the whole of what it does.</p>
+<p>Because it uses YouTube API Services, the <a href="https://www.youtube.com/t/terms" target="_blank" rel="noopener">YouTube Terms of Service</a> and the <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google Privacy Policy</a> also apply to it. I can revoke its access at any time at <a href="https://myaccount.google.com/permissions" target="_blank" rel="noopener">Google's security settings page</a>, and so can you for any app on your own account.</p>
+
+<h2>Children</h2>
+<p>This site isn't aimed at children and collects nothing from anyone, including them.</p>
+
+<h2>Changes</h2>
+<p>If any of the above stops being true — if I ever add analytics, say — I will change this page and the date at the top of it. There is no mailing list to notify, so the date is the record.</p>
+
+<h2>Contact</h2>
+<p>Questions about any of this go to <a href="mailto:mersenne@undomondo.com">mersenne@undomondo.com</a>.</p>
+        </main>
+        <footer class="mt-20 pt-8 border-t-2 border-charcoal/15">
+            <div class="flex flex-wrap gap-x-6 gap-y-2 font-mono text-xs uppercase tracking-widest">
+                <a href="/" class="hover:text-tomato transition-colors">Home</a>
+                <a href="/privacy" class="hover:text-tomato transition-colors">Privacy</a>
+                <a href="/terms" class="hover:text-tomato transition-colors">Terms</a>
+                <a href="mailto:mersenne@undomondo.com" class="hover:text-tomato transition-colors">Contact</a>
+            </div>
+            <p class="font-mono text-xs text-charcoal/45 mt-4">undomondo — independent music curation since 2005.</p>
+        </footer>
+    </div>
+</body>
+</html>
