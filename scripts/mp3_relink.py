@@ -5,11 +5,13 @@ page in place. build_posts.py isn't used: on 2026-10-18 a full rebuild no longer
 matched the live pages (it dropped Tumblr embeds and restored removed posts).
 
 Each matched link becomes an inline stream-only player. Unmatched links are
-left alone. By default only sure matches are used; the _check/ files wait
-until they've been checked.
+left alone. Sure matches are used, and _check/ matches whose old link was named
+artist--title.mp3 (Mersenne, 2026-10-18: those are right). Matches guessed from
+the post title alone are left out.
 
   python3 scripts/mp3_relink.py jamie-saft-trio-plays-bob-dylan   # one post
   python3 scripts/mp3_relink.py --all                             # every post with a sure match
+  python3 scripts/mp3_relink.py --all --archive-org               # also unmatched archive.org links still up
 """
 import csv
 import html
@@ -17,6 +19,8 @@ import json
 import re
 import sys
 import urllib.parse
+import urllib.request
+from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 
 R2 = 'https://pub-74f32648a39b49f2b7715a1cd04c1501.r2.dev/posts/'
@@ -29,13 +33,42 @@ PLAYER = ('<audio controls preload="none" controlslist="nodownload" src="{src}" 
 
 
 def sure(r):
-    return r['new_file'] and not r['new_file'].startswith('_check/')
+    """Sure matches, plus _check matches whose old link was named artist--title.
+    Matches guessed from the post title alone are never used."""
+    if not r['new_file'] or r['how'] == 'loose: from the post title':
+        return False
+    if not r['new_file'].startswith('_check/'):
+        return True
+    name = urllib.parse.unquote(r['old_url'].rsplit('/', 1)[-1])
+    return '--' in name
+
+
+def alive(url):
+    """True if archive.org still serves the file (a one-byte request)."""
+    req = urllib.request.Request(url, headers={'Range': 'bytes=0-0', 'User-Agent': 'undomondo-relink'})
+    try:
+        with urllib.request.urlopen(req, timeout=30) as res:
+            return res.status in (200, 206)
+    except Exception:
+        return False
+
+
+def archive_org_rows(rows):
+    """Unmatched archive.org links (mostly netlabel releases) that still play,
+    pointed at their https address instead of a copy on R2."""
+    todo = [r for r in rows if not r['new_file'] and 'archive.org/' in r['old_url']]
+    for r in todo:
+        r['src'] = 'https://archive.org/' + r['old_url'].split('archive.org/', 1)[1]
+    with ThreadPoolExecutor(10) as pool:
+        ok = list(pool.map(lambda r: alive(r['src']), todo))
+    print(f"archive.org: {sum(ok)} of {len(todo)} links still up")
+    return [r for r, good in zip(todo, ok) if good]
 
 
 def relink(text, rows):
     done = 0
     for r in rows:
-        src = R2 + urllib.parse.quote(r['new_file'])
+        src = r.get('src') or R2 + urllib.parse.quote(r['new_file'])
         if src in text:
             continue
         # The old link, with whatever label it had, becomes "label + player"
@@ -51,7 +84,10 @@ def relink(text, rows):
 
 
 def main():
-    rows = [r for r in csv.DictReader(open(MANIFEST)) if sure(r)]
+    every = list(csv.DictReader(open(MANIFEST)))
+    rows = [r for r in every if sure(r)]
+    if '--archive-org' in sys.argv:
+        rows += archive_org_rows(every)
     want = None if '--all' in sys.argv else set(a for a in sys.argv[1:] if not a.startswith('-'))
     posts = json.loads(POSTS.read_text())
     n_posts, n_links = 0, 0
