@@ -5,8 +5,9 @@ page in place. build_posts.py isn't used: on 2026-10-18 a full rebuild no longer
 matched the live pages (it dropped Tumblr embeds and restored removed posts).
 
 Each matched link becomes an inline stream-only player. Unmatched links are
-left alone. By default only sure matches are used; the _check/ files wait
-until they've been checked.
+left alone. Sure matches are used, and _check/ matches whose old link was named
+artist--title.mp3 (Mersenne, 2026-10-18: those are right). Matches guessed from
+the post title alone are left out.
 
   python3 scripts/mp3_relink.py jamie-saft-trio-plays-bob-dylan   # one post
   python3 scripts/mp3_relink.py --all                             # every post with a sure match
@@ -29,7 +30,14 @@ PLAYER = ('<audio controls preload="none" controlslist="nodownload" src="{src}" 
 
 
 def sure(r):
-    return r['new_file'] and not r['new_file'].startswith('_check/')
+    """Sure matches, plus _check matches whose old link was named artist--title.
+    Matches guessed from the post title alone are never used."""
+    if not r['new_file'] or r['how'] == 'loose: from the post title':
+        return False
+    if not r['new_file'].startswith('_check/'):
+        return True
+    name = urllib.parse.unquote(r['old_url'].rsplit('/', 1)[-1])
+    return '--' in name
 
 
 def relink(text, rows):
