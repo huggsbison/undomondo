@@ -72,9 +72,15 @@ def relink(text, rows):
         if src in text:
             continue
         # The old link, with whatever label it had, becomes "label + player"
-        pat = re.compile(r'<a href="' + re.escape(html.escape(r['old_url'], quote=True)).replace('&amp;', '(?:&amp;|&)')
-                         + r'"[^>]*>(.*?)</a>', re.S)
-        alt = re.compile(r'<a href="' + re.escape(r['old_url']) + r'"[^>]*>(.*?)</a>', re.S)
+        # The link may sit in the text as &amp; or &, quoted or not
+        bare = re.sub(r'&(amp;|#x27;|#39;)', lambda m: '&' if m.group(1) == 'amp;' else "'", r['old_url'])
+        parts = [re.escape(x) for x in re.split(r"&|'", bare)]
+        seps = re.findall(r"&|'", bare)
+        body = parts[0]
+        for sep, part in zip(seps, parts[1:]):
+            body += ('(?:&amp;|&)' if sep == '&' else "(?:'|&#x27;|&#39;)") + part
+        pat = re.compile(r'<a href="' + body + r'"[^>]*>(.*?)</a>', re.S)
+        alt = pat
         m = pat.search(text) or alt.search(text)
         if not m:
             continue
