@@ -20,17 +20,17 @@ Usually this file gets read by a Claude Code cloud session. That session can't s
 | `tumblr/` | Tumblr era, 2007 onward. Same pattern: `posts.json` → year pages + static post pages |
 | `archive/urlmap.json`, `tumblr/urlmap.json` | old post ID → new path. The redirects are built from these |
 | `assets/post.css` | Shared post-page CSS |
-| `scripts/build_posts.py` | Regenerates every static post page, the sitemaps, `robots.txt` and `llms.txt`. Python 3 stdlib only, safe to re-run. `--pilot` builds a ~20-post sample |
+| `scripts/build_posts.py` | **Never run it, not even `--pilot`.** It has drifted from the live site. On 18 Oct 2026 a full rebuild changed 1,371 pages, dropped Tumblr YouTube embeds and re-added the 504 removed posts. That rebuild sits in `git stash`; don't apply it |
 | `scripts/rewrite_year_pages.py` | Rewrites the year index pages |
 | `scripts/indexnow.py` | Pings Bing/IndexNow. `--dry-run` first. Might be blocked by the cloud network |
 | `_redirects` | Netlify redirects (feeds → Substack, old Tumblr URLs → new pages) |
 | `landing/`, `index-old*.html`, `*.bak`, `ARCHIVE_*.md`, `HANDOFF-*.md` | Workshop leftovers. Don't build on them |
 
-Generated pages are outputs. Fix the generator or the JSON, then regenerate. Don't hand-edit 3,000 HTML files.
+To change posts, edit `posts.json` **and** the matching static page together, in place, with a small script on a branch. `scripts/mp3_relink.py` is the pattern to copy. Don't hand-edit 3,000 HTML files, and don't regenerate them.
 
 ## Settled decisions (don't reopen)
 
-- **Old Tumblr subdomain is being cut.** `tumblr.undomondo.com` duplicates the new `/tumblr/` pages and outranks them. `_redirects` already has 3,419 host rules (301 to the new page) plus a catch-all to `/tumblr/`. Those rules do nothing until DNS moves, and the DNS flip is Mersenne's to do. **Leave Tumblr's own custom-domain setting alone.**
+- **Old Tumblr subdomain is cut (DNS flipped 25 Sep 2026).** `tumblr.undomondo.com` now points at Netlify. Its 3,419 host rules in `_redirects` 301 each old post to its new page, and a catch-all sends everything else to `/tumblr/`. Don't touch `_redirects` without asking. **Leave Tumblr's own custom-domain setting alone.**
 - **504 old Tumblr posts are missing on purpose.** They came out mangled by the scrape and were removed. Don't rebuild them or report them as a bug. Their old URLs go to `/tumblr/`.
 - The indexing setup is done: Bing domain property, sitemaps, IndexNow. If search traffic is low, look at the duplicate subdomain first, not at crawling.
 - Newsletter feeds (`/feed`, `/rss.xml`) 301 to Substack on purpose.
