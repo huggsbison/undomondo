@@ -1,0 +1,575 @@
+old_tag,new_tag,reason,wordpress_posts,tumblr_posts,total_posts
+photo,DROP,Tumblr post type,0,143,143
+musicvideo,music video,synonym / typo / same place,0,142,142
+2015,DROP,year tag: the post date already has it,0,71,71
+vimeo,DROP,platform name,0,68,68
+youtube,DROP,platform name,9,57,66
+2014,DROP,year tag: the post date already has it,0,65,65
+2013,DROP,year tag: the post date already has it,0,50,50
+hiphop,hip-hop,synonym / typo / same place,44,0,44
+misc,DROP,says nothing,42,0,42
+mixes,mix,synonym / typo / same place,2,36,38
+2017,DROP,year tag: the post date already has it,0,32,32
+reblog,DROP,how it was posted,32,0,32
+2016,DROP,year tag: the post date already has it,0,29,29
+postpunk,post-punk,synonym / typo / same place,0,26,26
+2018,DROP,year tag: the post date already has it,0,20,20
+video,DROP,post format,3,16,19
+progrock,prog rock,synonym / typo / same place,18,0,18
+freejazz,free jazz,synonym / typo / same place,9,7,16
+mp3blog,DROP,how it was posted,12,0,12
+kraut,krautrock,synonym / typo / same place,0,11,11
+music,DROP,says nothing on a music blog,6,5,11
+ribot,marc ribot,synonym / typo / same place,6,5,11
+audio,DROP,post format,0,10,10
+2006,DROP,year tag: the post date already has it,9,0,9
+2020,DROP,year tag: the post date already has it,0,9,9
+finnish,finland,synonym / typo / same place,6,3,9
+2019,DROP,year tag: the post date already has it,0,8,8
+Uncategorized,DROP,WordPress default category,8,0,8
+african,africa,synonym / typo / same place,0,8,8
+psych,psychedelic,synonym / typo / same place,0,8,8
+soundcloud,DROP,platform name,0,8,8
+japanese,japan,synonym / typo / same place,7,0,7
+mathrock,math rock,synonym / typo / same place,0,7,7
+myspace,DROP,platform name,7,0,7
+post punk,post-punk,synonym / typo / same place,7,0,7
+2011,DROP,year tag: the post date already has it,0,6,6
+spaceage,space age,synonym / typo / same place,0,6,6
+marcribot,marc ribot,synonym / typo / same place,0,5,5
+2005,DROP,year tag: the post date already has it,4,0,4
+middleast,middle east,synonym / typo / same place,0,4,4
+lo fi,lo-fi,synonym / typo / same place,3,0,3
+nyc,NYC,"same tag, different case or spacing",0,3,3
+picture,DROP,post format,0,3,3
+polish,poland,synonym / typo / same place,3,0,3
+spotify,DROP,platform name,0,3,3
+videos,DROP,post format,3,0,3
+worldmusic,world music,synonym / typo / same place,0,3,3
+classics,classic,synonym / typo / same place,0,2,2
+dailymotion,DROP,platform name,0,2,2
+easylistening,easy listening,synonym / typo / same place,0,2,2
+france,french,synonym / typo / same place,2,0,2
+idm,IDM,"same tag, different case or spacing",2,0,2
+latino,latin,synonym / typo / same place,2,0,2
+minimal-techno,minimal techno,synonym / typo / same place,2,0,2
+other,DROP,says nothing,2,0,2
+re edit,edit,synonym / typo / same place,2,0,2
+scandianavia,scandinavia,synonym / typo / same place,2,0,2
+worldobscurite,worldobscure,synonym / typo / same place,0,2,2
+2007,DROP,year tag: the post date already has it,1,0,1
+Avantgarde,avantgarde,"same tag, different case or spacing",0,1,1
+Easy Listening,easy listening,"same tag, different case or spacing",0,1,1
+Edit,edit,"same tag, different case or spacing",0,1,1
+France,french,synonym / typo / same place,1,0,1
+Free Jazz,free jazz,synonym / typo / same place,0,1,1
+Jazz,jazz,"same tag, different case or spacing",0,1,1
+Mix,mix,"same tag, different case or spacing",0,1,1
+NDW,ndw,"same tag, different case or spacing",0,1,1
+RIP,rip,"same tag, different case or spacing",0,1,1
+SoundCloud,DROP,platform name,0,1,1
+Synth,synth,"same tag, different case or spacing",0,1,1
+Vimeo,DROP,platform name,0,1,1
+Wipers,wipers,"same tag, different case or spacing",0,1,1
+World,world,"same tag, different case or spacing",0,1,1
+album,DROP,says nothing,0,1,1
+bandcamp,DROP,platform name,0,1,1
+brazil,brasil,synonym / typo / same place,0,1,1
+brazilian,brasil,synonym / typo / same place,0,1,1
+clips,DROP,post format,1,0,1
+delicious,DROP,platform name,1,0,1
+dylan,bob dylan,synonym / typo / same place,1,0,1
+edits,edit,synonym / typo / same place,0,1,1
+guitars,guitar,synonym / typo / same place,1,0,1
+height35,DROP,scrape junk,1,0,1
+irish,ireland,synonym / typo / same place,1,0,1
+lastfm,DROP,platform name,1,0,1
+micro-house,micro house,synonym / typo / same place,1,0,1
+rb,r&b,synonym / typo / same place,1,0,1
+southernrock,southern rock,synonym / typo / same place,1,0,1
+space-age,space age,synonym / typo / same place,1,0,1
+triphop,trip-hop,synonym / typo / same place,1,0,1
+turk,turkish,synonym / typo / same place,0,1,1
+wikipedia,DROP,platform name,1,0,1
+wintage,vintage,synonym / typo / same place,0,1,1
+live,live,keep,0,573,573
+ilerici,ilerici,keep,0,538,538
+vintage,vintage,keep,1,347,348
+jazz,jazz,keep,88,191,279
+electronic,electronic,keep,63,206,269
+indie,indie,keep,79,96,175
+folk,folk,keep,73,81,154
+punk,punk,keep,29,96,125
+garage,garage,keep,3,106,109
+electronica,electronica,keep,106,0,106
+worldobscure,worldobscure,keep,0,104,104
+mix,mix,keep,5,86,91
+house,house,keep,54,27,81
+rock,rock,keep,53,28,81
+improv,improv,keep,13,63,76
+dance,dance,keep,11,62,73
+soundscapes,soundscapes,keep,18,51,69
+avantgarde,avantgarde,keep,58,6,64
+concert,concert,keep,3,61,64
+turkish,turkish,keep,11,53,64
+tzadik,tzadik,keep,13,51,64
+ambient,ambient,keep,38,24,62
+hip-hop,hip-hop,keep,0,61,61
+hipsterism,hipsterism,keep,0,61,61
+pop,pop,keep,50,10,60
+undomondo,undomondo,keep,35,24,59
+jazzy,jazzy,keep,55,2,57
+drone,drone,keep,20,35,55
+ethnic,ethnic,keep,54,1,55
+roundup,roundup,keep,53,0,53
+world,world,keep,0,53,53
+bestof,bestof,keep,10,42,52
+cult,cult,keep,0,52,52
+downtempo,downtempo,keep,49,0,49
+psychedelic,psychedelic,keep,20,27,47
+geleneksel,geleneksel,keep,0,45,45
+disco,disco,keep,16,28,44
+netlabel,netlabel,keep,42,1,43
+brasil,brasil,keep,23,19,42
+instrumental,instrumental,keep,32,9,41
+jamaica,jamaica,keep,5,33,38
+electro,electro,keep,36,1,37
+africa,africa,keep,24,12,36
+docu,docu,keep,0,35,35
+funk,funk,keep,23,12,35
+noise,noise,keep,21,14,35
+channeling,channeling,keep,0,34,34
+dub,dub,keep,30,3,33
+whiteanger,whiteanger,keep,0,32,32
+eclectic,eclectic,keep,29,2,31
+hauntology,hauntology,keep,0,30,30
+tropical,tropical,keep,0,30,30
+ilgincmekan,ilgincmekan,keep,0,29,29
+goldenagejazz,goldenagejazz,keep,0,28,28
+techno,techno,keep,3,25,28
+radio,radio,keep,27,0,27
+traditional,traditional,keep,25,2,27
+balkan,balkan,keep,25,1,26
+interview,interview,keep,3,23,26
+latin,latin,keep,4,22,26
+jewish,jewish,keep,23,2,25
+tropicalhaze,tropicalhaze,keep,0,24,24
+90-00 elektronik,90-00 elektronik,keep,0,23,23
+anti-colonialism,anti-colonialism,keep,0,23,23
+guitar,guitar,keep,23,0,23
+experimental,experimental,keep,22,0,22
+radioshow,radioshow,keep,22,0,22
+soul,soul,keep,11,11,22
+trio,trio,keep,21,1,22
+NYC,NYC,keep,17,4,21
+UK,UK,keep,18,3,21
+cover,cover,keep,11,10,21
+kosmiche,kosmiche,keep,0,21,21
+nujazz,nujazz,keep,21,0,21
+remix,remix,keep,18,3,21
+bizarre,bizarre,keep,20,0,20
+classical,classical,keep,5,15,20
+prog,prog,keep,12,8,20
+cosmic,cosmic,keep,1,18,19
+deep house,deep house,keep,18,1,19
+lounge,lounge,keep,19,0,19
+stoner,stoner,keep,5,14,19
+minimalist,minimalist,keep,18,0,18
+postrock,postrock,keep,18,0,18
+soulful,soulful,keep,18,0,18
+surf,surf,keep,5,13,18
+zorn,zorn,keep,8,10,18
+french,french,keep,17,0,17
+list,list,keep,17,0,17
+reggae,reggae,keep,5,12,17
+afrobeat,afrobeat,keep,14,2,16
+band,band,keep,15,0,15
+channelingtruegreatwhiteinnercityanger,channelingtruegreatwhiteinnercityanger,keep,0,15,15
+japan,japan,keep,12,3,15
+lo-fi,lo-fi,keep,0,15,15
+minimal techno,minimal techno,keep,15,0,15
+dubstep,dubstep,keep,11,3,14
+minimal house,minimal house,keep,14,0,14
+orchestral,orchestral,keep,14,0,14
+piano,piano,keep,13,1,14
+IDM,IDM,keep,13,0,13
+exotica,exotica,keep,5,8,13
+finland,finland,keep,13,0,13
+fusion,fusion,keep,11,2,13
+jackrose,jackrose,keep,0,13,13
+middle east,middle east,keep,13,0,13
+world music,world music,keep,13,0,13
+berlin,berlin,keep,12,0,12
+female,female,keep,12,0,12
+obit,obit,keep,0,12,12
+power,power,keep,12,0,12
+retro,retro,keep,12,0,12
+rhythm,rhythm,keep,12,0,12
+synth,synth,keep,11,1,12
+urban,urban,keep,12,0,12
+vocal,vocal,keep,12,0,12
+deep,deep,keep,11,0,11
+india,india,keep,3,8,11
+klezmer,klezmer,keep,11,0,11
+metal,metal,keep,3,8,11
+minimal,minimal,keep,11,0,11
+roots,roots,keep,11,0,11
+70s,70s,keep,3,7,10
+albini,albini,keep,0,10,10
+beats,beats,keep,5,5,10
+edit,edit,keep,0,10,10
+nudisco,nudisco,keep,0,10,10
+cinematic,cinematic,keep,8,1,9
+easy listening,easy listening,keep,9,0,9
+scandinavia,scandinavia,keep,9,0,9
+chillwave,chillwave,keep,0,8,8
+contemporary,contemporary,keep,8,0,8
+dubby,dubby,keep,8,0,8
+electropop,electropop,keep,7,1,8
+groove,groove,keep,8,0,8
+herbert,herbert,keep,8,0,8
+istanbul,istanbul,keep,4,4,8
+leftfield,leftfield,keep,8,0,8
+orient,orient,keep,0,8,8
+primavera,primavera,keep,0,8,8
+asia,asia,keep,5,2,7
+beat,beat,keep,4,3,7
+big band,big band,keep,7,0,7
+blues,blues,keep,6,1,7
+duo,duo,keep,6,1,7
+norway,norway,keep,7,0,7
+portland,portland,keep,6,1,7
+sweden,sweden,keep,7,0,7
+90s,90s,keep,3,3,6
+acid jazz,acid jazz,keep,6,0,6
+brass,brass,keep,6,0,6
+caribbean,caribbean,keep,3,3,6
+chicago,chicago,keep,6,0,6
+classic,classic,keep,0,6,6
+emotional,emotional,keep,6,0,6
+european,european,keep,6,0,6
+german,german,keep,6,0,6
+krautrock,krautrock,keep,6,0,6
+micro house,micro house,keep,6,0,6
+midwest,midwest,keep,0,6,6
+nusrat,nusrat,keep,0,6,6
+oldies,oldies,keep,6,0,6
+oriental,oriental,keep,6,0,6
+spazz,spazz,keep,6,0,6
+texture,texture,keep,6,0,6
+afro-funk,afro-funk,keep,5,0,5
+art,art,keep,4,1,5
+avant,avant,keep,0,5,5
+compilation,compilation,keep,5,0,5
+compost,compost,keep,5,0,5
+cumbia,cumbia,keep,0,5,5
+festival,festival,keep,5,0,5
+latin america,latin america,keep,5,0,5
+math rock,math rock,keep,4,1,5
+moog,moog,keep,3,2,5
+news,news,keep,5,0,5
+noise rock,noise rock,keep,0,5,5
+obscure,obscure,keep,3,2,5
+oud,oud,keep,5,0,5
+pioneer,pioneer,keep,5,0,5
+post-punk,post-punk,keep,5,0,5
+songwriter,songwriter,keep,5,0,5
+strings,strings,keep,5,0,5
+tango,tango,keep,5,0,5
+warm,warm,keep,5,0,5
+60s,60s,keep,0,4,4
+americana,americana,keep,0,4,4
+bass,bass,keep,2,2,4
+brokenbeat,brokenbeat,keep,4,0,4
+collage,collage,keep,4,0,4
+dark,dark,keep,4,0,4
+dark ambient,dark ambient,keep,4,0,4
+deneysel,deneysel,keep,0,4,4
+detroit,detroit,keep,4,0,4
+doom,doom,keep,1,3,4
+eastern,eastern,keep,4,0,4
+folktronica,folktronica,keep,4,0,4
+gypsy,gypsy,keep,4,0,4
+ireland,ireland,keep,4,0,4
+italy,italy,keep,4,0,4
+medieval,medieval,keep,4,0,4
+micro,micro,keep,4,0,4
+oldschool,oldschool,keep,3,1,4
+osunlade,osunlade,keep,4,0,4
+russia,russia,keep,4,0,4
+ska,ska,keep,4,0,4
+swans,swans,keep,0,4,4
+zappa,zappa,keep,0,4,4
+San Francisco,San Francisco,keep,3,0,3
+afters,afters,keep,0,3,3
+bebop,bebop,keep,3,0,3
+black metal,black metal,keep,0,3,3
+bossanova,bossanova,keep,3,0,3
+breakcore,breakcore,keep,3,0,3
+clarinet,clarinet,keep,3,0,3
+country,country,keep,3,0,3
+documentary,documentary,keep,0,3,3
+dublin,dublin,keep,3,0,3
+ensemble,ensemble,keep,3,0,3
+funky,funky,keep,3,0,3
+melodic,melodic,keep,3,0,3
+meta,meta,keep,3,0,3
+mexico,mexico,keep,3,0,3
+neosoul,neosoul,keep,0,3,3
+orchestra,orchestra,keep,3,0,3
+pecador,pecador,keep,0,3,3
+project,project,keep,3,0,3
+quartet,quartet,keep,3,0,3
+rap,rap,keep,3,0,3
+reissue,reissue,keep,0,3,3
+rockabilly,rockabilly,keep,1,2,3
+sax,sax,keep,3,0,3
+soundtrack,soundtrack,keep,3,0,3
+space,space,keep,3,0,3
+spokenword,spokenword,keep,2,1,3
+staubgold,staubgold,keep,3,0,3
+summer,summer,keep,3,0,3
+sunra,sunra,keep,0,3,3
+theatrical,theatrical,keep,3,0,3
+vintageobscure,vintageobscure,keep,0,3,3
+wales,wales,keep,3,0,3
+warp,warp,keep,3,0,3
+zeitgeist,zeitgeist,keep,3,0,3
+50s,50s,keep,0,2,2
+Jelinek,Jelinek,keep,2,0,2
+american,american,keep,2,0,2
+argentina,argentina,keep,2,0,2
+armenian,armenian,keep,2,0,2
+art rock,art rock,keep,2,0,2
+bling,bling,keep,2,0,2
+bootleg,bootleg,keep,2,0,2
+bubblegum,bubblegum,keep,2,0,2
+cartoon,cartoon,keep,2,0,2
+cheerful,cheerful,keep,2,0,2
+children,children,keep,2,0,2
+creative,creative,keep,2,0,2
+creativity,creativity,keep,2,0,2
+desert,desert,keep,0,2,2
+dnb,dnb,keep,2,0,2
+drums,drums,keep,2,0,2
+electroacoustique,electroacoustique,keep,0,2,2
+ethiopia,ethiopia,keep,2,0,2
+ghostbox,ghostbox,keep,0,2,2
+glitch,glitch,keep,1,1,2
+gospel,gospel,keep,2,0,2
+hardcore,hardcore,keep,1,1,2
+hipster,hipster,keep,0,2,2
+horror,horror,keep,2,0,2
+humour,humour,keep,2,0,2
+huun-huur-tu,huun-huur-tu,keep,0,2,2
+industrial,industrial,keep,2,0,2
+kitsch,kitsch,keep,2,0,2
+lidell,lidell,keep,2,0,2
+links,links,keep,2,0,2
+liveset,liveset,keep,2,0,2
+monthly,monthly,keep,2,0,2
+mutek,mutek,keep,2,0,2
+new wave,new wave,keep,2,0,2
+noir,noir,keep,0,2,2
+nomo,nomo,keep,0,2,2
+oddities,oddities,keep,2,0,2
+party,party,keep,2,0,2
+philly,philly,keep,2,0,2
+photography,photography,keep,2,0,2
+poland,poland,keep,2,0,2
+political,political,keep,2,0,2
+rephlex,rephlex,keep,2,0,2
+resonance,resonance,keep,2,0,2
+satie,satie,keep,2,0,2
+slomo,slomo,keep,0,2,2
+sludge,sludge,keep,1,1,2
+sonic,sonic,keep,2,0,2
+southern rock,southern rock,keep,2,0,2
+sufi,sufi,keep,2,0,2
+surreal,surreal,keep,2,0,2
+tokyo,tokyo,keep,2,0,2
+tribute,tribute,keep,2,0,2
+uruguay,uruguay,keep,2,0,2
+vancouver,vancouver,keep,2,0,2
+vienna,vienna,keep,2,0,2
+xmas,xmas,keep,0,2,2
+2000s,2000s,keep,0,1,1
+8-bit,8-bit,keep,1,0,1
+80s,80s,keep,0,1,1
+88,88,keep,1,0,1
+AOR,AOR,keep,0,1,1
+Christmas,Christmas,keep,0,1,1
+DIY,DIY,keep,1,0,1
+Delüks,Delüks,keep,0,1,1
+Mali,Mali,keep,1,0,1
+OST,OST,keep,0,1,1
+RFID,RFID,keep,1,0,1
+SXE,SXE,keep,1,0,1
+acid,acid,keep,1,0,1
+ahmet ertegun,ahmet ertegun,keep,1,0,1
+allbest,allbest,keep,0,1,1
+antipop,antipop,keep,1,0,1
+arabic,arabic,keep,0,1,1
+atlantic,atlantic,keep,1,0,1
+balearic,balearic,keep,0,1,1
+barisk,barisk,keep,0,1,1
+beans,beans,keep,1,0,1
+beckham,beckham,keep,1,0,1
+belly dance,belly dance,keep,1,0,1
+benin,benin,keep,0,1,1
+berman,berman,keep,1,0,1
+best,best,keep,0,1,1
+birmingham,birmingham,keep,1,0,1
+black-sea,black-sea,keep,1,0,1
+blip-bleep,blip-bleep,keep,1,0,1
+blissful,blissful,keep,0,1,1
+bob dylan,bob dylan,keep,1,0,1
+booty bass,booty bass,keep,1,0,1
+boxing,boxing,keep,1,0,1
+brianeno,brianeno,keep,1,0,1
+british,british,keep,1,0,1
+brucehaack,brucehaack,keep,1,0,1
+brutal,brutal,keep,1,0,1
+busdriver,busdriver,keep,1,0,1
+cabaret,cabaret,keep,0,1,1
+caravan,caravan,keep,1,0,1
+celtic,celtic,keep,1,0,1
+chanson,chanson,keep,0,1,1
+childrens music,childrens music,keep,1,0,1
+chile,chile,keep,1,0,1
+china,china,keep,1,0,1
+color,color,keep,1,0,1
+coltrane,coltrane,keep,0,1,1
+copyright,copyright,keep,1,0,1
+craft,craft,keep,1,0,1
+cyro,cyro,keep,1,0,1
+daedelus,daedelus,keep,1,0,1
+devendra,devendra,keep,1,0,1
+dilla,dilla,keep,0,1,1
+diva,diva,keep,1,0,1
+double bass,double bass,keep,1,0,1
+duke,duke,keep,1,0,1
+dystopic,dystopic,keep,1,0,1
+economy,economy,keep,1,0,1
+electro house,electro house,keep,1,0,1
+electroclash,electroclash,keep,1,0,1
+elektronik,elektronik,keep,0,1,1
+elton john,elton john,keep,0,1,1
+em411,em411,keep,1,0,1
+epic,epic,keep,1,0,1
+ethio,ethio,keep,0,1,1
+event,event,keep,1,0,1
+evil,evil,keep,0,1,1
+exotic,exotic,keep,1,0,1
+fcomm,fcomm,keep,1,0,1
+field,field,keep,0,1,1
+film,film,keep,0,1,1
+final fantasy,final fantasy,keep,1,0,1
+findability,findability,keep,1,0,1
+fonal,fonal,keep,0,1,1
+free jazz,free jazz,keep,0,1,1
+freedl,freedl,keep,0,1,1
+futurism,futurism,keep,1,0,1
+gangsta rap,gangsta rap,keep,1,0,1
+ghana,ghana,keep,1,0,1
+gigolo,gigolo,keep,1,0,1
+glitch funk,glitch funk,keep,1,0,1
+glo-fi,glo-fi,keep,0,1,1
+gnawa,gnawa,keep,0,1,1
+goth,goth,keep,0,1,1
+grain,grain,keep,1,0,1
+grammy,grammy,keep,1,0,1
+grime,grime,keep,1,0,1
+grindcore,grindcore,keep,1,0,1
+guest,guest,keep,0,1,1
+halloween,halloween,keep,1,0,1
+holland,holland,keep,1,0,1
+humppa,humppa,keep,1,0,1
+iggy pop,iggy pop,keep,0,1,1
+illustration,illustration,keep,1,0,1
+instruments,instruments,keep,1,0,1
+interactive,interactive,keep,1,0,1
+interface,interface,keep,1,0,1
+inventions,inventions,keep,1,0,1
+ipanema,ipanema,keep,1,0,1
+italo,italo,keep,1,0,1
+jacko,jacko,keep,1,0,1
+jandek,jandek,keep,1,0,1
+jimhenson,jimhenson,keep,1,0,1
+journey,journey,keep,0,1,1
+kabuki,kabuki,keep,1,0,1
+karim rashid,karim rashid,keep,1,0,1
+kelis,kelis,keep,1,0,1
+kitty yo,kitty yo,keep,1,0,1
+kraftwerk,kraftwerk,keep,1,0,1
+krossfingers,krossfingers,keep,0,1,1
+lee hazlewood,lee hazlewood,keep,0,1,1
+legends,legends,keep,1,0,1
+lisbon,lisbon,keep,1,0,1
+manipulation,manipulation,keep,1,0,1
+maps,maps,keep,1,0,1
+mashup,mashup,keep,1,0,1
+mechanical,mechanical,keep,1,0,1
+michigan,michigan,keep,1,0,1
+midi,midi,keep,1,0,1
+millos kaiser,millos kaiser,keep,0,1,1
+motown,motown,keep,1,0,1
+music video,music video,keep,1,0,1
+ndw,ndw,keep,0,1,1
+neo,neo,keep,0,1,1
+new orleans,new orleans,keep,1,0,1
+new zealand,new zealand,keep,1,0,1
+newschool,newschool,keep,1,0,1
+ninja tunes,ninja tunes,keep,1,0,1
+nonplace,nonplace,keep,1,0,1
+nu-rave,nu-rave,keep,1,0,1
+obliqsound,obliqsound,keep,1,0,1
+opera,opera,keep,1,0,1
+original,original,keep,1,0,1
+pavement,pavement,keep,1,0,1
+people,people,keep,1,0,1
+percussion,percussion,keep,1,0,1
+perlon,perlon,keep,1,0,1
+pianist,pianist,keep,1,0,1
+planet mu,planet mu,keep,1,0,1
+playlist,playlist,keep,0,1,1
+plunderphonics,plunderphonics,keep,0,1,1
+primus,primus,keep,0,1,1
+quintet,quintet,keep,1,0,1
+r038b,r038b,keep,1,0,1
+ring ding,ring ding,keep,1,0,1
+rip,rip,keep,0,1,1
+robertmoog,robertmoog,keep,1,0,1
+robotics,robotics,keep,1,0,1
+room,room,keep,1,0,1
+sci-fi,sci-fi,keep,0,1,1
+selvagem,selvagem,keep,0,1,1
+sleazy,sleazy,keep,1,0,1
+space age,space age,keep,1,0,1
+spaghetti western,spaghetti western,keep,1,0,1
+spiritual,spiritual,keep,0,1,1
+standards,standards,keep,0,1,1
+subpop,subpop,keep,1,0,1
+suicide,suicide,keep,1,0,1
+swing,swing,keep,1,0,1
+tabla,tabla,keep,1,0,1
+tape,tape,keep,1,0,1
+tejada,tejada,keep,1,0,1
+toplist,toplist,keep,1,0,1
+torture,torture,keep,1,0,1
+trabzon,trabzon,keep,1,0,1
+trains,trains,keep,1,0,1
+tribal,tribal,keep,0,1,1
+triumvirate,triumvirate,keep,1,0,1
+tumblweeds,tumblweeds,keep,0,1,1
+twist,twist,keep,1,0,1
+vibes,vibes,keep,1,0,1
+viral,viral,keep,1,0,1
+virgin,virgin,keep,1,0,1
+wedding,wedding,keep,1,0,1
+whitemagic,whitemagic,keep,0,1,1
+wipers,wipers,keep,0,1,1
+witch-house,witch-house,keep,0,1,1
+world cup,world cup,keep,1,0,1
+youtubehunter,youtubehunter,keep,1,0,1
+zombies,zombies,keep,1,0,1
