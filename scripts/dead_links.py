@@ -151,6 +151,9 @@ def write(rows):
 
 def probe(url):
     """Return (status, final_url). Status is an HTTP code or a short error."""
+    # Old posts have raw spaces and other unsafe characters in some links;
+    # percent-encode them so they get checked instead of failing locally.
+    url = urllib.parse.quote(url, safe=":/?#[]@!$&'()*+,;=%~")
     for method, extra in (('HEAD', {}), ('GET', {'Range': 'bytes=0-0'})):
         req = urllib.request.Request(url, method=method, headers={'User-Agent': UA, **extra})
         try:
