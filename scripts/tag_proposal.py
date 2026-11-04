@@ -9,8 +9,16 @@ Rules, in order:
      (hiphop -> hip-hop, scandianavia -> scandinavia, japanese -> japan).
   3. Spelling variants that differ only in case, spaces or hyphens
      (Jazz / jazz, post punk / postpunk) merge into one form.
-  Turkish tags (ilerici, geleneksel, ilgincmekan, deneysel) and his series
-  tags (channeling, whiteanger, worldobscure) are kept as they are.
+  Turkish tags (ilerici, geleneksel, ilgincmekan) and his series tags
+  (channeling, whiteanger, worldobscure) are kept as they are.
+
+Mersenne's decisions (PR #9, 4 Nov 2026):
+  - deneysel merges into experimental.
+  - Country pairs use the country noun: japan, france, finland, poland,
+    ireland, brasil, UK, ethiopia. Tags with no noun partner (turkish,
+    german, american ...) are left alone.
+  - Year tags go: every post sits on a year page (archive/2006.html,
+    tumblr/2015.html ...) linked from the index pages and from the post itself.
 
 The same mapping applies to WordPress and Tumblr posts, so both eras end up
 on one shared tag set.
@@ -36,6 +44,8 @@ DROP = {
     'uncategorized': 'WordPress default category', 'reblog': 'how it was posted',
     'mp3blog': 'how it was posted', 'height35': 'scrape junk',
 }
+DECIDED = {'deneysel', 'french', 'british', 'ethio', 'brazil', 'brazilian', 'finnish',
+           'polish', 'irish', 'japanese'}
 YEAR = re.compile(r'(19|20)\d\d')
 
 MERGE = {
@@ -46,7 +56,8 @@ MERGE = {
     'space-age': 'space age', 'worldmusic': 'world music', 'middleast': 'middle east',
     'scandianavia': 'scandinavia', 'wintage': 'vintage', 'worldobscurite': 'worldobscure',
     'kraut': 'krautrock', 'brazil': 'brasil', 'brazilian': 'brasil',
-    'african': 'africa', 'japanese': 'japan', 'finnish': 'finland', 'france': 'french',
+    'african': 'africa', 'japanese': 'japan', 'finnish': 'finland', 'french': 'france', 'british': 'UK',
+    'ethio': 'ethiopia', 'deneysel': 'experimental',
     'polish': 'poland', 'irish': 'ireland', 'latino': 'latin', 'turk': 'turkish',
     'triphop': 'trip-hop', 'rb': 'r&b', 'guitars': 'guitar', 'minimal-techno': 'minimal techno',
     'micro-house': 'micro house', 'lo fi': 'lo-fi', 'southernrock': 'southern rock',
@@ -82,9 +93,12 @@ def main():
         if low in DROP:
             new, why = 'DROP', DROP[low]
         elif YEAR.fullmatch(t):
-            new, why = 'DROP', 'year tag: the post date already has it'
+            new, why = 'DROP', 'year tag: year pages cover it (Mersenne, 4 Nov)'
         elif spelling[t] in MERGE or low in MERGE:
-            new, why = MERGE.get(spelling[t]) or MERGE[low], 'synonym / typo / same place'
+            new = MERGE.get(spelling[t]) or MERGE[low]
+            why = 'synonym / typo / same place'
+            if low in DECIDED or spelling[t] in DECIDED:
+                why = 'Mersenne decision, 4 Nov'
         elif spelling[t] != t:
             new, why = spelling[t], 'same tag, different case or spacing'
         else:

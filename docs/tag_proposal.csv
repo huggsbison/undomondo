@@ -1,55 +1,56 @@
 old_tag,new_tag,reason,wordpress_posts,tumblr_posts,total_posts
 photo,DROP,Tumblr post type,0,143,143
 musicvideo,music video,synonym / typo / same place,0,142,142
-2015,DROP,year tag: the post date already has it,0,71,71
+2015,DROP,"year tag: year pages cover it (Mersenne, 4 Nov)",0,71,71
 vimeo,DROP,platform name,0,68,68
 youtube,DROP,platform name,9,57,66
-2014,DROP,year tag: the post date already has it,0,65,65
-2013,DROP,year tag: the post date already has it,0,50,50
+2014,DROP,"year tag: year pages cover it (Mersenne, 4 Nov)",0,65,65
+2013,DROP,"year tag: year pages cover it (Mersenne, 4 Nov)",0,50,50
 hiphop,hip-hop,synonym / typo / same place,44,0,44
 misc,DROP,says nothing,42,0,42
 mixes,mix,synonym / typo / same place,2,36,38
-2017,DROP,year tag: the post date already has it,0,32,32
+2017,DROP,"year tag: year pages cover it (Mersenne, 4 Nov)",0,32,32
 reblog,DROP,how it was posted,32,0,32
-2016,DROP,year tag: the post date already has it,0,29,29
+2016,DROP,"year tag: year pages cover it (Mersenne, 4 Nov)",0,29,29
 postpunk,post-punk,synonym / typo / same place,0,26,26
-2018,DROP,year tag: the post date already has it,0,20,20
+2018,DROP,"year tag: year pages cover it (Mersenne, 4 Nov)",0,20,20
 video,DROP,post format,3,16,19
 progrock,prog rock,synonym / typo / same place,18,0,18
+french,france,"Mersenne decision, 4 Nov",17,0,17
 freejazz,free jazz,synonym / typo / same place,9,7,16
 mp3blog,DROP,how it was posted,12,0,12
 kraut,krautrock,synonym / typo / same place,0,11,11
 music,DROP,says nothing on a music blog,6,5,11
 ribot,marc ribot,synonym / typo / same place,6,5,11
 audio,DROP,post format,0,10,10
-2006,DROP,year tag: the post date already has it,9,0,9
-2020,DROP,year tag: the post date already has it,0,9,9
-finnish,finland,synonym / typo / same place,6,3,9
-2019,DROP,year tag: the post date already has it,0,8,8
+2006,DROP,"year tag: year pages cover it (Mersenne, 4 Nov)",9,0,9
+2020,DROP,"year tag: year pages cover it (Mersenne, 4 Nov)",0,9,9
+finnish,finland,"Mersenne decision, 4 Nov",6,3,9
+2019,DROP,"year tag: year pages cover it (Mersenne, 4 Nov)",0,8,8
 Uncategorized,DROP,WordPress default category,8,0,8
 african,africa,synonym / typo / same place,0,8,8
 psych,psychedelic,synonym / typo / same place,0,8,8
 soundcloud,DROP,platform name,0,8,8
-japanese,japan,synonym / typo / same place,7,0,7
+japanese,japan,"Mersenne decision, 4 Nov",7,0,7
 mathrock,math rock,synonym / typo / same place,0,7,7
 myspace,DROP,platform name,7,0,7
 post punk,post-punk,synonym / typo / same place,7,0,7
-2011,DROP,year tag: the post date already has it,0,6,6
+2011,DROP,"year tag: year pages cover it (Mersenne, 4 Nov)",0,6,6
 spaceage,space age,synonym / typo / same place,0,6,6
 marcribot,marc ribot,synonym / typo / same place,0,5,5
-2005,DROP,year tag: the post date already has it,4,0,4
+2005,DROP,"year tag: year pages cover it (Mersenne, 4 Nov)",4,0,4
+deneysel,experimental,"Mersenne decision, 4 Nov",0,4,4
 middleast,middle east,synonym / typo / same place,0,4,4
 lo fi,lo-fi,synonym / typo / same place,3,0,3
 nyc,NYC,"same tag, different case or spacing",0,3,3
 picture,DROP,post format,0,3,3
-polish,poland,synonym / typo / same place,3,0,3
+polish,poland,"Mersenne decision, 4 Nov",3,0,3
 spotify,DROP,platform name,0,3,3
 videos,DROP,post format,3,0,3
 worldmusic,world music,synonym / typo / same place,0,3,3
 classics,classic,synonym / typo / same place,0,2,2
 dailymotion,DROP,platform name,0,2,2
 easylistening,easy listening,synonym / typo / same place,0,2,2
-france,french,synonym / typo / same place,2,0,2
 idm,IDM,"same tag, different case or spacing",2,0,2
 latino,latin,synonym / typo / same place,2,0,2
 minimal-techno,minimal techno,synonym / typo / same place,2,0,2
@@ -57,11 +58,11 @@ other,DROP,says nothing,2,0,2
 re edit,edit,synonym / typo / same place,2,0,2
 scandianavia,scandinavia,synonym / typo / same place,2,0,2
 worldobscurite,worldobscure,synonym / typo / same place,0,2,2
-2007,DROP,year tag: the post date already has it,1,0,1
+2007,DROP,"year tag: year pages cover it (Mersenne, 4 Nov)",1,0,1
 Avantgarde,avantgarde,"same tag, different case or spacing",0,1,1
 Easy Listening,easy listening,"same tag, different case or spacing",0,1,1
 Edit,edit,"same tag, different case or spacing",0,1,1
-France,french,synonym / typo / same place,1,0,1
+France,france,"same tag, different case or spacing",1,0,1
 Free Jazz,free jazz,synonym / typo / same place,0,1,1
 Jazz,jazz,"same tag, different case or spacing",0,1,1
 Mix,mix,"same tag, different case or spacing",0,1,1
@@ -74,15 +75,17 @@ Wipers,wipers,"same tag, different case or spacing",0,1,1
 World,world,"same tag, different case or spacing",0,1,1
 album,DROP,says nothing,0,1,1
 bandcamp,DROP,platform name,0,1,1
-brazil,brasil,synonym / typo / same place,0,1,1
-brazilian,brasil,synonym / typo / same place,0,1,1
+brazil,brasil,"Mersenne decision, 4 Nov",0,1,1
+brazilian,brasil,"Mersenne decision, 4 Nov",0,1,1
+british,UK,"Mersenne decision, 4 Nov",1,0,1
 clips,DROP,post format,1,0,1
 delicious,DROP,platform name,1,0,1
 dylan,bob dylan,synonym / typo / same place,1,0,1
 edits,edit,synonym / typo / same place,0,1,1
+ethio,ethiopia,"Mersenne decision, 4 Nov",0,1,1
 guitars,guitar,synonym / typo / same place,1,0,1
 height35,DROP,scrape junk,1,0,1
-irish,ireland,synonym / typo / same place,1,0,1
+irish,ireland,"Mersenne decision, 4 Nov",1,0,1
 lastfm,DROP,platform name,1,0,1
 micro-house,micro house,synonym / typo / same place,1,0,1
 rb,r&b,synonym / typo / same place,1,0,1
@@ -179,7 +182,6 @@ postrock,postrock,keep,18,0,18
 soulful,soulful,keep,18,0,18
 surf,surf,keep,5,13,18
 zorn,zorn,keep,8,10,18
-french,french,keep,17,0,17
 list,list,keep,17,0,17
 reggae,reggae,keep,5,12,17
 afrobeat,afrobeat,keep,14,2,16
@@ -284,7 +286,6 @@ brokenbeat,brokenbeat,keep,4,0,4
 collage,collage,keep,4,0,4
 dark,dark,keep,4,0,4
 dark ambient,dark ambient,keep,4,0,4
-deneysel,deneysel,keep,0,4,4
 detroit,detroit,keep,4,0,4
 doom,doom,keep,1,3,4
 eastern,eastern,keep,4,0,4
@@ -354,6 +355,7 @@ dnb,dnb,keep,2,0,2
 drums,drums,keep,2,0,2
 electroacoustique,electroacoustique,keep,0,2,2
 ethiopia,ethiopia,keep,2,0,2
+france,france,keep,2,0,2
 ghostbox,ghostbox,keep,0,2,2
 glitch,glitch,keep,1,1,2
 gospel,gospel,keep,2,0,2
@@ -427,7 +429,6 @@ bob dylan,bob dylan,keep,1,0,1
 booty bass,booty bass,keep,1,0,1
 boxing,boxing,keep,1,0,1
 brianeno,brianeno,keep,1,0,1
-british,british,keep,1,0,1
 brucehaack,brucehaack,keep,1,0,1
 brutal,brutal,keep,1,0,1
 busdriver,busdriver,keep,1,0,1
@@ -457,7 +458,6 @@ elektronik,elektronik,keep,0,1,1
 elton john,elton john,keep,0,1,1
 em411,em411,keep,1,0,1
 epic,epic,keep,1,0,1
-ethio,ethio,keep,0,1,1
 event,event,keep,1,0,1
 evil,evil,keep,0,1,1
 exotic,exotic,keep,1,0,1
