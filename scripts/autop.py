@@ -78,6 +78,9 @@ def paragraphs(s):
         if not VISIBLE.sub('', chunk).strip() and '<audio' not in chunk:
             parts.append(chunk)      # stray inline tag with no text: leave bare
             continue
+        # a newline straight after an opening inline tag at the start of a
+        # paragraph (<strong>\nText) is not a line break: just drop it
+        chunk = re.sub(r'^((?:<(?!br\b)[a-z][^>]*>)+)\s+', r'\1', chunk, flags=re.I)
         chunk = re.sub(r'(?<!<br>)\s*\n\s*', '<br>\n', chunk)
         parts.append(f'<p>{chunk}</p>')
     return parts
