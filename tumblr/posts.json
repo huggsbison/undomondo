@@ -6942,8 +6942,7 @@
   "has_video": true,
   "has_image": false,
   "is_submission": false,
-  "type": "video",
-  "cover": "/assets/covers/tumblr-2014-theo-parrish-footwork.jpg"
+  "type": "video"
  },
  {
   "id": "92519071892",
