@@ -318,7 +318,8 @@
   "has_video": true,
   "has_image": false,
   "is_submission": false,
-  "type": "video"
+  "type": "video",
+  "cover": "/assets/covers/tumblr-2020-bcuc-nobody-knows.jpg"
  },
  {
   "id": "190495122839",
@@ -426,7 +427,8 @@
   "has_video": true,
   "has_image": false,
   "is_submission": false,
-  "type": "video"
+  "type": "video",
+  "cover": "/assets/covers/tumblr-2019-ken-ishii-bells-of-new-life.jpg"
  },
  {
   "id": "189608892384",
@@ -896,7 +898,8 @@
   "has_video": true,
   "has_image": false,
   "is_submission": false,
-  "type": "video"
+  "type": "video",
+  "cover": "/assets/covers/tumblr-2018-marc-ribot-bella-ciao-goodbye-beautiful-feat-tom-waits.jpg"
  },
  {
   "id": "177579531189",
@@ -1050,7 +1053,8 @@
   "has_video": true,
   "has_image": false,
   "is_submission": false,
-  "type": "video"
+  "type": "video",
+  "cover": "/assets/covers/tumblr-2018-oumou-sangare-minata-waraba-live-tivolivredenburg-utrecht.jpg"
  },
  {
   "id": "171172633444",
@@ -1765,7 +1769,8 @@
   "has_video": true,
   "has_image": false,
   "is_submission": false,
-  "type": "video"
+  "type": "video",
+  "cover": "/assets/covers/tumblr-2017-clipping-true-believer.jpg"
  },
  {
   "id": "159258860116",
@@ -1796,7 +1801,8 @@
   "has_video": true,
   "has_image": false,
   "is_submission": false,
-  "type": "video"
+  "type": "video",
+  "cover": "/assets/covers/tumblr-2017-ibibio-sound-machine-give-me-a-reason.jpg"
  },
  {
   "id": "159131199925",
@@ -2612,7 +2618,8 @@
   "has_video": true,
   "has_image": false,
   "is_submission": false,
-  "type": "video"
+  "type": "video",
+  "cover": "/assets/covers/tumblr-2016-klaus-johann-grobe-geschichten-aus-erster-hand.jpg"
  },
  {
   "id": "146697425669",
@@ -3751,7 +3758,8 @@
   "has_video": true,
   "has_image": false,
   "is_submission": false,
-  "type": "video"
+  "type": "video",
+  "cover": "/assets/covers/tumblr-2015-mo-kolours-orphans-lament.jpg"
  },
  {
   "id": "134389176874",
@@ -5044,7 +5052,8 @@
   "has_video": true,
   "has_image": false,
   "is_submission": false,
-  "type": "video"
+  "type": "video",
+  "cover": "/assets/covers/tumblr-2015-robert-aiki-aubrey-lowe-ariel-kalma-strange-dreams.jpg"
  },
  {
   "id": "121025725222",
@@ -6347,7 +6356,8 @@
   "has_video": true,
   "has_image": false,
   "is_submission": false,
-  "type": "video"
+  "type": "video",
+  "cover": "/assets/covers/tumblr-2014-moodoid-les-chemins-de-traverse.jpg"
  },
  {
   "id": "97574534649",
@@ -8280,7 +8290,8 @@
   "has_video": true,
   "has_image": false,
   "is_submission": false,
-  "type": "video"
+  "type": "video",
+  "cover": "/assets/covers/tumblr-2014-lilacs-champagne-shower-scene.jpg"
  },
  {
   "id": "78512939870",
@@ -10701,7 +10712,8 @@
   "has_video": true,
   "has_image": false,
   "is_submission": false,
-  "type": "video"
+  "type": "video",
+  "cover": "/assets/covers/tumblr-2013-la-mecanica-popular-la-paz-del-freak.jpg"
  },
  {
   "id": "62326554299",
@@ -11169,7 +11181,8 @@
   "has_video": true,
   "has_image": false,
   "is_submission": false,
-  "type": "video"
+  "type": "video",
+  "cover": "/assets/covers/tumblr-2013-julia-holter-in-the-green-wild.jpg"
  },
  {
   "id": "57412633534",
@@ -11280,7 +11293,8 @@
   "has_video": true,
   "has_image": false,
   "is_submission": false,
-  "type": "video"
+  "type": "video",
+  "cover": "/assets/covers/tumblr-2013-ikonika-mr-cake.jpg"
  },
  {
   "id": "56978723345",
@@ -11853,7 +11867,8 @@
   "has_video": true,
   "has_image": false,
   "is_submission": false,
-  "type": "video"
+  "type": "video",
+  "cover": "/assets/covers/tumblr-2013-ceramic-dog-lies-my-body-told-me.jpg"
  },
  {
   "id": "53231726124",
@@ -12068,7 +12083,8 @@
   "has_video": false,
   "has_image": false,
   "is_submission": false,
-  "type": "text"
+  "type": "text",
+  "cover": "/assets/covers/tumblr-2013-high-wolf-kulti.jpg"
  },
  {
   "id": "52864008284",
@@ -12135,7 +12151,8 @@
   "has_video": true,
   "has_image": false,
   "is_submission": false,
-  "type": "video"
+  "type": "video",
+  "cover": "/assets/covers/tumblr-2013-julia-holter-world.jpg"
  },
  {
   "id": "51217472826",
@@ -12218,7 +12235,8 @@
   "has_video": false,
   "has_image": false,
   "is_submission": false,
-  "type": "link"
+  "type": "link",
+  "cover": "/assets/covers/tumblr-2013-the-dodos-confidence.jpg"
  },
  {
   "id": "51142585555",
@@ -13193,7 +13211,8 @@
   "has_video": true,
   "has_image": false,
   "is_submission": false,
-  "type": "video"
+  "type": "video",
+  "cover": "/assets/covers/tumblr-2013-matmos-very-large-green-triangles.jpg"
  },
  {
   "id": "46249386021",
@@ -13363,7 +13382,8 @@
   "has_video": false,
   "has_image": false,
   "is_submission": false,
-  "type": "link"
+  "type": "link",
+  "cover": "/assets/covers/tumblr-2013-the-urinals-hologram.jpg"
  },
  {
   "id": "45580232494",
@@ -13498,7 +13518,8 @@
   "has_video": true,
   "has_image": false,
   "is_submission": false,
-  "type": "video"
+  "type": "video",
+  "cover": "/assets/covers/tumblr-2013-erkin-goren-ustume.jpg"
  },
  {
   "id": "44613236729",
@@ -13547,7 +13568,8 @@
   "has_video": true,
   "has_image": false,
   "is_submission": false,
-  "type": "video"
+  "type": "video",
+  "cover": "/assets/covers/tumblr-2013-marc-ribots-ceramic-dog-lies-my-body-told-me.jpg"
  },
  {
   "id": "44508909662",
@@ -13846,7 +13868,8 @@
   "has_video": false,
   "has_image": false,
   "is_submission": false,
-  "type": "link"
+  "type": "link",
+  "cover": "/assets/covers/tumblr-2013-kuusumun-profeetta-kellonsoittaja.jpg"
  },
  {
   "id": "43446224596",
@@ -14514,7 +14537,8 @@
   "has_video": true,
   "has_image": false,
   "is_submission": false,
-  "type": "video"
+  "type": "video",
+  "cover": "/assets/covers/tumblr-2013-mort-garson-big-sur.jpg"
  },
  {
   "id": "40012577724",
@@ -16484,7 +16508,8 @@
   "has_video": true,
   "has_image": false,
   "is_submission": false,
-  "type": "video"
+  "type": "video",
+  "cover": "/assets/covers/tumblr-2012-gareth-dickson-happy-easters.jpg"
  },
  {
   "id": "32864177533",
@@ -16729,7 +16754,8 @@
   "has_video": false,
   "has_image": false,
   "is_submission": false,
-  "type": "link"
+  "type": "link",
+  "cover": "/assets/covers/tumblr-2012-ricardo-donoso-the-bow-and-the-lyre.jpg"
  },
  {
   "id": "31389932959",
@@ -19582,7 +19608,8 @@
   "has_video": true,
   "has_image": false,
   "is_submission": false,
-  "type": "video"
+  "type": "video",
+  "cover": "/assets/covers/tumblr-2012-ty-segall-white-fence-scissor-people.jpg"
  },
  {
   "id": "20922466381",
@@ -19666,7 +19693,8 @@
   "has_video": true,
   "has_image": false,
   "is_submission": false,
-  "type": "video"
+  "type": "video",
+  "cover": "/assets/covers/tumblr-2012-serengeti-dont-blame-steve.jpg"
  },
  {
   "id": "20580528147",
@@ -19769,7 +19797,8 @@
   "has_video": true,
   "has_image": false,
   "is_submission": false,
-  "type": "video"
+  "type": "video",
+  "cover": "/assets/covers/tumblr-2012-lucky-dragons-mirror-makers.jpg"
  },
  {
   "id": "20223107755",
@@ -19786,7 +19815,8 @@
   "has_video": true,
   "has_image": false,
   "is_submission": false,
-  "type": "video"
+  "type": "video",
+  "cover": "/assets/covers/tumblr-2012-black-to-comm-water.jpg"
  },
  {
   "id": "20237132854",
@@ -19886,7 +19916,8 @@
   "has_video": true,
   "has_image": false,
   "is_submission": false,
-  "type": "video"
+  "type": "video",
+  "cover": "/assets/covers/tumblr-2012-lee-ranaldo-angles.jpg"
  },
  {
   "id": "20000278010",
@@ -20221,7 +20252,8 @@
   "has_video": true,
   "has_image": false,
   "is_submission": false,
-  "type": "video"
+  "type": "video",
+  "cover": "/assets/covers/tumblr-2012-dirty-beaches-speedway-king.jpg"
  },
  {
   "id": "19174284546",
@@ -20567,7 +20599,8 @@
   "has_video": true,
   "has_image": false,
   "is_submission": false,
-  "type": "video"
+  "type": "video",
+  "cover": "/assets/covers/tumblr-2012-rxgibbs-silver.jpg"
  },
  {
   "id": "18751507082",
@@ -20635,7 +20668,8 @@
   "has_video": true,
   "has_image": false,
   "is_submission": false,
-  "type": "video"
+  "type": "video",
+  "cover": "/assets/covers/tumblr-2012-grimes-oblivion.jpg"
  },
  {
   "id": "18785154760",
@@ -21064,7 +21098,8 @@
   "has_video": true,
   "has_image": false,
   "is_submission": false,
-  "type": "video"
+  "type": "video",
+  "cover": "/assets/covers/tumblr-2012-royal-headache-surprise.jpg"
  },
  {
   "id": "17619857283",
@@ -21132,7 +21167,8 @@
   "has_video": true,
   "has_image": false,
   "is_submission": false,
-  "type": "video"
+  "type": "video",
+  "cover": "/assets/covers/tumblr-2012-dylan-ettinger-wintermute.jpg"
  },
  {
   "id": "17549358321",
@@ -23480,7 +23516,8 @@
   "has_video": true,
   "has_image": false,
   "is_submission": false,
-  "type": "video"
+  "type": "video",
+  "cover": "/assets/covers/tumblr-2011-ursula-bogner-trabant.jpg"
  },
  {
   "id": "13199646747",
@@ -25263,7 +25300,8 @@
   "has_video": true,
   "has_image": false,
   "is_submission": false,
-  "type": "video"
+  "type": "video",
+  "cover": "/assets/covers/tumblr-2011-balam-acab-motion.jpg"
  },
  {
   "id": "11179465561",
@@ -25391,7 +25429,8 @@
   "has_video": true,
   "has_image": false,
   "is_submission": false,
-  "type": "video"
+  "type": "video",
+  "cover": "/assets/covers/tumblr-2011-connan-mockasin-its-choade-my-dear.jpg"
  },
  {
   "id": "11056210456",
@@ -26721,7 +26760,8 @@
   "has_video": true,
   "has_image": false,
   "is_submission": false,
-  "type": "video"
+  "type": "video",
+  "cover": "/assets/covers/tumblr-2011-brilliant-colors-hey-dan.jpg"
  },
  {
   "id": "9509713154",
@@ -27170,7 +27210,8 @@
   "has_video": true,
   "has_image": false,
   "is_submission": false,
-  "type": "video"
+  "type": "video",
+  "cover": "/assets/covers/tumblr-2011-dirty-beaches-god-speed.jpg"
  },
  {
   "id": "8387358952",
@@ -27987,7 +28028,8 @@
   "has_video": true,
   "has_image": false,
   "is_submission": false,
-  "type": "video"
+  "type": "video",
+  "cover": "/assets/covers/tumblr-2011-the-horrors-still-life.jpg"
  },
  {
   "id": "7548435968",
@@ -28274,7 +28316,8 @@
   "has_video": true,
   "has_image": false,
   "is_submission": false,
-  "type": "video"
+  "type": "video",
+  "cover": "/assets/covers/tumblr-2011-flashman-the-proposition.jpg"
  },
  {
   "id": "7303261030",
@@ -44002,7 +44045,8 @@
   "has_video": true,
   "has_image": false,
   "is_submission": false,
-  "type": "video"
+  "type": "video",
+  "cover": "/assets/covers/tumblr-2010-the-souljazz-orchestra-agbara-from-rising-sun-album.jpg"
  },
  {
   "id": "388828031",
@@ -47595,7 +47639,8 @@
   "has_video": true,
   "has_image": false,
   "is_submission": false,
-  "type": "video"
+  "type": "video",
+  "cover": "/assets/covers/tumblr-2009-black-to-comm-hotel-freund-from-alphabet-1968-lp-cd-out-on-t.jpg"
  },
  {
   "id": "200446370",
@@ -58104,7 +58149,8 @@
   "has_video": false,
   "has_image": false,
   "is_submission": false,
-  "type": "text"
+  "type": "text",
+  "cover": "/assets/covers/tumblr-2008-gina-x-no-gdm.jpg"
  },
  {
   "id": "24802935",
@@ -59232,7 +59278,8 @@
   "has_video": true,
   "has_image": false,
   "is_submission": false,
-  "type": "video"
+  "type": "video",
+  "cover": "/assets/covers/tumblr-2007-battles-tonto-from-the-album-mirrored.jpg"
  },
  {
   "id": "13850084",
