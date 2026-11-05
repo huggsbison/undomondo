@@ -108,6 +108,17 @@
         line-height: 1.2;
     }
 
+    /* album cover, after the title (layout B, 5 Nov 2026) */
+    .post-cover {
+        margin: 0 0 2rem;
+    }
+
+    .post-cover img {
+        display: block;
+        width: 100%;
+        height: auto;
+    }
+
     .post-content {
         font-size: 1.05rem;
         line-height: 1.8;
